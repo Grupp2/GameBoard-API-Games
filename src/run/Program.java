@@ -1,16 +1,15 @@
 package run;
 
+import game.init.Runner;
 import impl.OthelloGameState;
+import io.OthelloIOFactory;
 
 public class Program
 {
 
 	public static void main(String[] args)
 	{
-
-        OthelloGameState s = new OthelloGameState();
-		// TODO Auto-generated method stub
-
+		new Runner(new OthelloGameState(), new OthelloIOFactory());
 	}
 
 }
