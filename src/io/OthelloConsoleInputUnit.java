@@ -10,9 +10,7 @@ import game.io.InputUnit;
 public class OthelloConsoleInputUnit extends InputUnit {
     @Override
     public void setup(GameState gameState) {
-        Board board = gameState.getBoard();
-        for (int i = 0; i <= 8; i++)
-            System.out.println(i);
+
 
 
     }

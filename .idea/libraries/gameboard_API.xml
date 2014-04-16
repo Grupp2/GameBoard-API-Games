@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="gameboard-API">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/gameboard-API.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
