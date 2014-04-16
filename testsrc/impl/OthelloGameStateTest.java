@@ -45,6 +45,7 @@ public class OthelloGameStateTest {
         assertEquals("A2", gameBoard.getLocations().get(1).getId());
 
         assertEquals("B1", gameBoard.getLocations().get(8).getId());
+        assertEquals("B8", gameBoard.getLocations().get(15).getId());
 
         assertEquals("H8", gameBoard.getLocations().get(63).getId());
     }

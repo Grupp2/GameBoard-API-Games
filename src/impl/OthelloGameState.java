@@ -10,7 +10,10 @@ public class OthelloGameState implements GameState {
 
     private List<Player> players;
     private Board gameBoard;
+    private Player lastPlayer;
 
+    private int turnCounter;
+    private String message;
 
     @Override
     public List<Player> getPlayers() {
@@ -24,7 +27,7 @@ public class OthelloGameState implements GameState {
 
     @Override
     public Player getPlayerInTurn() {
-        return null;
+        return players.get(turnCounter);
     }
 
     @Override
@@ -49,7 +52,7 @@ public class OthelloGameState implements GameState {
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 
     @Override
@@ -60,6 +63,8 @@ public class OthelloGameState implements GameState {
         players.add(new Player("P1", makePlayerOneGamePieces()));
         players.add(new Player("P2", makePlayerTwoGamePieces()));
 
+        turnCounter = 0;
+        message = "";
     }
 
     private List<GamePiece> makePlayerOneGamePieces(){
