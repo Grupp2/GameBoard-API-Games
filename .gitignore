@@ -27,3 +27,6 @@ Othello.iml
 # Maven
 log/
 target/
+
+#custom
+lib/
