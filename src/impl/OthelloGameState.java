@@ -67,11 +67,21 @@ public class OthelloGameState implements GameState {
     }
 
     private List<GamePiece> makePlayerOneGamePieces(){
-        return null;
+        List<GamePiece> list = new ArrayList<GamePiece>();
+
+        for(int i = 0; i < 32; i++)
+            list.add(new GamePiece("O"));
+
+        return list;
     }
 
     private List<GamePiece> makePlayerTwoGamePieces(){
-        return null;
+        List<GamePiece> list = new ArrayList<GamePiece>();
+
+        for(int i = 0; i < 32; i++)
+            list.add(new GamePiece("X"));
+
+        return list;
     }
 
     private List<BoardLocation> makeBoardLocations(){
@@ -79,10 +89,11 @@ public class OthelloGameState implements GameState {
         List<BoardLocation> list = new ArrayList<BoardLocation>();
 
         for(int i = 0; i < 8; i++){
-            for(int j = (int)'A'; i < (int)'I'; j++){
+            for(int j = (int)'A'; j < (int)'I'; j++){
                 list.add(new BoardLocation(""+(char)j+i));
             }
         }
+
 
         return list;
     }
