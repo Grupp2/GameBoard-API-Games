@@ -1,13 +1,11 @@
 package impl;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
-import game.impl.Board;
 import org.junit.Test;
 
 import java.util.List;
 
+import game.impl.Board;
 import game.impl.Player;
 
 public class OthelloGameStateTest {

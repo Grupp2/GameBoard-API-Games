@@ -15,6 +15,17 @@ public class OthelloGameState implements GameState {
     private int turnCounter;
     private String message;
 
+
+    public OthelloGameState(List<Player> players, Board gameBoard){
+        reset();
+        this.players = players;
+        this.gameBoard = gameBoard;
+    }
+
+    public OthelloGameState(){
+        reset();
+    }
+
     @Override
     public List<Player> getPlayers() {
         return players;
@@ -86,7 +97,6 @@ public class OthelloGameState implements GameState {
     }
 
     private List<BoardLocation> makeBoardLocations(){
-
         List<BoardLocation> list = new ArrayList<BoardLocation>();
 
         for(int j = (int)'A'; j <= (int)'H'; j++)
