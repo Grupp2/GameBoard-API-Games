@@ -11,12 +11,10 @@ public class OthelloGameState implements GameState {
     private List<Player> players;
     private Board gameBoard;
 
-    public OthelloGameState(){
-        reset();
-    }
+
     @Override
     public List<Player> getPlayers() {
-        return null;
+        return players;
     }
 
     @Override
@@ -31,7 +29,7 @@ public class OthelloGameState implements GameState {
 
     @Override
     public Board getBoard() {
-        return null;
+        return gameBoard;
     }
 
     @Override
@@ -56,11 +54,9 @@ public class OthelloGameState implements GameState {
 
     @Override
     public void reset() {
-        players = new ArrayList<Player>();
-
         gameBoard = new Board(makeBoardLocations());
 
-
+        players = new ArrayList<Player>();
         players.add(new Player("P1", makePlayerOneGamePieces()));
         players.add(new Player("P2", makePlayerTwoGamePieces()));
 
@@ -88,12 +84,9 @@ public class OthelloGameState implements GameState {
 
         List<BoardLocation> list = new ArrayList<BoardLocation>();
 
-        for(int i = 0; i < 8; i++){
-            for(int j = (int)'A'; j < (int)'I'; j++){
+        for(int j = (int)'A'; j <= (int)'H'; j++)
+            for(int i = 1; i <= 8; i++)
                 list.add(new BoardLocation(""+(char)j+i));
-            }
-        }
-
 
         return list;
     }
