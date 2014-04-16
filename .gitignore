@@ -16,3 +16,14 @@ hs_err_pid*
 *.iml
 *.iml
 Othello.iml
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
