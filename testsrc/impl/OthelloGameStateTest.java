@@ -1,7 +1,10 @@
-package impl;
+package testsrc.impl;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
+
+import src.impl.OthelloGameState;
 
 import java.util.List;
 

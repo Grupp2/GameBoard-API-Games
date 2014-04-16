@@ -1,8 +1,8 @@
-package run;
+package src.run;
 
+import src.impl.OthelloGameState;
+import src.io.OthelloIOFactory;
 import game.init.Runner;
-import impl.OthelloGameState;
-import io.OthelloIOFactory;
 
 public class Program
 {

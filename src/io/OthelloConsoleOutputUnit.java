@@ -1,4 +1,4 @@
-package io;
+package src.io;
 
 import game.api.GameState;
 import game.impl.Board;

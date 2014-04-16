@@ -1,4 +1,4 @@
-package io;
+package src.io;
 
 import game.io.InputUnit;
 import game.io.IoFactory;
