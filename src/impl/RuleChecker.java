@@ -22,8 +22,4 @@ public class RuleChecker {
 
     }
 
-    public Player getLeader(){
-        return null;
-    }
-
 }

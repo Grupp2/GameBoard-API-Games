@@ -8,21 +8,22 @@ import java.util.List;
 
 public class OthelloGameState implements GameState {
 
+    private OthelloGameFactory factory;
+
     private List<Player> players;
     private Board gameBoard;
-    private Player lastPlayer;
 
-    private int turnCounter;
+    private TurnCounter turnCounter;
     private String message;
 
 
-    public OthelloGameState(List<Player> players, Board gameBoard){
+    public OthelloGameState(OthelloGameFactory factory){
+        this.factory = factory;
         reset();
-        this.players = players;
-        this.gameBoard = gameBoard;
     }
 
     public OthelloGameState(){
+        this(new OthelloGameFactory());
         reset();
     }
 
@@ -33,12 +34,12 @@ public class OthelloGameState implements GameState {
 
     @Override
     public Player getLastPlayer() {
-        return null;
+        return turnCounter.getLastPlayer();
     }
 
     @Override
     public Player getPlayerInTurn() {
-        return players.get(turnCounter);
+        return turnCounter.getCurrentPlayer();
     }
 
     @Override
@@ -68,41 +69,9 @@ public class OthelloGameState implements GameState {
 
     @Override
     public void reset() {
-        gameBoard = new Board(makeBoardLocations());
-
-        players = new ArrayList<Player>();
-        players.add(new Player("P1", makePlayerOneGamePieces()));
-        players.add(new Player("P2", makePlayerTwoGamePieces()));
-
-        turnCounter = 0;
+        gameBoard = factory.createBoard();
+        players = factory.createPlayers();
+        turnCounter = new TurnCounter(players);
         message = "";
-    }
-
-    private List<GamePiece> makePlayerOneGamePieces(){
-        List<GamePiece> list = new ArrayList<GamePiece>();
-
-        for(int i = 0; i < 32; i++)
-            list.add(new GamePiece("O"));
-
-        return list;
-    }
-
-    private List<GamePiece> makePlayerTwoGamePieces(){
-        List<GamePiece> list = new ArrayList<GamePiece>();
-
-        for(int i = 0; i < 32; i++)
-            list.add(new GamePiece("X"));
-
-        return list;
-    }
-
-    private List<BoardLocation> makeBoardLocations(){
-        List<BoardLocation> list = new ArrayList<BoardLocation>();
-
-        for(int j = (int)'A'; j <= (int)'H'; j++)
-            for(int i = 1; i <= 8; i++)
-                list.add(new BoardLocation(""+(char)j+i));
-
-        return list;
     }
 }
