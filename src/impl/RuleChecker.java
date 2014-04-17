@@ -1,4 +1,4 @@
-package src.impl;
+package impl;
 
 import game.api.GameState;
 import game.impl.GamePiece;
