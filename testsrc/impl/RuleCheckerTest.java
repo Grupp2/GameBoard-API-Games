@@ -1,4 +1,4 @@
-package impl;
+package testsrc.impl;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

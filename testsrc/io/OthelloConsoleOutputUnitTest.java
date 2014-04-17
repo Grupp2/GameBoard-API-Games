@@ -1,7 +1,7 @@
-package io;
+package testsrc.io;
 
-import impl.OthelloGameState;
-import io.OthelloConsoleOutputUnit;
+import src.impl.OthelloGameState;
+import src.io.OthelloConsoleOutputUnit;
 import junit.framework.TestCase;
 /**
  * Created by HuggTop on 2014-04-16.
