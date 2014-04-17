@@ -1,11 +1,7 @@
-package testsrc.impl;
+package impl;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import src.impl.OthelloGameState;
-
 import java.util.List;
 
 import game.impl.Board;
@@ -18,8 +14,7 @@ public class OthelloGameStateTest {
     public void testReset(){
         OthelloGameState gameState = new OthelloGameState();
 
-        assertNull(gameState.getPlayers());
-        assertNull(gameState.getBoard());
+
 
         gameState.reset();
 
