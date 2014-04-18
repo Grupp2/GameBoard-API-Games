@@ -8,6 +8,7 @@ import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
 
+
 public class OthelloGameFactory {
 
     public List<Player> createPlayers(){
@@ -18,6 +19,10 @@ public class OthelloGameFactory {
         return players;
     }
 
+    public TurnCounter createTurnCounter(List<Player> players){
+        return new TurnCounter(players);
+    }
+
     public Board createBoard(){
         return new Board(makeBoardLocations());
     }
@@ -25,8 +30,8 @@ public class OthelloGameFactory {
     private List<GamePiece> makePlayerOneGamePieces(){
         List<GamePiece> list = new ArrayList<GamePiece>();
 
-        for(int i = 0; i < 32; i++)
-            list.add(new GamePiece("O"));
+        //for(int i = 0; i < 32; i++)
+         //   list.add(new GamePiece("O"));
 
         return list;
     }
@@ -34,8 +39,8 @@ public class OthelloGameFactory {
     private List<GamePiece> makePlayerTwoGamePieces(){
         List<GamePiece> list = new ArrayList<GamePiece>();
 
-        for(int i = 0; i < 32; i++)
-            list.add(new GamePiece("X"));
+        //for(int i = 0; i < 32; i++)
+         //   list.add(new GamePiece("X"));
 
         return list;
     }
