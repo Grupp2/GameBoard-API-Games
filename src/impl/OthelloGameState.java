@@ -43,6 +43,11 @@ public class OthelloGameState implements GameState {
     }
 
     @Override
+    public DieRollFactory getDieRollFactory() {
+        return null;
+    }
+
+    @Override
     public Player getLastPlayer() {
         return turnCounter.getLastPlayer();
     }
