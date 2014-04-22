@@ -23,8 +23,8 @@ public class OthelloGameFrame extends JFrame {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		p1Panel = new PlayerPanel(player, true, 150, 150);
-		p2Panel = new PlayerPanel(player, true, 150, 150);
+		p1Panel = new PlayerPanelVertical(player, 150, 150);
+		p2Panel = new PlayerPanelVertical(player, 150, 150);
 		contentPane.add(p1Panel);
 		setCtrlBounds();
 	}
