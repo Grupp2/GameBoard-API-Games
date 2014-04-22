@@ -1,4 +1,4 @@
-package impl;
+package impl.util;
 
 import game.impl.Board;
 import game.impl.BoardLocation;

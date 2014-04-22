@@ -7,6 +7,7 @@ import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
+import impl.util.TurnCounter;
 
 
 public class OthelloGameFactory {
@@ -19,13 +20,14 @@ public class OthelloGameFactory {
         return players;
     }
 
-    public TurnCounter createTurnCounter(List<Player> players){
-        return new TurnCounter(players);
+    public TurnCounter createTurnCounter(List<Player> players, Player startingPlayer){
+        return new TurnCounter(players, startingPlayer);
     }
 
     public Board createBoard(){
         return new Board(makeBoardLocations());
     }
+
 
     private List<GamePiece> makePlayerOneGamePieces(){
         List<GamePiece> list = new ArrayList<GamePiece>();

@@ -1,23 +1,26 @@
-package impl;
+package impl.Actions;
 
 import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
+import impl.util.BoardParser;
+import impl.util.GameRules;
+import impl.State;
 
 import java.util.List;
 
 
-public class BoardUpdateAction {
+public class BoardUpdate {
 
     private Board board;
     private List<Player> players;
     private BoardLocation location;
     private BoardParser boardParser;
 
-    public BoardUpdateAction(OthelloGameState gameState, BoardParser boardParser){
-        this.players = gameState.getPlayers();
-        this.board = gameState.getBoard();
+    public BoardUpdate(State state, BoardParser boardParser){
+        this.players = state.getPlayers();
+        this.board = state.getBoard();
         this.boardParser = boardParser;
         this.location = boardParser.getLocation();
     }

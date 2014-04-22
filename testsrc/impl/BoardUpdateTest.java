@@ -4,15 +4,15 @@ import game.api.GameState;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
+import impl.util.BoardParser;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-public class BoardUpdateActionTest {
+
+public class BoardUpdateTest {
 
     GameState gameState;
     BoardParser boardParser;

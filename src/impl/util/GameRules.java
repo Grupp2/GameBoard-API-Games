@@ -1,6 +1,5 @@
-package impl;
+package impl.util;
 
-import game.api.GameState;
 import game.impl.*;
 
 import java.util.List;
@@ -66,6 +65,25 @@ public class GameRules {
                 return locations.get(i);
 
         return null;
+    }
+
+    public static void setStartingPositions(List<Player> players, Board gameBoard){
+        GamePiece piece1 = new GamePiece("O"),
+                piece2 = new GamePiece("O"),
+                piece3 = new GamePiece("X"),
+                piece4 = new GamePiece("X");
+
+        GameRules.getLocationById(gameBoard, "D4").setPiece(piece1);
+        players.get(0).getPieces().add(piece1);
+
+        GameRules.getLocationById(gameBoard, "E5").setPiece(piece2);
+        players.get(0).getPieces().add(piece2);
+
+        GameRules.getLocationById(gameBoard, "D5").setPiece(piece3);
+        players.get(1).getPieces().add(piece3);
+
+        GameRules.getLocationById(gameBoard, "E4").setPiece(piece4);
+        players.get(1).getPieces().add(piece4);
     }
 
 }

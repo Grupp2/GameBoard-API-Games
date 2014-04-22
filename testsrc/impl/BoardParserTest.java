@@ -3,6 +3,7 @@ package impl;
 import game.impl.Board;
 import game.impl.BoardLocation;
 
+import impl.util.BoardParser;
 import org.junit.Before;
 import org.junit.Test;
 

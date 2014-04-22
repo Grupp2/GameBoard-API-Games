@@ -1,4 +1,4 @@
-package impl;
+package impl.util;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ public class TurnCounter {
     private int currentTurn;
     private int lastTurn;
 
-    public TurnCounter(List<Player> players){
+    public TurnCounter(List<Player> players, Player startingPlayer){
         this.players = players;
-        this.currentTurn = 0;
+        this.currentTurn = players.indexOf(startingPlayer);
         this.lastTurn = -1;
     }
 
