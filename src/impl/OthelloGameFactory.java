@@ -51,7 +51,7 @@ public class OthelloGameFactory {
         for(int j = (int)'A'; j <= (int)'H'; j++)
             for(int i = 1; i <= 8; i++)
                 list.add(new BoardLocation(""+(char)j+i));
-
+        System.out.println(list);
         return list;
     }
 }

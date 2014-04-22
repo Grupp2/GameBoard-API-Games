@@ -36,18 +36,22 @@ public class BoardUpdateAction {
         Player owner = getOwnerOfPiece(location.getPiece());
 
         for(int i = locationIndex-1; i >= 0; i-- ){
-            if(GameRules.isLocationEmpty(list.get(i)) || getOwnerOfPiece(list.get(i).getPiece()) == owner)
+            if(listEnded(list.get(i), owner))
                 break;
 
             changeOwnerOfPieceAtLocation(list.get(i));
         }
 
         for(int i = locationIndex+1; i < list.size(); i++){
-            if(GameRules.isLocationEmpty(list.get(i)) || getOwnerOfPiece(list.get(i).getPiece()) == owner)
+            if(listEnded(list.get(i), owner))
                 break;
 
             changeOwnerOfPieceAtLocation(list.get(i));
         }
+    }
+
+    private boolean listEnded(BoardLocation location, Player owner){
+        return GameRules.isLocationEmpty(location) || getOwnerOfPiece(location.getPiece()) == owner;
     }
 
     private Player getOwnerOfPiece(GamePiece piece){

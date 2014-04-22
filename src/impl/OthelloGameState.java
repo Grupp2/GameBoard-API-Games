@@ -72,7 +72,7 @@ public class OthelloGameState implements GameState {
 
     @Override
     public Boolean hasEnded() {
-        return GameRules.isBoardFull(gameBoard);
+        return players.get(0).getPieces().size() + players.get(1).getPieces().size() >= 64;
     }
 
     @Override
@@ -132,6 +132,7 @@ public class OthelloGameState implements GameState {
                     piece2 = new GamePiece("O"),
                     piece3 = new GamePiece("X"),
                     piece4 = new GamePiece("X");
+
 
         GameRules.getLocationById(gameBoard, "D4").setPiece(piece1);
         players.get(0).getPieces().add(piece1);

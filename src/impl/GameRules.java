@@ -5,9 +5,7 @@ import game.impl.*;
 
 import java.util.List;
 
-/**
- * @author erik
- */
+
 public class GameRules {
 
     public static boolean isBoardFull(Board board){

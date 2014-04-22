@@ -17,18 +17,20 @@ public class BoardUpdateActionTest {
     GameState gameState;
     BoardParser boardParser;
 
+    GamePiece piece1, piece2, piece3, piece4, newPiece;
+
     @Before
     public void before(){
         gameState = mock(GameState.class);
 
         final Player player1 = new Player("player1", new ArrayList<GamePiece>(){{
-            add(new GamePiece("O"));
-            add(new GamePiece("O"));
+            add(piece1 = new GamePiece("O"));
+            add(piece2 = new GamePiece("O"));
         }});
 
         final Player player2 = new Player("player2", new ArrayList<GamePiece>(){{
-            add(new GamePiece("X"));
-            add(new GamePiece("X"));
+            add(piece3 = new GamePiece("X"));
+            add(piece4 = new GamePiece("X"));
         }});
 
         when(gameState.getPlayers()).thenReturn(new ArrayList<Player>(){{
