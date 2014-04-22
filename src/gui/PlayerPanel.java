@@ -10,10 +10,13 @@ public class PlayerPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private int noOfPieces;
 	
-	public PlayerPanel(Player player, int gamePieceSizeX, int gamePieceSizeY) {
+	public PlayerPanel(Player player, boolean useVerticalLayout, int gamePieceSizeX, int gamePieceSizeY) {
 		setName(player.getName());
 		noOfPieces = player.getPieces().size();
-		setBounds(1,1, gamePieceSizeX, gamePieceSizeY * noOfPieces);
+		if (useVerticalLayout)
+			setBounds(1, 1, gamePieceSizeX, gamePieceSizeY * noOfPieces);
+		else
+			setBounds(1, 1, gamePieceSizeX * noOfPieces, gamePieceSizeY);
 		setLayout(new GridLayout(noOfPieces, 1));
 		addButtons();
 	}
