@@ -26,7 +26,7 @@ public class OthelloConsoleOutputUnit implements OutputUnit {
         		if ((piece = board.getLocations().get(b).getPiece()) != null)
         			outputString += piece.getId() + "  ";
         		else
-        			outputString += "  ";
+        			outputString += "·  ";
         	}
         	lim += 8;
         	outputString += "\n";
