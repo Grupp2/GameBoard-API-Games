@@ -9,9 +9,11 @@ public class GraphicsHolder {
 	private BufferedImage player1Piece;
 	private BufferedImage player1PieceAlternate;
 	private BufferedImage player1UndeployedPiece;
+	private BufferedImage player1UndeployedPieceAlternate;
 	private BufferedImage player2Piece;
 	private BufferedImage player2PieceAlternate;
 	private BufferedImage player2UndeployedPiece;
+	private BufferedImage player2UndeployedPieceAlternate;
 	
 	public GraphicsHolder() {
 		
@@ -36,6 +38,10 @@ public class GraphicsHolder {
 	public BufferedImage getPlayer1UndeployedPiece() {
 		return player1UndeployedPiece;
 	}
+	
+	public BufferedImage getPlayer1UndeployedPieceAlternate() {
+		return player1UndeployedPieceAlternate;
+	}
 
 	public BufferedImage getPlayer2Piece() {
 		return player2Piece;
@@ -47,5 +53,9 @@ public class GraphicsHolder {
 
 	public BufferedImage getPlayer2UndeployedPiece() {
 		return player2UndeployedPiece;
+	}
+	
+	public BufferedImage getPlayer2UndeployedPieceAlternate() {
+		return player2UndeployedPieceAlternate;
 	}
 }
