@@ -1,22 +1,36 @@
 package io;
 
+
 import game.api.GameState;
 import game.impl.Board;
-import game.impl.BoardLocation;
 import game.io.OutputUnit;
+import game.impl.*;
 
-/**
- * Created by HuggTop on 2014-04-16.
- */
 public class OthelloConsoleOutputUnit implements OutputUnit {
     @Override
     public void publish(GameState gameState) {
-        Board board = gameState.getBoard();
-        System.out.println("1 2 3 4 5 6 7 8");
-
-        for (BoardLocation loc : board.getLocations())
-            loc.getId();
-
-
+        System.out.println(getOutputString(gameState));    
+    }
+    
+    String getOutputString(GameState gameState){
+    	Board board = gameState.getBoard();
+        GamePiece piece;
+        String outputString = new String();
+        outputString += "  1  2  3  4  5  6  7  8 \n";
+        char[] rows = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+        int b = 0;
+        int lim = 8;
+        for (int i = 0; i < 8; i++) {
+        	outputString += (rows[i] + " ");
+        	for (;b < lim; b++) {
+        		if ((piece = board.getLocations().get(b).getPiece()) != null)
+        			outputString += piece.getId() + "  ";
+        		else
+        			outputString += "·  ";
+        	}
+        	lim += 8;
+        	outputString += "\n";
+        }
+        return outputString;
     }
 }

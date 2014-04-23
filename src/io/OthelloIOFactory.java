@@ -6,20 +6,18 @@ import game.io.OutputUnit;
 
 public class OthelloIOFactory implements IoFactory
 {
-    private InputUnit inputUnit;
-    private OutputUnit outputUnit;
+    private OthelloConsoleInputUnit inputUnit = new OthelloConsoleInputUnit();
+    private OthelloConsoleOutputUnit outputUnit = new OthelloConsoleOutputUnit();
 	@Override
 	public InputUnit getInputUnit()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return inputUnit;
 	}
 
 	@Override
 	public OutputUnit getOutputUnit()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return outputUnit;
 	}
 
 }
