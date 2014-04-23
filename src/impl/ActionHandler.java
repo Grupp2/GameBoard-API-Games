@@ -17,6 +17,10 @@ public class ActionHandler {
         this.factory = factory;
     }
 
+    public ActionHandler(State state){
+        this(state, new OthelloGameFactory());
+    }
+
     public boolean validateMove(Move move){
         return new MoveValidation(state, move).execute();
     }

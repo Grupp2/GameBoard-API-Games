@@ -9,14 +9,19 @@ import game.impl.Player;
 
 import java.util.List;
 
-public class GameStateAdapter implements GameState{
+public class OthelloGameState implements GameState{
 
     private State state;
     private ActionHandler actionHandler;
 
-    public GameStateAdapter(State state, ActionHandler actionHandler){
+    public OthelloGameState(State state, ActionHandler actionHandler){
         this.state = state;
         this.actionHandler = actionHandler;
+    }
+
+    public OthelloGameState(){
+        this.state = new State();
+        this.actionHandler = new ActionHandler(this.state);
     }
 
     @Override
@@ -33,7 +38,6 @@ public class GameStateAdapter implements GameState{
     public String getMessage() {
         return state.getMessage();
     }
-
 
     @Override
     public Player getLastPlayer() {
@@ -55,13 +59,10 @@ public class GameStateAdapter implements GameState{
         return state.getWinner();
     }
 
-
-
     @Override
     public DieRollFactory getDieRollFactory() {
         return null;
     }
-
 
 
 
