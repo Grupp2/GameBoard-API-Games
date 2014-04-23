@@ -1,4 +1,4 @@
-package impl.Actions;
+package impl.actions;
 
 import game.impl.Move;
 import impl.util.GameRules;

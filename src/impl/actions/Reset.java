@@ -1,4 +1,4 @@
-package impl.Actions;
+package impl.actions;
 
 
 import impl.OthelloGameFactory;

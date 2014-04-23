@@ -1,12 +1,10 @@
 package impl;
 
 import game.impl.Move;
-import impl.Actions.BoardUpdate;
-import impl.Actions.MoveValidation;
-import impl.Actions.Reset;
+import impl.actions.BoardUpdate;
+import impl.actions.MoveValidation;
+import impl.actions.Reset;
 import impl.util.BoardParser;
-import impl.util.GameRules;
-import impl.util.TurnCounter;
 
 
 public class ActionHandler {
