@@ -35,7 +35,7 @@ public class ActionHandler {
     }
 
     public void reset(){
-        new Reset(state, factory);
+        new Reset(state, factory).execute();
     }
 
     public void incrementTurn(){
