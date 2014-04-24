@@ -8,7 +8,7 @@ public class Program
  {
 
 	public static void main(String[] args) {
-		new Runner(new OthelloGameState(), new OthelloIOFactory());
+		new Runner(new OthelloGameState(), new OthelloIOFactory()).run();
 	}
 
 }

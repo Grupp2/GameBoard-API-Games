@@ -9,7 +9,13 @@ import junit.framework.TestCase;
 public class OthelloConsoleOutputUnitTest extends TestCase {
     private OthelloConsoleOutputUnit consoleOutputUnit;
 	private OthelloGameState gameState;
-	private char p = '·';
+	
+	/*
+	 * if we find ourselves using a lot of different
+	 * empty tile graphics consider using this char to make the
+	 * tests easier to write.
+	 */
+	private char p = '·'; 
 	
     public void setUp() throws Exception {
         super.setUp();
@@ -28,9 +34,9 @@ public class OthelloConsoleOutputUnitTest extends TestCase {
     		fail("Line 3 is incorrect!");
     	if (!outputString[3].equals("C ·  ·  ·  ·  ·  ·  ·  ·  "))
     		fail("Line 4 is incorrect!");
-    	if (!outputString[4].equals("D ·  ·  ·  O  X  ·  ·  ·  "))
+    	if (!outputString[4].equals("D ·  ·  ·  X  O  ·  ·  ·  "))
     		fail("Line 5 is incorrect!");
-    	if (!outputString[5].equals("E ·  ·  ·  X  O  ·  ·  ·  "))
+    	if (!outputString[5].equals("E ·  ·  ·  O  X  ·  ·  ·  "))
     		fail("Line 6 is incorrect!");
     	if (!outputString[6].equals("F ·  ·  ·  ·  ·  ·  ·  ·  "))
     		fail("Line 7 is incorrect!");
