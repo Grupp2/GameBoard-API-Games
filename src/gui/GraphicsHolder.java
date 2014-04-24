@@ -1,9 +1,11 @@
 package gui;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 public class GraphicsHolder {
-
 	private BufferedImage blankBoardPiece;
 	private BufferedImage blankBoardPieceAlternate;
 	private BufferedImage player1Piece;
@@ -16,7 +18,25 @@ public class GraphicsHolder {
 	private BufferedImage player2UndeployedPieceAlternate;
 	
 	public GraphicsHolder() {
-		
+		loadPictures();
+	}
+
+	private void loadPictures() {
+		try {
+			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+			InputStream input = classLoader.getResourceAsStream("gui/Blank.jpg");
+			blankBoardPiece = ImageIO.read(input);
+			input = classLoader.getResourceAsStream("gui/svart.jpg");
+			player1Piece = ImageIO.read(input);
+			input = classLoader.getResourceAsStream("gui/svart_highlight.jpg");
+			player1PieceAlternate = ImageIO.read(input);
+			input = classLoader.getResourceAsStream("gui/vit.jpg");
+			player2Piece = ImageIO.read(input);
+			input = classLoader.getResourceAsStream("gui/vit_highlight.jpg");
+			player2PieceAlternate = ImageIO.read(input);
+		} catch (IOException e) {
+			
+		}
 	}
 
 	public BufferedImage getBlankBoardPiece() {

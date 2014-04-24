@@ -29,12 +29,10 @@ public class OthelloConsoleInputUnit extends InputUnit
 	{
 		Move result = null;
 		try {
-			String input = inputSourceReader.readLine().replaceAll("\\s", "");
-			if (input.length() == 2) {
-				result = new Move(state.getPlayerInTurn(), new GamePiece(
+			String input = inputSourceReader.readLine().replaceAll("\\s", "").toUpperCase();
+			result = new Move(state.getPlayerInTurn(), new GamePiece(
 						getGamePieceID(state.getPlayerInTurn(), state)),
 						GameRules.getLocationById(state.getBoard(), input));
-			}
 		} catch (IOException ex) {
 		}
 		return result;
