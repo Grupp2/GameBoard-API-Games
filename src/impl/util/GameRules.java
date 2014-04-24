@@ -42,7 +42,7 @@ public class GameRules {
         for(int i = -1; i <= 1; i++){
 
             id = ""+(char)(row+1)+(char)(col+i);
-            System.out.println(id);
+
             tmp = getLocationById(board, id);
             if(tmp != null)
                 if(!isLocationEmpty(tmp))
@@ -51,7 +51,7 @@ public class GameRules {
 
 
             id = ""+(char)(row-1)+(char)(col+i);
-            System.out.println(id);
+
             tmp = getLocationById(board, id);
             if(tmp != null)
                 if(!isLocationEmpty(tmp))
