@@ -17,7 +17,7 @@ public class GameBoardPanel extends JPanel {
 	private int ySize;
 
 	public GameBoardPanel(GameState state) {
-		setBounds(1, 1, 800, 600);
+		setBounds(1, 1, 600, 600);
 		calculateBoardSize(state);
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);
@@ -43,7 +43,7 @@ public class GameBoardPanel extends JPanel {
 	private void addButtons(GameState state) {
 		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
 			JButton btn = new JButton(state.getBoard().getLocations().get(i).getId());
-			btn.setSize(150, 150);
+			btn.setSize(75, 75);
 			add(btn);
 		}
 	}
