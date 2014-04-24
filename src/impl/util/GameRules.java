@@ -38,17 +38,17 @@ public class GameRules {
         char col = location.getId().charAt(1);
 
         for(int i = -1; i <= 1; i++){
-            if(!isLocationEmpty(getLocationById(board, ""+(row+1)+(col+i))))
+            if(!isLocationEmpty(getLocationById(board, ""+(char)(row+1)+(char)(col+i))))
                 return true;
 
-            if(!isLocationEmpty(getLocationById(board, ""+(row-1)+(col+i))))
+            if(!isLocationEmpty(getLocationById(board, ""+(char)(row-1)+(char)(col+i))))
                 return true;
         }
 
-        if(!isLocationEmpty(getLocationById(board, ""+(row)+(col-1))))
+        if(!isLocationEmpty(getLocationById(board, ""+(row)+(char)(col-1))))
             return true;
 
-        if(!isLocationEmpty(getLocationById(board, ""+(row)+(col+1))))
+        if(!isLocationEmpty(getLocationById(board, ""+(row)+(char)(col+1))))
             return true;
 
         return false;
