@@ -1,11 +1,6 @@
 package gui;
 
 import impl.util.GameRules;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import game.api.GameState;
 import game.impl.GamePiece;
 import game.impl.Move;
