@@ -32,7 +32,7 @@ public class OthelloGameFrame extends JFrame {
 	private void createPlayerPanels(GameState gameState) {
 		final int CONTROL_SIZE = 100;
 		p1Panel = new PlayerPanelSimple(gameState.getPlayers().get(0), CONTROL_SIZE, CONTROL_SIZE);
-		p2Panel = new PlayerPanelSimple(gameState.getPlayers().get(0), CONTROL_SIZE, CONTROL_SIZE);
+		p2Panel = new PlayerPanelSimple(gameState.getPlayers().get(1), CONTROL_SIZE, CONTROL_SIZE);
 	}
 	
 	private void createGameBoardPanel(GameState gameState) {

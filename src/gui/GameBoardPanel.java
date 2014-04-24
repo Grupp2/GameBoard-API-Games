@@ -4,6 +4,7 @@ import game.api.GameState;
 
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
@@ -19,7 +20,7 @@ public class GameBoardPanel extends JPanel {
 		setBounds(1, 1, 600, 600);
 		calculateBoardSize(state);
 		setLayout(new GridLayout(xSize, ySize));
-
+		addButtons(state);
 	}
 
 	private void calculateBoardSize(GameState state) {
@@ -28,25 +29,19 @@ public class GameBoardPanel extends JPanel {
 		String tmpChar = "";
 		int tmpNum = 0;
 		for (int i = 0; i < state.getBoard().getLocations().size(); i++) {
-			tmpChar = state.getBoard().getLocations().get(i).getId()
-					.substring(0, 1);
-
-			if (tmpChar.equals(state.getBoard().getLocations().get(i).getId()
-					.substring(0, 1))) {
+			if (!tmpChar.equals(state.getBoard().getLocations().get(i).getId().substring(0, 1))) {
 				ySize++;
+				tmpChar = state.getBoard().getLocations().get(i).getId().substring(0, 1);
+				tmpNum = 0;
 			}
-
-			if (tmpNum < Integer.parseInt(state.getBoard().getLocations()
-					.get(i).getId().substring(1))) {
-				tmpNum = Integer.parseInt(state.getBoard().getLocations()
-						.get(i).getId().substring(1));
-
-			} else {
-				xSize++;
-			}
-
+			if (tmpNum < Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1)))
+				tmpNum = Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1));
+			else 
+				xSize = tmpNum;
 		}
-
 	}
-
+	private void addButtons(GameState state) {
+		for (int i=0; i < state.getBoard().getLocations().size(); i++)
+			add(new JButton(state.getBoard().getLocations().get(i).getId()));
+	}
 }
