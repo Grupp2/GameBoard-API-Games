@@ -41,7 +41,10 @@ public class GameBoardPanel extends JPanel {
 		}
 	}
 	private void addButtons(GameState state) {
-		for (int i=0; i < state.getBoard().getLocations().size(); i++)
-			add(new JButton(state.getBoard().getLocations().get(i).getId()));
+		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
+			JButton btn = new JButton(state.getBoard().getLocations().get(i).getId());
+			btn.setSize(150, 150);
+			add(btn);
+		}
 	}
 }
