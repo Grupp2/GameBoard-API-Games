@@ -27,7 +27,7 @@ public class OthelloGameFrame extends JFrame {
 	
 	public OthelloGameFrame(GameState gameState) {
 		this.gameState = gameState;
-		setBounds(1, 1, 1200, 1250);
+		setBounds(1, 1, 675, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPlayerPanels();
 		createGameBoardPanel();
