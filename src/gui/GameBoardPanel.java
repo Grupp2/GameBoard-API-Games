@@ -17,7 +17,7 @@ public class GameBoardPanel extends JPanel {
 	private int ySize;
 
 	public GameBoardPanel(GameState state) {
-		setBounds(1, 1, 600, 600);
+		setBounds(1, 1, 800, 600);
 		calculateBoardSize(state);
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);

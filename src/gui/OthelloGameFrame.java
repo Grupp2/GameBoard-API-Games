@@ -1,10 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
-
 import game.api.GameState;
-import game.impl.Board;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,18 +12,20 @@ public class OthelloGameFrame extends JFrame {
 	private JPanel p1Panel;
 	private JPanel p2Panel;
 	private JPanel gameBoardPanel;
+	private GameBoardListener gameBoardListener;
 	
 	public OthelloGameFrame(GameState gameState) {
 		setBounds(1, 1, 800, 600);
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(new BorderLayout());
 		createPlayerPanels(gameState);
 		createGameBoardPanel(gameState);
+		gameBoardListener = new GameBoardListener(gameBoardPanel);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.add(p1Panel, BorderLayout.WEST);
-		contentPane.add(p2Panel, BorderLayout.EAST);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
+		contentPane.add(p2Panel, BorderLayout.EAST);
 	}
 	
 	private void createPlayerPanels(GameState gameState) {
@@ -37,5 +36,9 @@ public class OthelloGameFrame extends JFrame {
 	
 	private void createGameBoardPanel(GameState gameState) {
 		gameBoardPanel = new GameBoardPanel(gameState);
+	}
+	
+	public String getLastLocation() {
+		return gameBoardListener.getLastMove();
 	}
 }
