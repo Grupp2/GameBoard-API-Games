@@ -3,13 +3,27 @@ package io;
 import impl.OthelloGameState;
 import io.OthelloConsoleOutputUnit;
 import junit.framework.TestCase;
+import static org.mockito.Mockito.*;
+
+
 /**
  * Created by HuggTop on 2014-04-16.
  */
 public class OthelloConsoleOutputUnitTest extends TestCase {
-    private OthelloConsoleOutputUnit consoleOutputUnit;
+	private OthelloConsoleOutputUnit consoleOutputUnit;
 	private OthelloGameState gameState;
-	
+
+	public void setUp() throws Exception {
+		super.setUp();
+		gameState = new OthelloGameState();
+		gameState.reset();
+		consoleOutputUnit = new OthelloConsoleOutputUnit();
+	}
+
+	public void testPublish() {
+		consoleOutputUnit.publish(gameState);
+	}
+
 	/*
 	 * if we find ourselves using a lot of different
 	 * empty tile graphics consider using this char to make the
@@ -17,11 +31,11 @@ public class OthelloConsoleOutputUnitTest extends TestCase {
 	 */
 	private char p = '·'; 
 	
-    public void setUp() throws Exception {
-        super.setUp();
-		gameState = new OthelloGameState();
-        consoleOutputUnit = new OthelloConsoleOutputUnit();
-    }
+//    public void setUp() throws Exception {
+//        super.setUp();
+//		gameState = new OthelloGameState();
+//        consoleOutputUnit = new OthelloConsoleOutputUnit();
+//    }
 
     public void testResetPublish() {
     	gameState.reset();
@@ -47,4 +61,5 @@ public class OthelloConsoleOutputUnitTest extends TestCase {
     	
     	
     }
+
 }
