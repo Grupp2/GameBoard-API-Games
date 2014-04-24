@@ -27,7 +27,7 @@ public class OthelloGameFrame extends JFrame {
 	
 	public OthelloGameFrame(GameState gameState) {
 		this.gameState = gameState;
-		setBounds(1, 1, 800, 600);
+		setBounds(1, 1, 1200, 1250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPlayerPanels();
 		createGameBoardPanel();
@@ -43,22 +43,6 @@ public class OthelloGameFrame extends JFrame {
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		contentPane.add(p2Panel, BorderLayout.LINE_END);
 		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
-		placeGamePieces();
-	}
-	
-	private void placeGamePieces() {
-		for (int i=0; i < gameState.getBoard().getLocations().size(); i++) {
-			if (gameState.getBoard().getLocations().get(i).getPiece()!=null)
-				if (gameState.getBoard().getLocations().get(i).getPiece().equals("X"))
-					if (gameBoardPanel.getComponent(i) instanceof JButton)
-						((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
-				else 
-					if (gameBoardPanel.getComponent(i) instanceof JButton)
-						((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
-			else
-				if (gameBoardPanel.getComponent(i) instanceof JButton)
-					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getBlankBoardPiece()));
-		}
 	}
 	
 	private void createPlayerPanels() {
@@ -73,5 +57,9 @@ public class OthelloGameFrame extends JFrame {
 	
 	public String getLastLocation() {
 		return gameBoardListener.getLastMove();
+	}
+	
+	public void setStatusLabelText(String str) {
+		lblStatusText.setText(str);
 	}
 }

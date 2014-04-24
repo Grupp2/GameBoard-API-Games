@@ -20,13 +20,13 @@ public class OthelloGuiInputUnit extends InputUnit {
 						getGamePieceID(state.getPlayerInTurn(), state)),
 						GameRules.getLocationById(state.getBoard(), input));
 		} catch (Exception ex) {
+			gameFrame.setStatusLabelText(ex.getMessage());
 		}
 		return result;
 	}
 	
 	private String readGameBoard() {
-		
-		return null;
+		return gameFrame.getLastLocation(); 
 	}
 
 	private String getGamePieceID(Player player, GameState gameState)
@@ -46,6 +46,6 @@ public class OthelloGuiInputUnit extends InputUnit {
 	}
 	
 	public void notifyListeners() {
-		
+		notifyListenersOfMove(getNextMove(state));
 	}
 }
