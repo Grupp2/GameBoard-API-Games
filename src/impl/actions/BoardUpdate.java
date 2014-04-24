@@ -38,23 +38,14 @@ public class BoardUpdate {
         int locationIndex = list.indexOf(location);
         Player owner = getOwnerOfPiece(location.getPiece());
 
-        for(int i = locationIndex-1; i >= 0; i-- ){
-            if(listEnded(list.get(i), owner))
-                break;
-
+        for(int i = locationIndex - 1; i >= getBackwardsUpdateIndex(owner, list, locationIndex); i--)
             changeOwnerOfPieceAtLocation(list.get(i));
-        }
 
-        for(int i = locationIndex+1; i < list.size(); i++){
-            if(listEnded(list.get(i), owner))
-                break;
 
+        for(int i = locationIndex + 1; i <= getForwardUpdateIndex(owner, list, locationIndex); i++)
             changeOwnerOfPieceAtLocation(list.get(i));
-        }
-    }
 
-    private boolean listEnded(BoardLocation location, Player owner){
-        return GameRules.isLocationEmpty(location) || getOwnerOfPiece(location.getPiece()) == owner;
+
     }
 
     private Player getOwnerOfPiece(GamePiece piece){
@@ -83,4 +74,32 @@ public class BoardUpdate {
         newOwner.getPieces().add(piece);
         location.setPiece(piece);
     }
+
+    private int getBackwardsUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
+
+        for(int i = startIndex-1; i >= 0; i-- ){
+            if(GameRules.isLocationEmpty(list.get(i)))
+                return startIndex;
+
+            if(getOwnerOfPiece(list.get(i).getPiece()) == owner)
+                return i;
+        }
+
+
+        return startIndex;
+    }
+
+    private int getForwardUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
+
+        for(int i = startIndex+1; i < list.size(); i++) {
+            if (GameRules.isLocationEmpty(list.get(i)))
+                return startIndex;
+
+            if (getOwnerOfPiece(list.get(i).getPiece()) == owner)
+                return i;
+        }
+
+        return startIndex;
+    }
+
 }
