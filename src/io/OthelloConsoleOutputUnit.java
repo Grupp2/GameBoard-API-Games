@@ -14,7 +14,7 @@ public class OthelloConsoleOutputUnit implements OutputUnit {
         	System.out.println(gameState.getWinner().getName() + " has won the game!");
         } else {
         	System.out.println(gameState.getMessage());
-        	System.out.println("Player " + gameState.getPlayerInTurn().getName() + " >");
+        	System.out.print("Player " + gameState.getPlayerInTurn().getName() + " >");
         }
     }
     
