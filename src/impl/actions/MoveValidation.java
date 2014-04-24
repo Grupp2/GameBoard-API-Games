@@ -23,6 +23,11 @@ public class MoveValidation {
             return false;
         }
 
+        if(move.getDestination() == null){
+            state.setMessage("Invalid location!");
+            return false;
+        }
+
         if(!GameRules.isLocationEmpty(move.getDestination())){
             state.setMessage("There is already a piece in that location!");
             return false;

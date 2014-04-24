@@ -38,13 +38,13 @@ public class BoardUpdate {
         int locationIndex = list.indexOf(location);
         Player owner = getOwnerOfPiece(location.getPiece());
 
-        for(int i = locationIndex - 1; i >= getBackwardsUpdateIndex(owner, list, locationIndex); i--)
+        int backWardsIndex = getBackwardsUpdateIndex(owner, list, locationIndex);
+        for(int i = locationIndex - 1; i >= backWardsIndex; i--)
             changeOwnerOfPieceAtLocation(list.get(i));
 
-
-        for(int i = locationIndex + 1; i <= getForwardUpdateIndex(owner, list, locationIndex); i++)
+        int forwardIndex = getForwardUpdateIndex(owner, list, locationIndex);
+        for(int i = locationIndex + 1; i <= forwardIndex; i++)
             changeOwnerOfPieceAtLocation(list.get(i));
-
 
     }
 
@@ -78,11 +78,12 @@ public class BoardUpdate {
     private int getBackwardsUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
+
             if(GameRules.isLocationEmpty(list.get(i)))
                 return startIndex;
 
             if(getOwnerOfPiece(list.get(i).getPiece()) == owner)
-                return i;
+                return i+1;
         }
 
 
@@ -96,7 +97,8 @@ public class BoardUpdate {
                 return startIndex;
 
             if (getOwnerOfPiece(list.get(i).getPiece()) == owner)
-                return i;
+                return i-1;
+
         }
 
         return startIndex;

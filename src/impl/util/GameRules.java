@@ -36,19 +36,36 @@ public class GameRules {
     public static boolean isLocationNextToPiece(Board board, BoardLocation location){
         char row = location.getId().charAt(0);
         char col = location.getId().charAt(1);
+        String id;
 
+        BoardLocation tmp;
         for(int i = -1; i <= 1; i++){
-            if(!isLocationEmpty(getLocationById(board, ""+(char)(row+1)+(char)(col+i))))
-                return true;
 
-            if(!isLocationEmpty(getLocationById(board, ""+(char)(row-1)+(char)(col+i))))
-                return true;
+            id = ""+(char)(row+1)+(char)(col+i);
+            System.out.println(id);
+            tmp = getLocationById(board, id);
+            if(tmp != null)
+                if(!isLocationEmpty(tmp))
+                    return true;
+
+
+
+            id = ""+(char)(row-1)+(char)(col+i);
+            System.out.println(id);
+            tmp = getLocationById(board, id);
+            if(tmp != null)
+                if(!isLocationEmpty(tmp))
+                    return true;
+
+
         }
 
-        if(!isLocationEmpty(getLocationById(board, ""+(row)+(char)(col-1))))
+        tmp = getLocationById(board, ""+(row)+(char)(col-1));
+        if(tmp != null && !isLocationEmpty(tmp))
             return true;
 
-        if(!isLocationEmpty(getLocationById(board, ""+(row)+(char)(col+1))))
+        tmp = getLocationById(board, ""+(row)+(char)(col+1));
+        if(tmp != null && !isLocationEmpty(tmp))
             return true;
 
         return false;
