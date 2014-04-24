@@ -1,13 +1,16 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import game.api.GameState;
 
-import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class OthelloGameFrame extends JFrame {
 
@@ -17,6 +20,8 @@ public class OthelloGameFrame extends JFrame {
 	private JPanel p1Panel;
 	private JPanel p2Panel;
 	private JPanel gameBoardPanel;
+	private JLabel lblStatusText;
+	private JButton btnPassTurn;
 	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
 	
@@ -24,15 +29,20 @@ public class OthelloGameFrame extends JFrame {
 		this.gameState = gameState;
 		setBounds(1, 1, 800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
 		createPlayerPanels();
 		createGameBoardPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel);
-		contentPane = new JPanel();
+		contentPane = new JPanel(new BorderLayout());
 		setContentPane(contentPane);
-		contentPane.add(p1Panel, BorderLayout.WEST);
+		lblStatusText = new JLabel("Game started!");
+		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStatusText.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnPassTurn = new JButton("Pass turn!");
+		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
+		contentPane.add(p1Panel, BorderLayout.LINE_START);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
-		contentPane.add(p2Panel, BorderLayout.EAST);
+		contentPane.add(p2Panel, BorderLayout.LINE_END);
+		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
 		placeGamePieces();
 	}
 	
@@ -41,13 +51,13 @@ public class OthelloGameFrame extends JFrame {
 			if (gameState.getBoard().getLocations().get(i).getPiece()!=null)
 				if (gameState.getBoard().getLocations().get(i).getPiece().equals("X"))
 					if (gameBoardPanel.getComponent(i) instanceof JButton)
-						((JButton)gameBoardPanel.getComponent(i)).setIcon((Icon) gh.getPlayer1Piece());
+						((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
 				else 
 					if (gameBoardPanel.getComponent(i) instanceof JButton)
-						((JButton)gameBoardPanel.getComponent(i)).setIcon((Icon) gh.getPlayer2Piece());
+						((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
 			else
 				if (gameBoardPanel.getComponent(i) instanceof JButton)
-					((JButton)gameBoardPanel.getComponent(i)).setIcon((Icon) gh.getBlankBoardPiece());
+					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getBlankBoardPiece()));
 		}
 	}
 	
