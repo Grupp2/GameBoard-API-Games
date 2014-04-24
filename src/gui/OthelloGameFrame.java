@@ -23,14 +23,16 @@ public class OthelloGameFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.add(p1Panel, BorderLayout.WEST);
 		contentPane.add(p2Panel, BorderLayout.EAST);
+		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 	}
 	
 	private void createPlayerPanels(GameState gameState) {
-		p1Panel = new PlayerPanelVertical(gameState.getPlayers().get(0), 150, 150);
-		p2Panel = new PlayerPanelVertical(gameState.getPlayers().get(0), 150, 150);
+		final int CONTROL_SIZE = 150;
+		p1Panel = new PlayerPanelVertical(gameState.getPlayers().get(0), CONTROL_SIZE, CONTROL_SIZE);
+		p2Panel = new PlayerPanelVertical(gameState.getPlayers().get(0), CONTROL_SIZE, CONTROL_SIZE);
 	}
 	
 	private void createGameBoardPanel(GameState gameState) {
-		
+		gameBoardPanel = new GameBoardPanel(gameState);
 	}
 }
