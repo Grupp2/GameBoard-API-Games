@@ -22,4 +22,8 @@ public class GameBoardListener {
 				});
 			}
 	}
+	
+	public String getLastMove() {
+		return lastMove;
+	}
 }
