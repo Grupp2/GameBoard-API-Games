@@ -9,7 +9,13 @@ import game.impl.*;
 public class OthelloConsoleOutputUnit implements OutputUnit {
     @Override
     public void publish(GameState gameState) {
-        System.out.println(getOutputString(gameState));    
+        System.out.println(getOutputString(gameState)); 
+        if (gameState.hasEnded()) {
+        	System.out.println(gameState.getWinner().getName() + " has won the game!");
+        } else {
+        	System.out.println(gameState.getMessage());
+        	System.out.println("Player " + gameState.getPlayerInTurn().getName() + " >");
+        }
     }
     
     String getOutputString(GameState gameState){
