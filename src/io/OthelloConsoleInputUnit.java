@@ -30,15 +30,9 @@ public class OthelloConsoleInputUnit extends InputUnit
 		Move result = null;
 		try {
 			String input = inputSourceReader.readLine().replaceAll("\\s", "").toUpperCase();
-			if (input.length() == 2) {
-				result = new Move(state.getPlayerInTurn(), new GamePiece(
+			result = new Move(state.getPlayerInTurn(), new GamePiece(
 						getGamePieceID(state.getPlayerInTurn(), state)),
 						GameRules.getLocationById(state.getBoard(), input));
-			} else {
-				System.out.println("Error! Please enter valid input!");
-				System.out.print("Player " + state.getPlayerInTurn().getName() + " >");
-				getNextMove(state);
-			}
 		} catch (IOException ex) {
 		}
 		return result;
