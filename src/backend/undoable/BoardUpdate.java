@@ -1,5 +1,6 @@
 package backend.undoable;
 
+import backend.actions.LocationsToFlipCalculation;
 import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
@@ -14,27 +15,25 @@ import java.util.List;
 
 public class BoardUpdate implements UndoableAction{
 
-    private Board board;
+    private State state;
     private List<Player> players;
     private BoardLocation location;
-    private BoardParser boardParser;
-
     private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
 
-    public BoardUpdate(State state, BoardParser boardParser){
-        this.players = state.getPlayers();
-        this.board = state.getBoard();
-
-        this.boardParser = boardParser;
-
-        this.location = boardParser.getLocation();
+    public BoardUpdate(State state, BoardLocation location){
+        this.state = state;
+        this.location = location;
+        players = state.getPlayers();
     }
 
     public void execute(){
-        updatePartial(boardParser.getRow());
-        updatePartial(boardParser.getColumn());
-        updatePartial(boardParser.getLeftToRightDiagonal());
-        updatePartial(boardParser.getRightToLeftDiagonal());
+        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
+
+        for(int i = 0; i < locationsToFlip.size(); i++){
+            changeOwnerOfPieceAtLocation(locationsToFlip.get(i));
+            locationsFlipped.add(location);
+        }
+
     }
 
     @Override
@@ -50,21 +49,6 @@ public class BoardUpdate implements UndoableAction{
         return "Board update";
     }
 
-
-    private void updatePartial(List<BoardLocation> list){
-
-        int locationIndex = list.indexOf(location);
-        Player owner = getOwnerOfPiece(location.getPiece());
-
-        int backWardsIndex = getBackwardsUpdateIndex(owner, list, locationIndex);
-        for(int i = locationIndex - 1; i >= backWardsIndex; i--)
-            changeOwnerOfPieceAtLocation(list.get(i));
-
-        int forwardIndex = getForwardUpdateIndex(owner, list, locationIndex);
-        for(int i = locationIndex + 1; i <= forwardIndex; i++)
-            changeOwnerOfPieceAtLocation(list.get(i));
-
-    }
 
     private Player getOwnerOfPiece(GamePiece piece){
         if(GameRules.isPlayerOnePiece(piece))
@@ -91,37 +75,6 @@ public class BoardUpdate implements UndoableAction{
         piece = new GamePiece(newPieceId);
         newOwner.getPieces().add(piece);
         location.setPiece(piece);
-
-        locationsFlipped.add(location);
-    }
-
-    private int getBackwardsUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
-
-        for(int i = startIndex-1; i >= 0; i-- ){
-
-            if(GameRules.isLocationEmpty(list.get(i)))
-                return startIndex;
-
-            if(getOwnerOfPiece(list.get(i).getPiece()) == owner)
-                return i+1;
-        }
-
-
-        return startIndex;
-    }
-
-    private int getForwardUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
-
-        for(int i = startIndex+1; i < list.size(); i++) {
-            if (GameRules.isLocationEmpty(list.get(i)))
-                return startIndex;
-
-            if (getOwnerOfPiece(list.get(i).getPiece()) == owner)
-                return i-1;
-
-        }
-
-        return startIndex;
     }
 
 }
