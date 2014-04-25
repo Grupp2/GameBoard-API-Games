@@ -13,6 +13,7 @@ public class BoardParser {
 
     private BoardLocation location;
 
+
     public BoardParser(Board gameBoard, BoardLocation location){
         this.gameBoard = gameBoard;
         this.location = location;

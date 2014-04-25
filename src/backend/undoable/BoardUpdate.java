@@ -1,4 +1,4 @@
-package backend.actions;
+package backend.undoable;
 
 import game.impl.Board;
 import game.impl.BoardLocation;
@@ -8,20 +8,25 @@ import backend.util.BoardParser;
 import backend.util.GameRules;
 import backend.State;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class BoardUpdate {
+public class BoardUpdate implements UndoableAction{
 
     private Board board;
     private List<Player> players;
     private BoardLocation location;
     private BoardParser boardParser;
 
+    private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
+
     public BoardUpdate(State state, BoardParser boardParser){
         this.players = state.getPlayers();
         this.board = state.getBoard();
+
         this.boardParser = boardParser;
+
         this.location = boardParser.getLocation();
     }
 
@@ -30,6 +35,19 @@ public class BoardUpdate {
         updatePartial(boardParser.getColumn());
         updatePartial(boardParser.getLeftToRightDiagonal());
         updatePartial(boardParser.getRightToLeftDiagonal());
+    }
+
+    @Override
+    public void undo() {
+        for(int i = locationsFlipped.size(); i>= 0; i--) {
+            changeOwnerOfPieceAtLocation(locationsFlipped.get(i));
+            locationsFlipped.remove(i);
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "Board update";
     }
 
 
@@ -73,6 +91,8 @@ public class BoardUpdate {
         piece = new GamePiece(newPieceId);
         newOwner.getPieces().add(piece);
         location.setPiece(piece);
+
+        locationsFlipped.add(location);
     }
 
     private int getBackwardsUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){

@@ -3,6 +3,7 @@ package backend.actions;
 
 import backend.State;
 import backend.StateBuilder;
+import backend.undoable.TurnIncrement;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -21,14 +22,25 @@ public class TurnIncrementTest{
         assertEquals(stateBuilder.getPlayer1(), state.getCurrentPlayer());
         assertEquals(null, state.getLastPlayer());
 
-        new TurnIncrement(state).execute();
+        TurnIncrement inc1 = new TurnIncrement(state);
+        inc1.execute();
         assertEquals(stateBuilder.getPlayer1(), state.getLastPlayer());
         assertEquals(stateBuilder.getPlayer2(), state.getCurrentPlayer());
 
-        new TurnIncrement(state).execute();
+
+        TurnIncrement inc2 = new TurnIncrement(state);
+        inc2.execute();
         assertEquals(stateBuilder.getPlayer1(), state.getCurrentPlayer());
         assertEquals(stateBuilder.getPlayer2(), state.getLastPlayer());
 
+
+        inc2.undo();
+        assertEquals(stateBuilder.getPlayer1(), state.getLastPlayer());
+        assertEquals(stateBuilder.getPlayer2(), state.getCurrentPlayer());
+
+        inc1.undo();
+        assertEquals(stateBuilder.getPlayer1(), state.getCurrentPlayer());
+        assertEquals(null, state.getLastPlayer());
     }
 
 

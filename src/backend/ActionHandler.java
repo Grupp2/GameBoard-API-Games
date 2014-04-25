@@ -1,8 +1,9 @@
 package backend;
 
 import backend.actions.*;
+import backend.undoable.MoveAction;
+import backend.undoable.TurnIncrement;
 import game.impl.Move;
-import backend.util.BoardParser;
 import game.impl.Player;
 
 
@@ -30,12 +31,7 @@ public class ActionHandler {
 
 
     public void executeMove(Move move){
-        move.execute();
-        state.getCurrentPlayer().getPieces().add(move.getPiece());
-
-        new BoardUpdate(state, new BoardParser(state.getBoard(), move.getDestination())).execute();
-
-        incrementTurn();
+        new MoveAction(state, move).execute();
     }
 
     public void reset(){

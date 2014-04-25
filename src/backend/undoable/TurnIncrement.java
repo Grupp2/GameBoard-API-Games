@@ -1,4 +1,4 @@
-package backend.actions;
+package backend.undoable;
 
 
 import backend.State;
@@ -6,17 +6,24 @@ import game.impl.Player;
 
 import java.util.List;
 
-public class TurnIncrement {
+public class TurnIncrement implements UndoableAction{
 
     private State state;
+
+    private Player oldCurrentPlayer;
+    private Player oldLastPlayer;
 
     public TurnIncrement(State state){
         this.state = state;
     }
 
+
     public void execute(){
 
-        if(noLastPlayerSet()) {
+        oldCurrentPlayer = state.getCurrentPlayer();
+        oldLastPlayer = state.getLastPlayer();
+
+        if(!isLastPlayerSet()) {
             List<Player> players = state.getPlayers();
 
             if (players.indexOf(state.getCurrentPlayer()) == 0)
@@ -28,9 +35,18 @@ public class TurnIncrement {
         swapCurrentAndLastPlayer();
     }
 
+    public void undo(){
+        state.setLastPlayer(oldLastPlayer);
+        state.setCurrentPlayer(oldCurrentPlayer);
+    }
 
-    private boolean noLastPlayerSet(){
-        return state.getLastPlayer() == null;
+    public String getName(){
+        return "Change of Turn";
+    }
+
+
+    private boolean isLastPlayerSet(){
+        return state.getLastPlayer() != null;
     }
 
     private void swapCurrentAndLastPlayer(){
