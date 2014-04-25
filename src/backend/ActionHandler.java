@@ -3,6 +3,7 @@ package backend;
 import backend.actions.*;
 import game.impl.Move;
 import backend.util.BoardParser;
+import game.impl.Player;
 
 
 public class ActionHandler {
@@ -20,6 +21,9 @@ public class ActionHandler {
         this(state, new OthelloGameFactory());
     }
 
+    public Player calculateWinner(){
+        return new WinnerCalculation(state).execute();
+    }
 
     public boolean hasEndedCheck(){
         return new HasEndedControl(state).execute();
@@ -39,7 +43,7 @@ public class ActionHandler {
     }
 
     public void reset(){
-        new Reset(state, factory).execute();
+        new Reset(state).execute();
     }
 
     public void incrementTurn(){

@@ -63,7 +63,7 @@ public class OthelloGameState implements GameState{
 
     @Override
     public Player getWinner() {
-        return state.getWinner();
+        return actionHandler.calculateWinner();
     }
 
     @Override

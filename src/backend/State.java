@@ -65,19 +65,6 @@ public class State {
         this.currentPlayer = player;
     }
 
-    public Player getWinner() {
-
-        int playerOneScore = players.get(0).getPieces().size();
-        int playerTwoScore = players.get(1).getPieces().size();
-
-        if(playerOneScore > playerTwoScore)
-            return players.get(0);
-        else if(playerOneScore < playerTwoScore)
-            return players.get(1);
-
-        return null;
-    }
-
 
 
 

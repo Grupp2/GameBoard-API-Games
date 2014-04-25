@@ -20,6 +20,10 @@ public class Reset {
         this.factory = factory;
     }
 
+    public Reset(State state){
+        this(state, new OthelloGameFactory());
+    }
+
     public void execute(){
         state.setPlayers(factory.createPlayers());
         state.setBoard(factory.createBoard());
