@@ -1,6 +1,6 @@
 package io;
 
-import impl.OthelloGameState;
+import backend.OthelloGameState;
 import io.OthelloConsoleOutputUnit;
 import junit.framework.TestCase;
 import static org.mockito.Mockito.*;

@@ -1,10 +1,10 @@
-package impl;
+package backend;
 
 import game.impl.Move;
-import impl.actions.BoardUpdate;
-import impl.actions.MoveValidation;
-import impl.actions.Reset;
-import impl.util.BoardParser;
+import backend.actions.BoardUpdate;
+import backend.actions.MoveValidation;
+import backend.actions.Reset;
+import backend.util.BoardParser;
 
 
 public class ActionHandler {

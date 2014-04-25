@@ -1,4 +1,4 @@
-package impl;
+package backend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
-import impl.util.TurnCounter;
+import backend.util.TurnCounter;
 
 
 public class OthelloGameFactory {

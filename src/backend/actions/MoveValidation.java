@@ -1,8 +1,8 @@
-package impl.actions;
+package backend.actions;
 
 import game.impl.Move;
-import impl.util.GameRules;
-import impl.State;
+import backend.util.GameRules;
+import backend.State;
 
 /**
  * @author erik

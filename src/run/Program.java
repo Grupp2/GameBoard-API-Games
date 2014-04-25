@@ -1,6 +1,6 @@
 package run;
 
-import impl.OthelloGameState;
+import backend.OthelloGameState;
 import io.OthelloConsoleIOFactory;
 import game.init.Runner;
 

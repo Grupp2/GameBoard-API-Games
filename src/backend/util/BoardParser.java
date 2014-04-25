@@ -1,4 +1,4 @@
-package impl.util;
+package backend.util;
 
 import game.impl.Board;
 import game.impl.BoardLocation;

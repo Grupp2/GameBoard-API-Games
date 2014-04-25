@@ -1,12 +1,12 @@
-package impl.actions;
+package backend.actions;
 
 
 import game.impl.Board;
 import game.impl.GamePiece;
 import game.impl.Player;
-import impl.OthelloGameFactory;
-import impl.State;
-import impl.util.GameRules;
+import backend.OthelloGameFactory;
+import backend.State;
+import backend.util.GameRules;
 
 import java.util.List;
 

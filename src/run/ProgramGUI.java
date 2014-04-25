@@ -2,7 +2,7 @@ package run;
 
 import game.init.Runner;
 import gui.OhtelloGuiIOFactory;
-import impl.OthelloGameState;
+import backend.OthelloGameState;
 
 public class ProgramGUI {
 

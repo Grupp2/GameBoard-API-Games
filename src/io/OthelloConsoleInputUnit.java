@@ -1,16 +1,12 @@
 package io;
 
-import impl.util.GameRules;
+import backend.util.GameRules;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.List;
 
 import game.api.GameState;
-import game.impl.Board;
-import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Move;
 import game.impl.Player;

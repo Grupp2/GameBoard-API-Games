@@ -1,12 +1,12 @@
-package impl.actions;
+package backend.actions;
 
 import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
-import impl.util.BoardParser;
-import impl.util.GameRules;
-import impl.State;
+import backend.util.BoardParser;
+import backend.util.GameRules;
+import backend.State;
 
 import java.util.List;
 

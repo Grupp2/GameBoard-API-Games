@@ -1,4 +1,4 @@
-package impl.util;
+package backend.util;
 
 import game.impl.*;
 
@@ -26,7 +26,7 @@ public class GameRules {
     }
 
     public static boolean isLocationEmpty(BoardLocation location){
-        return location == null ? null : location.getPiece() == null;
+        return location == null || location.getPiece() == null;
     }
 
     public static int getPlayerScore(Player player){

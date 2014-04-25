@@ -1,7 +1,7 @@
-package impl;
+package backend;
 
 import game.impl.Player;
-import impl.util.TurnCounter;
+import backend.util.TurnCounter;
 import org.junit.Test;
 
 import java.util.ArrayList;

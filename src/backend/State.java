@@ -1,8 +1,8 @@
-package impl;
+package backend;
 
 import game.impl.Board;
 import game.impl.Player;
-import impl.util.TurnCounter;
+import backend.util.TurnCounter;
 
 import java.util.List;
 

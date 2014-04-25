@@ -1,6 +1,6 @@
 package gui;
 
-import impl.util.GameRules;
+import backend.util.GameRules;
 import game.api.GameState;
 import game.impl.GamePiece;
 import game.impl.Move;
