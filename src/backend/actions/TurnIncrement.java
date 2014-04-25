@@ -16,10 +16,10 @@ public class TurnIncrement {
 
     public void execute(){
 
-        if(noLastPlayerSet()){
+        if(noLastPlayerSet()) {
             List<Player> players = state.getPlayers();
 
-            if(players.indexOf(state.getCurrentPlayer()) == 0)
+            if (players.indexOf(state.getCurrentPlayer()) == 0)
                 state.setLastPlayer(players.get(1));
             else
                 state.setLastPlayer(players.get(0));
