@@ -57,7 +57,12 @@ public class State {
     }
 
     public void setLastPlayer(Player player){
-        this.lastPlayerIndex = players.indexOf(player);
+        int index = players.indexOf(player);
+
+        if(index == -1)
+            throw new RuntimeException("Invalid player");
+
+        this.lastPlayerIndex = index;
     }
 
 
@@ -72,7 +77,12 @@ public class State {
     }
 
     public void setCurrentPlayer(Player player){
-        this.currentPlayerIndex = players.indexOf(player);
+        int index = players.indexOf(player);
+
+        if(index == -1)
+            throw new RuntimeException("Invalid player");
+
+        this.currentPlayerIndex = index;
     }
 
 
