@@ -1,8 +1,8 @@
 package backend;
 
 import backend.actions.*;
-import backend.undoable.MoveAction;
-import backend.undoable.TurnIncrement;
+import backend.undoableactions.MoveAction;
+import backend.undoableactions.TurnIncrement;
 import game.impl.Move;
 import game.impl.Player;
 

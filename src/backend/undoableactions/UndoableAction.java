@@ -1,4 +1,4 @@
-package backend.undoable;
+package backend.undoableactions;
 
 
 public interface UndoableAction {

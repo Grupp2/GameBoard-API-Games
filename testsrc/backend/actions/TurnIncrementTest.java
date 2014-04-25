@@ -3,7 +3,7 @@ package backend.actions;
 
 import backend.State;
 import backend.StateBuilder;
-import backend.undoable.TurnIncrement;
+import backend.undoableactions.TurnIncrement;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

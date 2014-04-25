@@ -1,7 +1,6 @@
-package backend.undoable;
+package backend.undoableactions;
 
 import backend.State;
-import backend.util.BoardParser;
 import game.impl.Move;
 
 public class MoveAction implements UndoableAction{
