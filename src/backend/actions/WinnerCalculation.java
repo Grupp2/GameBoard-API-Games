@@ -12,8 +12,8 @@ public class WinnerCalculation {
     }
 
     public Player execute(){
-        int playerOneScore = state.getPlayers().get(0).getPieces().size();
-        int playerTwoScore = state.getPlayers().get(1).getPieces().size();
+        int playerOneScore = getPlayerScore(state.getPlayers().get(0));
+        int playerTwoScore = getPlayerScore(state.getPlayers().get(1));
 
         if(playerOneScore > playerTwoScore)
             return state.getPlayers().get(0);
@@ -21,5 +21,9 @@ public class WinnerCalculation {
             return state.getPlayers().get(1);
 
         return null;
+    }
+
+    private int getPlayerScore(Player player){
+        return player.getPieces().size();
     }
 }

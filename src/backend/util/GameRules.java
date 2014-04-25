@@ -7,16 +7,6 @@ import java.util.List;
 
 public class GameRules {
 
-    public static boolean isBoardFull(Board board){
-        List<BoardLocation> locations = board.getLocations();
-
-        for(int i = 0; i < locations.size(); i++)
-            if(isLocationEmpty(locations.get(i)))
-                return false;
-
-        return true;
-    }
-
     public static boolean isPlayerOnePiece(GamePiece piece){
         return piece.getId().equals("O");
     }
@@ -27,10 +17,6 @@ public class GameRules {
 
     public static boolean isLocationEmpty(BoardLocation location){
         return location == null || location.getPiece() == null;
-    }
-
-    public static int getPlayerScore(Player player){
-        return player.getPieces().size();
     }
 
     public static boolean isLocationNextToPiece(Board board, BoardLocation location){
