@@ -11,26 +11,28 @@ public class OthelloGuiInputUnit extends InputUnit {
 	private GameState state;
 	private OthelloGameFrame gameFrame;
 
-	private Move getNextMove(GameState state)
-	{
+	private Move getNextMove(GameState state) {
 		Move result = null;
 		try {
 			String input = readGameBoard();
 			result = new Move(state.getPlayerInTurn(), new GamePiece(
-						getGamePieceID(state.getPlayerInTurn(), state)),
-						GameRules.getLocationById(state.getBoard(), input));
+					getGamePieceID(state.getPlayerInTurn(), state)),
+					GameRules.getLocationById(state.getBoard(), input));
 		} catch (Exception ex) {
 			gameFrame.setStatusLabelText(ex.getMessage());
 		}
 		return result;
 	}
 	
-	private String readGameBoard() {
-		return gameFrame.getLastLocation(); 
+	public OthelloGameFrame getGameFrame() {
+		return gameFrame;
 	}
 
-	private String getGamePieceID(Player player, GameState gameState)
-	{
+	private String readGameBoard() {
+		return gameFrame.getLastLocation();
+	}
+
+	private String getGamePieceID(Player player, GameState gameState) {
 		if (player == gameState.getPlayers().get(0))
 			return "O";
 		else
@@ -38,13 +40,12 @@ public class OthelloGuiInputUnit extends InputUnit {
 	}
 
 	@Override
-	public void setup(GameState state)
-	{
+	public void setup(GameState state) {
 		this.state = state;
 		this.gameFrame = new OthelloGameFrame(state);
 		gameFrame.setVisible(true);
 	}
-	
+
 	public void notifyListeners() {
 		notifyListenersOfMove(getNextMove(state));
 	}
