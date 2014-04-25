@@ -12,6 +12,7 @@ public class OthelloGameFactory {
 
     public List<Player> createPlayers(){
         List<Player> players = new ArrayList<Player>();
+
         players.add(new Player("P1", makePlayerOneGamePieces()));
         players.add(new Player("P2", makePlayerTwoGamePieces()));
 
@@ -26,17 +27,11 @@ public class OthelloGameFactory {
     private List<GamePiece> makePlayerOneGamePieces(){
         List<GamePiece> list = new ArrayList<GamePiece>();
 
-        //for(int i = 0; i < 32; i++)
-         //   list.add(new GamePiece("O"));
-
         return list;
     }
 
     private List<GamePiece> makePlayerTwoGamePieces(){
         List<GamePiece> list = new ArrayList<GamePiece>();
-
-        //for(int i = 0; i < 32; i++)
-         //   list.add(new GamePiece("X"));
 
         return list;
     }
