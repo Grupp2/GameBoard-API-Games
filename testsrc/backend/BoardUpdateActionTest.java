@@ -3,7 +3,7 @@ package backend;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardUpdateTest {
+public class BoardUpdateActionTest {
 
 
 

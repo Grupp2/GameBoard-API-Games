@@ -6,14 +6,14 @@ import game.impl.Player;
 
 import java.util.List;
 
-public class TurnIncrement implements UndoableAction{
+public class TurnIncrementAction implements UndoableAction{
 
     private State state;
 
     private Player oldCurrentPlayer;
     private Player oldLastPlayer;
 
-    public TurnIncrement(State state){
+    public TurnIncrementAction(State state){
         this.state = state;
     }
 

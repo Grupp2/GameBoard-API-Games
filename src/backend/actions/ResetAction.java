@@ -10,17 +10,17 @@ import backend.util.GameRules;
 
 import java.util.List;
 
-public class Reset {
+public class ResetAction {
 
     private State state;
     private OthelloGameFactory factory;
 
-    public Reset(State state, OthelloGameFactory factory){
+    public ResetAction(State state, OthelloGameFactory factory){
         this.state = state;
         this.factory = factory;
     }
 
-    public Reset(State state){
+    public ResetAction(State state){
         this(state, new OthelloGameFactory());
     }
 

@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BoardUpdate implements UndoableAction{
+public class BoardUpdateAction implements UndoableAction{
 
     private State state;
     private List<Player> players;
     private BoardLocation location;
     private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
 
-    public BoardUpdate(State state, BoardLocation location){
+    public BoardUpdateAction(State state, BoardLocation location){
         this.state = state;
         this.location = location;
         players = state.getPlayers();

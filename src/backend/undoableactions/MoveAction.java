@@ -15,8 +15,8 @@ public class MoveAction implements UndoableAction{
         this.state = state;
         this.move = move;
 
-        this.turnIncrement = new TurnIncrement(state);
-        this.boardUpdate = new BoardUpdate(state, move.getDestination());
+        this.turnIncrement = new TurnIncrementAction(state);
+        this.boardUpdate = new BoardUpdateAction(state, move.getDestination());
     }
 
     @Override
