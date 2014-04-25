@@ -9,21 +9,16 @@ import game.impl.Player;
 public class ActionHandler {
 
     private State state;
-    private OthelloGameFactory factory;
-
-
-    public ActionHandler(State state, OthelloGameFactory factory){
-        this.state = state;
-        this.factory = factory;
-    }
 
     public ActionHandler(State state){
-        this(state, new OthelloGameFactory());
+        this.state = state;
     }
+
 
     public Player calculateWinner(){
         return new WinnerCalculation(state).execute();
     }
+
 
     public boolean hasEndedCheck(){
         return new HasEndedControl(state).execute();
@@ -32,6 +27,7 @@ public class ActionHandler {
     public boolean validateMove(Move move){
         return new MoveValidation(state, move).execute();
     }
+
 
     public void executeMove(Move move){
         move.execute();
