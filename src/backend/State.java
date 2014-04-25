@@ -7,7 +7,6 @@ import game.impl.Player;
 
 public class State {
 
-
     private List<Player> players;
 
     private Board board;
@@ -62,8 +61,5 @@ public class State {
     public void setCurrentPlayer(Player player){
         this.currentPlayer = player;
     }
-
-
-
 
 }
