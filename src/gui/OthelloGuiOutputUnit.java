@@ -6,9 +6,11 @@ import game.io.OutputUnit;
 public class OthelloGuiOutputUnit implements OutputUnit {
 
 	@Override
-	public void publish(GameState arg0) {
-		// TODO Auto-generated method stub
-		
+	public void publish(GameState gameState) {
+		loadBoard(gameState);
 	}
+	
+	private void loadBoard(GameState gameState) {
 
+	}
 }

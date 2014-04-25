@@ -2,10 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-
 import game.api.GameState;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,6 +40,14 @@ public class OthelloGameFrame extends JFrame {
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		contentPane.add(p2Panel, BorderLayout.LINE_END);
 		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
+	}
+	
+	public JPanel getGameBoardPanel() {
+		return gameBoardPanel;
+	}
+	
+	public void setGameBoardPanel(JPanel gameBoardPanel) {
+		this.gameBoardPanel = gameBoardPanel;
 	}
 	
 	private void createPlayerPanels() {
