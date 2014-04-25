@@ -58,7 +58,7 @@ public class OthelloGameState implements GameState{
 
     @Override
     public Boolean hasEnded() {
-        return state.hasEnded();
+        return actionHandler.hasEndedCheck();
     }
 
     @Override

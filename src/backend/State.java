@@ -65,10 +65,6 @@ public class State {
         this.currentPlayer = player;
     }
 
-    public Boolean hasEnded() {
-        return players.get(0).getPieces().size() + players.get(1).getPieces().size() >= 64;
-    }
-
     public Player getWinner() {
 
         int playerOneScore = players.get(0).getPieces().size();

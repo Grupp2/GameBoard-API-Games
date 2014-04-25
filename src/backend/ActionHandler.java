@@ -1,10 +1,7 @@
 package backend;
 
-import backend.actions.TurnIncrement;
+import backend.actions.*;
 import game.impl.Move;
-import backend.actions.BoardUpdate;
-import backend.actions.MoveValidation;
-import backend.actions.Reset;
 import backend.util.BoardParser;
 
 
@@ -23,6 +20,10 @@ public class ActionHandler {
         this(state, new OthelloGameFactory());
     }
 
+
+    public boolean hasEndedCheck(){
+        return new HasEndedControl(state).execute();
+    }
 
     public boolean validateMove(Move move){
         return new MoveValidation(state, move).execute();
