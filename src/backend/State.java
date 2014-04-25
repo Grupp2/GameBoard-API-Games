@@ -1,10 +1,9 @@
 package backend;
 
+import java.util.List;
+
 import game.impl.Board;
 import game.impl.Player;
-import backend.util.TurnCounter;
-
-import java.util.List;
 
 public class State {
 
@@ -15,11 +14,9 @@ public class State {
 
     private String message;
 
-    private TurnCounter turnCounter;
+    private int lastPlayerIndex;
 
-    private Player lastPlayer;
-
-    private Player currentPlayer;
+    private int currentPlayerIndex;
 
 
     public List<Player> getPlayers() {
@@ -49,20 +46,21 @@ public class State {
     }
 
 
-    public Player getLastPlayer() {
-        return lastPlayer;
+    public int getLastPlayerIndex() {
+        return lastPlayerIndex;
     }
 
-    public void setLastPlayer(Player player){
-        this.lastPlayer = player;
+    public void setLastPlayerIndex(int index){
+        this.lastPlayerIndex = index;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
     }
 
-    public void setCurrentPlayer(Player player){
-        this.currentPlayer = player;
+    public void setCurrentPlayerIndex(int index){
+        this.currentPlayerIndex = index;
     }
 
 
