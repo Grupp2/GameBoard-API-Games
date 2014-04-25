@@ -11,6 +11,7 @@ import game.impl.GamePiece;
 import game.impl.Move;
 import game.impl.Player;
 import game.io.InputUnit;
+import backend.OthelloGameState;
 
 /**
  * Created by HuggTop on 2014-04-16.
@@ -25,7 +26,7 @@ public class OthelloConsoleInputUnit extends InputUnit {
 		try {
 			String input = inputSourceReader.readLine().replaceAll("\\s", "")
 					.toUpperCase();
-			if (input.equals("undo")) {
+			if (input.equals("UNDO")) {
 				
 
 			} else {
