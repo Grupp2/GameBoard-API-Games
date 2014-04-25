@@ -31,7 +31,7 @@ public class ActionHandler {
 
     public void executeMove(Move move){
         move.execute();
-        state.getPlayers().get(state.getCurrentPlayerIndex()).getPieces().add(move.getPiece());
+        state.getCurrentPlayer().getPieces().add(move.getPiece());
 
         new BoardUpdate(state, new BoardParser(state.getBoard(), move.getDestination())).execute();
 

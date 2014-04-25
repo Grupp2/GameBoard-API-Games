@@ -14,9 +14,9 @@ public class State {
 
     private String message;
 
-    private int lastPlayerIndex;
+    private int lastPlayerIndex = -1;
 
-    private int currentPlayerIndex;
+    private int currentPlayerIndex = -1;
 
 
     public List<Player> getPlayers() {
@@ -46,21 +46,33 @@ public class State {
     }
 
 
-    public int getLastPlayerIndex() {
-        return lastPlayerIndex;
+    public Player getLastPlayer(){
+        Player player = null;
+        try{
+            player = players.get(lastPlayerIndex);
+        }
+        catch(Exception e){}
+
+        return player;
     }
 
-    public void setLastPlayerIndex(int index){
-        this.lastPlayerIndex = index;
+    public void setLastPlayer(Player player){
+        this.lastPlayerIndex = players.indexOf(player);
     }
 
 
-    public int getCurrentPlayerIndex() {
-        return currentPlayerIndex;
+    public Player getCurrentPlayer(){
+        Player player = null;
+        try{
+            player = players.get(currentPlayerIndex);
+        }
+        catch(Exception e){}
+
+        return player;
     }
 
-    public void setCurrentPlayerIndex(int index){
-        this.currentPlayerIndex = index;
+    public void setCurrentPlayer(Player player){
+        this.currentPlayerIndex = players.indexOf(player);
     }
 
 

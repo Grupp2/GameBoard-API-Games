@@ -27,8 +27,7 @@ public class Reset {
     public void execute(){
         state.setPlayers(factory.createPlayers());
         state.setBoard(factory.createBoard());
-        state.setCurrentPlayerIndex(0);
-        state.setLastPlayerIndex(-1);
+        state.setCurrentPlayer(state.getPlayers().get(0));
         state.setMessage("");
 
         setStartingPositions();

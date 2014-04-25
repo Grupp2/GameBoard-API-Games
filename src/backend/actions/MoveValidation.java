@@ -18,7 +18,7 @@ public class MoveValidation {
     }
 
     public boolean execute(){
-        if(move.getPlayer() != state.getPlayers().get(state.getCurrentPlayerIndex())){
+        if(move.getPlayer() != state.getCurrentPlayer()){
             state.setMessage("It's not your turn!");
             return false;
         }

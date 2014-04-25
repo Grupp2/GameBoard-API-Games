@@ -17,10 +17,12 @@ public class TurnIncrement {
     public void execute(){
 
         if(noLastPlayerSet()){
-            if(state.getCurrentPlayerIndex() == 0)
-                state.setLastPlayerIndex(1);
+            List<Player> players = state.getPlayers();
+
+            if(players.indexOf(state.getCurrentPlayer()) == 0)
+                state.setLastPlayer(players.get(1));
             else
-                state.setLastPlayerIndex(0);
+                state.setLastPlayer(players.get(0));
         }
 
         swapCurrentAndLastPlayer();
@@ -28,12 +30,12 @@ public class TurnIncrement {
 
 
     private boolean noLastPlayerSet(){
-        return state.getLastPlayerIndex() == -1;
+        return state.getLastPlayer() == null;
     }
 
     private void swapCurrentAndLastPlayer(){
-        int newCurrentPlayer = state.getLastPlayerIndex();
-        state.setLastPlayerIndex(state.getCurrentPlayerIndex());
-        state.setCurrentPlayerIndex(newCurrentPlayer);
+        Player newCurrentPlayer = state.getLastPlayer();
+        state.setLastPlayer(state.getCurrentPlayer());
+        state.setCurrentPlayer(newCurrentPlayer);
     }
 }

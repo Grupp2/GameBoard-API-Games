@@ -41,12 +41,12 @@ public class OthelloGameState implements GameState{
 
     @Override
     public Player getLastPlayer() {
-        return state.getPlayers().get(state.getLastPlayerIndex());
+        return state.getLastPlayer();
     }
 
     @Override
     public Player getPlayerInTurn() {
-        return state.getPlayers().get(state.getCurrentPlayerIndex());
+        return state.getCurrentPlayer();
     }
 
     @Override
