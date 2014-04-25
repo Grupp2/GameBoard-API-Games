@@ -17,6 +17,10 @@ public class State {
 
     private TurnCounter turnCounter;
 
+    private Player lastPlayer;
+
+    private Player currentPlayer;
+
 
     public List<Player> getPlayers() {
         return players;
@@ -45,23 +49,21 @@ public class State {
     }
 
 
-    public TurnCounter getTurnCounter(){
-        return turnCounter;
-    }
-
-    public void setTurnCounter(TurnCounter turnCounter){
-        this.turnCounter = turnCounter;
-    }
-
-
     public Player getLastPlayer() {
-        return turnCounter.getLastPlayer();
+        return lastPlayer;
+    }
+
+    public void setLastPlayer(Player player){
+        this.lastPlayer = player;
     }
 
     public Player getCurrentPlayer() {
-        return turnCounter.getCurrentPlayer();
+        return currentPlayer;
     }
 
+    public void setCurrentPlayer(Player player){
+        this.currentPlayer = player;
+    }
 
     public Boolean hasEnded() {
         return players.get(0).getPieces().size() + players.get(1).getPieces().size() >= 64;

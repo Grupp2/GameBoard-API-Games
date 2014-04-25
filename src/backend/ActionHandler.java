@@ -1,5 +1,6 @@
 package backend;
 
+import backend.actions.TurnIncrement;
 import game.impl.Move;
 import backend.actions.BoardUpdate;
 import backend.actions.MoveValidation;
@@ -41,6 +42,6 @@ public class ActionHandler {
     }
 
     public void incrementTurn(){
-        state.getTurnCounter().increment();
+        new TurnIncrement(state).execute();
     }
 }

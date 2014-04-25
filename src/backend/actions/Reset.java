@@ -23,7 +23,7 @@ public class Reset {
     public void execute(){
         state.setPlayers(factory.createPlayers());
         state.setBoard(factory.createBoard());
-        state.setTurnCounter(factory.createTurnCounter(state.getPlayers(), state.getPlayers().get(0)));
+        state.setCurrentPlayer(state.getPlayers().get(0));
         state.setMessage("");
 
         setStartingPositions();

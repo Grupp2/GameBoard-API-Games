@@ -50,6 +50,13 @@ public class OthelloGameState implements GameState{
     }
 
     @Override
+    public DieRollFactory getDieRollFactory() {
+        return null;
+    }
+
+
+
+    @Override
     public Boolean hasEnded() {
         return state.hasEnded();
     }
@@ -58,14 +65,6 @@ public class OthelloGameState implements GameState{
     public Player getWinner() {
         return state.getWinner();
     }
-
-    @Override
-    public DieRollFactory getDieRollFactory() {
-        return null;
-    }
-
-
-
 
     @Override
     public Boolean proposeMove(Move move) {
