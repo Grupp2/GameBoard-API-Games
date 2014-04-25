@@ -11,31 +11,35 @@ import game.impl.GamePiece;
 import game.impl.Move;
 import game.impl.Player;
 import game.io.InputUnit;
+import backend.OthelloGameState;
 
 /**
  * Created by HuggTop on 2014-04-16.
  */
-public class OthelloConsoleInputUnit extends InputUnit
-{
+public class OthelloConsoleInputUnit extends InputUnit {
 
 	private final BufferedReader inputSourceReader = new BufferedReader(
 			new InputStreamReader(System.in));
 
-	private Move getNextMove(GameState state)
-	{
+	private Move getNextMove(GameState state) {
 		Move result = null;
 		try {
-			String input = inputSourceReader.readLine().replaceAll("\\s", "").toUpperCase();
-			result = new Move(state.getPlayerInTurn(), new GamePiece(
+			String input = inputSourceReader.readLine().replaceAll("\\s", "")
+					.toUpperCase();
+			if (input.equals("UNDO")) {
+				
+
+			} else {
+				result = new Move(state.getPlayerInTurn(), new GamePiece(
 						getGamePieceID(state.getPlayerInTurn(), state)),
 						GameRules.getLocationById(state.getBoard(), input));
+			}
 		} catch (IOException ex) {
 		}
 		return result;
 	}
 
-	private String getGamePieceID(Player player, GameState gameState)
-	{
+	private String getGamePieceID(Player player, GameState gameState) {
 		if (player == gameState.getPlayers().get(0))
 			return "O";
 		else
@@ -43,8 +47,7 @@ public class OthelloConsoleInputUnit extends InputUnit
 	}
 
 	@Override
-	public void setup(GameState state)
-	{
+	public void setup(GameState state) {
 		while (!state.hasEnded()) {
 			notifyListenersOfMove(getNextMove(state));
 		}
