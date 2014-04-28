@@ -1,9 +1,7 @@
 package gui;
 
 import game.api.GameState;
-
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -15,6 +13,7 @@ public class GameBoardPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private int xSize;
 	private int ySize;
+	private final int BUTTON_SIZE = 75;
 
 	public GameBoardPanel(GameState state) {
 		setBounds(1, 1, 600, 600);
@@ -43,7 +42,7 @@ public class GameBoardPanel extends JPanel {
 	private void addButtons(GameState state) {
 		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
 			JButton btn = new JButton(state.getBoard().getLocations().get(i).getId());
-			btn.setSize(75, 75);
+			btn.setSize(BUTTON_SIZE, BUTTON_SIZE);
 			add(btn);
 		}
 	}
