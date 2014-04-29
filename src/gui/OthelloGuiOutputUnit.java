@@ -5,7 +5,6 @@ import game.io.OutputUnit;
 
 public class OthelloGuiOutputUnit implements OutputUnit
 {
-	private boolean run = true;
 	private OthelloGameFrame frame;
 	public OthelloGuiOutputUnit(OthelloGameFrame othelloGameFrame) {
 		frame = othelloGameFrame;	
@@ -14,9 +13,6 @@ public class OthelloGuiOutputUnit implements OutputUnit
 	@Override
 	public void publish(GameState state) {
 		frame.notifyOfPublish(state);
-		
-			
-		
 	}
 
 }
