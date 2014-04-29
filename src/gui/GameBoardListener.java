@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class GameBoardListener {
-//	private String lastMove = "";
 	private JButton currentButton;
 	private OthelloGuiInputUnit inputUnit;
 
@@ -18,7 +17,6 @@ public class GameBoardListener {
 				JButton btn = (JButton) ctrl;
 				btn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-//						lastMove = e.getActionCommand();
 						currentButton = (JButton) e.getSource();
 						createMove();
 					}
