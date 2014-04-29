@@ -35,6 +35,7 @@ public class OthelloGuiInputUnit extends InputUnit {
 	public void setup(GameState state) {
 		this.state = state;
 		this.gameFrame = new OthelloGameFrame();
+		this.state.reset();
 	}
 
 	public void notifyListeners(String inputTileName) {
