@@ -28,6 +28,7 @@ public class OthelloGameFrame extends JFrame {
 	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
+	private boolean run = true;
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
@@ -37,6 +38,11 @@ public class OthelloGameFrame extends JFrame {
 
 	public void notifyOfPublish(GameState state) {
 		this.gameState = state;
+		if (run) {
+			buildGameFrame();
+			run = false;
+		}
+		placeGamePieces();
 	}
 	
 	public void buildGameFrame() {
