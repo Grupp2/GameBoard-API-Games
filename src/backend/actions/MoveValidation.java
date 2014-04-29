@@ -4,9 +4,6 @@ import game.impl.Move;
 import backend.util.GameRules;
 import backend.State;
 
-/**
- * @author erik
- */
 public class MoveValidation {
 
     private State state;

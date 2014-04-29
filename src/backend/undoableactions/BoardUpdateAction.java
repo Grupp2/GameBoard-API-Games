@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BoardUpdateAction implements UndoableAction{
+public class BoardUpdateAction implements UndoableAction {
 
     private State state;
     private List<Player> players;
@@ -24,6 +24,7 @@ public class BoardUpdateAction implements UndoableAction{
         players = state.getPlayers();
     }
 
+    @Override
     public void execute(){
         List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
 

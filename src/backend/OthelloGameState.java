@@ -12,16 +12,16 @@ import java.util.List;
 public class OthelloGameState implements GameState{
 
     private State state;
-    private ActionHandler actionHandler;
+    private GameActionsHandler gameActionsHandler;
 
-    public OthelloGameState(State state, ActionHandler actionHandler){
+    public OthelloGameState(State state, GameActionsHandler gameActionsHandler){
         this.state = state;
-        this.actionHandler = actionHandler;
+        this.gameActionsHandler = gameActionsHandler;
     }
 
     public OthelloGameState(){
         this.state = new State();
-        this.actionHandler = new ActionHandler(this.state);
+        this.gameActionsHandler = new GameActionsHandler(this.state);
     }
 
     @Override
@@ -58,25 +58,25 @@ public class OthelloGameState implements GameState{
 
     @Override
     public Boolean hasEnded() {
-        return actionHandler.hasEndedCheck();
+        return gameActionsHandler.hasEndedCheck();
     }
 
     @Override
     public Player getWinner() {
-        return actionHandler.calculateWinner();
+        return gameActionsHandler.calculateWinner();
     }
 
     @Override
     public Boolean proposeMove(Move move) {
-        if(!actionHandler.validateMove(move))
+        if(!gameActionsHandler.validateMove(move))
             return false;
 
-        actionHandler.executeMove(move);
+        gameActionsHandler.executeMove(move);
         return true;
     }
 
     @Override
     public void reset() {
-        actionHandler.reset();
+        gameActionsHandler.reset();
     }
 }

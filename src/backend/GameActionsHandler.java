@@ -8,11 +8,11 @@ import game.impl.Move;
 import game.impl.Player;
 
 
-public class ActionHandler {
+public class GameActionsHandler {
 
     private State state;
 
-    public ActionHandler(State state){
+    public GameActionsHandler(State state){
         this.state = state;
     }
 
