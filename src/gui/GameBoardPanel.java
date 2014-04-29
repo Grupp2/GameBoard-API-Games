@@ -1,7 +1,10 @@
 package gui;
 
 import game.api.GameState;
+
+import java.awt.Color;
 import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -44,6 +47,7 @@ public class GameBoardPanel extends JPanel {
 			JButton btn = new JButton();
 			btn.setName(state.getBoard().getLocations().get(i).getId());
 			btn.setSize(BUTTON_SIZE, BUTTON_SIZE);
+			btn.setBackground(new Color(34, 177, 76, 255));
 			add(btn);
 		}
 	}
