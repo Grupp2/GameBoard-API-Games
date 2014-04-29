@@ -3,14 +3,18 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+
 import game.api.GameState;
 import game.io.OutputUnit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
@@ -22,7 +26,7 @@ public class OthelloGameFrame extends JFrame {
 	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
-	private boolean run = true;
+	private boolean createGui = true;
 	private Color highlightGreen = new Color(181, 130, 29 ,255);
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
@@ -33,11 +37,14 @@ public class OthelloGameFrame extends JFrame {
 
 	public void notifyOfPublish(GameState state) {
 		this.gameState = state;
-		if (run) {
+		if (createGui) {
 			buildGameFrame();
-			run = false;
+			createGui = false;
 		}
 		placeGamePieces();
+		lblStatusText.setText(gameState.getPlayerInTurn().getName());
+		if (!gameState.getMessage().equals(""))
+			JOptionPane.showMessageDialog(this, gameState.getMessage());
 	}
 	
 	public void buildGameFrame() {
