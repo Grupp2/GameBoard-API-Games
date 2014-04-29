@@ -88,9 +88,9 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 	private void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
-				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
+				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O"))
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
-				else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O"))
+				else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
 			} else
 				((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getBlankBoardPiece()));
