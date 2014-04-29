@@ -83,10 +83,6 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 		if (run)
 			buildGameFrame();
 		placeGamePieces();
-		gameBoardPanel.validate();
-		gameBoardPanel.repaint();
-		this.validate();
-		this.repaint();
 	}
 	
 	private void placeGamePieces() {
