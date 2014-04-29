@@ -57,4 +57,5 @@ public class HasEndedControl {
         List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
         return locationsToFlip.size() > 0;
     }
+
 }
