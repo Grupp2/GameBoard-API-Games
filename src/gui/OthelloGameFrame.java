@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import game.api.GameState;
 import game.io.OutputUnit;
@@ -75,8 +76,9 @@ public class OthelloGameFrame extends JFrame {
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
 				else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
-			} else
-				((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getBlankBoardPiece()));
+				else
+					gameBoardPanel.getComponent(i).setBackground(new Color(181, 130, 29 ,255));
+			} 
 		}
 	}
 }
