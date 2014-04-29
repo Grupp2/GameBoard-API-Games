@@ -17,8 +17,4 @@ public class OhtelloGuiIOFactory implements IoFactory{
 	public OutputUnit getOutputUnit() {
 		return outputUnit;
 	}
-
-	public void getGameFrame(){
-//		outputUnit.setGameFrame(inputUnit.getGameFrame());
-	}
 }
