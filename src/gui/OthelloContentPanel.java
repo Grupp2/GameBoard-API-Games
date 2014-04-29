@@ -22,15 +22,25 @@ public class OthelloContentPanel extends JPanel {
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
 		this.inputUnit = inputUnit;
+		createGameBoardPanel();
 	}
 
 	public JPanel getContentPane() {
-		createGameBoardPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
 		contentPane = new JPanel(new BorderLayout());
 		createStatusLabel();
 		populateTheLayout();
+		this.validate();
+		this.repaint();
 		return contentPane;
+	}
+	
+	public JPanel getGameBoardPanel() {
+		return this.gameBoardPanel;
+	}
+	
+	public JLabel getStatusTextLabel() {
+		return this.lblStatusText;
 	}
 
 	private void createGameBoardPanel() {

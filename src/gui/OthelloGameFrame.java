@@ -38,7 +38,7 @@ public class OthelloGameFrame extends JFrame {
 	public void notifyOfPublish(GameState state) {
 		this.gameState = state;
 		if (createGui) {
-			buildGameFrame();
+			buildGameFrame2();
 			createGui = false;
 		}
 		placeGamePieces();
@@ -57,6 +57,14 @@ public class OthelloGameFrame extends JFrame {
 		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		setContentPane(contentPane);
+		this.setVisible(true);
+	}
+	
+	public void buildGameFrame2() {
+		OthelloContentPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
+		setContentPane(contentPane.getContentPane());
+		this.gameBoardPanel = contentPane.getGameBoardPanel();
+		this.lblStatusText = contentPane.getStatusTextLabel();
 		this.setVisible(true);
 	}
 	
