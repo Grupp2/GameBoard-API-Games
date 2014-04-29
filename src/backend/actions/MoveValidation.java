@@ -38,8 +38,8 @@ public class MoveValidation {
             return false;
         }
 
-        if(!GameRules.isLocationNextToPiece(state.getBoard(), move.getDestination())){
-            state.setMessage("You have to put your piece next to an existing one.");
+        if(!GameRules.isLocationValidForMove(state, move.getDestination(), move.getPlayer())){
+            state.setMessage("You have to put your piece at a valid location!");
             return false;
         }
 

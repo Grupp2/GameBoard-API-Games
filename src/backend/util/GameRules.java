@@ -1,5 +1,7 @@
 package backend.util;
 
+import backend.State;
+import backend.actions.LocationsToFlipCalculation;
 import game.impl.*;
 
 import java.util.List;
@@ -55,6 +57,13 @@ public class GameRules {
             return true;
 
         return false;
+    }
+
+
+    public static boolean isLocationValidForMove(State state, BoardLocation location, Player playerToMove){
+        List<BoardLocation> locations = new LocationsToFlipCalculation(state, location, playerToMove).execute();
+
+        return locations.size() > 0;
     }
 
     public static BoardLocation getLocationById(Board board, String id){
