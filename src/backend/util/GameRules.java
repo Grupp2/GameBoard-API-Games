@@ -76,4 +76,23 @@ public class GameRules {
         return null;
     }
 
+
+    public static boolean doesCurrentPlayerHaveAnyValidMovesLeft(State state){
+
+        List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
+
+        for(int i = 0; i < allBoardLocations.size(); i++) {
+            if(!isLocationEmpty(allBoardLocations.get(i)))
+                if (isLocationValidMoveForCurrentPlayer(state, allBoardLocations.get(i)))
+                    return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isLocationValidMoveForCurrentPlayer(State state, BoardLocation location){
+        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
+        return locationsToFlip.size() > 0;
+    }
+
 }

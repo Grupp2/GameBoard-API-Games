@@ -2,6 +2,7 @@ package backend.actions;
 
 
 import backend.State;
+import backend.util.GameRules;
 import game.impl.BoardLocation;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class HasEndedControl {
         if(doesAnyPlayerNotHaveAnyPiecesLeft())
             return true;
 
-        if(!doesCurrentPlayerHaveAnyValidMovesLeft())
+        if(!GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state))
             return true;
 
         return false;
@@ -40,22 +41,4 @@ public class HasEndedControl {
 
         return playerOnePieceCount == 0 || playerTwoPieceCount == 0;
     }
-
-    private boolean doesCurrentPlayerHaveAnyValidMovesLeft(){
-
-        List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
-
-        for(int i = 0; i < allBoardLocations.size(); i++) {
-            if (isLocationValidMoveForCurrentPlayer(allBoardLocations.get(i)))
-                return true;
-        }
-
-        return false;
-    }
-
-    private boolean isLocationValidMoveForCurrentPlayer(BoardLocation location){
-        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
-        return locationsToFlip.size() > 0;
-    }
-
 }

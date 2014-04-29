@@ -2,6 +2,9 @@ package backend.undoableactions;
 
 
 import backend.State;
+import backend.actions.LocationsToFlipCalculation;
+import backend.util.GameRules;
+import game.impl.BoardLocation;
 import game.impl.Player;
 
 import java.util.List;
@@ -33,6 +36,10 @@ public class TurnIncrementAction implements UndoableAction{
         }
 
         swapCurrentAndLastPlayer();
+
+        if(!GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state))
+            swapCurrentAndLastPlayer();
+
     }
 
     public void undo(){
@@ -54,4 +61,6 @@ public class TurnIncrementAction implements UndoableAction{
         state.setLastPlayer(state.getCurrentPlayer());
         state.setCurrentPlayer(newCurrentPlayer);
     }
+
+
 }
