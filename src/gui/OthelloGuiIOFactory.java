@@ -4,7 +4,7 @@ import game.io.InputUnit;
 import game.io.IoFactory;
 import game.io.OutputUnit;
 
-public class OhtelloGuiIOFactory implements IoFactory{
+public class OthelloGuiIOFactory implements IoFactory{
 	private InputUnit inputUnit = new OthelloGuiInputUnit();
 	private OutputUnit outputUnit = new OthelloGameFrame();
 
