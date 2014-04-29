@@ -6,7 +6,7 @@ import game.io.OutputUnit;
 
 public class OhtelloGuiIOFactory implements IoFactory{
 	private InputUnit inputUnit = new OthelloGuiInputUnit();
-	private OutputUnit outputUnit = new OthelloGuiOutputUnit();
+	private OutputUnit outputUnit = new OthelloGameFrame();
 
 	@Override
 	public InputUnit getInputUnit() {

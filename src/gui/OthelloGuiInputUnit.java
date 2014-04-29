@@ -10,11 +10,10 @@ import game.io.InputUnit;
 public class OthelloGuiInputUnit extends InputUnit {
 	private GameState state;
 	private OthelloGameFrame gameFrame;
-
+	private String input;
 	private Move getNextMove(GameState state) {
 		Move result = null;
 		try {
-			String input = readGameBoard();
 			result = new Move(state.getPlayerInTurn(), new GamePiece(
 					getGamePieceID(state.getPlayerInTurn(), state)),
 					GameRules.getLocationById(state.getBoard(), input));
@@ -22,14 +21,6 @@ public class OthelloGuiInputUnit extends InputUnit {
 			gameFrame.setStatusLabelText(ex.getMessage());
 		}
 		return result;
-	}
-	
-	public OthelloGameFrame getGameFrame() {
-		return gameFrame;
-	}
-
-	private String readGameBoard() {
-		return gameFrame.getLastLocation();
 	}
 
 	private String getGamePieceID(Player player, GameState gameState) {
@@ -42,11 +33,12 @@ public class OthelloGuiInputUnit extends InputUnit {
 	@Override
 	public void setup(GameState state) {
 		this.state = state;
-		this.gameFrame = new OthelloGameFrame(state);
+		this.gameFrame = new OthelloGameFrame();
 		gameFrame.setVisible(true);
 	}
 
-	public void notifyListeners() {
+	public void notifyListeners(String inputTileName) {
+		input = inputTileName;
 		notifyListenersOfMove(getNextMove(state));
 	}
 }

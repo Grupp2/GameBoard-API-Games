@@ -2,14 +2,17 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+
 import game.api.GameState;
+import game.io.OutputUnit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class OthelloGameFrame extends JFrame {
+public class OthelloGameFrame extends JFrame implements OutputUnit {
 
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
@@ -21,9 +24,13 @@ public class OthelloGameFrame extends JFrame {
 	private JButton btnPassTurn;
 	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
+	private boolean run = true;
 	
-	public OthelloGameFrame(GameState gameState) {
-		this.gameState = gameState;
+	public OthelloGameFrame() {
+		
+	}
+	
+	private void buildGameFrame() {
 		setBounds(1, 1, 675, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPlayerPanels();
@@ -40,6 +47,8 @@ public class OthelloGameFrame extends JFrame {
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		contentPane.add(p2Panel, BorderLayout.LINE_END);
 		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
+		this.run = false;
+		this.repaint();
 	}
 	
 	public JPanel getGameBoardPanel() {
@@ -66,5 +75,12 @@ public class OthelloGameFrame extends JFrame {
 	
 	public void setStatusLabelText(String str) {
 		lblStatusText.setText(str);
+	}
+
+	@Override
+	public void publish(GameState gameState) {
+		this.gameState = gameState;
+		if (run)
+			buildGameFrame();
 	}
 }
