@@ -82,9 +82,10 @@ public class GameRules {
         List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
 
         for(int i = 0; i < allBoardLocations.size(); i++) {
-            if(!isLocationEmpty(allBoardLocations.get(i)))
+            if(isLocationEmpty(allBoardLocations.get(i)))
                 if (isLocationValidMoveForCurrentPlayer(state, allBoardLocations.get(i)))
                     return true;
+
         }
 
         return false;

@@ -38,23 +38,23 @@ public class LocationsToFlipCalculation {
     private void parsePartial(List<BoardLocation> partialList){
         int locationIndex = partialList.indexOf(location);
 
-        int backWardsIndex = getBackwardsUpdateIndex(currentPlayer, partialList, locationIndex);
+        int backWardsIndex = getBackwardsUpdateIndex(partialList, locationIndex);
         for(int i = locationIndex - 1; i >= backWardsIndex; i--)
             locations.add(partialList.get(i));
 
-        int forwardIndex = getForwardUpdateIndex(currentPlayer, partialList, locationIndex);
+        int forwardIndex = getForwardUpdateIndex(partialList, locationIndex);
         for(int i = locationIndex + 1; i <= forwardIndex; i++)
             locations.add(partialList.get(i));
     }
 
-    private int getBackwardsUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
+    private int getBackwardsUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
 
             if(GameRules.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if(getOwnerOfPiece(list.get(i).getPiece()) == owner)
+            if(getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
                 return i+1;
         }
 
@@ -62,13 +62,13 @@ public class LocationsToFlipCalculation {
         return startIndex;
     }
 
-    private int getForwardUpdateIndex(Player owner, List<BoardLocation> list, int startIndex){
+    private int getForwardUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex+1; i < list.size(); i++) {
             if (GameRules.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if (getOwnerOfPiece(list.get(i).getPiece()) == owner)
+            if (getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
                 return i-1;
 
         }
