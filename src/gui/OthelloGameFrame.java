@@ -35,7 +35,7 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPlayerPanels();
 		createGameBoardPanel();
-		gameBoardListener = new GameBoardListener(gameBoardPanel, gameState, gh);
+//		gameBoardListener = new GameBoardListener(gameBoardPanel, gameState, gh);
 		contentPane = new JPanel(new BorderLayout());
 		setContentPane(contentPane);
 		lblStatusText = new JLabel("Game started!");

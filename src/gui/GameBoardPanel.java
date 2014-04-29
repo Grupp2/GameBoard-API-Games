@@ -28,15 +28,15 @@ public class GameBoardPanel extends JPanel {
 		String tmpChar = "";
 		int tmpNum = 0;
 		for (int i = 0; i < state.getBoard().getLocations().size(); i++) {
+			if (tmpNum < Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1)))
+				tmpNum = Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1));
+			else 
+				xSize = tmpNum;
 			if (!tmpChar.equals(state.getBoard().getLocations().get(i).getId().substring(0, 1))) {
 				ySize++;
 				tmpChar = state.getBoard().getLocations().get(i).getId().substring(0, 1);
 				tmpNum = 0;
 			}
-			if (tmpNum < Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1)))
-				tmpNum = Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1));
-			else 
-				xSize = tmpNum;
 		}
 	}
 	private void addButtons(GameState state) {
