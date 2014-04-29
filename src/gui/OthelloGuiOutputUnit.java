@@ -14,11 +14,7 @@ public class OthelloGuiOutputUnit implements OutputUnit
 	@Override
 	public void publish(GameState state) {
 		frame.notifyOfPublish(state);
-		if (run) {
-			frame.buildGameFrame();
-			run = false;
-		}
-		frame.placeGamePieces();
+		
 			
 		
 	}
