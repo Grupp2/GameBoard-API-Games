@@ -18,9 +18,9 @@ public class State {
 
     private Player currentPlayer;
 
-    private List<UndoableAction> actions;
+    private List<UndoableAction> undoableActionsStack;
 
-    private int currentActionIndex;
+    private int lastExecutedActionIndex;
 
 
     public List<Player> getPlayers() {
@@ -68,44 +68,44 @@ public class State {
     }
 
 
-    public void setActions(List<UndoableAction> actions){
-        this.actions = actions;
+    public void setUndoableActionsStack(List<UndoableAction> undoableActionsStack){
+        this.undoableActionsStack = undoableActionsStack;
     }
 
-    public List<UndoableAction> getActions(){
-        return actions;
-    }
-
-
-    public void setCurrentActionIndex(int currentActionIndex){
-        this.currentActionIndex = currentActionIndex;
-    }
-
-    public int getCurrentActionIndex(){
-        return currentActionIndex;
+    public List<UndoableAction> getUndoableActionsStack(){
+        return undoableActionsStack;
     }
 
 
-    public void pushAction(UndoableAction action){
-        for(int i = actions.size(); i > 1+currentActionIndex; i--){
-            actions.remove(i);
+    public void setLastExecutedActionIndex(int lastExecutedActionIndex){
+        this.lastExecutedActionIndex = lastExecutedActionIndex;
+    }
+
+    public int getLastExecutedActionIndex(){
+        return lastExecutedActionIndex;
+    }
+
+
+    public void pushActionOnUndoStack(UndoableAction action){
+        for(int i = undoableActionsStack.size(); i > 1+ lastExecutedActionIndex; i--){
+            undoableActionsStack.remove(i);
         }
 
-        actions.add(action);
-        currentActionIndex++;
+        undoableActionsStack.add(action);
+        lastExecutedActionIndex++;
     }
 
     public void undo(){
-        if(currentActionIndex < 0)
-            throw new RuntimeException("No more actions to undo!");
+        if(lastExecutedActionIndex < 0)
+            throw new RuntimeException("No more undoableActionsStack to undo!");
 
-        actions.get(currentActionIndex--).undo();
+        undoableActionsStack.get(lastExecutedActionIndex--).undo();
     }
 
     public void redo(){
-        if(currentActionIndex >= actions.size())
-            throw new RuntimeException("No more actions to redo!");
+        if(lastExecutedActionIndex >= undoableActionsStack.size()-1)
+            throw new RuntimeException("No more undoableActionsStack to redo!");
 
-        actions.get(currentActionIndex++).execute();
+        undoableActionsStack.get(++lastExecutedActionIndex).execute();
     }
 }

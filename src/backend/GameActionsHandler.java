@@ -34,7 +34,7 @@ public class GameActionsHandler {
     public void executeMove(Move move){
         UndoableAction moveAction = new MoveAction(state, move);
         moveAction.execute();
-        state.pushAction(moveAction);
+        state.pushActionOnUndoStack(moveAction);
     }
 
     public void reset(){

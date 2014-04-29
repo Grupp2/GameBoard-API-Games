@@ -1,8 +1,10 @@
 package backend.actions;
 
+import game.impl.BoardLocation;
 import game.impl.Move;
 import backend.util.GameRules;
 import backend.State;
+import game.impl.Player;
 
 public class MoveValidation {
 
@@ -15,27 +17,27 @@ public class MoveValidation {
     }
 
     public boolean execute(){
-        if(move.getPlayer() != state.getCurrentPlayer()){
+        if(!isPlayersTurnToMove()){
             state.setMessage("It's not your turn!");
             return false;
         }
 
-        if(move.getDestination() == null){
+        if(!doesDestinationExist()){
             state.setMessage("Invalid location!");
             return false;
         }
 
-        if(!GameRules.isLocationEmpty(move.getDestination())){
+        if(!isDestinationEmpty()){
             state.setMessage("There is already a piece in that location!");
             return false;
         }
 
-        if(move.getSource() != null){
+        if(isTryingToMovePieceAlreadyPlaced()){
             state.setMessage("You cannot move a piece already placed on the board.");
             return false;
         }
 
-        if(!GameRules.isLocationValidForMove(state, move.getDestination(), move.getPlayer())){
+        if(!isValidOthelloMove()){
             state.setMessage("You have to put your piece at a valid location!");
             return false;
         }
@@ -44,4 +46,23 @@ public class MoveValidation {
         return true;
     }
 
+    private boolean isPlayersTurnToMove(){
+        return move.getPlayer() == state.getCurrentPlayer();
+    }
+
+    private boolean doesDestinationExist(){
+        return move.getDestination() != null;
+    }
+
+    private boolean isDestinationEmpty(){
+        return GameRules.isLocationEmpty(move.getDestination());
+    }
+
+    private boolean isTryingToMovePieceAlreadyPlaced(){
+        return move.getSource() != null;
+    }
+
+    private boolean isValidOthelloMove(){
+        return GameRules.isLocationValidForMove(state, move.getDestination(), move.getPlayer());
+    }
 }

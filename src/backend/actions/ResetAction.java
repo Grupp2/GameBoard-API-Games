@@ -27,14 +27,35 @@ public class ResetAction {
     }
 
     public void execute(){
-        state.setPlayers(factory.createPlayers());
-        state.setBoard(factory.createBoard());
-        state.setCurrentPlayer(state.getPlayers().get(0));
-        state.setActions(new ArrayList<UndoableAction>());
-        state.setCurrentActionIndex(-1);
-        state.setMessage("");
+        resetPlayers();
+        resetBoard();
+        resetTurn();
+        resetActionsStack();
+        resetMessage();
 
         setStartingPositions();
+    }
+
+    private void resetPlayers(){
+        state.setPlayers(factory.createPlayers());
+    }
+
+    private void resetTurn(){
+        state.setCurrentPlayer(state.getPlayers().get(0));
+        state.setLastPlayer(null);
+    }
+
+    private void resetBoard(){
+        state.setBoard(factory.createBoard());
+    }
+
+    private void resetActionsStack(){
+        state.setUndoableActionsStack(new ArrayList<UndoableAction>());
+        state.setLastExecutedActionIndex(-1);
+    }
+
+    private void resetMessage(){
+        state.setMessage("");
     }
 
     private void setStartingPositions(){
