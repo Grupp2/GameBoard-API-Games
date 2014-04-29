@@ -48,7 +48,7 @@ public class OthelloGameFrame extends JFrame {
 	public void buildGameFrame() {
 		createPlayerPanels();
 		createGameBoardPanel();
-//		gameBoardListener = new GameBoardListener(gameBoardPanel, gameState, gh);
+		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
 		contentPane = new JPanel(new BorderLayout());
 		setContentPane(contentPane);
 		lblStatusText = new JLabel("Game started!");
@@ -79,10 +79,6 @@ public class OthelloGameFrame extends JFrame {
 	
 	private void createGameBoardPanel() {
 		gameBoardPanel = new GameBoardPanel(gameState);
-	}
-	
-	public String getLastLocation() {
-		return gameBoardListener.getLastMove();
 	}
 	
 	public void setStatusLabelText(String str) {
