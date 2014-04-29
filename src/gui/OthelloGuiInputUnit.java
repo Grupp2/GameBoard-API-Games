@@ -34,7 +34,6 @@ public class OthelloGuiInputUnit extends InputUnit {
 	@Override
 	public void setup(GameState state) {
 		this.state = state;
-		this.gameFrame = new OthelloGameFrame();
 		this.state.reset();
 	}
 

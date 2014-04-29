@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class OthelloGameFrame extends JFrame implements OutputUnit {
+import backend.OthelloGameState;
+
+public class OthelloGameFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
@@ -25,14 +27,19 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 	private JButton btnPassTurn;
 	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
-	private boolean run = true;
+	private OthelloGuiInputUnit inputUnit;
 	
-	public OthelloGameFrame() {
+	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
+		this.inputUnit = inputUnit;
 		setBounds(1, 1, 675, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
+	public void notifyOfPublish(GameState state) {
+		this.gameState = state;
+	}
 	
-	private void buildGameFrame() {
+	public void buildGameFrame() {
 		createPlayerPanels();
 		createGameBoardPanel();
 //		gameBoardListener = new GameBoardListener(gameBoardPanel, gameState, gh);
@@ -47,7 +54,6 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		contentPane.add(p2Panel, BorderLayout.LINE_END);
 		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
-		this.run = false;
 		this.setVisible(true);
 	}
 	
@@ -76,16 +82,8 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 	public void setStatusLabelText(String str) {
 		lblStatusText.setText(str);
 	}
-
-	@Override
-	public void publish(GameState gameState) {
-		this.gameState = gameState;
-		if (run)
-			buildGameFrame();
-		placeGamePieces();
-	}
 	
-	private void placeGamePieces() {
+	public void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
 				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O"))
