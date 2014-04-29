@@ -6,6 +6,7 @@ import java.awt.Font;
 import game.api.GameState;
 import game.io.OutputUnit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -81,5 +82,17 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 		this.gameState = gameState;
 		if (run)
 			buildGameFrame();
+		placeGamePieces();
+	}
+	
+	private void placeGamePieces() {
+		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
+			if (gameState.getBoard().getLocations().get(i).getId().equals("P1"))
+				((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
+			else if (gameState.getBoard().getLocations().get(i).getId().equals("P2"))
+				((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
+			else
+				((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getBlankBoardPiece()));
+		}
 	}
 }
