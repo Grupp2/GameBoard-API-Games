@@ -1,10 +1,8 @@
 package gui;
 
 import game.api.GameState;
-
 import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
