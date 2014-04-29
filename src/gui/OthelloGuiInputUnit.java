@@ -11,6 +11,7 @@ public class OthelloGuiInputUnit extends InputUnit {
 	private GameState state;
 	private OthelloGameFrame gameFrame;
 	private String input;
+	
 	private Move getNextMove(GameState state) {
 		Move result = null;
 		try {
@@ -34,7 +35,6 @@ public class OthelloGuiInputUnit extends InputUnit {
 	public void setup(GameState state) {
 		this.state = state;
 		this.gameFrame = new OthelloGameFrame();
-		gameFrame.setVisible(true);
 	}
 
 	public void notifyListeners(String inputTileName) {

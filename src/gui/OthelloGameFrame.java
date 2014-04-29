@@ -27,12 +27,11 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 	private boolean run = true;
 	
 	public OthelloGameFrame() {
-		
+		setBounds(1, 1, 675, 600);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	private void buildGameFrame() {
-		setBounds(1, 1, 675, 600);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPlayerPanels();
 		createGameBoardPanel();
 //		gameBoardListener = new GameBoardListener(gameBoardPanel, gameState, gh);
@@ -48,7 +47,7 @@ public class OthelloGameFrame extends JFrame implements OutputUnit {
 		contentPane.add(p2Panel, BorderLayout.LINE_END);
 		contentPane.add(btnPassTurn, BorderLayout.PAGE_END);
 		this.run = false;
-		this.repaint();
+		this.setVisible(true);
 	}
 	
 	public JPanel getGameBoardPanel() {
