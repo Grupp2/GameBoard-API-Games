@@ -3,6 +3,7 @@ package backend;
 import backend.actions.*;
 import backend.undoableactions.MoveAction;
 import backend.undoableactions.TurnIncrementAction;
+import backend.undoableactions.UndoableAction;
 import game.impl.Move;
 import game.impl.Player;
 
@@ -31,7 +32,9 @@ public class ActionHandler {
 
 
     public void executeMove(Move move){
-        new MoveAction(state, move).execute();
+        UndoableAction moveAction = new MoveAction(state, move);
+        moveAction.execute();
+        state.pushAction(moveAction);
     }
 
     public void reset(){

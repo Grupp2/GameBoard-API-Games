@@ -1,6 +1,7 @@
 package backend.actions;
 
 
+import backend.undoableactions.UndoableAction;
 import game.impl.Board;
 import game.impl.GamePiece;
 import game.impl.Player;
@@ -8,6 +9,7 @@ import backend.OthelloGameFactory;
 import backend.State;
 import backend.util.GameRules;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResetAction {
@@ -28,6 +30,8 @@ public class ResetAction {
         state.setPlayers(factory.createPlayers());
         state.setBoard(factory.createBoard());
         state.setCurrentPlayer(state.getPlayers().get(0));
+        state.setActions(new ArrayList<UndoableAction>());
+        state.setCurrentActionIndex(-1);
         state.setMessage("");
 
         setStartingPositions();

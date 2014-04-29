@@ -87,7 +87,7 @@ public class State {
 
 
     public void pushAction(UndoableAction action){
-        for(int i = actions.size(); i > currentActionIndex; i--){
+        for(int i = actions.size(); i > 1+currentActionIndex; i--){
             actions.remove(i);
         }
 
