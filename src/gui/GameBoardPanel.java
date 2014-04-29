@@ -15,6 +15,7 @@ public class GameBoardPanel extends JPanel {
 	private int xSize;
 	private int ySize;
 	private final int BUTTON_SIZE = 75;
+	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
 	public GameBoardPanel(GameState state) {
 		setBounds(1, 1, 600, 600);
@@ -45,7 +46,7 @@ public class GameBoardPanel extends JPanel {
 			JButton btn = new JButton();
 			btn.setName(state.getBoard().getLocations().get(i).getId());
 			btn.setSize(BUTTON_SIZE, BUTTON_SIZE);
-			btn.setBackground(new Color(34, 177, 76, 255));
+			btn.setBackground(backgroundGreen);
 			add(btn);
 		}
 	}

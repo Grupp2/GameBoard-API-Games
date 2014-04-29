@@ -23,6 +23,7 @@ public class OthelloGameFrame extends JFrame {
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean run = true;
+	private Color highlightGreen = new Color(181, 130, 29 ,255);
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
@@ -43,12 +44,12 @@ public class OthelloGameFrame extends JFrame {
 		createGameBoardPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
 		contentPane = new JPanel(new BorderLayout());
-		setContentPane(contentPane);
 		lblStatusText = new JLabel(gameState.getPlayerInTurn().getName());
 		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatusText.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
+		setContentPane(contentPane);
 		this.setVisible(true);
 	}
 	
@@ -77,7 +78,7 @@ public class OthelloGameFrame extends JFrame {
 				else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
 				else
-					gameBoardPanel.getComponent(i).setBackground(new Color(181, 130, 29 ,255));
+					gameBoardPanel.getComponent(i).setBackground(highlightGreen);
 			} 
 		}
 	}
