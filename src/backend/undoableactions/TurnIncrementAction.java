@@ -15,6 +15,7 @@ public class TurnIncrementAction implements UndoableAction{
 
     private Player oldCurrentPlayer;
     private Player oldLastPlayer;
+    private String oldMessage;
 
     public TurnIncrementAction(State state){
         this.state = state;
@@ -25,6 +26,7 @@ public class TurnIncrementAction implements UndoableAction{
 
         oldCurrentPlayer = state.getCurrentPlayer();
         oldLastPlayer = state.getLastPlayer();
+        oldMessage = state.getMessage();
 
         if(!isLastPlayerSet()) {
             List<Player> players = state.getPlayers();
@@ -35,10 +37,14 @@ public class TurnIncrementAction implements UndoableAction{
                 state.setLastPlayer(players.get(0));
         }
 
+        state.setMessage("");
         swapCurrentAndLastPlayer();
 
-        if(!GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state))
+        if(!GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state)){
+            state.setMessage(state.getCurrentPlayer().getName()+" has no valid moves!");
             swapCurrentAndLastPlayer();
+        }
+
 
     }
 
