@@ -15,6 +15,7 @@ public class OthelloContentPanel extends JPanel {
 	private GameState gameState;
 	private JPanel contentPane;
 	private JPanel gameBoardPanel;
+	private JPanel utillityPanel;
 	private JLabel lblStatusText;
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
@@ -23,6 +24,7 @@ public class OthelloContentPanel extends JPanel {
 		this.gameState = gameState;
 		this.inputUnit = inputUnit;
 		createGameBoardPanel();
+		createUtillityPanel();
 	}
 
 	public JPanel getContentPane() {
@@ -47,6 +49,10 @@ public class OthelloContentPanel extends JPanel {
 		this.gameBoardPanel = new GameBoardPanel(gameState);
 	}
 	
+	private void createUtillityPanel() {
+		this.utillityPanel = new OthelloUtillityPanel();
+	}
+	
 	private void createStatusLabel() {
 		lblStatusText = new JLabel();
 		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,5 +62,6 @@ public class OthelloContentPanel extends JPanel {
 	private void populateTheLayout() {
 		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
+		contentPane.add(utillityPanel, BorderLayout.PAGE_END);
 	}
 }
