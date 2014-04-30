@@ -37,14 +37,22 @@ public class OthelloGameFrame extends JFrame {
 
 	public void notifyOfPublish(GameState state) {
 		this.gameState = state;
-		if (createGui) {
-			buildGameFrame2();
-			createGui = false;
+		if (gameState.hasEnded())
+			gameEndedRoutine();
+		else {
+			if (createGui) {
+				buildGameFrame2();
+				createGui = false;
+			}
+			placeGamePieces();
+			lblStatusText.setText(gameState.getPlayerInTurn().getName());
+			if (!gameState.getMessage().equals(""))
+				JOptionPane.showMessageDialog(this, gameState.getMessage());
 		}
-		placeGamePieces();
-		lblStatusText.setText(gameState.getPlayerInTurn().getName());
-		if (!gameState.getMessage().equals(""))
-			JOptionPane.showMessageDialog(this, gameState.getMessage());
+	}
+	
+	private void gameEndedRoutine() {
+		lblStatusText.setText("The winner is: " + gameState.getWinner().getName());
 	}
 	
 	public void buildGameFrame() {
