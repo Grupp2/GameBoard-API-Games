@@ -45,14 +45,23 @@ public class OthelloGameFrame extends JFrame {
 				createGui = false;
 			}
 			placeGamePieces();
-			lblStatusText.setText(gameState.getPlayerInTurn().getName());
+			updateTurnLabel();
 			if (!gameState.getMessage().equals(""))
 				JOptionPane.showMessageDialog(this, gameState.getMessage());
 		}
 	}
 	
+	private void updateTurnLabel() {
+		lblStatusText.setText("player turn");
+		if (gameState.getPlayerInTurn().getName().equals("P1"))
+			lblStatusText.setIcon(new ImageIcon(gh.getPlayer1Piece()));
+		else 
+			lblStatusText.setIcon(new ImageIcon(gh.getPlayer2Piece()));
+	}
+	
 	private void gameEndedRoutine() {
 		lblStatusText.setText("The winner is: " + gameState.getWinner().getName());
+		lblStatusText.setIcon(null);
 	}
 	
 	public void buildGameFrame() {
