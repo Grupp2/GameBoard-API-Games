@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 
 import game.api.GameState;
@@ -19,6 +20,7 @@ public class OthelloContentPanel extends JPanel {
 	private JLabel lblStatusText;
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
+	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
@@ -55,6 +57,8 @@ public class OthelloContentPanel extends JPanel {
 	
 	private void createStatusLabel() {
 		lblStatusText = new JLabel();
+		lblStatusText.setBackground(backgroundGreen);
+		lblStatusText.setOpaque(true);
 		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatusText.setFont(new Font("Tahoma", Font.PLAIN, 20));
 	}
