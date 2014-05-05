@@ -81,7 +81,7 @@ public class OthelloGameState implements GameState{
     }
 
     public boolean canUndo(){
-        return state.getLastExecutedActionIndex() > 0;
+        return state.getLastExecutedActionIndex() > -1;
     }
 
     public void undo(){
