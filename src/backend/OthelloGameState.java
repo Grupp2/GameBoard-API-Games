@@ -79,4 +79,12 @@ public class OthelloGameState implements GameState{
     public void reset() {
         gameActionsHandler.reset();
     }
+
+    public boolean canUndo(){
+        return state.getLastExecutedActionIndex() > 0;
+    }
+
+    public void undo(){
+        state.undo();
+    }
 }
