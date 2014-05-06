@@ -11,9 +11,9 @@ public class UtilityListener {
 
 	private OthelloUtillityPanel utilityPanel;
 	private OthelloGameState gameState;
-	private InputUnit inputUnit;
+	private OthelloGuiInputUnit inputUnit;
 
-	public UtilityListener(OthelloUtillityPanel utilityPanel,GameState gameState, InputUnit inputUnit) {
+	public UtilityListener(OthelloUtillityPanel utilityPanel,GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.utilityPanel = utilityPanel;
 		this.inputUnit = inputUnit;
 		this.gameState = (OthelloGameState) gameState;
@@ -22,7 +22,7 @@ public class UtilityListener {
 
 	private void createButtonListeners() {
 		utilityPanel.getBtnExit().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {System.exit(0);}});
-		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {gameState.reset();}});
+		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {newGame();}});
 		utilityPanel.getBtnLoad().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {System.exit(0);}});
 		utilityPanel.getBtnSave().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {System.exit(0);}});
 		utilityPanel.getBtnRedo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {System.exit(0);}});
@@ -30,6 +30,7 @@ public class UtilityListener {
 	}
 	private void newGame(){
 		gameState.reset();
+		inputUnit.notifyListeners("republish");
 		
 	}
 

@@ -16,7 +16,7 @@ public class OthelloUtillityPanel extends JPanel {
 	private JButton btnNew;
 	private JButton btnExit;
 
-	public OthelloUtillityPanel(OthelloGameState gameState, InputUnit inputUnit) {
+	public OthelloUtillityPanel(OthelloGameState gameState, OthelloGuiInputUnit inputUnit) {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();
