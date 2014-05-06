@@ -29,6 +29,7 @@ public class UtilityListener {
 		utilityPanel.getBtnUndo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {System.exit(0);}});
 	}
 	private void newGame(){
+		gameState.reset();
 		inputUnit.notifyListeners("republish");
 		
 	}

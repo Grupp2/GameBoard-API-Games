@@ -105,7 +105,9 @@ public class OthelloGameFrame extends JFrame {
 					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
 				} else
 					gameBoardPanel.getComponent(i).setBackground(highlightGreen);
-			} 
+			} else{
+				((JButton)gameBoardPanel.getComponent(i)).setIcon(null);
+			}
 		}
 	}
 	
