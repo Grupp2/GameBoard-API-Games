@@ -17,7 +17,7 @@ public class OthelloUtillityPanel extends JPanel {
 		createButtons();
 		addButtonsToPanel();
 	}
-	
+
 	private void createButtons() {
 		btnExit = new JButton("Exit Game");
 		btnLoad = new JButton("Load Game");
@@ -26,7 +26,7 @@ public class OthelloUtillityPanel extends JPanel {
 		btnSave = new JButton("Save Game");
 		btnUndo = new JButton("Undo Move");
 	}
-	
+
 	private void addButtonsToPanel() {
 		add(btnUndo);
 		add(btnRedo);
@@ -35,8 +35,8 @@ public class OthelloUtillityPanel extends JPanel {
 		add(btnNew);
 		add(btnExit);
 	}
-	
-	public JPanel getUtillityPanel(){
+
+	public JPanel getUtillityPanel() {
 		return this;
 	}
 }
