@@ -2,9 +2,7 @@ package backend.undoableactions;
 
 
 import backend.State;
-import backend.actions.LocationsToFlipCalculation;
 import backend.util.GameRules;
-import game.impl.BoardLocation;
 import game.impl.Player;
 
 import java.util.List;

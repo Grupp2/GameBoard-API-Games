@@ -1,4 +1,4 @@
-package backend.actions;
+package backend.actionhelpers;
 
 
 import backend.State;
@@ -26,7 +26,7 @@ public class LocationsToFlipCalculation {
         boardParser = new BoardParser(state.getBoard(), location);
     }
 
-    public List<BoardLocation> execute(){
+    public List<BoardLocation> getLocationsToFlip(){
         parsePartial(boardParser.getRow());
         parsePartial(boardParser.getColumn());
         parsePartial(boardParser.getLeftToRightDiagonal());

@@ -1,6 +1,6 @@
 package backend.undoableactions;
 
-import backend.actions.LocationsToFlipCalculation;
+import backend.actionhelpers.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
@@ -26,18 +26,18 @@ public class BoardUpdateAction implements UndoableAction {
 
     @Override
     public void execute(){
-        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).execute();
+        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state, location, state.getCurrentPlayer()).getLocationsToFlip();
 
         for(int i = 0; i < locationsToFlip.size(); i++){
             changeOwnerOfPieceAtLocation(locationsToFlip.get(i));
-            locationsFlipped.add(location);
+            locationsFlipped.add(locationsToFlip.get(i));
         }
 
     }
 
     @Override
     public void undo() {
-        for(int i = locationsFlipped.size(); i>= 0; i--) {
+        for(int i = locationsFlipped.size()-1; i > -1; i--) {
             changeOwnerOfPieceAtLocation(locationsFlipped.get(i));
             locationsFlipped.remove(i);
         }

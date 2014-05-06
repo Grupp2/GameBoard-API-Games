@@ -1,64 +1,54 @@
-package backend.actions;
-
+package backend.actionhelpers;
 
 import backend.undoableactions.UndoableAction;
+import backend.OthelloGameFactory;
+import backend.State;
+
+import backend.util.GameRules;
 import game.impl.Board;
 import game.impl.GamePiece;
 import game.impl.Player;
-import backend.OthelloGameFactory;
-import backend.State;
-import backend.util.GameRules;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResetAction {
+public class ResetHelper {
 
     private State state;
     private OthelloGameFactory factory;
 
-    public ResetAction(State state, OthelloGameFactory factory){
+    public ResetHelper(State state, OthelloGameFactory factory){
         this.state = state;
         this.factory = factory;
     }
 
-    public ResetAction(State state){
+    public ResetHelper(State state){
         this(state, new OthelloGameFactory());
     }
 
-    public void execute(){
-        resetPlayers();
-        resetBoard();
-        resetTurn();
-        resetActionsStack();
-        resetMessage();
-
-        setStartingPositions();
-    }
-
-    private void resetPlayers(){
+    public void resetPlayers(){
         state.setPlayers(factory.createPlayers());
     }
 
-    private void resetTurn(){
+    public void resetTurn(){
         state.setCurrentPlayer(state.getPlayers().get(0));
         state.setLastPlayer(null);
     }
 
-    private void resetBoard(){
+    public void resetBoard(){
         state.setBoard(factory.createBoard());
     }
 
-    private void resetActionsStack(){
+    public void resetActionsStack(){
         state.setUndoableActionsStack(new ArrayList<UndoableAction>());
         state.setLastExecutedActionIndex(-1);
     }
 
-    private void resetMessage(){
+    public void resetMessage(){
         state.setMessage("");
     }
 
-    private void setStartingPositions(){
+    public void setStartingPositions(){
 
         List<Player> players = state.getPlayers();
         Board gameBoard = state.getBoard();
