@@ -1,12 +1,9 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
-
 import game.api.GameState;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +26,6 @@ public class OthelloGameFrame extends JFrame {
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
 		setBounds(1, 1, 625, 600);
-		setMinimumSize(new Dimension(625, 600));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
