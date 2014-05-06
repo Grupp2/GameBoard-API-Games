@@ -1,38 +1,61 @@
 package backend;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
+import org.mockito.asm.tree.IntInsnNode;
+
+import backend.util.PropertiesReaderWriter;
 import game.api.GameState;
-import game.impl.BoardLocation;
+
 
 public class CoordinateTranslator {
 	private GameState gameState;
-	private List<String> guiNames;
-	private List<String> locationNames;
-
+	private PropertiesReaderWriter propIO;
+	private String columnDataType;
+	private String rowDataType;
+	private String isLinear;
+	private boolean initialized = false;
+	private ArrayList<Character> letterRange;
+	
 	public CoordinateTranslator(GameState gameState) {
 		this.gameState = gameState;
-		this.guiNames = new ArrayList<String>(gameState.getBoard().getLocations().size());
-		this.locationNames = new ArrayList<String>(gameState.getBoard().getLocations().size());
-		loadLocationNamesList();
+		propIO = new PropertiesReaderWriter();
+		letterRange = new ArrayList<>();
+		for (int i = 65; i <= 90; i++)
+		    letterRange.add((char) i);
+		
 	}
 	
-	private void loadLocationNamesList() {
-		for (BoardLocation bl : gameState.getBoard().getLocations())
-			locationNames.add(bl.getId());
+	private void InitializePropertyValues() {
+	    Properties prop = propIO.getCoordinatePropertyValues();
+	    columnDataType = prop.getProperty("columnDataType");
+	    rowDataType = prop.getProperty("rowDataType");
+	    isLinear = prop.getProperty("isLinear");
 	}
 	
-	public String getTranslatedGuiName(String locationName) {
-		int locationNamePositionInList = -1;
-		String result = "";
-		for (int i = 0; i < locationNames.size();i++)
-			if (locationNames.get(i).equals(locationName)){
-				locationNamePositionInList = i;
-				break;
-			}
-		if (locationNamePositionInList != -1)
-			result = guiNames.get(locationNamePositionInList);
-		return result;
+	public String translateFromGame(String input) {
+	    if (!initialized)
+		InitializePropertyValues();
+	    
+	    return input;
+	    
 	}
+	
+	public String translateFromGui(String input) {
+	    if (!initialized)
+		InitializePropertyValues();
+	    Character firstPart = input.charAt(0);
+	    String secondPart = input.substring(1, 2);
+	    String output = "";
+	    
+	  
+	    
+	    return input;
+	}
+	
+
+	
 }
