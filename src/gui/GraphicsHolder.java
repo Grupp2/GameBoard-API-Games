@@ -1,8 +1,10 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 
 public class GraphicsHolder {
@@ -16,6 +18,7 @@ public class GraphicsHolder {
 	private BufferedImage player2PieceAlternate;
 	private BufferedImage player2UndeployedPiece;
 	private BufferedImage player2UndeployedPieceAlternate;
+	private ImageResize imageResizer = new ImageResize();
 	
 	public GraphicsHolder() {
 		loadPictures();
@@ -46,9 +49,13 @@ public class GraphicsHolder {
 	public BufferedImage getBlankBoardPieceAlternate() {
 		return blankBoardPieceAlternate;
 	}
-
+	
 	public BufferedImage getPlayer1Piece() {
 		return player1Piece;
+	}
+
+	public BufferedImage getPlayer1Piece(Dimension dimension) {
+		return imageResizer.resizeImage(player1Piece, dimension);
 	}
 
 	public BufferedImage getPlayer1PieceAlternate() {
@@ -62,9 +69,13 @@ public class GraphicsHolder {
 	public BufferedImage getPlayer1UndeployedPieceAlternate() {
 		return player1UndeployedPieceAlternate;
 	}
-
+	
 	public BufferedImage getPlayer2Piece() {
 		return player2Piece;
+	}
+
+	public BufferedImage getPlayer2Piece(Dimension dimension) {
+		return imageResizer.resizeImage(player2Piece, dimension);
 	}
 
 	public BufferedImage getPlayer2PieceAlternate() {

@@ -1,9 +1,5 @@
 package gui;
 
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -38,21 +34,6 @@ public class OthelloUtillityPanel extends JPanel {
 		add(btnSave);
 		add(btnNew);
 		add(btnExit);
-	}
-
-	public void changeImage(BufferedImage bImage) {
-		btnUndo.setIcon(new ImageIcon(bImage));
-	}
-
-	public int readButtonMinSize() {
-		int result = 0;
-		Dimension d = btnUndo.getSize();
-		result = d.height;
-		if (d.width < result)
-			result = d.width;
-
-		return result;
-
 	}
 
 	public JPanel getUtillityPanel() {

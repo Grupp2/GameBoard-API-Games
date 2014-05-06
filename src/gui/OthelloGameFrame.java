@@ -3,10 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-
 import game.api.GameState;
-import game.io.OutputUnit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -105,10 +100,10 @@ public class OthelloGameFrame extends JFrame {
 	public void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
-				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O"))
-					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece()));
-				else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
-					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece()));
+				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O")) {
+					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
+				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
+					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
 				else
 					gameBoardPanel.getComponent(i).setBackground(highlightGreen);
 			} 
