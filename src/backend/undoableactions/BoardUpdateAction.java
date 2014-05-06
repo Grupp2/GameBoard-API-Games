@@ -1,6 +1,6 @@
 package backend.undoableactions;
 
-import backend.actionhelpers.LocationsToFlipCalculation;
+import backend.util.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;

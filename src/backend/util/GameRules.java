@@ -1,7 +1,6 @@
 package backend.util;
 
 import backend.State;
-import backend.actionhelpers.LocationsToFlipCalculation;
 import game.impl.*;
 
 import java.util.List;

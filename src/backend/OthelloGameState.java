@@ -1,6 +1,5 @@
 package backend;
 
-
 import game.api.GameState;
 import game.impl.Board;
 import game.impl.DieRollFactory;

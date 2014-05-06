@@ -1,5 +1,6 @@
 package backend.actionhelpers;
 
+import backend.util.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
 import game.impl.Move;
 import backend.State;
@@ -37,8 +38,7 @@ public class MoveValidator {
     }
 
     public boolean isValidOthelloMove(){
-        List<BoardLocation> locations = new LocationsToFlipCalculation(state, move.getDestination(), move.getPlayer()).getLocationsToFlip();
-
-        return locations.size() > 0;
+        MoveHelper moveHelper = new MoveHelper(state);
+        return moveHelper.isLocationValidOthelloMoveForPlayer(move.getDestination(), state.getCurrentPlayer());
     }
 }
