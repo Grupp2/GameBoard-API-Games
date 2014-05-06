@@ -1,28 +1,19 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.HierarchyBoundsAdapter;
-import java.awt.event.HierarchyBoundsListener;
 import java.awt.event.HierarchyEvent;
-
 import game.api.GameState;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
-	private JPanel contentPane;
 	private JPanel gameBoardPanel;
 	private JLabel lblStatusText;
 	private GameBoardListener gameBoardListener;
@@ -92,11 +83,6 @@ public class OthelloGameFrame extends JFrame {
 	
 	public void setGameBoardPanel(JPanel gameBoardPanel) {
 		this.gameBoardPanel = gameBoardPanel;
-	}
-
-	
-	private void createGameBoardPanel() {
-		gameBoardPanel = new GameBoardPanel(gameState);
 	}
 	
 	public void setStatusLabelText(String str) {
