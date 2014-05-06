@@ -1,4 +1,4 @@
-package gui;
+package backend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.List;
 import game.api.GameState;
 import game.impl.BoardLocation;
 
-public class GameStateToGuiTranslator {
+public class CoordinateTranslator {
 	private GameState gameState;
 	private List<String> guiNames;
 	private List<String> locationNames;
 
-	public GameStateToGuiTranslator(GameState gameState) {
+	public CoordinateTranslator(GameState gameState) {
 		this.gameState = gameState;
 		this.guiNames = new ArrayList<String>(gameState.getBoard().getLocations().size());
 		this.locationNames = new ArrayList<String>(gameState.getBoard().getLocations().size());

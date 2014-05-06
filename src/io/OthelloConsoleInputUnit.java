@@ -27,7 +27,10 @@ public class OthelloConsoleInputUnit extends InputUnit {
 			String input = inputSourceReader.readLine().replaceAll("\\s", "")
 					.toUpperCase();
 			if (input.equals("UNDO")) {
-				
+				if (((OthelloGameState) state).canUndo())
+					((OthelloGameState) state).undo();
+				else
+					System.out.println("Cannot undo move.");
 
 			} else {
 				result = new Move(state.getPlayerInTurn(), new GamePiece(
