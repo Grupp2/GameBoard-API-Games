@@ -25,6 +25,7 @@ public class OthelloGameFrame extends JFrame {
 	private Color highlightGreen = new Color(181, 130, 29 ,255);
 	private final String player1gamePiece = "O";
 	private final String player2gamePiece = "X";
+	private final String player1Name = "P1";
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
@@ -50,7 +51,7 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void updateTurnLabel() {
-		if (gameState.getPlayerInTurn().getName().equals("P1")) {
+		if (gameState.getPlayerInTurn().getName().equals(player1Name)) {
 			lblStatusText.setText("player 1 turn");
 			lblStatusText.setIcon(new ImageIcon(gh.getPlayer1Piece()));
 		} else {
