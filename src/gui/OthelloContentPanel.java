@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import backend.OthelloGameState;
+
 public class OthelloContentPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -52,7 +54,7 @@ public class OthelloContentPanel extends JPanel {
 	}
 	
 	private void createUtillityPanel() {
-		this.utillityPanel = new OthelloUtillityPanel();
+		this.utillityPanel = new OthelloUtillityPanel((OthelloGameState)gameState);
 	}
 	
 	private void createStatusLabel() {
