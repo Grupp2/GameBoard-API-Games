@@ -43,7 +43,7 @@ public class OthelloGameFrame extends JFrame {
 			gameEndedRoutine();
 		else {
 			if (createGui) {
-				buildGameFrame2();
+				buildGameFrame();
 				createGui = false;
 			}
 			placeGamePieces();
@@ -69,19 +69,6 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	public void buildGameFrame() {
-		createGameBoardPanel();
-		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
-		contentPane = new JPanel(new BorderLayout());
-		lblStatusText = new JLabel(gameState.getPlayerInTurn().getName());
-		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStatusText.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
-		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
-		setContentPane(contentPane);
-		this.setVisible(true);
-	}
-	
-	public void buildGameFrame2() {
 		OthelloContentPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
 		setContentPane(contentPane.getContentPane());
 		this.gameBoardPanel = contentPane.getGameBoardPanel();
