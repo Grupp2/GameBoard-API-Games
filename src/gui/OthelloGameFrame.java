@@ -20,6 +20,8 @@ public class OthelloGameFrame extends JFrame {
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
 	private Color highlightGreen = new Color(181, 130, 29 ,255);
+	private final String player1gamePiece = "O";
+	private final String player2gamePiece = "X";
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
@@ -91,10 +93,10 @@ public class OthelloGameFrame extends JFrame {
 	public void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
-				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O")) {
+				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player1gamePiece)) {
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
 					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
-				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X")) {
+				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player2gamePiece)) {
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
 					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
 				} else
