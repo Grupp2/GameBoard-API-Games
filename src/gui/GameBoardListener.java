@@ -9,9 +9,14 @@ import javax.swing.JPanel;
 public class GameBoardListener {
 	private JButton currentButton;
 	private OthelloGuiInputUnit inputUnit;
+	private JPanel gameBoard;
 
 	public GameBoardListener(JPanel gameBoard, OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
+		this.gameBoard = gameBoard;
+	}
+	
+	public void addButtonListeners() {
 		for (Component ctrl : gameBoard.getComponents())
 			if (ctrl instanceof JButton) {
 				JButton btn = (JButton) ctrl;

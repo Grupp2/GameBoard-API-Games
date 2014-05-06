@@ -33,6 +33,7 @@ public class OthelloContentPanel extends JPanel {
 
 	public JPanel getContentPane() {
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
+		gameBoardListener.addButtonListeners();
 		contentPane = new JPanel(new BorderLayout());
 		createStatusLabel();
 		populateTheLayout();
