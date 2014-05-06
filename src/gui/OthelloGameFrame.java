@@ -3,7 +3,14 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.HierarchyBoundsAdapter;
+import java.awt.event.HierarchyBoundsListener;
+import java.awt.event.HierarchyEvent;
+
 import game.api.GameState;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -77,7 +84,17 @@ public class OthelloGameFrame extends JFrame {
 		setContentPane(contentPane.getContentPane());
 		this.gameBoardPanel = contentPane.getGameBoardPanel();
 		this.lblStatusText = contentPane.getStatusTextLabel();
+		addFrameListener();
 		this.setVisible(true);
+	}
+	
+	private void addFrameListener() {
+		this.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){
+			@Override
+            public void ancestorResized(HierarchyEvent e) {
+            	placeGamePieces();
+            }           
+		});
 	}
 	
 	public JPanel getGameBoardPanel() {
@@ -109,4 +126,6 @@ public class OthelloGameFrame extends JFrame {
 			} 
 		}
 	}
+	
+	
 }
