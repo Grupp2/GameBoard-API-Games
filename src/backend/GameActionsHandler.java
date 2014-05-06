@@ -1,10 +1,10 @@
 package backend;
 
+import backend.actionhelpers.MoveValidationHelper;
 import backend.actionhelpers.WinnerCalculationHelper;
 import backend.undoableactions.MoveAction;
 import backend.undoableactions.UndoableAction;
 import backend.actionhelpers.GameoverCheckHelper;
-import backend.actionhelpers.MoveValidator;
 import backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
@@ -40,34 +40,34 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move){
-        MoveValidator moveValidator = new MoveValidator(state, move);
+        MoveValidationHelper moveValidationHelper = new MoveValidationHelper(state, move);
 
-        if(moveValidator.isRequestForRepublish()){
+        if(moveValidationHelper.isRequestForRepublish()){
             state.setMessage("");
             return false;
         }
 
-        if(!moveValidator.isPlayersTurnToMove()){
+        if(!moveValidationHelper.isPlayersTurnToMove()){
             state.setMessage("It's not your turn!");
             return false;
         }
 
-        if(!moveValidator.doesDestinationExist()){
+        if(!moveValidationHelper.doesDestinationExist()){
             state.setMessage("Invalid location!");
             return false;
         }
 
-        if(!moveValidator.isDestinationEmpty()){
+        if(!moveValidationHelper.isDestinationEmpty()){
             state.setMessage("There is already a piece in that location!");
             return false;
         }
 
-        if(moveValidator.isTryingToMovePieceAlreadyPlaced()){
+        if(moveValidationHelper.isTryingToMovePieceAlreadyPlaced()){
             state.setMessage("You cannot move a piece already placed on the board.");
             return false;
         }
 
-        if(!moveValidator.isValidOthelloMove()){
+        if(!moveValidationHelper.isValidOthelloMove()){
             state.setMessage("You have to put your piece at a valid location!");
             return false;
         }

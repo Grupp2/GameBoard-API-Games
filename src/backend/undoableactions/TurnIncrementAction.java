@@ -2,6 +2,7 @@ package backend.undoableactions;
 
 
 import backend.State;
+import backend.actionhelpers.MoveHelper;
 import backend.util.GameRules;
 import game.impl.Player;
 
@@ -38,7 +39,9 @@ public class TurnIncrementAction implements UndoableAction{
         state.setMessage("");
         swapCurrentAndLastPlayer();
 
-        if(!GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state)){
+        MoveHelper moveHelper= new MoveHelper(state);
+
+        if(!moveHelper.doesPlayerHaveAnyValidMoves(state.getCurrentPlayer())){
             state.setMessage(state.getCurrentPlayer().getName()+" has no valid moves!");
             swapCurrentAndLastPlayer();
         }
@@ -54,7 +57,6 @@ public class TurnIncrementAction implements UndoableAction{
     public String getName(){
         return "Change of Turn";
     }
-
 
     private boolean isLastPlayerSet(){
         return state.getLastPlayer() != null;

@@ -1,7 +1,6 @@
 package backend.actionhelpers;
 
 import backend.State;
-import backend.util.GameRules;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Move;
@@ -44,7 +43,7 @@ public class GameoverCheckHelper {
 
     private boolean isLocationValidMoveForCurrentPlayer(State state, BoardLocation location){
         Move move = new Move(state.getCurrentPlayer(), new GamePiece(""), location);
-        MoveValidator validator = new MoveValidator(state, move);
+        MoveValidationHelper validator = new MoveValidationHelper(state, move);
 
         return validator.isDestinationEmpty() && validator.isValidOthelloMove();
     }

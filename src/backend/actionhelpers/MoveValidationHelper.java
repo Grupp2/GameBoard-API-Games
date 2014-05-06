@@ -7,12 +7,12 @@ import backend.State;
 
 import java.util.List;
 
-public class MoveValidator {
+public class MoveValidationHelper {
 
     private State state;
     private Move move;
 
-    public MoveValidator(State state, Move move){
+    public MoveValidationHelper(State state, Move move){
         this.state = state;
         this.move = move;
     }

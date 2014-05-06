@@ -38,7 +38,7 @@ public class MoveHelper {
     }
 
     private boolean isLocationEmpty(BoardLocation location){
-        return location == null;
+        return location.getPiece() == null;
     }
 
 }
