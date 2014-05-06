@@ -13,7 +13,7 @@ public class OthelloGuiInputUnit extends InputUnit {
 	private String input;
 	
 	private Move getNextMove(GameState state) {
-        if(input.toLowerCase().equals("undo"))
+        if(input.toLowerCase().equals("republish"))
             return null;
 
 		Move result = null;
