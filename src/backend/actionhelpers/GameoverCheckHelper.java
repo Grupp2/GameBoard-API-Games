@@ -2,6 +2,11 @@ package backend.actionhelpers;
 
 import backend.State;
 import backend.util.GameRules;
+import game.impl.BoardLocation;
+import game.impl.GamePiece;
+import game.impl.Move;
+
+import java.util.List;
 
 public class GameoverCheckHelper {
 
@@ -26,6 +31,21 @@ public class GameoverCheckHelper {
     }
 
     public boolean isCurrentPlayerOutOfValidMoves(){
-        return !GameRules.doesCurrentPlayerHaveAnyValidMovesLeft(state);
+        List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
+
+        for(int i = 0; i < allBoardLocations.size(); i++) {
+            if(isLocationValidMoveForCurrentPlayer(state, allBoardLocations.get(i)))
+                return false;
+
+        }
+
+        return true;
+    }
+
+    private boolean isLocationValidMoveForCurrentPlayer(State state, BoardLocation location){
+        Move move = new Move(state.getCurrentPlayer(), new GamePiece(""), location);
+        MoveValidator validator = new MoveValidator(state, move);
+
+        return validator.isDestinationEmpty() && validator.isValidOthelloMove();
     }
 }

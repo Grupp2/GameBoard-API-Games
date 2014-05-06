@@ -11,9 +11,6 @@ public class WinnerCalculationHelper {
         this.state = state;
     }
 
-    private int getPlayerScore(Player player){
-        return player.getPieces().size();
-    }
 
     public Player getWinner(){
         int playerOneScore = getPlayerScore(state.getPlayers().get(0));
@@ -21,9 +18,15 @@ public class WinnerCalculationHelper {
 
         if(playerOneScore > playerTwoScore)
             return state.getPlayers().get(0);
+
         else if(playerOneScore < playerTwoScore)
             return state.getPlayers().get(1);
 
         return null;
     }
+
+    private int getPlayerScore(Player player){
+        return player.getPieces().size();
+    }
+
 }

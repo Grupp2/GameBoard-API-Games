@@ -1,6 +1,5 @@
 package backend.actionhelpers;
 
-
 import backend.State;
 import backend.util.BoardParser;
 import backend.util.GameRules;
@@ -16,15 +15,23 @@ public class LocationsToFlipCalculation {
     private State state;
     private BoardLocation location;
     private Player currentPlayer;
-    private List<BoardLocation> locations = new ArrayList<BoardLocation>();
+
     private BoardParser boardParser;
 
-    public LocationsToFlipCalculation(State state, BoardLocation location, Player currentPlayer){
+    private List<BoardLocation> locations = new ArrayList<BoardLocation>();
+
+    public LocationsToFlipCalculation(State state, BoardLocation location, Player currentPlayer, BoardParser boardParser){
         this.state = state;
         this.location = location;
         this.currentPlayer = currentPlayer;
-        boardParser = new BoardParser(state.getBoard(), location);
+        this.boardParser = boardParser;
     }
+
+    public LocationsToFlipCalculation(State state, BoardLocation location, Player currentPlayer){
+        this(state, location, currentPlayer, new BoardParser(state.getBoard(), location));
+    }
+
+
 
     public List<BoardLocation> getLocationsToFlip(){
         parsePartial(boardParser.getRow());
@@ -50,7 +57,6 @@ public class LocationsToFlipCalculation {
     private int getBackwardsUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
-
             if(GameRules.isLocationEmpty(list.get(i)))
                 return startIndex;
 

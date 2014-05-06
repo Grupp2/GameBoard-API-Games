@@ -21,51 +21,6 @@ public class GameRules {
         return location == null || location.getPiece() == null;
     }
 
-    public static boolean isLocationNextToPiece(Board board, BoardLocation location){
-        char row = location.getId().charAt(0);
-        char col = location.getId().charAt(1);
-        String id;
-
-        BoardLocation tmp;
-        for(int i = -1; i <= 1; i++){
-
-            id = ""+(char)(row+1)+(char)(col+i);
-
-            tmp = getLocationById(board, id);
-            if(tmp != null)
-                if(!isLocationEmpty(tmp))
-                    return true;
-
-
-
-            id = ""+(char)(row-1)+(char)(col+i);
-
-            tmp = getLocationById(board, id);
-            if(tmp != null)
-                if(!isLocationEmpty(tmp))
-                    return true;
-
-
-        }
-
-        tmp = getLocationById(board, ""+(row)+(char)(col-1));
-        if(tmp != null && !isLocationEmpty(tmp))
-            return true;
-
-        tmp = getLocationById(board, ""+(row)+(char)(col+1));
-        if(tmp != null && !isLocationEmpty(tmp))
-            return true;
-
-        return false;
-    }
-
-
-    public static boolean isLocationValidForMove(State state, BoardLocation location, Player playerToMove){
-        List<BoardLocation> locations = new LocationsToFlipCalculation(state, location, playerToMove).getLocationsToFlip();
-
-        return locations.size() > 0;
-    }
-
     public static BoardLocation getLocationById(Board board, String id){
         List<BoardLocation> locations = board.getLocations();
 
@@ -75,7 +30,6 @@ public class GameRules {
 
         return null;
     }
-
 
     public static boolean doesCurrentPlayerHaveAnyValidMovesLeft(State state){
 

@@ -26,6 +26,7 @@ public class ResetHelper {
         this(state, new OthelloGameFactory());
     }
 
+
     public void resetPlayers(){
         state.setPlayers(factory.createPlayers());
     }

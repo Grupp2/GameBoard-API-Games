@@ -2,9 +2,9 @@ package backend.actionhelpers;
 
 import game.impl.BoardLocation;
 import game.impl.Move;
-import backend.util.GameRules;
 import backend.State;
-import game.impl.Player;
+
+import java.util.List;
 
 public class MoveValidator {
 
@@ -29,7 +29,7 @@ public class MoveValidator {
     }
 
     public boolean isDestinationEmpty(){
-        return GameRules.isLocationEmpty(move.getDestination());
+        return move.getDestination().getPiece() == null;
     }
 
     public boolean isTryingToMovePieceAlreadyPlaced(){
@@ -37,6 +37,8 @@ public class MoveValidator {
     }
 
     public boolean isValidOthelloMove(){
-        return GameRules.isLocationValidForMove(state, move.getDestination(), move.getPlayer());
+        List<BoardLocation> locations = new LocationsToFlipCalculation(state, move.getDestination(), move.getPlayer()).getLocationsToFlip();
+
+        return locations.size() > 0;
     }
 }
