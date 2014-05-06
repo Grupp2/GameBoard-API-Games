@@ -85,6 +85,6 @@ public class OthelloGameState implements GameState{
     }
 
     public void undo(){
-        state.undo();
+        gameActionsHandler.undo();
     }
 }

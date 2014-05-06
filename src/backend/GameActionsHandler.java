@@ -42,7 +42,7 @@ public class GameActionsHandler {
     public boolean validateMove(Move move){
         MoveValidator moveValidator = new MoveValidator(state, move);
 
-        if(moveValidator.isMoveNull()){
+        if(moveValidator.isRequestForRepublish()){
             state.setMessage("");
             return false;
         }
@@ -80,6 +80,24 @@ public class GameActionsHandler {
         UndoableAction moveAction = new MoveAction(state, move);
         moveAction.execute();
         state.pushActionOnUndoStack(moveAction);
+    }
+
+    public void undo(){
+        if(state.getLastExecutedActionIndex() < 0)
+            throw new RuntimeException("No more undoableActionsStack to undo!");
+
+        state.getUndoableActionsStack().get(state.getLastExecutedActionIndex()).undo();
+
+        state.setLastExecutedActionIndex(state.getLastExecutedActionIndex()-1);
+    }
+
+    public void redo(){
+        if(state.getLastExecutedActionIndex() >= state.getUndoableActionsStack().size()-1)
+            throw new RuntimeException("No more undoableActionsStack to redo!");
+
+        state.setLastExecutedActionIndex(state.getLastExecutedActionIndex()+1);
+
+        state.getUndoableActionsStack().get(state.getLastExecutedActionIndex()).execute();
     }
 
     public void reset(){

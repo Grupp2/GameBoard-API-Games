@@ -87,25 +87,10 @@ public class State {
 
 
     public void pushActionOnUndoStack(UndoableAction action){
-        for(int i = undoableActionsStack.size()-1; i > lastExecutedActionIndex; i--){
+        for(int i = undoableActionsStack.size()-1; i > lastExecutedActionIndex; i--)
             undoableActionsStack.remove(i);
-        }
 
         undoableActionsStack.add(action);
         lastExecutedActionIndex++;
-    }
-
-    public void undo(){
-        if(lastExecutedActionIndex < 0)
-            throw new RuntimeException("No more undoableActionsStack to undo!");
-
-        undoableActionsStack.get(lastExecutedActionIndex--).undo();
-    }
-
-    public void redo(){
-        if(lastExecutedActionIndex >= undoableActionsStack.size()-1)
-            throw new RuntimeException("No more undoableActionsStack to redo!");
-
-        undoableActionsStack.get(++lastExecutedActionIndex).execute();
     }
 }

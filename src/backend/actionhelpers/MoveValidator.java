@@ -16,7 +16,7 @@ public class MoveValidator {
         this.move = move;
     }
 
-    public boolean isMoveNull(){
+    public boolean isRequestForRepublish(){
         return move == null;
     }
 
