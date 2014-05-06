@@ -39,4 +39,28 @@ public class OthelloUtillityPanel extends JPanel {
 	public JPanel getUtillityPanel() {
 		return this;
 	}
+	
+	public JButton getBtnUndo() {
+		return btnUndo;
+	}
+
+	public JButton getBtnRedo() {
+		return btnRedo;
+	}
+
+	public JButton getBtnLoad() {
+		return btnLoad;
+	}
+
+	public JButton getBtnSave() {
+		return btnSave;
+	}
+
+	public JButton getBtnNew() {
+		return btnNew;
+	}
+
+	public JButton getBtnExit() {
+		return btnExit;
+	}
 }
