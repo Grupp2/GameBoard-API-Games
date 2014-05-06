@@ -16,7 +16,6 @@ public class OthelloGameFrame extends JFrame {
 	private GameState gameState;
 	private JPanel gameBoardPanel;
 	private JLabel lblStatusText;
-	private GameBoardListener gameBoardListener;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
