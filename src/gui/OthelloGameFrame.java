@@ -24,7 +24,7 @@ public class OthelloGameFrame extends JFrame {
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
-		setBounds(1, 1, 605, 600);
+		setBounds(1, 1, 625, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -94,9 +94,11 @@ public class OthelloGameFrame extends JFrame {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
 				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("O")) {
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
-				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X"))
+					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
+				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals("X")) {
 					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
-				else
+					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
+				} else
 					gameBoardPanel.getComponent(i).setBackground(highlightGreen);
 			} 
 		}
