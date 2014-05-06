@@ -54,7 +54,7 @@ public class OthelloContentPanel extends JPanel {
 	}
 	
 	private void createUtillityPanel() {
-		this.utillityPanel = new OthelloUtillityPanel((OthelloGameState)gameState);
+		this.utillityPanel = new OthelloUtillityPanel((OthelloGameState)gameState, inputUnit);
 	}
 	
 	private void createStatusLabel() {

@@ -1,5 +1,7 @@
 package gui;
 
+import game.io.InputUnit;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -14,11 +16,11 @@ public class OthelloUtillityPanel extends JPanel {
 	private JButton btnNew;
 	private JButton btnExit;
 
-	public OthelloUtillityPanel(OthelloGameState gameState) {
+	public OthelloUtillityPanel(OthelloGameState gameState, InputUnit inputUnit) {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();
-		UtilityListener utilityListener = new UtilityListener(this, gameState);
+		UtilityListener utilityListener = new UtilityListener(this, gameState, inputUnit);
 	}
 
 	private void createButtons() {
