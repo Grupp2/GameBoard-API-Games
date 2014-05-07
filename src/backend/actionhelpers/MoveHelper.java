@@ -1,6 +1,7 @@
 package backend.actionhelpers;
 
 import backend.State;
+import backend.util.BoardParser;
 import backend.util.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
 import game.impl.Player;
@@ -30,7 +31,7 @@ public class MoveHelper {
     }
 
     public List<BoardLocation> getLocationsToFlipFromMove(BoardLocation location, Player player){
-        return new LocationsToFlipCalculation(state, location, player).getLocationsToFlip();
+        return new LocationsToFlipCalculation(player, new GamePieceHelper(state), new BoardParser(state.getBoard(), location), new BoardHelper(state)).getLocationsToFlip();
     }
 
     public boolean isLocationValidOthelloMoveForPlayer(BoardLocation location, Player player){

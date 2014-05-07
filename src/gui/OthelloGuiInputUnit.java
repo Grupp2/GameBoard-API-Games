@@ -1,11 +1,10 @@
 package gui;
 
-import backend.util.GameRules;
 import game.api.GameState;
-import game.impl.GamePiece;
-import game.impl.Move;
-import game.impl.Player;
+import game.impl.*;
 import game.io.InputUnit;
+
+import java.util.List;
 
 public class OthelloGuiInputUnit extends InputUnit {
 	private GameState state;
@@ -21,7 +20,7 @@ public class OthelloGuiInputUnit extends InputUnit {
 
 			result = new Move(state.getPlayerInTurn(), new GamePiece(
 					getGamePieceID(state.getPlayerInTurn(), state)),
-					GameRules.getLocationById(state.getBoard(), input));
+					getLocationById(state.getBoard(), input));
 		} catch (Exception ex) {
 			gameFrame.setStatusLabelText(ex.getMessage());
 		}
@@ -34,6 +33,16 @@ public class OthelloGuiInputUnit extends InputUnit {
 		else
 			return "X";
 	}
+
+    private BoardLocation getLocationById(Board board, String id){
+        List<BoardLocation> locations = board.getLocations();
+
+        for(int i = 0; i < locations.size(); i++)
+            if(locations.get(i).getId().equals(id))
+                return locations.get(i);
+
+        return null;
+    }
 
 	@Override
 	public void setup(GameState state) {

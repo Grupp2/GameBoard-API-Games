@@ -13,10 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private GameState gameState;
+	private OthelloGameState gameState;
+	private OthelloContentPanel contentPane;
 	private JPanel gameBoardPanel;
 	private JLabel lblStatusText;
 	private GraphicsHolder gh = new GraphicsHolder();
@@ -29,13 +31,13 @@ public class OthelloGameFrame extends JFrame {
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
-		setBounds(1, 1, 625, 600);
-		setMinimumSize(new Dimension(625, 600));
+		setBounds(1, 1, 600, 600);
+		setMinimumSize(new Dimension(600, 600));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void notifyOfPublish(GameState state) {
-		this.gameState = state;
+		this.gameState = (OthelloGameState)state;
 		if (gameState.hasEnded())
 			gameEndedRoutine();
 		else {
@@ -66,8 +68,8 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	public void buildGameFrame() {
-		OthelloContentPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
-		setContentPane(contentPane.getContentPane());
+		contentPane = new OthelloContentPanel(gameState, inputUnit);
+		setContentPane(this.contentPane.getContentPane());
 		this.gameBoardPanel = contentPane.getGameBoardPanel();
 		this.lblStatusText = contentPane.getStatusTextLabel();
 		addFrameListener();
@@ -110,7 +112,13 @@ public class OthelloGameFrame extends JFrame {
 				((JButton)gameBoardPanel.getComponent(i)).setIcon(null);
 			}
 		}
+		toggleUndoButton();
 	}
 	
-	
+	private void toggleUndoButton() {
+		if (gameState.canUndo())
+			contentPane.getUtilityPanel().getBtnUndo().setEnabled(true);
+		else
+			contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
+	}
 }

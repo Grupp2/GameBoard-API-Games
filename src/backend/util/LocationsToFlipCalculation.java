@@ -1,10 +1,8 @@
 package backend.util;
 
-import backend.State;
-import backend.util.BoardParser;
-import backend.util.GameRules;
+import backend.actionhelpers.BoardHelper;
+import backend.actionhelpers.GamePieceHelper;
 import game.impl.BoardLocation;
-import game.impl.GamePiece;
 import game.impl.Player;
 
 import java.util.ArrayList;
@@ -12,25 +10,21 @@ import java.util.List;
 
 public class LocationsToFlipCalculation {
 
-    private State state;
     private BoardLocation location;
     private Player currentPlayer;
-
+    private GamePieceHelper pieceHelper;
+    private BoardHelper boardHelper;
     private BoardParser boardParser;
 
     private List<BoardLocation> locations = new ArrayList<BoardLocation>();
 
-    public LocationsToFlipCalculation(State state, BoardLocation location, Player currentPlayer, BoardParser boardParser){
-        this.state = state;
-        this.location = location;
+    public LocationsToFlipCalculation(Player currentPlayer, GamePieceHelper pieceHelper, BoardParser boardParser, BoardHelper boardHelper){
+        this.location = boardParser.getLocation();
         this.currentPlayer = currentPlayer;
         this.boardParser = boardParser;
+        this.pieceHelper = pieceHelper;
+        this.boardHelper = boardHelper;
     }
-
-    public LocationsToFlipCalculation(State state, BoardLocation location, Player currentPlayer){
-        this(state, location, currentPlayer, new BoardParser(state.getBoard(), location));
-    }
-
 
 
     public List<BoardLocation> getLocationsToFlip(){
@@ -57,10 +51,10 @@ public class LocationsToFlipCalculation {
     private int getBackwardsUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
-            if(GameRules.isLocationEmpty(list.get(i)))
+            if(boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if(getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
+            if(pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
                 return i+1;
         }
 
@@ -71,23 +65,15 @@ public class LocationsToFlipCalculation {
     private int getForwardUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex+1; i < list.size(); i++) {
-            if (GameRules.isLocationEmpty(list.get(i)))
+            if (boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if (getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
+            if (pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
                 return i-1;
 
         }
 
         return startIndex;
     }
-
-    private Player getOwnerOfPiece(GamePiece piece){
-        if(GameRules.isPlayerOnePiece(piece))
-            return state.getPlayers().get(0);
-
-        return state.getPlayers().get(1);
-    }
-
 
 }

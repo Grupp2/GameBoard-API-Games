@@ -18,7 +18,7 @@ public class OthelloContentPanel extends JPanel {
 	private GameState gameState;
 	private JPanel contentPane;
 	private JPanel gameBoardPanel;
-	private JPanel utillityPanel;
+	private OthelloUtillityPanel utillityPanel;
 	private JLabel lblStatusText;
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
@@ -40,6 +40,10 @@ public class OthelloContentPanel extends JPanel {
 		this.validate();
 		this.repaint();
 		return contentPane;
+	}
+	
+	public OthelloUtillityPanel getUtilityPanel() {
+		return utillityPanel;
 	}
 	
 	public JPanel getGameBoardPanel() {
