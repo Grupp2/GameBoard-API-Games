@@ -1,5 +1,6 @@
 package backend.actionhelpers;
 
+import backend.classhelpers.MoveHelper;
 import game.impl.Move;
 import backend.State;
 

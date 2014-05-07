@@ -1,8 +1,8 @@
 package backend.util;
 
 import backend.State;
-import backend.actionhelpers.BoardHelper;
-import backend.actionhelpers.GamePieceHelper;
+import backend.classhelpers.BoardHelper;
+import backend.classhelpers.GamePieceHelper;
 import game.impl.BoardLocation;
 import game.impl.Player;
 

@@ -1,6 +1,7 @@
 package backend.actionhelpers;
 
 import backend.Settings;
+import backend.classhelpers.BoardHelper;
 import backend.undoableactions.UndoableAction;
 import backend.OthelloGameFactory;
 import backend.State;

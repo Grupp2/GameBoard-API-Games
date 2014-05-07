@@ -1,4 +1,4 @@
-package backend.actionhelpers;
+package backend.classhelpers;
 
 import backend.State;
 import backend.util.BoardParser;

@@ -14,4 +14,7 @@ public class Settings {
 
     public static final String PLAYER_TWO_START_POSITION_2 = "E5";
 
+    public static final int PLAYER_ONE_INDEX = 0;
+
+    public static final int PLAYER_TWO_INDEX = 1;
 }

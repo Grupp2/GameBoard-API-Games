@@ -1,5 +1,6 @@
-package backend.actionhelpers;
+package backend.classhelpers;
 
+import backend.Settings;
 import backend.State;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
@@ -10,9 +11,6 @@ import java.util.List;
 public class GamePieceHelper {
 
     private State state;
-
-    public static final String PLAYER_ONE_PIECEID = "O";
-    public static final String PLAYER_TWO_PIECEID = "X";
 
     public GamePieceHelper(State state){
         this.state = state;
@@ -33,11 +31,11 @@ public class GamePieceHelper {
 
         if(oldOwner == state.getPlayers().get(0)){
             newOwner = state.getPlayers().get(1);
-            newPieceId = PLAYER_TWO_PIECEID;
+            newPieceId = Settings.PLAYER_TWO_PIECE_ID;
         }
         else{
             newOwner = state.getPlayers().get(0);
-            newPieceId = PLAYER_ONE_PIECEID;
+            newPieceId = Settings.PLAYER_ONE_PIECE_ID;
         }
 
         oldOwner.getPieces().remove(piece);

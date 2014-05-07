@@ -1,7 +1,7 @@
 package backend.undoableactions;
 
-import backend.actionhelpers.GamePieceHelper;
-import backend.actionhelpers.MoveHelper;
+import backend.classhelpers.GamePieceHelper;
+import backend.classhelpers.MoveHelper;
 import game.impl.BoardLocation;
 import game.impl.Player;
 import backend.State;

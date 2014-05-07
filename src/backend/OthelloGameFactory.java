@@ -13,8 +13,8 @@ public class OthelloGameFactory {
     public List<Player> createPlayers(){
         List<Player> players = new ArrayList<Player>();
 
-        players.add(new Player("P1", makePlayerOneGamePieces()));
-        players.add(new Player("P2", makePlayerTwoGamePieces()));
+        players.add(Settings.PLAYER_ONE_INDEX, new Player("P1", makePlayerOneGamePieces()));
+        players.add(Settings.PLAYER_TWO_INDEX, new Player("P2", makePlayerTwoGamePieces()));
 
         return players;
     }
