@@ -3,13 +3,11 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-
 import game.api.GameState;
-
+import gui.Listeners.GameBoardListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {

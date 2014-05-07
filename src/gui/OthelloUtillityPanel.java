@@ -1,5 +1,6 @@
 package gui;
 
+import gui.Listeners.UtilityListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import backend.OthelloGameState;
