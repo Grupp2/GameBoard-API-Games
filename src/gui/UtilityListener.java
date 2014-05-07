@@ -21,7 +21,6 @@ public class UtilityListener {
 		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {newGame();}});
 		utilityPanel.getBtnLoad().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {loadGame();}});
 		utilityPanel.getBtnSave().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {saveGame();}});
-		utilityPanel.getBtnRedo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {redoMove();}});
 		utilityPanel.getBtnUndo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {undoMove();}});
 	}
 	private void exitGame(){
@@ -37,9 +36,7 @@ public class UtilityListener {
 	private void saveGame(){
 		
 	}
-	private void redoMove(){
-		
-	}
+	
 	private void undoMove(){
 		if(gameState.canUndo()){
 			gameState.undo();

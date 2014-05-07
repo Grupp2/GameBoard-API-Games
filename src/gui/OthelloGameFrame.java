@@ -29,8 +29,8 @@ public class OthelloGameFrame extends JFrame {
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
-		setBounds(1, 1, 625, 600);
-		setMinimumSize(new Dimension(625, 600));
+		setBounds(1, 1, 600, 600);
+		setMinimumSize(new Dimension(600, 600));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
