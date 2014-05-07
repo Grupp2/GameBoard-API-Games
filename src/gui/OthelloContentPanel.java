@@ -28,11 +28,11 @@ public class OthelloContentPanel extends JPanel {
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
 		this.inputUnit = inputUnit;
-		createGameBoardPanel();
-		createUtillityPanel();
 	}
 
 	public JPanel getContentPane() {
+		createGameBoardPanel();
+		createUtillityPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
 		gameBoardListener.addButtonListeners();
 		contentPane = new JPanel(new BorderLayout());
@@ -48,11 +48,11 @@ public class OthelloContentPanel extends JPanel {
 	}
 	
 	public JPanel getGameBoardPanel() {
-		return this.gameBoardPanel;
+		return gameBoardPanel;
 	}
 	
 	public OthelloStatusPanel getStatusPanel() {
-		return this.statusPanel;
+		return statusPanel;
 	}
 
 	private void createGameBoardPanel() {
