@@ -10,7 +10,6 @@ import game.api.GameState;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import backend.OthelloGameState;
@@ -20,7 +19,6 @@ public class OthelloGameFrame extends JFrame {
 	private OthelloGameState gameState;
 	private OthelloContentPanel contentPane;
 	private JPanel gameBoardPanel;
-	private JLabel lblStatusText;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
@@ -48,30 +46,31 @@ public class OthelloGameFrame extends JFrame {
 			placeGamePieces();
 			updateTurnLabel();
 			if (!gameState.getMessage().equals(""))
-				JOptionPane.showMessageDialog(this, gameState.getMessage());
+				contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
+			else
+				contentPane.getStatusPanel().getStatusTextLabel().setText("");
 		}
 	}
 	
 	private void updateTurnLabel() {
 		if (gameState.getPlayerInTurn().getName().equals(player1Name)) {
-			lblStatusText.setText("player 1 turn");
-			lblStatusText.setIcon(new ImageIcon(gh.getPlayer1Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 1 turn");
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer1Piece()));
 		} else {
-			lblStatusText.setText("player 2 turn");
-			lblStatusText.setIcon(new ImageIcon(gh.getPlayer2Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 2 turn");
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer2Piece()));
 		}
 	}
 	
 	private void gameEndedRoutine() {
-		lblStatusText.setText("The winner is: " + gameState.getWinner().getName());
-		lblStatusText.setIcon(null);
+		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
+//		lblStatusText.setIcon(null);
 	}
 	
 	public void buildGameFrame() {
 		contentPane = new OthelloContentPanel(gameState, inputUnit);
 		setContentPane(this.contentPane.getContentPane());
 		this.gameBoardPanel = contentPane.getGameBoardPanel();
-		this.lblStatusText = contentPane.getStatusTextLabel();
 		addFrameListener();
 		this.setVisible(true);
 	}
@@ -94,7 +93,7 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	public void setStatusLabelText(String str) {
-		lblStatusText.setText(str);
+		contentPane.getStatusPanel().getStatusTextLabel().setText(str);
 	}
 	
 	public void placeGamePieces() {
