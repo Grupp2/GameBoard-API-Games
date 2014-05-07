@@ -4,36 +4,33 @@ import static org.junit.Assert.assertEquals;
 
 import game.impl.Board;
 import game.impl.Player;
+import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
 
 
 public class OthelloGameFactoryTest {
 
+    OthelloGameFactory factory;
+
+    @Before
+    public void setUp(){
+        factory = new OthelloGameFactory();
+    }
+
     @Test
     public void testCreatePlayers(){
-        OthelloGameFactory factory = new OthelloGameFactory();
-
         List<Player> players = factory.createPlayers();
-
 
         Player player1 = players.get(0);
         assertEquals(player1.getPieces().size(), 0);
 
-       // for(int i = 0; i < 32; i++)
-         //   assertEquals(player1.getPieces().get(i).getId(), "O");
-
-
         Player player2 = players.get(1);
         assertEquals(player2.getPieces().size(), 0);
-
-      //  for(int i = 0; i < 32; i++)
-          //  assertEquals(player2.getPieces().get(i).getId(), "X");
     }
 
     @Test
     public void testCreateBoard(){
-        OthelloGameFactory factory = new OthelloGameFactory();
 
         Board gameBoard = factory.createBoard();
 
@@ -48,4 +45,28 @@ public class OthelloGameFactoryTest {
         assertEquals("H8", gameBoard.getLocations().get(63).getId());
     }
 
+    @Test
+    public void testCreateUndoableActionStack(){
+        assertEquals(0, factory.createUndoableActionStack().size());
+    }
+
+    @Test
+    public void testCreateLastExecutedActionIndex(){
+        assertEquals(OthelloGameFactory.DEFAULT_ACTION_INDEX, factory.createLastExecutedActionIndex());
+    }
+
+    @Test
+    public void testCreateStateMessage(){
+        assertEquals(OthelloGameFactory.DEFAULT_MESSAGE, factory.createStateMessage());
+    }
+
+    @Test
+    public void testCreatePlayerOnePiece(){
+        assertEquals(Settings.PLAYER_ONE_PIECE_ID, factory.createPlayerOnePiece().getId());
+    }
+
+    @Test
+    public void testCreatePlayerTwoPiece(){
+        assertEquals(Settings.PLAYER_TWO_PIECE_ID, factory.createPlayerTwoPiece().getId());
+    }
 }
