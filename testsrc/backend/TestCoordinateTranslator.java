@@ -26,14 +26,11 @@ public class TestCoordinateTranslator {
     }
 
     @Test
-    public void test() {
+    public void testTranslationFromGUItoGame() {
 	Properties propRead = propIO.getCoordinatePropertyValues();
 	String rowDataType = propRead.getProperty("rowDataType");
 	String columnDataType = propRead.getProperty("columnDataType");
 	String isLinear = propRead.getProperty("isLinear");
-
-	String testStringPartOne = "";
-	String testStringPartTwo = "";
 
 	char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 		'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
@@ -45,12 +42,13 @@ public class TestCoordinateTranslator {
 	if (rowDataType.equals("numbers") && columnDataType.equals("letters")) {
 	    for (int i = 1; i <= 26; i++) {
 		if (!translator.translateFromGui(
-			Character.toString(letters[i - 1]) + Integer.toString(numbers[i])).equals(i + letters[i - 1])) {
+			Character.toString(letters[i - 1])
+				+ Integer.toString(numbers[i])).equals(
+			i + letters[i - 1])) {
 		    fail("Invalid translation. " + letters[i - 1] + " -> " + i);
 		}
 	    }
 	}
-
 
     }
 
