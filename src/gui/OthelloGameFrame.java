@@ -43,11 +43,12 @@ public class OthelloGameFrame extends JFrame {
 			}
 			placeGamePieces();
 			updateTurnLabel();
-			if (!gameState.getMessage().equals(""))
-				contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
-			else
-				contentPane.getStatusPanel().getStatusTextLabel().setText("");
+			updateStatusTextLabel();
 		}
+	}
+
+	private void updateStatusTextLabel() {
+		contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
 	}
 	
 	private void updateTurnLabel() {
@@ -61,6 +62,7 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void gameEndedRoutine() {
+		placeGamePieces();
 		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
 	}
 	
