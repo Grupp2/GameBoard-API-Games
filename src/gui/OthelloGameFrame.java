@@ -4,14 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
-
 import game.api.GameState;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import backend.OthelloGameState;
 
@@ -19,8 +15,6 @@ public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private OthelloGameState gameState;
 	private OthelloContentPanel contentPane;
-	private JPanel gameBoardPanel;
-	private JLabel lblStatusText;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
@@ -48,68 +42,58 @@ public class OthelloGameFrame extends JFrame {
 			placeGamePieces();
 			updateTurnLabel();
 			if (!gameState.getMessage().equals(""))
-				JOptionPane.showMessageDialog(this, gameState.getMessage());
+				contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
+			else
+				contentPane.getStatusPanel().getStatusTextLabel().setText("");
 		}
 	}
 	
 	private void updateTurnLabel() {
 		if (gameState.getPlayerInTurn().getName().equals(player1Name)) {
-			lblStatusText.setText("player 1 turn");
-			lblStatusText.setIcon(new ImageIcon(gh.getPlayer1Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 1 turn");
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer1Piece()));
 		} else {
-			lblStatusText.setText("player 2 turn");
-			lblStatusText.setIcon(new ImageIcon(gh.getPlayer2Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 2 turn");
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer2Piece()));
 		}
 	}
 	
 	private void gameEndedRoutine() {
-		lblStatusText.setText("The winner is: " + gameState.getWinner().getName());
-		lblStatusText.setIcon(null);
+		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
 	}
 	
 	public void buildGameFrame() {
 		contentPane = new OthelloContentPanel(gameState, inputUnit);
 		setContentPane(this.contentPane.getContentPane());
-		this.gameBoardPanel = contentPane.getGameBoardPanel();
-		this.lblStatusText = contentPane.getStatusTextLabel();
 		addFrameListener();
 		this.setVisible(true);
 	}
 	
 	private void addFrameListener() {
-		this.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){
-			@Override
-            public void ancestorResized(HierarchyEvent e) {
-            	placeGamePieces();
-            }           
-		});
+		this.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
 	}
 	
 	public JPanel getGameBoardPanel() {
-		return gameBoardPanel;
-	}
-	
-	public void setGameBoardPanel(JPanel gameBoardPanel) {
-		this.gameBoardPanel = gameBoardPanel;
+		return contentPane.getGameBoardPanel();
 	}
 	
 	public void setStatusLabelText(String str) {
-		lblStatusText.setText(str);
+		contentPane.getStatusPanel().getStatusTextLabel().setText(str);
 	}
 	
 	public void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
 				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player1gamePiece)) {
-					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
-					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
+					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)contentPane.getGameBoardPanel().getComponent(i)).getSize())));
+					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setFocusPainted(false);
 				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player2gamePiece)) {
-					((JButton)gameBoardPanel.getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)gameBoardPanel.getComponent(i)).getSize())));
-					((JButton)gameBoardPanel.getComponent(i)).setFocusPainted(false);
+					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)contentPane.getGameBoardPanel().getComponent(i)).getSize())));
+					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setFocusPainted(false);
 				} else
-					gameBoardPanel.getComponent(i).setBackground(highlightGreen);
+					contentPane.getGameBoardPanel().getComponent(i).setBackground(highlightGreen);
 			} else{
-				((JButton)gameBoardPanel.getComponent(i)).setIcon(null);
+				((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(null);
 			}
 		}
 		toggleUndoButton();
