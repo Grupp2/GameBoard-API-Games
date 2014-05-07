@@ -13,7 +13,6 @@ import javax.swing.SwingConstants;
 import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {
-
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
 	private JPanel contentPane;
@@ -23,6 +22,8 @@ public class OthelloContentPanel extends JPanel {
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
+	private final int statusLabelFontSize = 15;
+	private final int playerInfoLabelFontSize = 20;
 
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
@@ -69,16 +70,16 @@ public class OthelloContentPanel extends JPanel {
 	
 	private void setStatusLabelProperties() {
 		JLabel tmpLable = statusPanel.getPlayerInfoLabel();
-		setLabelProperties(tmpLable);
+		setLabelProperties(tmpLable, playerInfoLabelFontSize);
 		tmpLable = statusPanel.getStatusTextLabel();
-		setLabelProperties(tmpLable);
+		setLabelProperties(tmpLable, statusLabelFontSize);
 	}
 
-	private void setLabelProperties(JLabel tmpLable) {
+	private void setLabelProperties(JLabel tmpLable, int fontSize) {
 		tmpLable.setBackground(backgroundGreen);
 		tmpLable.setOpaque(true);
 		tmpLable.setHorizontalAlignment(SwingConstants.CENTER);
-		tmpLable.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tmpLable.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
 	
 	private void populateTheLayout() {
