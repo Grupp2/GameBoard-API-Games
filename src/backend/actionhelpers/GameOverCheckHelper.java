@@ -7,12 +7,25 @@ import game.impl.Move;
 
 import java.util.List;
 
-public class GameoverCheckHelper {
+public class GameOverCheckHelper {
 
     private State state;
 
-    public GameoverCheckHelper(State state){
+    public GameOverCheckHelper(State state){
         this.state = state;
+    }
+
+    public boolean isGameOver(){
+        if(isBoardFull())
+            return true;
+
+        if(doesAnyPlayerNotHaveAnyPiecesLeft())
+            return true;
+
+        if(isCurrentPlayerOutOfValidMoves())
+            return true;
+
+        return false;
     }
 
     public boolean isBoardFull(){

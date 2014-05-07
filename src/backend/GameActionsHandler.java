@@ -1,10 +1,10 @@
 package backend;
 
+import backend.actionhelpers.GameOverCheckHelper;
 import backend.actionhelpers.MoveValidationHelper;
 import backend.actionhelpers.WinnerCalculationHelper;
 import backend.undoableactions.MoveAction;
 import backend.undoableactions.UndoableAction;
-import backend.actionhelpers.GameoverCheckHelper;
 import backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
@@ -14,35 +14,26 @@ public class GameActionsHandler {
 
     private State state;
     private MoveValidationHelper moveValidationHelper;
+    private GameOverCheckHelper gameEndHelper;
+    private WinnerCalculationHelper winnerCalc;
 
-    public GameActionsHandler(State state, MoveValidationHelper moveValidationHelper){
+    public GameActionsHandler(State state, MoveValidationHelper moveValidationHelper, GameOverCheckHelper gameEndHelper, WinnerCalculationHelper winnerCalc){
         this.state = state;
         this.moveValidationHelper = moveValidationHelper;
+        this.gameEndHelper = gameEndHelper;
+        this.winnerCalc = winnerCalc;
     }
 
     public GameActionsHandler(State state){
-        this(state, new MoveValidationHelper(state));
+        this(state, new MoveValidationHelper(state), new GameOverCheckHelper(state), new WinnerCalculationHelper(state));
     }
 
     public Player calculateWinner(){
-        WinnerCalculationHelper winnerCalc = new WinnerCalculationHelper(state);
-
         return winnerCalc.getWinner();
     }
 
     public boolean hasEndedCheck(){
-        GameoverCheckHelper gameEndHelper = new GameoverCheckHelper(state);
-
-        if(gameEndHelper.isBoardFull())
-            return true;
-
-        if(gameEndHelper.doesAnyPlayerNotHaveAnyPiecesLeft())
-            return true;
-
-        if(gameEndHelper.isCurrentPlayerOutOfValidMoves())
-            return true;
-
-        return false;
+        return gameEndHelper.isGameOver();
     }
 
     public boolean validateMove(Move move){
@@ -57,7 +48,7 @@ public class GameActionsHandler {
 
     public void undo(){
         if(state.getLastExecutedActionIndex() < 0)
-            throw new RuntimeException("No more undoableActionsStack to undo!");
+            throw new RuntimeException("No more actions to undo!");
 
         state.getUndoableActionsStack().get(state.getLastExecutedActionIndex()).undo();
 
@@ -66,7 +57,7 @@ public class GameActionsHandler {
 
     public void redo(){
         if(state.getLastExecutedActionIndex() >= state.getUndoableActionsStack().size()-1)
-            throw new RuntimeException("No more undoableActionsStack to redo!");
+            throw new RuntimeException("No more actions to redo!");
 
         state.setLastExecutedActionIndex(state.getLastExecutedActionIndex()+1);
 
