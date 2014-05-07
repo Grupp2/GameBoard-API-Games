@@ -2,6 +2,7 @@ package backend.classhelpers;
 
 import backend.Settings;
 import backend.State;
+
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
@@ -11,16 +12,23 @@ import java.util.List;
 public class GamePieceHelper {
 
     private State state;
+    private PlayerHelper playerHelper;
 
-    public GamePieceHelper(State state){
+    public GamePieceHelper(State state, PlayerHelper playerHelper){
         this.state = state;
+        this.playerHelper = playerHelper;
     }
 
-    public Player getOwnerOfPiece(GamePiece piece){
-        if(state.getPlayers().get(0).hasPiece(piece))
-            return state.getPlayers().get(0);
+    public GamePieceHelper(State state){
+        this(state, new PlayerHelper(state));
+    }
 
-        return state.getPlayers().get(1);
+
+    public Player getOwnerOfPiece(GamePiece piece){
+        if(playerHelper.getPlayerOne().hasPiece(piece))
+            return playerHelper.getPlayerOne();
+
+        return playerHelper.getPlayerTwo();
     }
 
     public void changeOwnerOfPiece(GamePiece piece){

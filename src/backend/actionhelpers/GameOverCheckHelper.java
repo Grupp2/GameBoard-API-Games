@@ -6,7 +6,6 @@ import backend.classhelpers.MoveHelper;
 public class GameOverCheckHelper {
 
     private State state;
-
     private MoveHelper moveHelper;
 
     public GameOverCheckHelper(State state, MoveHelper moveHelper){
