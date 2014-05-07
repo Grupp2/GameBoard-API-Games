@@ -3,7 +3,6 @@ package backend.undoableactions;
 
 import backend.State;
 import backend.actionhelpers.MoveHelper;
-import backend.util.GameRules;
 import game.impl.Player;
 
 import java.util.List;

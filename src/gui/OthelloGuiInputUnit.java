@@ -1,7 +1,5 @@
 package gui;
 
-import backend.actionhelpers.BoardHelper;
-import backend.util.GameRules;
 import game.api.GameState;
 import game.impl.*;
 import game.io.InputUnit;

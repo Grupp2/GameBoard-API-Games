@@ -4,7 +4,6 @@ import backend.undoableactions.UndoableAction;
 import backend.OthelloGameFactory;
 import backend.State;
 
-import backend.util.GameRules;
 import game.impl.Board;
 import game.impl.GamePiece;
 import game.impl.Player;

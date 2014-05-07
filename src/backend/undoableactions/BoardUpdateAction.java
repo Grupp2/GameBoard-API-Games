@@ -2,12 +2,8 @@ package backend.undoableactions;
 
 import backend.actionhelpers.GamePieceHelper;
 import backend.actionhelpers.MoveHelper;
-import backend.util.BoardParser;
-import backend.util.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
-import game.impl.GamePiece;
 import game.impl.Player;
-import backend.util.GameRules;
 import backend.State;
 
 import java.util.ArrayList;
