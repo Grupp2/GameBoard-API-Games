@@ -51,7 +51,7 @@ public class LocationsToFlipCalculation {
     private int getBackwardsUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
-            if(GameRules.isLocationEmpty(list.get(i)))
+            if(boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
             if(pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
@@ -65,7 +65,7 @@ public class LocationsToFlipCalculation {
     private int getForwardUpdateIndex(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex+1; i < list.size(); i++) {
-            if (GameRules.isLocationEmpty(list.get(i)))
+            if (boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
             if (pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
