@@ -20,10 +20,12 @@ public class LocationsToFlipCalculation {
 
     private List<BoardLocation> locations = new ArrayList<BoardLocation>();
 
-    public LocationsToFlipCalculation(Player currentPlayer, GamePieceHelper pieceHelper, BoardParser boardParser, BoardHelper boardHelper){
+    public LocationsToFlipCalculation(Player thePlayer, GamePieceHelper pieceHelper, BoardParser boardParser, BoardHelper boardHelper){
         this.location = boardParser.getLocation();
-        this.currentPlayer = currentPlayer;
+        this.currentPlayer = thePlayer;
+
         this.boardParser = boardParser;
+
         this.pieceHelper = pieceHelper;
         this.boardHelper = boardHelper;
     }

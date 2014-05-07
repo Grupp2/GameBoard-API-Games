@@ -12,6 +12,7 @@ public class PlayerHelper {
         this.state = state;
     }
 
+
     public int getPlayerScore(Player player){
         return player.getPieces().size();
     }

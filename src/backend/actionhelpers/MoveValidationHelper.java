@@ -1,5 +1,6 @@
 package backend.actionhelpers;
 
+import backend.classhelpers.BoardHelper;
 import backend.classhelpers.MoveHelper;
 import game.impl.Move;
 import backend.State;
@@ -8,14 +9,16 @@ public class MoveValidationHelper {
 
     private State state;
     private MoveHelper moveHelper;
+    private BoardHelper boardHelper;
 
-    public MoveValidationHelper(State state, MoveHelper moveHelper){
+    public MoveValidationHelper(State state, MoveHelper moveHelper, BoardHelper boardHelper){
         this.state = state;
         this.moveHelper = moveHelper;
+        this.boardHelper = boardHelper;
     }
 
     public MoveValidationHelper(State state){
-        this(state, new MoveHelper(state));
+        this(state, new MoveHelper(state), new BoardHelper(state));
     }
 
 
@@ -54,6 +57,7 @@ public class MoveValidationHelper {
         return true;
     }
 
+
     public boolean isRequestForRepublish(Move move){
         return move == null;
     }
@@ -63,7 +67,7 @@ public class MoveValidationHelper {
     }
 
     public boolean doesDestinationExist(Move move){
-        return move.getDestination() != null;
+        return move.getDestination() != null && boardHelper.doesLocationExistOnBoard(move.getDestination());
     }
 
     public boolean isDestinationEmpty(Move move){

@@ -30,4 +30,9 @@ public class BoardHelper {
     public void emptyLocation(BoardLocation location){
         location.setPiece(null);
     }
+
+    public boolean doesLocationExistOnBoard(BoardLocation location){
+        List<BoardLocation> locations = state.getBoard().getLocations();
+        return locations.contains(location);
+    }
 }

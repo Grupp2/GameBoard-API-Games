@@ -2,19 +2,22 @@ package backend.actionhelpers;
 
 import backend.State;
 import backend.classhelpers.MoveHelper;
+import backend.classhelpers.PlayerHelper;
 
 public class GameOverCheckHelper {
 
     private State state;
     private MoveHelper moveHelper;
+    private PlayerHelper playerHelper;
 
-    public GameOverCheckHelper(State state, MoveHelper moveHelper){
+    public GameOverCheckHelper(State state, MoveHelper moveHelper, PlayerHelper playerHelper){
         this.state = state;
         this.moveHelper = moveHelper;
+        this.playerHelper = playerHelper;
     }
 
     public GameOverCheckHelper(State state){
-        this(state, new MoveHelper(state));
+        this(state, new MoveHelper(state), new PlayerHelper(state));
     }
 
 
@@ -32,15 +35,15 @@ public class GameOverCheckHelper {
     }
 
     public boolean isBoardFull(){
-        int playerOnePieceCount = state.getPlayers().get(0).getPieces().size();
-        int playerTwoPieceCount = state.getPlayers().get(1).getPieces().size();
+        int playerOnePieceCount = playerHelper.getPlayerOne().getPieces().size();
+        int playerTwoPieceCount = playerHelper.getPlayerTwo().getPieces().size();
 
         return playerOnePieceCount + playerTwoPieceCount >= 64;
     }
 
     public boolean doesAnyPlayerNotHaveAnyPiecesLeft(){
-        int playerOnePieceCount = state.getPlayers().get(0).getPieces().size();
-        int playerTwoPieceCount = state.getPlayers().get(1).getPieces().size();
+        int playerOnePieceCount = playerHelper.getPlayerOne().getPieces().size();
+        int playerTwoPieceCount = playerHelper.getPlayerTwo().getPieces().size();
 
         return playerOnePieceCount == 0 || playerTwoPieceCount == 0;
     }

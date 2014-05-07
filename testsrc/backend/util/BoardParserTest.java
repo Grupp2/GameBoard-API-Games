@@ -1,9 +1,8 @@
-package backend;
+package backend.util;
 
 import game.impl.Board;
 import game.impl.BoardLocation;
 
-import backend.util.BoardParser;
 import org.junit.Before;
 import org.junit.Test;
 

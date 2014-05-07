@@ -69,4 +69,30 @@ public class BoardHelperTest {
         assertTrue(boardHelper.isLocationEmpty(location));
 
     }
+
+    @Test
+    public void testDoesLocationExistOnBoard() throws Exception{
+        State state = mock(State.class);
+        Board board = mock(Board.class);
+        final BoardLocation theLocation = mock(BoardLocation.class);
+
+        ArrayList<BoardLocation> existingList = new ArrayList<BoardLocation>(){
+            {
+                add(theLocation);
+            }
+        };
+
+        ArrayList<BoardLocation> nonExistingList = new ArrayList<BoardLocation>();
+
+
+        when(state.getBoard()).thenReturn(board).thenReturn(board);
+
+        when(board.getLocations()).thenReturn(existingList).thenReturn(nonExistingList);
+
+
+        BoardHelper boardHelper = new BoardHelper(state);
+
+        assertTrue(boardHelper.doesLocationExistOnBoard(theLocation));
+        assertFalse(boardHelper.doesLocationExistOnBoard(theLocation));
+    }
 }
