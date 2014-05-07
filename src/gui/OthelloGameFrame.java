@@ -2,15 +2,19 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
+
 import game.api.GameState;
 import gui.graphics.GraphicsHolder;
 import gui.panels.OthelloContentPanel;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
@@ -24,6 +28,8 @@ public class OthelloGameFrame extends JFrame {
 	private final String player1gamePiece = "O";
 	private final String player2gamePiece = "X";
 	private final String player1Name = "P1";
+	private final int largeStatusFont = 20;
+	private final int normalStatusFont = 15;
 	
 	public OthelloGameFrame(OthelloGuiInputUnit inputUnit) {
 		this.inputUnit = inputUnit;
@@ -46,8 +52,20 @@ public class OthelloGameFrame extends JFrame {
 			updateStatusTextLabel();
 		}
 	}
+	
+	public void buildGameFrame() {
+		contentPane = new OthelloContentPanel(gameState, inputUnit);
+		setContentPane(this.contentPane.getContentPane());
+		addFrameListener();
+		this.setVisible(true);
+	}
+	
+	private void addFrameListener() {
+		this.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
+	}
 
 	private void updateStatusTextLabel() {
+		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, normalStatusFont));
 		contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
 	}
 	
@@ -63,18 +81,8 @@ public class OthelloGameFrame extends JFrame {
 	
 	private void gameEndedRoutine() {
 		placeGamePieces();
+		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, largeStatusFont));
 		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
-	}
-	
-	public void buildGameFrame() {
-		contentPane = new OthelloContentPanel(gameState, inputUnit);
-		setContentPane(this.contentPane.getContentPane());
-		addFrameListener();
-		this.setVisible(true);
-	}
-	
-	private void addFrameListener() {
-		this.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
 	}
 	
 	public JPanel getGameBoardPanel() {
