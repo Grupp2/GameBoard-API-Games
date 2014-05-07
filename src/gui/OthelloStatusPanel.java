@@ -11,7 +11,7 @@ public class OthelloStatusPanel extends JPanel {
 	private JLabel lblPlayerInfo;
 	
 	public OthelloStatusPanel() {
-		setLayout(new GridLayout(2, 1));
+		setLayout(new GridLayout(1, 2));
 		this.lblPlayerInfo = new JLabel();
 		this.lblStatusText = new JLabel();
 		add(lblPlayerInfo);
