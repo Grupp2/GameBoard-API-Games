@@ -4,15 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
-
 import game.api.GameState;
 import gui.graphics.GraphicsHolder;
-
+import gui.panels.OthelloContentPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
