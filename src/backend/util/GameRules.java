@@ -7,10 +7,6 @@ import java.util.List;
 
 public class GameRules {
 
-    public static boolean isLocationEmpty(BoardLocation location){
-        return location == null || location.getPiece() == null;
-    }
-
     public static BoardLocation getLocationById(Board board, String id){
         List<BoardLocation> locations = board.getLocations();
 

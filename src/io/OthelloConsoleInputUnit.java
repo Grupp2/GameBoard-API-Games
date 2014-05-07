@@ -5,11 +5,10 @@ import backend.util.GameRules;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import game.api.GameState;
-import game.impl.GamePiece;
-import game.impl.Move;
-import game.impl.Player;
+import game.impl.*;
 import game.io.InputUnit;
 import backend.OthelloGameState;
 
@@ -35,12 +34,22 @@ public class OthelloConsoleInputUnit extends InputUnit {
 			} else {
 				result = new Move(state.getPlayerInTurn(), new GamePiece(
 						getGamePieceID(state.getPlayerInTurn(), state)),
-						GameRules.getLocationById(state.getBoard(), input));
+						getLocationById(state.getBoard(), input));
 			}
 		} catch (IOException ex) {
 		}
 		return result;
 	}
+
+    private BoardLocation getLocationById(Board board, String id){
+        List<BoardLocation> locations = board.getLocations();
+
+        for(int i = 0; i < locations.size(); i++)
+            if(locations.get(i).getId().equals(id))
+                return locations.get(i);
+
+        return null;
+    }
 
 	private String getGamePieceID(Player player, GameState gameState) {
 		if (player == gameState.getPlayers().get(0))

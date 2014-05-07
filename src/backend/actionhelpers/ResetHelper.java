@@ -16,14 +16,16 @@ public class ResetHelper {
 
     private State state;
     private OthelloGameFactory factory;
+    private BoardHelper boardHelper;
 
-    public ResetHelper(State state, OthelloGameFactory factory){
+    public ResetHelper(State state, OthelloGameFactory factory, BoardHelper boardHelper){
         this.state = state;
         this.factory = factory;
+        this.boardHelper = boardHelper;
     }
 
     public ResetHelper(State state){
-        this(state, new OthelloGameFactory());
+        this(state, new OthelloGameFactory(), new BoardHelper(state));
     }
 
 
@@ -59,16 +61,16 @@ public class ResetHelper {
                 piece3 = new GamePiece("X"),
                 piece4 = new GamePiece("X");
 
-        GameRules.getLocationById(gameBoard, "D5").setPiece(piece1);
+        boardHelper.getLocationById("D5").setPiece(piece1);
         players.get(0).getPieces().add(piece1);
 
-        GameRules.getLocationById(gameBoard, "E4").setPiece(piece2);
+        boardHelper.getLocationById("E4").setPiece(piece2);
         players.get(0).getPieces().add(piece2);
 
-        GameRules.getLocationById(gameBoard, "D4").setPiece(piece3);
+        boardHelper.getLocationById("D4").setPiece(piece3);
         players.get(1).getPieces().add(piece3);
 
-        GameRules.getLocationById(gameBoard, "E5").setPiece(piece4);
+        boardHelper.getLocationById("E5").setPiece(piece4);
         players.get(1).getPieces().add(piece4);
     }
 }
