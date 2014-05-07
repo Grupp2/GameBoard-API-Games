@@ -3,7 +3,7 @@ package gui.panels;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,6 +25,7 @@ public class OthelloStatusPanel extends JPanel {
 
 	private void addPlayerInfoLabel() {
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
 		add(lblPlayerInfo, c);
@@ -32,8 +33,9 @@ public class OthelloStatusPanel extends JPanel {
 	
 	private void addStatusTextLabel() {
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridwidth = 2;
-		c.gridx = 1;
+		c.anchor = GridBagConstraints.LINE_END;
+		c.insets = new Insets(0,20,0,0);
+		c.gridx = 2;
 		c.gridy = 0;
 		add(lblStatusText, c);
 	}
