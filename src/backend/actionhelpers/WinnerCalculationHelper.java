@@ -11,8 +11,7 @@ public class WinnerCalculationHelper {
         this.state = state;
     }
 
-
-    public Player getWinner(){
+    public Player makeWinnerCalculation(){
         int playerOneScore = getPlayerScore(state.getPlayers().get(0));
         int playerTwoScore = getPlayerScore(state.getPlayers().get(1));
 

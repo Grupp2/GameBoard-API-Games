@@ -1,4 +1,4 @@
-package backend.actionhelpers;
+package backend.classhelpers;
 
 import backend.State;
 import backend.util.BoardParser;
@@ -24,14 +24,13 @@ public class MoveHelper {
             if(isLocationEmpty(allBoardLocations.get(i)))
                 if (isLocationValidOthelloMoveForPlayer(allBoardLocations.get(i), player))
                     return true;
-
         }
 
         return false;
     }
 
     public List<BoardLocation> getLocationsToFlipFromMove(BoardLocation location, Player player){
-        return new LocationsToFlipCalculation(player, new GamePieceHelper(state), new BoardParser(state.getBoard(), location), new BoardHelper(state)).getLocationsToFlip();
+        return new LocationsToFlipCalculation(state, player, new BoardParser(state.getBoard(), location)).getLocationsToFlip();
     }
 
     public boolean isLocationValidOthelloMoveForPlayer(BoardLocation location, Player player){

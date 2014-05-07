@@ -18,8 +18,8 @@ public class OthelloContentPanel extends JPanel {
 	private GameState gameState;
 	private JPanel contentPane;
 	private JPanel gameBoardPanel;
+	private OthelloStatusPanel statusPanel;
 	private OthelloUtillityPanel utillityPanel;
-	private JLabel lblStatusText;
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
@@ -35,7 +35,7 @@ public class OthelloContentPanel extends JPanel {
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
 		gameBoardListener.addButtonListeners();
 		contentPane = new JPanel(new BorderLayout());
-		createStatusLabel();
+		createStatusPanel();
 		populateTheLayout();
 		this.validate();
 		this.repaint();
@@ -50,8 +50,8 @@ public class OthelloContentPanel extends JPanel {
 		return this.gameBoardPanel;
 	}
 	
-	public JLabel getStatusTextLabel() {
-		return this.lblStatusText;
+	public OthelloStatusPanel getStatusPanel() {
+		return this.statusPanel;
 	}
 
 	private void createGameBoardPanel() {
@@ -62,16 +62,27 @@ public class OthelloContentPanel extends JPanel {
 		this.utillityPanel = new OthelloUtillityPanel((OthelloGameState)gameState, inputUnit);
 	}
 	
-	private void createStatusLabel() {
-		lblStatusText = new JLabel();
-		lblStatusText.setBackground(backgroundGreen);
-		lblStatusText.setOpaque(true);
-		lblStatusText.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStatusText.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	private void createStatusPanel() {
+		this.statusPanel = new OthelloStatusPanel();
+		setStatusLabelProperties();
+	}
+	
+	private void setStatusLabelProperties() {
+		JLabel tmpLable = statusPanel.getPlayerInfoLabel();
+		setLabelProperties(tmpLable);
+		tmpLable = statusPanel.getStatusTextLabel();
+		setLabelProperties(tmpLable);
+	}
+
+	private void setLabelProperties(JLabel tmpLable) {
+		tmpLable.setBackground(backgroundGreen);
+		tmpLable.setOpaque(true);
+		tmpLable.setHorizontalAlignment(SwingConstants.CENTER);
+		tmpLable.setFont(new Font("Tahoma", Font.PLAIN, 20));
 	}
 	
 	private void populateTheLayout() {
-		contentPane.add(lblStatusText, BorderLayout.PAGE_START);
+		contentPane.add(statusPanel, BorderLayout.PAGE_START);
 		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
 		contentPane.add(utillityPanel, BorderLayout.PAGE_END);
 	}

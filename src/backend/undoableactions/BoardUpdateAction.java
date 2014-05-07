@@ -1,13 +1,9 @@
 package backend.undoableactions;
 
-import backend.actionhelpers.GamePieceHelper;
-import backend.actionhelpers.MoveHelper;
-import backend.util.BoardParser;
-import backend.util.LocationsToFlipCalculation;
+import backend.classhelpers.GamePieceHelper;
+import backend.classhelpers.MoveHelper;
 import game.impl.BoardLocation;
-import game.impl.GamePiece;
 import game.impl.Player;
-import backend.util.GameRules;
 import backend.State;
 
 import java.util.ArrayList;
@@ -16,27 +12,28 @@ import java.util.List;
 
 public class BoardUpdateAction implements UndoableAction {
 
-    private State state;
-    private List<Player> players;
+    private Player currentPlayer;
     private BoardLocation location;
+
     private GamePieceHelper pieceHelper;
-    private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
     private MoveHelper moveHelper;
-    public BoardUpdateAction(State state, BoardLocation location, GamePieceHelper pieceHelper, MoveHelper moveHelper){
-        this.state = state;
+
+    private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
+
+    public BoardUpdateAction(Player currentPlayer, BoardLocation location, GamePieceHelper pieceHelper, MoveHelper moveHelper){
+        this.currentPlayer = currentPlayer;
         this.location = location;
-        players = state.getPlayers();
         this.pieceHelper = pieceHelper;
         this.moveHelper = moveHelper;
     }
 
     public BoardUpdateAction(State state, BoardLocation location){
-        this(state, location, new GamePieceHelper(state), new MoveHelper(state));
+        this(state.getCurrentPlayer(), location, new GamePieceHelper(state), new MoveHelper(state));
     }
 
     @Override
     public void execute(){
-        List<BoardLocation> locationsToFlip = moveHelper.getLocationsToFlipFromMove(location, state.getCurrentPlayer());
+        List<BoardLocation> locationsToFlip = moveHelper.getLocationsToFlipFromMove(location, currentPlayer);
 
         for(int i = 0; i < locationsToFlip.size(); i++){
             pieceHelper.changeOwnerOfPiece(locationsToFlip.get(i).getPiece());

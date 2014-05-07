@@ -1,11 +1,11 @@
 package backend.actionhelpers;
 
+import backend.Settings;
+import backend.classhelpers.BoardHelper;
 import backend.undoableactions.UndoableAction;
 import backend.OthelloGameFactory;
 import backend.State;
 
-import backend.util.GameRules;
-import game.impl.Board;
 import game.impl.GamePiece;
 import game.impl.Player;
 
@@ -28,6 +28,15 @@ public class ResetHelper {
         this(state, new OthelloGameFactory(), new BoardHelper(state));
     }
 
+    public void doResetAction(){
+        resetPlayers();
+        resetBoard();
+        resetTurn();
+        resetActionsStack();
+        resetMessage();
+
+        setStartingPositions();
+    }
 
     public void resetPlayers(){
         state.setPlayers(factory.createPlayers());
@@ -54,23 +63,21 @@ public class ResetHelper {
     public void setStartingPositions(){
 
         List<Player> players = state.getPlayers();
-        Board gameBoard = state.getBoard();
+        GamePiece piece1 = new GamePiece(Settings.PLAYER_ONE_PIECE_ID),
+                piece2 = new GamePiece(Settings.PLAYER_ONE_PIECE_ID),
+                piece3 = new GamePiece(Settings.PLAYER_TWO_PIECE_ID),
+                piece4 = new GamePiece(Settings.PLAYER_TWO_PIECE_ID);
 
-        GamePiece piece1 = new GamePiece("O"),
-                piece2 = new GamePiece("O"),
-                piece3 = new GamePiece("X"),
-                piece4 = new GamePiece("X");
-
-        boardHelper.getLocationById("D5").setPiece(piece1);
+        boardHelper.getLocationById(Settings.PLAYER_ONE_START_POSITION_1).setPiece(piece1);
         players.get(0).getPieces().add(piece1);
 
-        boardHelper.getLocationById("E4").setPiece(piece2);
+        boardHelper.getLocationById(Settings.PLAYER_ONE_START_POSITION_2).setPiece(piece2);
         players.get(0).getPieces().add(piece2);
 
-        boardHelper.getLocationById("D4").setPiece(piece3);
+        boardHelper.getLocationById(Settings.PLAYER_TWO_START_POSITION_1).setPiece(piece3);
         players.get(1).getPieces().add(piece3);
 
-        boardHelper.getLocationById("E5").setPiece(piece4);
+        boardHelper.getLocationById(Settings.PLAYER_TWO_START_POSITION_2).setPiece(piece4);
         players.get(1).getPieces().add(piece4);
     }
 }

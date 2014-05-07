@@ -1,7 +1,8 @@
 package backend.util;
 
-import backend.actionhelpers.BoardHelper;
-import backend.actionhelpers.GamePieceHelper;
+import backend.State;
+import backend.classhelpers.BoardHelper;
+import backend.classhelpers.GamePieceHelper;
 import game.impl.BoardLocation;
 import game.impl.Player;
 
@@ -12,6 +13,7 @@ public class LocationsToFlipCalculation {
 
     private BoardLocation location;
     private Player currentPlayer;
+
     private GamePieceHelper pieceHelper;
     private BoardHelper boardHelper;
     private BoardParser boardParser;
@@ -24,6 +26,10 @@ public class LocationsToFlipCalculation {
         this.boardParser = boardParser;
         this.pieceHelper = pieceHelper;
         this.boardHelper = boardHelper;
+    }
+
+    public LocationsToFlipCalculation(State state, Player currentPlayer, BoardParser parser){
+        this(currentPlayer, new GamePieceHelper(state), parser, new BoardHelper(state));
     }
 
 
