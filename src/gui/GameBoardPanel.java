@@ -7,13 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private int xSize;
 	private int ySize;
+	private static final long serialVersionUID = 1L;
 	private final int BUTTON_SIZE = 75;
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
@@ -23,28 +19,15 @@ public class GameBoardPanel extends JPanel {
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);
 	}
-
-	private int[] calculateBoardSize(GameState state) {
-		int[] result = { 0, 0};
-		xSize = 0;
-		ySize = 0;
-		String tmpChar = "";
-		int tmpNum = 0;
-		for (int i = 0; i < state.getBoard().getLocations().size(); i++) {
-			if (tmpNum < Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1)))
-				tmpNum = Integer.parseInt(state.getBoard().getLocations().get(i).getId().substring(1));
-			else 
-				xSize = tmpNum;
-			if (!tmpChar.equals(state.getBoard().getLocations().get(i).getId().substring(0, 1))) {
-				ySize++;
-				tmpChar = state.getBoard().getLocations().get(i).getId().substring(0, 1);
-				tmpNum = 0;
-			}
-		}
-		result[0] = xSize;
-		result[1] = ySize;
-		return result;
+	
+	private void calculateBoardSize(GameState gameState) {
+		GameBoardSizeCalculator calc = new GameBoardSizeCalculator();
+		int[] result = calc.calculateBoardSize(gameState);
+		this.xSize = result[0];
+		this.ySize = result[1];
 	}
+
+	
 	private void addButtons(GameState state) {
 		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
 			JButton btn = new JButton();
@@ -53,8 +36,5 @@ public class GameBoardPanel extends JPanel {
 			btn.setBackground(backgroundGreen);
 			add(btn);
 		}
-	}
-	public int getxSize(){
-		return xSize;
 	}
 }
