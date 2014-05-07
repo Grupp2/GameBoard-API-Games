@@ -37,12 +37,12 @@ public class GamePieceHelper {
         String newPieceId;
 
 
-        if(oldOwner == state.getPlayers().get(0)){
-            newOwner = state.getPlayers().get(1);
+        if(oldOwner == playerHelper.getPlayerOne()){
+            newOwner = playerHelper.getPlayerTwo();
             newPieceId = Settings.PLAYER_TWO_PIECE_ID;
         }
         else{
-            newOwner = state.getPlayers().get(0);
+            newOwner = playerHelper.getPlayerOne();
             newPieceId = Settings.PLAYER_ONE_PIECE_ID;
         }
 

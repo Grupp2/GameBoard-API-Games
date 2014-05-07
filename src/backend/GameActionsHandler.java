@@ -13,6 +13,7 @@ import game.impl.Player;
 public class GameActionsHandler {
 
     private State state;
+
     private MoveValidationHelper moveValidationHelper;
     private GameOverCheckHelper gameEndHelper;
     private WinnerCalculationHelper winnerCalc;

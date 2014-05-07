@@ -26,4 +26,8 @@ public class BoardHelper {
     public boolean isLocationEmpty(BoardLocation location){
         return location.getPiece() == null;
     }
+
+    public void emptyLocation(BoardLocation location){
+        location.setPiece(null);
+    }
 }
