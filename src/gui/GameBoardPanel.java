@@ -24,7 +24,8 @@ public class GameBoardPanel extends JPanel {
 		addButtons(state);
 	}
 
-	private void calculateBoardSize(GameState state) {
+	private int[] calculateBoardSize(GameState state) {
+		int[] result = { 0, 0};
 		xSize = 0;
 		ySize = 0;
 		String tmpChar = "";
@@ -40,6 +41,9 @@ public class GameBoardPanel extends JPanel {
 				tmpNum = 0;
 			}
 		}
+		result[0] = xSize;
+		result[1] = ySize;
+		return result;
 	}
 	private void addButtons(GameState state) {
 		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
