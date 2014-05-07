@@ -1,21 +1,24 @@
 package backend.actionhelpers;
 
 import backend.State;
-import game.impl.BoardLocation;
-import game.impl.GamePiece;
-import game.impl.Move;
-
-import java.util.List;
+import backend.classhelpers.MoveHelper;
 
 public class GameOverCheckHelper {
 
     private State state;
 
-    public GameOverCheckHelper(State state){
+    private MoveHelper moveHelper;
+
+    public GameOverCheckHelper(State state, MoveHelper moveHelper){
         this.state = state;
+        this.moveHelper = moveHelper;
     }
 
-    public boolean isGameOver(){
+    public GameOverCheckHelper(State state){
+        this(state, new MoveHelper(state));
+    }
+
+    public boolean makeGameOverCheck(){
         if(isBoardFull())
             return true;
 
@@ -43,21 +46,6 @@ public class GameOverCheckHelper {
     }
 
     public boolean isCurrentPlayerOutOfValidMoves(){
-        List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
-
-        for(int i = 0; i < allBoardLocations.size(); i++) {
-            if(isLocationValidMoveForCurrentPlayer(state, allBoardLocations.get(i)))
-                return false;
-
-        }
-
-        return true;
-    }
-
-    private boolean isLocationValidMoveForCurrentPlayer(State state, BoardLocation location){
-        Move move = new Move(state.getCurrentPlayer(), new GamePiece(""), location);
-        MoveValidationHelper validator = new MoveValidationHelper(state);
-
-        return validator.isDestinationEmpty(move) && validator.isValidOthelloMove(move);
+        return !moveHelper.doesPlayerHaveAnyValidMoves(state.getCurrentPlayer());
     }
 }

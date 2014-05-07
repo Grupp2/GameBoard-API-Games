@@ -18,7 +18,7 @@ public class MoveValidationHelper {
         this(state, new MoveHelper(state));
     }
 
-    public boolean validate(Move move){
+    public boolean makeMoveValidation(Move move){
         if(isRequestForRepublish(move)){
             state.setMessage("");
             return false;

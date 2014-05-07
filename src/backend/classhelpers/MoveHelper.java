@@ -24,7 +24,6 @@ public class MoveHelper {
             if(isLocationEmpty(allBoardLocations.get(i)))
                 if (isLocationValidOthelloMoveForPlayer(allBoardLocations.get(i), player))
                     return true;
-
         }
 
         return false;

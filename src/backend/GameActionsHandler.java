@@ -29,15 +29,15 @@ public class GameActionsHandler {
     }
 
     public Player calculateWinner(){
-        return winnerCalc.getWinner();
+        return winnerCalc.makeWinnerCalculation();
     }
 
     public boolean hasEndedCheck(){
-        return gameEndHelper.isGameOver();
+        return gameEndHelper.makeGameOverCheck();
     }
 
     public boolean validateMove(Move move){
-        return moveValidationHelper.validate(move);
+        return moveValidationHelper.makeMoveValidation(move);
     }
 
     public void executeMove(Move move){
@@ -67,7 +67,7 @@ public class GameActionsHandler {
     public void reset(){
         ResetHelper resetHelper = new ResetHelper(state);
 
-        resetHelper.reset();
+        resetHelper.doResetAction();
     }
 
 }
