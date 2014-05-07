@@ -74,7 +74,6 @@ public class MoveValidationHelper {
     }
 
     public boolean isValidOthelloMove(Move move){
-
-        return moveHelper.isLocationValidOthelloMoveForPlayer(move.getDestination(), state.getCurrentPlayer());
+        return moveHelper.isLocationValidOthelloMoveForPlayer(move.getDestination(), move.getPlayer());
     }
 }

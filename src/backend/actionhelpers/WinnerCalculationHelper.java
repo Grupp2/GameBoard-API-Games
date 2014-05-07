@@ -1,31 +1,34 @@
 package backend.actionhelpers;
 
 import backend.State;
+import backend.classhelpers.PlayerHelper;
 import game.impl.Player;
 
 public class WinnerCalculationHelper {
 
     private State state;
+    private PlayerHelper playerHelper;
 
-    public WinnerCalculationHelper(State state){
+    public WinnerCalculationHelper(State state, PlayerHelper playerHelper){
         this.state = state;
+        this.playerHelper = playerHelper;
     }
 
+    public WinnerCalculationHelper(State state){
+        this(state, new PlayerHelper(state));
+    }
+
+
     public Player makeWinnerCalculation(){
-        int playerOneScore = getPlayerScore(state.getPlayers().get(0));
-        int playerTwoScore = getPlayerScore(state.getPlayers().get(1));
+        int playerOneScore = playerHelper.getPlayerScore(playerHelper.getPlayerOne());
+        int playerTwoScore = playerHelper.getPlayerScore(playerHelper.getPlayerTwo());
 
         if(playerOneScore > playerTwoScore)
-            return state.getPlayers().get(0);
+            return playerHelper.getPlayerOne();
 
         else if(playerOneScore < playerTwoScore)
-            return state.getPlayers().get(1);
+            return playerHelper.getPlayerTwo();
 
         return null;
     }
-
-    private int getPlayerScore(Player player){
-        return player.getPieces().size();
-    }
-
 }

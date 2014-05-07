@@ -13,15 +13,23 @@ public class MoveHelper {
 
     private State state;
 
-    public MoveHelper(State state){
+    private BoardHelper boardHelper;
+
+    public MoveHelper(State state, BoardHelper boardHelper){
         this.state = state;
+        this.boardHelper = boardHelper;
     }
+
+    public MoveHelper(State state){
+        this(state, new BoardHelper(state));
+    }
+
 
     public boolean doesPlayerHaveAnyValidMoves(Player player){
         List<BoardLocation> allBoardLocations = state.getBoard().getLocations();
 
         for(int i = 0; i < allBoardLocations.size(); i++) {
-            if(isLocationEmpty(allBoardLocations.get(i)))
+            if(boardHelper.isLocationEmpty(allBoardLocations.get(i)))
                 if (isLocationValidOthelloMoveForPlayer(allBoardLocations.get(i), player))
                     return true;
         }
@@ -35,10 +43,6 @@ public class MoveHelper {
 
     public boolean isLocationValidOthelloMoveForPlayer(BoardLocation location, Player player){
         return getLocationsToFlipFromMove(location, player).size() > 0;
-    }
-
-    private boolean isLocationEmpty(BoardLocation location){
-        return location.getPiece() == null;
     }
 
 }

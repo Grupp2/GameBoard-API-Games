@@ -1,6 +1,5 @@
 package backend.undoableactions;
 
-
 import backend.State;
 import backend.classhelpers.MoveHelper;
 import game.impl.Player;
@@ -44,7 +43,6 @@ public class TurnIncrementAction implements UndoableAction{
             state.setMessage(state.getCurrentPlayer().getName()+" has no valid moves!");
             swapCurrentAndLastPlayer();
         }
-
 
     }
 

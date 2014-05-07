@@ -1,6 +1,5 @@
 package backend.classhelpers;
 
-
 import backend.State;
 import game.impl.BoardLocation;
 

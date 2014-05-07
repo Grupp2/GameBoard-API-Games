@@ -28,6 +28,7 @@ public class ResetHelper {
         this(state, new OthelloGameFactory(), new BoardHelper(state));
     }
 
+
     public void doResetAction(){
         resetPlayers();
         resetBoard();
