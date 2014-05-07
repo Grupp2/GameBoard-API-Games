@@ -65,7 +65,7 @@ public class OthelloGameFrame extends JFrame {
 	}
 
 	private void updateStatusTextLabel() {
-		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, normalStatusFont));
+		updateStatusTextLabelFontSize(normalStatusFont);
 		contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
 	}
 	
@@ -81,8 +81,12 @@ public class OthelloGameFrame extends JFrame {
 	
 	private void gameEndedRoutine() {
 		placeGamePieces();
-		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, largeStatusFont));
+		updateStatusTextLabelFontSize(largeStatusFont);
 		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
+	}
+	
+	private void updateStatusTextLabelFontSize(int fontSize) {
+		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
 	
 	public JPanel getGameBoardPanel() {
