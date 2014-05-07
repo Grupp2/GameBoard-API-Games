@@ -50,4 +50,7 @@ public class GameBoardPanel extends JPanel {
 			add(btn);
 		}
 	}
+	public int getxSize(){
+		return xSize;
+	}
 }
