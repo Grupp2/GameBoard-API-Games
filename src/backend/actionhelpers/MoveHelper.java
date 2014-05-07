@@ -31,7 +31,7 @@ public class MoveHelper {
     }
 
     public List<BoardLocation> getLocationsToFlipFromMove(BoardLocation location, Player player){
-        return new LocationsToFlipCalculation(player, new GamePieceHelper(state), new BoardParser(state.getBoard(), location)).getLocationsToFlip();
+        return new LocationsToFlipCalculation(player, new GamePieceHelper(state), new BoardParser(state.getBoard(), location), new BoardHelper(state)).getLocationsToFlip();
     }
 
     public boolean isLocationValidOthelloMoveForPlayer(BoardLocation location, Player player){

@@ -1,11 +1,8 @@
 package backend.util;
 
-import backend.State;
+import backend.actionhelpers.BoardHelper;
 import backend.actionhelpers.GamePieceHelper;
-import backend.util.BoardParser;
-import backend.util.GameRules;
 import game.impl.BoardLocation;
-import game.impl.GamePiece;
 import game.impl.Player;
 
 import java.util.ArrayList;
@@ -16,15 +13,17 @@ public class LocationsToFlipCalculation {
     private BoardLocation location;
     private Player currentPlayer;
     private GamePieceHelper pieceHelper;
+    private BoardHelper boardHelper;
     private BoardParser boardParser;
 
     private List<BoardLocation> locations = new ArrayList<BoardLocation>();
 
-    public LocationsToFlipCalculation(Player currentPlayer, GamePieceHelper pieceHelper, BoardParser boardParser){
+    public LocationsToFlipCalculation(Player currentPlayer, GamePieceHelper pieceHelper, BoardParser boardParser, BoardHelper boardHelper){
         this.location = boardParser.getLocation();
         this.currentPlayer = currentPlayer;
         this.boardParser = boardParser;
         this.pieceHelper = pieceHelper;
+        this.boardHelper = boardHelper;
     }
 
 

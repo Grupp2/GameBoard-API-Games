@@ -7,14 +7,6 @@ import java.util.List;
 
 public class GameRules {
 
-    public static boolean isPlayerOnePiece(GamePiece piece){
-        return piece.getId().equals("O");
-    }
-
-    public static boolean isPlayerTwoPiece(GamePiece piece){
-        return piece.getId().equals("X");
-    }
-
     public static boolean isLocationEmpty(BoardLocation location){
         return location == null || location.getPiece() == null;
     }

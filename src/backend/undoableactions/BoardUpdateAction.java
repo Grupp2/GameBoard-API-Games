@@ -1,6 +1,7 @@
 package backend.undoableactions;
 
 import backend.actionhelpers.GamePieceHelper;
+import backend.actionhelpers.MoveHelper;
 import backend.util.BoardParser;
 import backend.util.LocationsToFlipCalculation;
 import game.impl.BoardLocation;
@@ -18,20 +19,27 @@ public class BoardUpdateAction implements UndoableAction {
     private State state;
     private List<Player> players;
     private BoardLocation location;
+    private GamePieceHelper pieceHelper;
     private List<BoardLocation> locationsFlipped = new ArrayList<BoardLocation>();
-
-    public BoardUpdateAction(State state, BoardLocation location){
+    private MoveHelper moveHelper;
+    public BoardUpdateAction(State state, BoardLocation location, GamePieceHelper pieceHelper, MoveHelper moveHelper){
         this.state = state;
         this.location = location;
         players = state.getPlayers();
+        this.pieceHelper = pieceHelper;
+        this.moveHelper = moveHelper;
+    }
+
+    public BoardUpdateAction(State state, BoardLocation location){
+        this(state, location, new GamePieceHelper(state), new MoveHelper(state));
     }
 
     @Override
     public void execute(){
-        List<BoardLocation> locationsToFlip = new LocationsToFlipCalculation(state.getCurrentPlayer(), new GamePieceHelper(state), new BoardParser(state.getBoard(), location)).getLocationsToFlip();
+        List<BoardLocation> locationsToFlip = moveHelper.getLocationsToFlipFromMove(location, state.getCurrentPlayer());
 
         for(int i = 0; i < locationsToFlip.size(); i++){
-            changeOwnerOfPieceAtLocation(locationsToFlip.get(i));
+            pieceHelper.changeOwnerOfPiece(locationsToFlip.get(i).getPiece());
             locationsFlipped.add(locationsToFlip.get(i));
         }
 
@@ -40,7 +48,7 @@ public class BoardUpdateAction implements UndoableAction {
     @Override
     public void undo() {
         for(int i = locationsFlipped.size()-1; i > -1; i--) {
-            changeOwnerOfPieceAtLocation(locationsFlipped.get(i));
+            pieceHelper.changeOwnerOfPiece(locationsFlipped.get(i).getPiece());
             locationsFlipped.remove(i);
         }
     }
@@ -48,34 +56,6 @@ public class BoardUpdateAction implements UndoableAction {
     @Override
     public String getName() {
         return "Board update";
-    }
-
-
-    private Player getOwnerOfPiece(GamePiece piece){
-        if(GameRules.isPlayerOnePiece(piece))
-            return players.get(0);
-
-        return players.get(1);
-    }
-
-    private void changeOwnerOfPieceAtLocation(BoardLocation location){
-        GamePiece piece = location.getPiece();
-        Player newOwner, oldOwner = getOwnerOfPiece(piece);
-        String newPieceId;
-
-        if(oldOwner == players.get(0)){
-            newOwner = players.get(1);
-            newPieceId = "X";
-        }
-        else{
-            newOwner = players.get(0);
-            newPieceId = "O";
-        }
-
-        oldOwner.getPieces().remove(piece);
-        piece = new GamePiece(newPieceId);
-        newOwner.getPieces().add(piece);
-        location.setPiece(piece);
     }
 
 }

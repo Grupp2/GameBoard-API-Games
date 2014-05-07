@@ -1,11 +1,7 @@
 package backend.actionhelpers;
 
-import backend.util.LocationsToFlipCalculation;
-import game.impl.BoardLocation;
 import game.impl.Move;
 import backend.State;
-
-import java.util.List;
 
 public class MoveValidationHelper {
 
