@@ -13,9 +13,15 @@ import game.impl.Player;
 public class GameActionsHandler {
 
     private State state;
+    private MoveValidationHelper moveValidationHelper;
+
+    public GameActionsHandler(State state, MoveValidationHelper moveValidationHelper){
+        this.state = state;
+        this.moveValidationHelper = moveValidationHelper;
+    }
 
     public GameActionsHandler(State state){
-        this.state = state;
+        this(state, new MoveValidationHelper(state));
     }
 
     public Player calculateWinner(){
@@ -40,40 +46,7 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move){
-        MoveValidationHelper moveValidationHelper = new MoveValidationHelper(state, move);
-
-        if(moveValidationHelper.isRequestForRepublish()){
-            state.setMessage("");
-            return false;
-        }
-
-        if(!moveValidationHelper.isPlayersTurnToMove()){
-            state.setMessage("It's not your turn!");
-            return false;
-        }
-
-        if(!moveValidationHelper.doesDestinationExist()){
-            state.setMessage("Invalid location!");
-            return false;
-        }
-
-        if(!moveValidationHelper.isDestinationEmpty()){
-            state.setMessage("There is already a piece in that location!");
-            return false;
-        }
-
-        if(moveValidationHelper.isTryingToMovePieceAlreadyPlaced()){
-            state.setMessage("You cannot move a piece already placed on the board.");
-            return false;
-        }
-
-        if(!moveValidationHelper.isValidOthelloMove()){
-            state.setMessage("You have to put your piece at a valid location!");
-            return false;
-        }
-
-        state.setMessage("");
-        return true;
+        return moveValidationHelper.validate(move);
     }
 
     public void executeMove(Move move){
@@ -103,13 +76,7 @@ public class GameActionsHandler {
     public void reset(){
         ResetHelper resetHelper = new ResetHelper(state);
 
-        resetHelper.resetPlayers();
-        resetHelper.resetBoard();
-        resetHelper.resetTurn();
-        resetHelper.resetActionsStack();
-        resetHelper.resetMessage();
-
-        resetHelper.setStartingPositions();
+        resetHelper.reset();
     }
 
 }

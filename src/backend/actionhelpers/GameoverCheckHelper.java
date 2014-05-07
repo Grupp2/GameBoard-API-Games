@@ -43,8 +43,8 @@ public class GameoverCheckHelper {
 
     private boolean isLocationValidMoveForCurrentPlayer(State state, BoardLocation location){
         Move move = new Move(state.getCurrentPlayer(), new GamePiece(""), location);
-        MoveValidationHelper validator = new MoveValidationHelper(state, move);
+        MoveValidationHelper validator = new MoveValidationHelper(state);
 
-        return validator.isDestinationEmpty() && validator.isValidOthelloMove();
+        return validator.isDestinationEmpty(move) && validator.isValidOthelloMove(move);
     }
 }
