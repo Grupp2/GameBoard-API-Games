@@ -1,8 +1,11 @@
-package gui;
+package gui.panels;
 
 import game.api.GameState;
+import gui.GameBoardSizeCalculator;
+
 import java.awt.Color;
 import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 

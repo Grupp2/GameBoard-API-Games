@@ -1,10 +1,9 @@
-package gui;
+package gui.graphics;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
 
 public class GraphicsHolder {
@@ -19,9 +18,9 @@ public class GraphicsHolder {
 	private void loadPictures() {
 		try {
 			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			InputStream input = classLoader.getResourceAsStream("gui/svart.jpg");
+			InputStream input = classLoader.getResourceAsStream("gui/graphics/svart.jpg");
 			player1Piece = ImageIO.read(input);
-			input = classLoader.getResourceAsStream("gui/vit.jpg");
+			input = classLoader.getResourceAsStream("gui/graphics/vit.jpg");
 			player2Piece = ImageIO.read(input);
 		} catch (IOException e) {
 			

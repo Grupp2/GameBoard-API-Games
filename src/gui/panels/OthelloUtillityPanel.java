@@ -1,7 +1,10 @@
-package gui;
+package gui.panels;
 
+import gui.OthelloGuiInputUnit;
+import gui.Listeners.UtilityListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import backend.OthelloGameState;
 
 public class OthelloUtillityPanel extends JPanel {

@@ -1,8 +1,11 @@
-package gui;
+package gui.Listeners;
+
+import gui.OthelloGuiInputUnit;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 

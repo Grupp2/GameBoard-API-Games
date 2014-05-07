@@ -1,16 +1,19 @@
-package gui;
+package gui.Listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import game.api.GameState;
+import gui.OthelloGuiInputUnit;
+import gui.panels.OthelloUtillityPanel;
 import backend.OthelloGameState;
 
 public class UtilityListener {
-	private OthelloUtillityPanel utilityPanel;
+	private gui.panels.OthelloUtillityPanel utilityPanel;
 	private OthelloGameState gameState;
 	private OthelloGuiInputUnit inputUnit;
 
-	public UtilityListener(OthelloUtillityPanel utilityPanel,GameState gameState, OthelloGuiInputUnit inputUnit) {
+	public UtilityListener(OthelloUtillityPanel utilityPanel, GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.utilityPanel = utilityPanel;
 		this.inputUnit = inputUnit;
 		this.gameState = (OthelloGameState) gameState;
