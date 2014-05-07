@@ -12,7 +12,7 @@ import java.util.List;
 public class LocationsToFlipCalculation {
 
     private BoardLocation location;
-    private Player currentPlayer;
+    private Player thePlayer;
 
     private GamePieceHelper pieceHelper;
     private BoardHelper boardHelper;
@@ -22,7 +22,7 @@ public class LocationsToFlipCalculation {
 
     public LocationsToFlipCalculation(Player thePlayer, GamePieceHelper pieceHelper, BoardParser boardParser, BoardHelper boardHelper){
         this.location = boardParser.getLocation();
-        this.currentPlayer = thePlayer;
+        this.thePlayer = thePlayer;
 
         this.boardParser = boardParser;
 
@@ -30,8 +30,8 @@ public class LocationsToFlipCalculation {
         this.boardHelper = boardHelper;
     }
 
-    public LocationsToFlipCalculation(State state, Player currentPlayer, BoardParser parser){
-        this(currentPlayer, new GamePieceHelper(state), parser, new BoardHelper(state));
+    public LocationsToFlipCalculation(State state, Player thePlayer, BoardParser parser){
+        this(thePlayer, new GamePieceHelper(state), parser, new BoardHelper(state));
     }
 
 
@@ -47,36 +47,35 @@ public class LocationsToFlipCalculation {
     private void parsePartial(List<BoardLocation> partialList){
         int locationIndex = partialList.indexOf(location);
 
-        int backWardsIndex = getBackwardsUpdateIndex(partialList, locationIndex);
+        int backWardsIndex = getHowFarWeShouldUpdateBackward(partialList, locationIndex);
         for(int i = locationIndex - 1; i >= backWardsIndex; i--)
             locations.add(partialList.get(i));
 
-        int forwardIndex = getForwardUpdateIndex(partialList, locationIndex);
+        int forwardIndex = getHowFarWeShouldUpdateForward(partialList, locationIndex);
         for(int i = locationIndex + 1; i <= forwardIndex; i++)
             locations.add(partialList.get(i));
     }
 
-    private int getBackwardsUpdateIndex(List<BoardLocation> list, int startIndex){
+    private int getHowFarWeShouldUpdateBackward(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex-1; i >= 0; i-- ){
             if(boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if(pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
+            if(pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == thePlayer)
                 return i+1;
         }
-
 
         return startIndex;
     }
 
-    private int getForwardUpdateIndex(List<BoardLocation> list, int startIndex){
+    private int getHowFarWeShouldUpdateForward(List<BoardLocation> list, int startIndex){
 
         for(int i = startIndex+1; i < list.size(); i++) {
             if (boardHelper.isLocationEmpty(list.get(i)))
                 return startIndex;
 
-            if (pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == currentPlayer)
+            if (pieceHelper.getOwnerOfPiece(list.get(i).getPiece()) == thePlayer)
                 return i-1;
 
         }
