@@ -49,6 +49,9 @@ public class CoordinateTranslator implements Translator {
 		isLinear = prop.getProperty("isLinear");
 	}
 
+	public String translateFromGameStateToUi(String input) {
+		return translateRowFromGame(input) + translateColumnFromGame(input);
+	}
 	
 	protected String translateRowFromGame(String input) {
 		String output = "";
@@ -92,7 +95,7 @@ public class CoordinateTranslator implements Translator {
 		
 	}
 	
-	protected String translateColumnDataFromGui(String columnData) {
+	protected String translateColumnFromGui(String columnData) {
 		String output = "";
 		if (columnDataType.equals("letters"))
 			output += numbersToLetters.get(columnData);
@@ -101,15 +104,9 @@ public class CoordinateTranslator implements Translator {
 		return output;
 	}
 
-	@Override
-	public String translateFromGameStateToUi(String str) {
-		String rowData = Character.toString(str.charAt(0));
-		String columnData = str.substring(1);
-		return translateRowFromGui(rowData) + translateColumnDataFromGui(columnData);
-	}
-
-	@Override
-	public String translateFromUiToGameState(String str) {
-		return translateRowFromGame(str) + translateColumnFromGame(str);
+	public String translateFromUiToGameState(String input) {
+		String rowData = Character.toString(input.charAt(0));
+		String columnData = input.substring(1);
+		return translateRowFromGui(rowData) + translateColumnFromGui(columnData);
 	}
 }
