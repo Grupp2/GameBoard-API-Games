@@ -20,7 +20,7 @@ public class OthelloGameFrame extends JFrame {
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
-	private final Color highlightGreen = new Color(181, 130, 29 ,255);
+	private final Color highlightGreen = new Color(181, 230, 29 ,255);
 	private final Color backgroundGreen = new Color(34, 177, 76, 255);
 	private String player1gamePiece;
 	private String player2gamePiece;
