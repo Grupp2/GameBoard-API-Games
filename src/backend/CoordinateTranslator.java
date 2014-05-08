@@ -3,10 +3,11 @@ package backend;
 import java.util.HashMap;
 import java.util.Properties;
 
+import translator.Translator;
 import backend.util.PropertiesReaderWriter;
 import game.api.GameState;
 
-public class CoordinateTranslator {
+public class CoordinateTranslator implements Translator {
 	
 	private PropertiesReaderWriter propIO;
 	private String columnDataType;
@@ -48,9 +49,6 @@ public class CoordinateTranslator {
 		isLinear = prop.getProperty("isLinear");
 	}
 
-	public String translateFromGame(String input) {
-		return translateRowFromGame(input) + translateColumnFromGame(input);
-	}
 	
 	protected String translateRowFromGame(String input) {
 		String output = "";
@@ -103,9 +101,15 @@ public class CoordinateTranslator {
 		return output;
 	}
 
-	public String translateFromGui(String input) {
-		String rowData = Character.toString(input.charAt(0));
-		String columnData = input.substring(1);
+	@Override
+	public String translateFromGameStateToUi(String str) {
+		String rowData = Character.toString(str.charAt(0));
+		String columnData = str.substring(1);
 		return translateRowFromGui(rowData) + translateColumnDataFromGui(columnData);
+	}
+
+	@Override
+	public String translateFromUiToGameState(String str) {
+		return translateRowFromGame(str) + translateColumnFromGame(str);
 	}
 }
