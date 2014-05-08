@@ -1,13 +1,11 @@
 package gui;
 
-import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
 import game.api.GameState;
 
 public class GameBoardSizeCalculator {
 
-	public int[] calculateBoardSize(GameState state) {
-		TranslatorAdapter ta = new TranslatorAdapter(new TextFileTranslator());
+	public int[] calculateBoardSize(GameState state, TranslatorAdapter ta) {
 		int[] result = {0, 0};
 		int xSize = 0;
 		int ySize = 0;

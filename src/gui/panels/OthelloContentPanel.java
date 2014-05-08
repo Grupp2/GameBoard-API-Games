@@ -3,15 +3,14 @@ package gui.panels;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.Listeners.GameBoardListener;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
+import translator.TextFileTranslator;
+import translator.TranslatorAdapter;
 import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {
@@ -33,9 +32,10 @@ public class OthelloContentPanel extends JPanel {
 	}
 
 	public JPanel getContentPane() {
-		createGameBoardPanel();
+		TranslatorAdapter ta = new TranslatorAdapter(new TextFileTranslator());
+		createGameBoardPanel(ta);
 		createUtillityPanel();
-		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit);
+		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
 		gameBoardListener.addButtonListeners();
 		contentPane = new JPanel(new BorderLayout());
 		createStatusPanel();
@@ -57,8 +57,8 @@ public class OthelloContentPanel extends JPanel {
 		return statusPanel;
 	}
 
-	private void createGameBoardPanel() {
-		this.gameBoardPanel = new GameBoardPanel(gameState);
+	private void createGameBoardPanel(TranslatorAdapter ta) {
+		this.gameBoardPanel = new GameBoardPanel(gameState, ta);
 	}
 	
 	private void createUtillityPanel() {

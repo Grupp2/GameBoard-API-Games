@@ -2,12 +2,11 @@ package gui.panels;
 
 import game.api.GameState;
 import gui.GameBoardSizeCalculator;
-
 import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import translator.TranslatorAdapter;
 
 public class GameBoardPanel extends JPanel {
 	private int xSize;
@@ -16,16 +15,16 @@ public class GameBoardPanel extends JPanel {
 	private final int BUTTON_SIZE = 75;
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
-	public GameBoardPanel(GameState state) {
+	public GameBoardPanel(GameState state, TranslatorAdapter ta) {
 		setBounds(1, 1, 600, 600);
-		calculateBoardSize(state);
+		calculateBoardSize(state, ta);
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);
 	}
 	
-	private void calculateBoardSize(GameState gameState) {
+	private void calculateBoardSize(GameState gameState, TranslatorAdapter ta) {
 		GameBoardSizeCalculator calc = new GameBoardSizeCalculator();
-		int[] result = calc.calculateBoardSize(gameState);
+		int[] result = calc.calculateBoardSize(gameState, ta);
 		this.xSize = result[0];
 		this.ySize = result[1];
 	}

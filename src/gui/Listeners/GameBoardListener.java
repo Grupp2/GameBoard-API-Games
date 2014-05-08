@@ -1,25 +1,23 @@
 package gui.Listeners;
 
 import gui.OthelloGuiInputUnit;
-
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
 
 public class GameBoardListener {
 	private JButton currentButton;
 	private OthelloGuiInputUnit inputUnit;
 	private JPanel gameBoard;
+	private TranslatorAdapter ta;
 
-	public GameBoardListener(JPanel gameBoard, OthelloGuiInputUnit inputUnit) {
+	public GameBoardListener(JPanel gameBoard, OthelloGuiInputUnit inputUnit, TranslatorAdapter ta) {
 		this.inputUnit = inputUnit;
 		this.gameBoard = gameBoard;
+		this.ta = ta;
 	}
 	
 	public void addButtonListeners() {
@@ -36,7 +34,6 @@ public class GameBoardListener {
 	}
 	
 	private void createMove() {
-		TranslatorAdapter ta = new TranslatorAdapter(new TextFileTranslator());
 		inputUnit.notifyListeners(ta.translateFromUiToGameState(currentButton.getName()));
 	}
 }
