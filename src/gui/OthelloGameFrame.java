@@ -5,16 +5,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
-
 import game.api.GameState;
 import gui.graphics.GraphicsHolder;
 import gui.panels.OthelloContentPanel;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
@@ -88,10 +84,6 @@ public class OthelloGameFrame extends JFrame {
 	private void updateStatusTextLabelFontSize(int fontSize) {
 		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
-	
-//	public JPanel getGameBoardPanel() {
-//		return contentPane.getGameBoardPanel();
-//	}
 	
 	public void setStatusLabelText(String str) {
 		contentPane.getStatusPanel().getStatusTextLabel().setText(str);
