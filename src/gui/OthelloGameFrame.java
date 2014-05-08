@@ -89,15 +89,15 @@ public class OthelloGameFrame extends JFrame {
 		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
 	
-	public JPanel getGameBoardPanel() {
-		return contentPane.getGameBoardPanel();
-	}
+//	public JPanel getGameBoardPanel() {
+//		return contentPane.getGameBoardPanel();
+//	}
 	
 	public void setStatusLabelText(String str) {
 		contentPane.getStatusPanel().getStatusTextLabel().setText(str);
 	}
 	
-	public void placeGamePieces() {
+	private void placeGamePieces() {
 		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
 			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
 				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player1gamePiece)) {
