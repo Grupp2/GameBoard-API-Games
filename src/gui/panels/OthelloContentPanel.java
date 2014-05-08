@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
+import backend.CoordinateTranslator;
 import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {
@@ -32,7 +33,7 @@ public class OthelloContentPanel extends JPanel {
 	}
 
 	public JPanel getContentPane() {
-		TranslatorAdapter ta = new TranslatorAdapter(new TextFileTranslator());
+		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 		createGameBoardPanel(ta);
 		createUtillityPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
