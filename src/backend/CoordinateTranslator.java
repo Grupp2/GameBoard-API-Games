@@ -7,6 +7,7 @@ import backend.util.PropertiesReaderWriter;
 import game.api.GameState;
 
 public class CoordinateTranslator {
+	
 	private PropertiesReaderWriter propIO;
 	private String columnDataType;
 	private String rowDataType;
