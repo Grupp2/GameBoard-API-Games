@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import translator.TextFileTranslator;
+import translator.TranslatorAdapter;
+
 public class GameBoardListener {
 	private JButton currentButton;
 	private OthelloGuiInputUnit inputUnit;
@@ -33,6 +36,7 @@ public class GameBoardListener {
 	}
 	
 	private void createMove() {
-		inputUnit.notifyListeners(currentButton.getName());
+		TranslatorAdapter ta = new TranslatorAdapter(new TextFileTranslator());
+		inputUnit.notifyListeners(ta.translateFromUiToGameState(currentButton.getName()));
 	}
 }

@@ -1,47 +1,36 @@
 package translator;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TextFileTranslator implements Translator {
 	private Map<String, String> gameStateToUiMap = new HashMap<String, String>();
 	private Map<String, String> UiTogameStateMap = new HashMap<String, String>();
-	
+
 	public TextFileTranslator() {
 		loadTranslationFile();
 	}
 
 	private void loadTranslationFile() {
-		FileInputStream fis = null;
+		BufferedReader br = null;
 		try {
-			fis = new FileInputStream("translator/Translation.txt");
-		} catch (FileNotFoundException e1) {
-		}
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-		String line;
-		try {
-			while ((line = br.readLine()) != null) {
+			br = new BufferedReader(
+					new FileReader("Translation.txt"));
+			String line;
+			while ((line = br.readLine()) != null)
 				processTranslationFile(line);
-			}
 		} catch (IOException e) {
 
 		} finally {
-			if (br != null) 
-			try {
-				br.close();
-			} catch (Throwable t) {
-			}
-			if (fis != null)
+			if (br != null)
 				try {
-					fis.close();
-				} catch (IOException e) {
+					br.close();
+				} catch (Throwable t) {
 				}
+
 		}
 	}
 
