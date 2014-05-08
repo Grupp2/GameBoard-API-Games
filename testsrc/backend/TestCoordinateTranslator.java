@@ -20,8 +20,6 @@ public class TestCoordinateTranslator {
 
 	@Before
 	public void setUp() throws Exception {
-		state = mock(GameState.class);
-		translator = new CoordinateTranslator(state);
 		propIO = new PropertiesReaderWriter();
 	}
 

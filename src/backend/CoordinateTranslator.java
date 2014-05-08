@@ -7,25 +7,26 @@ import backend.util.PropertiesReaderWriter;
 import game.api.GameState;
 
 public class CoordinateTranslator {
-	private GameState gameState;
 	private PropertiesReaderWriter propIO;
 	private String columnDataType;
 	private String rowDataType;
 	private String isLinear;
-	private boolean initialized = false;
 	private HashMap<String, String> lettersToNumbers;
 	private HashMap<String, String> numbersToLetters;
 
-	public CoordinateTranslator(GameState gameState) {
-		this.gameState = gameState;
+	public CoordinateTranslator() {
 		propIO = new PropertiesReaderWriter();
+		InitializePropertyValues();
+
 		char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
 				'W', 'X', 'Y', 'Z'};
 		int[] numbers = new int[200];
 		for (int i = 1; i < numbers.length; i++)
 			numbers[i - 1] = i;
+
 		lettersToNumbers = new HashMap<String, String>();
+
 		for (int i = 1; i < letters.length; i++) {
 			lettersToNumbers.put(Character.toString(letters[i]),
 					Integer.toString(numbers[i]));
@@ -36,7 +37,7 @@ public class CoordinateTranslator {
 			numbersToLetters.put(Integer.toString(numbers[i]),
 					Character.toString(letters[i]));
 		}
-		return;
+
 	}
 
 	private void InitializePropertyValues() {
@@ -47,30 +48,27 @@ public class CoordinateTranslator {
 	}
 
 	public String translateFromGame(String input) {
-		if (!initialized)
-			InitializePropertyValues();
-
+		String output = "";
+		String rowData;
+		String columnData;
 		return input;
-
 	}
 
 	public String translateFromGui(String input) {
-		if (!initialized)
-			InitializePropertyValues();
-		String firstPart = Character.toString(input.charAt(0));
-		String secondPart = input.substring(1);
-
+		String rowData = Character.toString(input.charAt(0));
+		String columnData = input.substring(1);
 		String output = "";
+		
 		if (rowDataType.equals("numbers"))
-			output += lettersToNumbers.get(firstPart);
+			output += lettersToNumbers.get(rowData);
 		else if (rowDataType.equals("letters"))
-			output += firstPart;
+			output += rowData;
 
 		if (rowDataType.equals("letters"))
-			output += numbersToLetters.get(secondPart);
+			output += numbersToLetters.get(columnData);
 		else if (rowDataType.equals("numbers"))
-			output += secondPart;
-
+			output += columnData;
+		
 		return output;
 	}
 }
