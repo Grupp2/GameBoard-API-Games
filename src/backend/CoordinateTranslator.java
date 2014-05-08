@@ -23,12 +23,12 @@ public class CoordinateTranslator {
 				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
 				'W', 'X', 'Y', 'Z'};
 		int[] numbers = new int[200];
-		for (int i = 1; i < numbers.length; i++)
-			numbers[i - 1] = i;
+		for (int i = 0; i < numbers.length; i++)
+			numbers[i] = i + 1;
 
 		lettersToNumbers = new HashMap<String, String>();
 
-		for (int i = 1; i < letters.length; i++) {
+		for (int i = 0; i < letters.length; i++) {
 			lettersToNumbers.put(Character.toString(letters[i]),
 					Integer.toString(numbers[i]));
 		}
@@ -49,27 +49,63 @@ public class CoordinateTranslator {
 	}
 
 	public String translateFromGame(String input) {
+		return translateRowFromGame(input) + translateColumnFromGame(input);
+	}
+	
+	protected String translateRowFromGame(String input) {
 		String output = "";
-		String rowData;
-		String columnData;
-		return input;
+		if (rowDataType.equals("numbers")) {
+			if (input.length() >= 3)
+				output += numbersToLetters.get(input.substring(0, 3));
+			else
+				output += numbersToLetters.get(Character.toString(input.charAt(0)));
+		} else {
+			if (input.length() >= 3)
+				output += input.substring(0, 3);
+			else
+				output += Character.toString(input.charAt(0));
+		}
+		return output;
+	}
+	
+	protected String translateColumnFromGame(String input) {
+		String output = "";
+		if (columnDataType.equals("letters")) {
+			if (input.length() >= 3)
+				output += lettersToNumbers.get(input.substring(1, 4));
+			else
+				output += lettersToNumbers.get(Character.toString(input.charAt(1)));
+		} else {
+			if (input.length() >= 3)
+				output += input.substring(1, 4);
+			else
+				output += Character.toString(input.charAt(1));
+		}
+		return output;
+	}
+	
+	protected String translateRowFromGui(String rowData) {
+		String output = "";
+		if (rowDataType.equals("numbers"))
+			output += lettersToNumbers.get(rowData);
+		else if (rowDataType.equals("letters"))
+			output += rowData;
+		return output;
+		
+	}
+	
+	protected String translateColumnDataFromGui(String columnData) {
+		String output = "";
+		if (columnDataType.equals("letters"))
+			output += numbersToLetters.get(columnData);
+		else if (columnDataType.equals("numbers"))
+			output += columnData;
+		return output;
 	}
 
 	public String translateFromGui(String input) {
 		String rowData = Character.toString(input.charAt(0));
 		String columnData = input.substring(1);
-		String output = "";
-		
-		if (rowDataType.equals("numbers"))
-			output += lettersToNumbers.get(rowData);
-		else if (rowDataType.equals("letters"))
-			output += rowData;
-
-		if (rowDataType.equals("letters"))
-			output += numbersToLetters.get(columnData);
-		else if (rowDataType.equals("numbers"))
-			output += columnData;
-		
-		return output;
+		return translateRowFromGui(rowData) + translateColumnDataFromGui(columnData);
 	}
 }

@@ -21,6 +21,7 @@ public class TestCoordinateTranslator {
 	@Before
 	public void setUp() throws Exception {
 		propIO = new PropertiesReaderWriter();
+		translator = new CoordinateTranslator();
 	}
 
 	@Test
@@ -28,26 +29,40 @@ public class TestCoordinateTranslator {
 		Properties propRead = propIO.getCoordinatePropertyValues();
 		String rowDataType = propRead.getProperty("rowDataType");
 		String columnDataType = propRead.getProperty("columnDataType");
-		String isLinear = propRead.getProperty("isLinear");
-
-		char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-				'W', 'X', 'Y', 'Z'};
-		int[] numbers = new int[200];
-		for (int i = 1; i < numbers.length; i++)
-			numbers[i - 1] = i;
-
+		
+		if (rowDataType.equals("numbers")) {
+			if (!translator.translateRowFromGui("A").equals("1"))
+				fail("invalid translation");
+			if (!translator.translateRowFromGui("Z").equals("26"))
+				fail("invalid translation");
+		}
+		
+		if (columnDataType.equals("letters")) {
+			if (!translator.translateColumnDataFromGui("1").equals("A"))
+				fail("invalid translation");
+			if (!translator.translateColumnDataFromGui("26").equals("Z"))
+				fail("invalid translation");
+		}
+		
 		if (rowDataType.equals("numbers") && columnDataType.equals("letters")) {
-			for (int i = 1; i <= 26; i++) {
-				if (!translator.translateFromGui(
-						Character.toString(letters[i - 1])
-								+ Integer.toString(numbers[i])).equals(
-						i + letters[i - 1])) {
-					fail("Invalid translation. " + letters[i - 1] + " -> " + i);
-				}
-			}
+			if (!translator.translateFromGui("A1").equals("1A"))
+				fail("invalid translation");
+			if (!translator.translateFromGui("Z26").equals("26Z"))
+				fail("invalid translation");
 		}
 
+	}
+
+	@Test
+	public void testTranslationToGameState() {
+		Properties propRead = propIO.getCoordinatePropertyValues();
+		String rowDataType = propRead.getProperty("rowDataType");
+		String columnDataType = propRead.getProperty("columnDataType");
+		
+		if (!translator.translateFromGame("1A").equals("A1"))
+			fail("invalid translation");
+	
+		
 	}
 
 }
