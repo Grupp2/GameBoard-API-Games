@@ -38,16 +38,16 @@ public class TestCoordinateTranslator {
 		}
 		
 		if (columnDataType.equals("letters")) {
-			if (!translator.translateColumnDataFromGui("1").equals("A"))
+			if (!translator.translateColumnFromGui("1").equals("A"))
 				fail("invalid translation");
-			if (!translator.translateColumnDataFromGui("26").equals("Z"))
+			if (!translator.translateColumnFromGui("26").equals("Z"))
 				fail("invalid translation");
 		}
 		
 		if (rowDataType.equals("numbers") && columnDataType.equals("letters")) {
-			if (!translator.translateFromGui("A1").equals("1A"))
+			if (!translator.translateFromUiToGameState("A1").equals("1A"))
 				fail("invalid translation");
-			if (!translator.translateFromGui("Z26").equals("26Z"))
+			if (!translator.translateFromUiToGameState("Z26").equals("26Z"))
 				fail("invalid translation");
 		}
 
@@ -59,7 +59,7 @@ public class TestCoordinateTranslator {
 		String rowDataType = propRead.getProperty("rowDataType");
 		String columnDataType = propRead.getProperty("columnDataType");
 		
-		if (!translator.translateFromGame("1A").equals("A1"))
+		if (!translator.translateFromGameStateToUi("1A").equals("A1"))
 			fail("invalid translation");
 	
 		
