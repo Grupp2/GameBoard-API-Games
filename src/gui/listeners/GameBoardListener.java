@@ -1,4 +1,4 @@
-package gui.listeners;
+package gui.Listeners;
 
 import gui.OthelloGuiInputUnit;
 import java.awt.Component;

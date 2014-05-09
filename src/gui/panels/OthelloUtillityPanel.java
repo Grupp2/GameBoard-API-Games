@@ -1,8 +1,7 @@
 package gui.panels;
 
 import gui.OthelloGuiInputUnit;
-import gui.listeners.UtilityListener;
-
+import gui.Listeners.UtilityListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
