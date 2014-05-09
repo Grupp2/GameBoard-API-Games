@@ -105,8 +105,13 @@ public class CoordinateTranslator implements Translator {
 	}
 
 	public String translateFromUiToGameState(String input) {
-		String rowData = Character.toString(input.charAt(0));
-		String columnData = input.substring(1);
+		String rowData;
+		String columnData;
+		if (rowDataType.equals("numbers") && columnDataType.equals("numbers")) {
+			
+		}
+		rowData = Character.toString(input.charAt(0));
+		columnData = input.substring(1);
 		return translateRowFromGui(rowData) + translateColumnFromGui(columnData);
 	}
 }
