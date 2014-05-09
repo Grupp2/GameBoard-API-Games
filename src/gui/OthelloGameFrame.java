@@ -15,7 +15,7 @@ import backend.OthelloGameState;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private OthelloGameState gameState;
+	private GameState gameState;
 	private OthelloContentPanel contentPane;
 	private GraphicsHolder gh = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
@@ -36,7 +36,7 @@ public class OthelloGameFrame extends JFrame {
 	}
 
 	public void notifyOfPublish(GameState state) {
-		this.gameState = (OthelloGameState)state;
+		this.gameState = state;
 		if (gameState.hasEnded())
 			gameEndedRoutine();
 		else {
@@ -117,9 +117,14 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void toggleUndoButton() {
-		if (gameState.canUndo())
-			contentPane.getUtilityPanel().getBtnUndo().setEnabled(true);
-		else
+		if (!(gameState instanceof OthelloGameState)) {
 			contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
+			return;
+		} else {
+			if (((OthelloGameState) gameState).canUndo())
+				contentPane.getUtilityPanel().getBtnUndo().setEnabled(true);
+			else
+				contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
+		}
 	}
 }

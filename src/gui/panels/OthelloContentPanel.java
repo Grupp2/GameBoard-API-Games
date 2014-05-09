@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
-import gui.Listeners.GameBoardListener;
+import gui.listeners.GameBoardListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
