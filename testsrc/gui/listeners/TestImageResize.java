@@ -9,6 +9,7 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
 
 public class TestImageResize {
 	private BufferedImage testImage;
@@ -28,6 +29,9 @@ public class TestImageResize {
 
 	@Test
 	public void HorisontalTest() {
+//		dimensionToTest = mock(Dimension.class);
+//		when(dimensionToTest.height).thenReturn(40);
+//		when(dimensionToTest.width).thenReturn(20);
 		dimensionToTest = new Dimension(20, 40);
 		testImage = ir.resizeImage(testImage, dimensionToTest);
 		assertEquals(20, testImage.getWidth());
