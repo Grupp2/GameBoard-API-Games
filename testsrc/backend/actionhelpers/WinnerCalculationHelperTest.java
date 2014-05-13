@@ -19,7 +19,7 @@ public class WinnerCalculationHelperTest {
     public void setUp() throws Exception {
         state = mock(State.class);
         playerHelper = mock(PlayerHelper.class);
-        winnerHelper = new WinnerCalculationHelper(state, playerHelper);
+        winnerHelper = new WinnerCalculationHelper(playerHelper);
     }
 
     @Test
