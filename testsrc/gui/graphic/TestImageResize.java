@@ -1,4 +1,4 @@
-package gui.listeners;
+package gui.graphic;
 
 import static org.junit.Assert.*;
 import gui.graphics.ImageResize;
