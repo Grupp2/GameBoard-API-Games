@@ -1,4 +1,4 @@
-package backend;
+package translator;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -10,6 +10,7 @@ import game.api.GameState;
 import org.junit.Before;
 import org.junit.Test;
 
+import translator.CoordinateTranslator;
 import backend.util.PropertiesReaderWriter;
 
 public class TestCoordinateTranslator {

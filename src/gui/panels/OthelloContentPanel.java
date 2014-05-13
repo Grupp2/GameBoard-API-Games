@@ -3,15 +3,18 @@ package gui.panels;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.listeners.GameBoardListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import translator.CoordinateTranslator;
 import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
-import backend.CoordinateTranslator;
 import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {

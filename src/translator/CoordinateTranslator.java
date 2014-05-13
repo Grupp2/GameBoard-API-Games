@@ -1,9 +1,8 @@
-package backend;
+package translator;
 
 import java.util.HashMap;
 import java.util.Properties;
 
-import translator.Translator;
 import backend.util.PropertiesReaderWriter;
 import game.api.GameState;
 
