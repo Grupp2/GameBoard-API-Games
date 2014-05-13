@@ -1,67 +1,97 @@
 package translator;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.util.Properties;
-
-import game.api.GameState;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import translator.CoordinateTranslator;
-import backend.util.PropertiesReaderWriter;
 
 public class TestCoordinateTranslator {
 
-	GameState state;
-	CoordinateTranslator translator;
-	PropertiesReaderWriter propIO;
-
 	@Before
 	public void setUp() throws Exception {
-		propIO = new PropertiesReaderWriter();
-		translator = new CoordinateTranslator();
 	}
 
 	@Test
 	public void testTranslationFromGUItoGame() {
-		Properties propRead = propIO.getCoordinatePropertyValues();
-		String rowDataType = propRead.getProperty("rowDataType");
-		String columnDataType = propRead.getProperty("columnDataType");
+	    	String output;
+	    	CoordinateTranslator translator = new CoordinateTranslator();
+		String rowDataType = "numbers";
+		String columnDataType = "letters";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
 		
-		if (rowDataType.equals("numbers")) {
-			if (!translator.translateRowFromGui("A").equals("1"))
-				fail("invalid translation");
-			if (!translator.translateRowFromGui("Z").equals("26"))
-				fail("invalid translation");
-		}
+
+		if (!(output = translator.translateRowFromGui("A")).equals("1"))
+			fail("invalid translation, " + output);
+		if (!(output = translator.translateRowFromGui("Z")).equals("26"))
+			fail("invalid translation, " + output);
+
+		if (!(output = translator.translateColumnFromGui("1")).equals("A"))
+		    	fail("invalid translation, " + output);
+		if (!(output = translator.translateColumnFromGui("26")).equals("Z"))
+		    	fail("invalid translation, " + output);
+
+		if (!(output = translator.translateFromUiToGameState("A1")).equals("1A"))
+		    	fail("invalid translation, " + output);
+		if (!(output = translator.translateFromUiToGameState("Z26")).equals("26Z"))
+		    	fail("invalid translation, " + output);
 		
-		if (columnDataType.equals("letters")) {
-			if (!translator.translateColumnFromGui("1").equals("A"))
-				fail("invalid translation");
-			if (!translator.translateColumnFromGui("26").equals("Z"))
-				fail("invalid translation");
-		}
+		rowDataType = "letters";
+		columnDataType = "letters";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
+
+		if (!(output = translator.translateColumnFromGui("1")).equals("A"))
+		    	fail("invalid translation, " + output);
+		if (!(output = translator.translateColumnFromGui("26")).equals("Z"))
+		    	fail("invalid translation, " + output);
+
+		if (!(output = translator.translateFromUiToGameState("A1")).equals("AA"))
+		    	fail("invalid translation, " + output);
+		if (!(output = translator.translateFromUiToGameState("Z26")).equals("ZZ"))
+		    	fail("invalid translation, " + output);
 		
-		if (rowDataType.equals("numbers") && columnDataType.equals("letters")) {
-			if (!translator.translateFromUiToGameState("A1").equals("1A"))
-				fail("invalid translation");
-			if (!translator.translateFromUiToGameState("Z26").equals("26Z"))
-				fail("invalid translation");
-		}
+		rowDataType = "letters";
+		columnDataType = "numbers";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
+		
+		if (!(output = translator.translateFromUiToGameState("A1")).equals("A1"))
+			fail("invalid translation, " + output);
+		if (!(output = translator.translateFromUiToGameState("Z26")).equals("Z26"))
+			fail("invalid translation, " + output);
 
 	}
 
 	@Test
-	public void testTranslationToGameState() {
-		Properties propRead = propIO.getCoordinatePropertyValues();
-		String rowDataType = propRead.getProperty("rowDataType");
-		String columnDataType = propRead.getProperty("columnDataType");
+	public void testTranslationFromGameStateToGui() {
+	    	String output;
+	    	CoordinateTranslator translator = new CoordinateTranslator();
+		String rowDataType = "letters";
+		String columnDataType = "letters";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
 		
-		if (!translator.translateFromGameStateToUi("1A").equals("A1"))
+		if (!(output = translator.translateFromGameStateToUi("AA")).equals("A1"))
 			fail("invalid translation");
+		if (!(output = translator.translateFromGameStateToUi("ZZ")).equals("Z26"))
+			fail("invalid translation");
+		
+		rowDataType = "numbers";
+		columnDataType = "letters";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
+		
+		if (!(output = translator.translateFromGameStateToUi("1A")).equals("A1"))
+			fail("invalid translation, " + output);
+		output = translator.translateFromGameStateToUi("26Z");
+		if (!(output = translator.translateFromGameStateToUi("26Z")).equals("Z26"))
+			fail("invalid translation, " + output);
+		
+		rowDataType = "letters";
+		columnDataType = "numbers";
+		translator.OverWritePropertyValues(rowDataType, columnDataType);
+		
+		if (!(output = translator.translateFromGameStateToUi("A1")).equals("A1"))
+			fail("invalid translation, " + output);
+		if (!(output = translator.translateFromGameStateToUi("Z26")).equals("Z26"))
+			fail("invalid translation, " + output);
 	
 		
 	}

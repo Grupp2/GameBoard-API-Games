@@ -40,6 +40,11 @@ public class CoordinateTranslator implements Translator {
 		}
 
 	}
+	
+	protected void OverWritePropertyValues(String rowDataType, String columnDataType) {
+	    this.rowDataType = rowDataType;
+	    this.columnDataType = columnDataType;
+	}
 
 	private void InitializePropertyValues() {
 		Properties prop = propIO.getCoordinatePropertyValues();
@@ -55,13 +60,13 @@ public class CoordinateTranslator implements Translator {
 	protected String translateRowFromGame(String input) {
 		String output = "";
 		if (rowDataType.equals("numbers")) {
-			if (input.length() >= 3)
-				output += numbersToLetters.get(input.substring(0, 3));
+			if (input.length() >= 3) 
+				output += numbersToLetters.get(input.substring(0, 2));
 			else
 				output += numbersToLetters.get(Character.toString(input.charAt(0)));
 		} else {
 			if (input.length() >= 3)
-				output += input.substring(0, 3);
+				output += input.substring(0, 2);
 			else
 				output += Character.toString(input.charAt(0));
 		}
@@ -72,12 +77,12 @@ public class CoordinateTranslator implements Translator {
 		String output = "";
 		if (columnDataType.equals("letters")) {
 			if (input.length() >= 3)
-				output += lettersToNumbers.get(input.substring(1, 4));
+				output += lettersToNumbers.get(input.substring(2));
 			else
 				output += lettersToNumbers.get(Character.toString(input.charAt(1)));
 		} else {
 			if (input.length() >= 3)
-				output += input.substring(1, 4);
+				output += input.substring(2);
 			else
 				output += Character.toString(input.charAt(1));
 		}
