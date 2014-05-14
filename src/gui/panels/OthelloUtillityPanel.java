@@ -5,7 +5,7 @@ import gui.listeners.UtilityListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 
 public class OthelloUtillityPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

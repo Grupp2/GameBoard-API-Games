@@ -3,7 +3,7 @@ package translator;
 import java.util.HashMap;
 import java.util.Properties;
 
-import backend.util.PropertiesReaderWriter;
+import othellobackend.util.PropertiesReaderWriter;
 
 public class CoordinateTranslator implements Translator {
 	

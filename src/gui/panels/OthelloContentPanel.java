@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.listeners.GameBoardListener;

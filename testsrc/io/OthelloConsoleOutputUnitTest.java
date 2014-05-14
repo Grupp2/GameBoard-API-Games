@@ -1,6 +1,6 @@
 package io;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 import junit.framework.TestCase;
 
 

@@ -1,6 +1,6 @@
 package run;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 import io.OthelloConsoleIOFactory;
 import game.init.Runner;
 import gui.OthelloGameFrame;

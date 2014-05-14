@@ -3,7 +3,7 @@ package gui.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.panels.OthelloUtillityPanel;

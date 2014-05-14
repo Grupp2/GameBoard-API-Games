@@ -15,7 +15,7 @@ import gui.panels.OthelloContentPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;

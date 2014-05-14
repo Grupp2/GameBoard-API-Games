@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import backend.OthelloGameFacade;
+import othellobackend.OthelloGameFacade;
 import game.api.GameState;
 import game.impl.*;
 import game.io.InputUnit;
