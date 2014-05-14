@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import othellobackend.OthelloGameFacade;
+import othellogui.OthelloGuiInputUnit;
+import othellogui.panels.OthelloUtillityPanel;
 import game.api.GameState;
-import gui.OthelloGuiInputUnit;
-import gui.panels.OthelloUtillityPanel;
 
 public class UtilityListener {
-	private gui.panels.OthelloUtillityPanel utilityPanel;
+	private othellogui.panels.OthelloUtillityPanel utilityPanel;
 	private OthelloGameFacade gameState;
 	private OthelloGuiInputUnit inputUnit;
 

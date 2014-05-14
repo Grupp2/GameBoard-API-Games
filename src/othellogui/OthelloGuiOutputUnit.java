@@ -1,4 +1,4 @@
-package gui;
+package othellogui;
 
 import game.api.GameState;
 import game.io.OutputUnit;

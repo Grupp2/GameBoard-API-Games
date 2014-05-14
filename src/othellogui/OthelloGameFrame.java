@@ -1,4 +1,4 @@
-package gui;
+package othellogui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,12 +10,14 @@ import java.util.List;
 import game.api.GameState;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
-import gui.graphics.GraphicsHolder;
-import gui.panels.OthelloContentPanel;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 import othellobackend.OthelloGameFacade;
+import othellogui.graphics.GraphicsHolder;
+import othellogui.panels.OthelloContentPanel;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -101,33 +103,24 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void placeGamePieces() {
-
         List<BoardLocation> locations = gameState.getBoard().getLocations();
         JButton currentButton;
         ImageIcon iconForButton;
-
         for (int i = 0; i < locations.size();i++) {
             currentButton = (JButton)contentPane.getGameBoardPanel().getComponent(i);
             GamePiece currentPiece = locations.get(i).getPiece();
-
             if (currentPiece != null) {
                 iconForButton = null;
-
                 if (isPlayerOnePiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer1Piece(currentButton.getSize()));
-
                 else if (isPlayerTwoPiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer2Piece(currentButton.getSize()));
-
                 currentButton.setBackground(backgroundGreen);
                 currentButton.setIcon(iconForButton);
                 currentButton.setFocusPainted(false);
-            }
-            else{
+            } else
                 currentButton.setIcon(null);
-            }
         }
-
         toggleUndoButton();
 	}
 

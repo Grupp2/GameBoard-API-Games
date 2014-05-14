@@ -1,13 +1,14 @@
-package gui.panels;
+package othellogui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
 import othellobackend.OthelloGameFacade;
+import othellogui.OthelloGuiInputUnit;
 import game.api.GameState;
-import gui.OthelloGuiInputUnit;
 import gui.listeners.GameBoardListener;
+import gui.panels.GameBoardPanel;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

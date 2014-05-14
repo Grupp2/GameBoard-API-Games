@@ -1,11 +1,12 @@
-package gui.panels;
+package othellogui.panels;
 
-import gui.OthelloGuiInputUnit;
 import gui.listeners.UtilityListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import othellobackend.OthelloGameFacade;
+import othellogui.OthelloGuiInputUnit;
 
 public class OthelloUtillityPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

@@ -1,14 +1,18 @@
 package gui.graphics;
 
 import static org.junit.Assert.*;
-import gui.graphics.ImageResize;
+
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import othellogui.graphics.ImageResize;
 
 public class TestImageResize {
 	private BufferedImage testImage;

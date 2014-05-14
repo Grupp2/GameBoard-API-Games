@@ -1,11 +1,13 @@
 package gui.listeners;
 
-import gui.OthelloGuiInputUnit;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import othellogui.OthelloGuiInputUnit;
 import translator.TranslatorAdapter;
 
 public class GameBoardListener {

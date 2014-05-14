@@ -1,4 +1,4 @@
-package gui.graphics;
+package othellogui.graphics;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;

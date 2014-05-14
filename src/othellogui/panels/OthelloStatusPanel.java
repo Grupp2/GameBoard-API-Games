@@ -1,4 +1,4 @@
-package gui.panels;
+package othellogui.panels;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;

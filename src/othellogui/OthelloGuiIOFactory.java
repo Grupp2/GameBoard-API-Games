@@ -1,4 +1,4 @@
-package gui;
+package othellogui;
 
 import game.io.InputUnit;
 import game.io.IoFactory;
