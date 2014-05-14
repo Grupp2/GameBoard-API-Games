@@ -1,4 +1,4 @@
-package io;
+package othelloconsoleui;
 
 import game.io.InputUnit;
 import game.io.IoFactory;

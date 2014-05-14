@@ -5,7 +5,7 @@ import othellogui.OthelloGameFrame;
 import othellogui.OthelloGuiIOFactory;
 import othellogui.OthelloGuiInputUnit;
 import othellogui.OthelloGuiOutputUnit;
-import io.OthelloConsoleIOFactory;
+import othelloconsoleui.OthelloConsoleIOFactory;
 import game.init.Runner;
 
 public class Program {

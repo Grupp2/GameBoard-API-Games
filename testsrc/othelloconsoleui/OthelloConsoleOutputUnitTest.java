@@ -1,4 +1,4 @@
-package io;
+package othelloconsoleui;
 
 import othellobackend.OthelloGameFacade;
 import junit.framework.TestCase;

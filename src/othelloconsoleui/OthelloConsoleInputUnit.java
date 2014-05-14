@@ -1,4 +1,4 @@
-package io;
+package othelloconsoleui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
