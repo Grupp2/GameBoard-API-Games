@@ -1,12 +1,11 @@
 package othellogui.panels;
 
-import gui.listeners.UtilityListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import othellobackend.OthelloGameFacade;
 import othellogui.OthelloGuiInputUnit;
+import othellogui.listeners.OthelloUtilityListener;
 
 public class OthelloUtillityPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -20,8 +19,8 @@ public class OthelloUtillityPanel extends JPanel {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();
-		UtilityListener utilityListener = new UtilityListener(this, gameState, inputUnit);
-		utilityListener.createButtonListeners();
+		OthelloUtilityListener othelloUtilityListener = new OthelloUtilityListener(this, gameState, inputUnit);
+		othelloUtilityListener.createButtonListeners();
 	}
 
 	private void createButtons() {
