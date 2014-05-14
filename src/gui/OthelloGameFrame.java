@@ -106,30 +106,38 @@ public class OthelloGameFrame extends JFrame {
         JButton currentButton;
         ImageIcon iconForButton;
 
-		for (int i = 0; i < locations.size();i++) {
+        for (int i = 0; i < locations.size();i++) {
             currentButton = (JButton)contentPane.getGameBoardPanel().getComponent(i);
             GamePiece currentPiece = locations.get(i).getPiece();
 
-			if (currentPiece != null) {
+            if (currentPiece != null) {
                 iconForButton = null;
 
-				if (currentPiece.getId().equals(player1gamePieceId))
+                if (isPlayerOnePiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer1Piece(currentButton.getSize()));
 
-                else if (currentPiece.getId().equals(player2gamePieceId))
+                else if (isPlayerTwoPiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer2Piece(currentButton.getSize()));
 
                 currentButton.setBackground(backgroundGreen);
                 currentButton.setIcon(iconForButton);
                 currentButton.setFocusPainted(false);
-			}
+            }
             else{
                 currentButton.setIcon(null);
-			}
-		}
+            }
+        }
 
-		toggleUndoButton();
+        toggleUndoButton();
 	}
+
+    private boolean isPlayerOnePiece(GamePiece piece){
+        return piece.getId().equals(player1gamePieceId);
+    }
+
+    private boolean isPlayerTwoPiece(GamePiece piece){
+        return piece.getId().equals(player2gamePieceId);
+    }
 
 	private void toggleUndoButton() {
 		if (!(gameState instanceof OthelloGameFacade)) {
