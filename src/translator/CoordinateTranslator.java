@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import backend.util.PropertiesReaderWriter;
-import game.api.GameState;
 
 public class CoordinateTranslator implements Translator {
 	

@@ -1,7 +1,6 @@
 package backend.classhelpers;
 
 import backend.State;
-import game.api.GameState;
 import game.impl.Board;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
