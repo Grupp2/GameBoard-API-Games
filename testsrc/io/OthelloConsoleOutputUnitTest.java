@@ -22,12 +22,7 @@ public class OthelloConsoleOutputUnitTest extends TestCase {
 		consoleOutputUnit.publish(gameState);
 	}
 
-	/*
-	 * if we find ourselves using a lot of different
-	 * empty tile graphics consider using this char to make the
-	 * tests easier to write.
-	 */
-	private char p = '·'; 
+	 
 	
 //    public void setUp() throws Exception {
 //        super.setUp();

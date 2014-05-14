@@ -1,11 +1,9 @@
 package backend.classhelpers;
 
 import backend.State;
-import backend.util.BoardParser;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class MoveHelperTest {

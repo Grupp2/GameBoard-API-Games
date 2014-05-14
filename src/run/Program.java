@@ -13,7 +13,7 @@ public class Program {
 	public static void main(String[] args) {
 		if (args.length > 0) {
 			for (int i = 0; i < args.length; i++)
-				if (args[i].equals("-console") || args[i].equals("-c"))
+				if (args[i].equals("--console") || args[i].equals("-c"))
 					new Runner(new OthelloGameFacade(), new OthelloConsoleIOFactory()).run();
 		} else {
 			OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();

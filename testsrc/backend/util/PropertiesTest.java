@@ -20,9 +20,9 @@ public class PropertiesTest {
 	Properties prop = propIO.getCoordinatePropertyValues();
 	if (prop.size() != 3)
 	    fail("Wrong size");
-	String rowData = prop.getProperty("rowDataType");
-	String columnData = prop.getProperty("columnDataType");
-	String isLinear = prop.getProperty("isLinear");
+	prop.getProperty("rowDataType");
+	prop.getProperty("columnDataType");
+	prop.getProperty("isLinear");
 	return;
     }
 

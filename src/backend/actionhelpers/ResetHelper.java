@@ -3,16 +3,12 @@ package backend.actionhelpers;
 import backend.Settings;
 import backend.classhelpers.BoardHelper;
 import backend.classhelpers.PlayerHelper;
-import backend.undoableactions.UndoableAction;
 import backend.OthelloGameFactory;
 import backend.State;
 
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
 import game.impl.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ResetHelper {
 

@@ -9,7 +9,6 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
 
 public class TestImageResize {
 	private BufferedImage testImage;
