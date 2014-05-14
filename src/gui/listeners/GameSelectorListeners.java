@@ -3,13 +3,15 @@ package gui.listeners;
 import game.init.Runner;
 import gui.GameFrame;
 import gui.GameSelectorPanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import othellobackend.OthelloGameFacade;
-import othellogui.OthelloGameFrame;
-import othellogui.OthelloGuiIOFactory;
-import othellogui.OthelloGuiInputUnit;
-import othellogui.OthelloGuiOutputUnit;
+
+import othello.backend.OthelloGameFacade;
+import othello.gui.OthelloGameFrame;
+import othello.gui.OthelloGuiIOFactory;
+import othello.gui.OthelloGuiInputUnit;
+import othello.gui.OthelloGuiOutputUnit;
 
 public class GameSelectorListeners {
 	private GameSelectorPanel gameSelectorPanel;

@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
 
-import othellogui.graphics.ImageResize;
+import othello.gui.graphics.ImageResize;
 
 public class TestImageResize {
 	private BufferedImage testImage;

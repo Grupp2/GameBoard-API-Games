@@ -1,11 +1,11 @@
 package run;
 
-import othellobackend.OthelloGameFacade;
-import othellogui.OthelloGameFrame;
-import othellogui.OthelloGuiIOFactory;
-import othellogui.OthelloGuiInputUnit;
-import othellogui.OthelloGuiOutputUnit;
-import othelloconsoleui.OthelloConsoleIOFactory;
+import othello.backend.OthelloGameFacade;
+import othello.consoleui.OthelloConsoleIOFactory;
+import othello.gui.OthelloGameFrame;
+import othello.gui.OthelloGuiIOFactory;
+import othello.gui.OthelloGuiInputUnit;
+import othello.gui.OthelloGuiOutputUnit;
 import game.init.Runner;
 
 public class Program {

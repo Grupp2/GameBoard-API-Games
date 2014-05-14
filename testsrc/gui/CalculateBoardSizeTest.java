@@ -1,8 +1,8 @@
 package gui;
 
 import static org.junit.Assert.*;
+import othello.backend.OthelloGameFacade;
 
-import othellobackend.OthelloGameFacade;
 import org.junit.Before;
 import org.junit.Test;
 

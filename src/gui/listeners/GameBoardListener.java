@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import othellogui.OthelloGuiInputUnit;
+import othello.gui.OthelloGuiInputUnit;
 import translator.TranslatorAdapter;
 
 public class GameBoardListener {
