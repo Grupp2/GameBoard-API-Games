@@ -1,6 +1,7 @@
 package gui.listeners;
 
 import game.init.Runner;
+import gui.GameFrame;
 import gui.GameSelectorPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +13,11 @@ import othellogui.OthelloGuiOutputUnit;
 
 public class GameSelectorListeners {
 	private GameSelectorPanel gameSelectorPanel;
+    private GameFrame frame;
 
-	public GameSelectorListeners (GameSelectorPanel gameSelectorPanel) {
+	public GameSelectorListeners (GameSelectorPanel gameSelectorPanel, GameFrame frame) {
 		this.gameSelectorPanel = gameSelectorPanel;
+        this.frame = frame;
 	}
 	
 	public void addGameSelectorListeners() {
