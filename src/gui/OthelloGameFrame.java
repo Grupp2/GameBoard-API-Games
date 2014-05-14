@@ -5,7 +5,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.HierarchyBoundsAdapter;
 import java.awt.event.HierarchyEvent;
+import java.util.List;
+
 import game.api.GameState;
+import game.impl.BoardLocation;
+import game.impl.GamePiece;
 import gui.graphics.GraphicsHolder;
 import gui.panels.OthelloContentPanel;
 import javax.swing.ImageIcon;
@@ -17,13 +21,12 @@ public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
 	private OthelloContentPanel contentPane;
-	private GraphicsHolder gh = new GraphicsHolder();
+	private GraphicsHolder graphicsHolder = new GraphicsHolder();
 	private OthelloGuiInputUnit inputUnit;
 	private boolean createGui = true;
-	private final Color highlightGreen = new Color(181, 230, 29 ,255);
 	private final Color backgroundGreen = new Color(34, 177, 76, 255);
-	private String player1gamePiece;
-	private String player2gamePiece;
+	private String player1gamePieceId;
+	private String player2gamePieceId;
 	private String player1Name;
 	private final int largeStatusFont = 20;
 	private final int normalStatusFont = 15;
@@ -63,8 +66,8 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void setupPlayerInfo() {
-		this.player1gamePiece = gameState.getPlayers().get(0).getPieces().get(0).getId();
-		this.player2gamePiece = gameState.getPlayers().get(1).getPieces().get(0).getId();
+		this.player1gamePieceId = gameState.getPlayers().get(0).getPieces().get(0).getId();
+		this.player2gamePieceId = gameState.getPlayers().get(1).getPieces().get(0).getId();
 		this.player1Name = gameState.getPlayers().get(0).getName();
 	}
 
@@ -76,10 +79,10 @@ public class OthelloGameFrame extends JFrame {
 	private void updateTurnLabel() {
 		if (gameState.getPlayerInTurn().getName().equals(player1Name)) {
 			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 1 turn");
-			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer1Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(graphicsHolder.getPlayer1Piece()));
 		} else {
 			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 2 turn");
-			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(gh.getPlayer2Piece()));
+			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(graphicsHolder.getPlayer2Piece()));
 		}
 	}
 	
@@ -98,24 +101,36 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void placeGamePieces() {
-		for (int i = 0; i < gameState.getBoard().getLocations().size();i++) {
-			if (gameState.getBoard().getLocations().get(i).getPiece() != null) {
-				contentPane.getGameBoardPanel().getComponent(i).setBackground(backgroundGreen);
-				if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player1gamePiece)) {
-					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(new ImageIcon(gh.getPlayer1Piece(((JButton)contentPane.getGameBoardPanel().getComponent(i)).getSize())));
-					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setFocusPainted(false);
-				} else if (gameState.getBoard().getLocations().get(i).getPiece().getId().equals(player2gamePiece)) {
-					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(new ImageIcon(gh.getPlayer2Piece(((JButton)contentPane.getGameBoardPanel().getComponent(i)).getSize())));
-					((JButton)contentPane.getGameBoardPanel().getComponent(i)).setFocusPainted(false);
-				} else
-					contentPane.getGameBoardPanel().getComponent(i).setBackground(highlightGreen);
-			} else{
-				((JButton)contentPane.getGameBoardPanel().getComponent(i)).setIcon(null);
+
+        List<BoardLocation> locations = gameState.getBoard().getLocations();
+        JButton currentButton;
+        ImageIcon iconForButton;
+
+		for (int i = 0; i < locations.size();i++) {
+            currentButton = (JButton)contentPane.getGameBoardPanel().getComponent(i);
+            GamePiece currentPiece = locations.get(i).getPiece();
+
+			if (currentPiece != null) {
+                iconForButton = null;
+
+				if (currentPiece.getId().equals(player1gamePieceId))
+                    iconForButton = new ImageIcon(graphicsHolder.getPlayer1Piece(currentButton.getSize()));
+
+                else if (currentPiece.getId().equals(player2gamePieceId))
+                    iconForButton = new ImageIcon(graphicsHolder.getPlayer2Piece(currentButton.getSize()));
+
+                currentButton.setBackground(backgroundGreen);
+                currentButton.setIcon(iconForButton);
+                currentButton.setFocusPainted(false);
+			}
+            else{
+                currentButton.setIcon(null);
 			}
 		}
+
 		toggleUndoButton();
 	}
-	
+
 	private void toggleUndoButton() {
 		if (!(gameState instanceof OthelloGameFacade)) {
 			contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
