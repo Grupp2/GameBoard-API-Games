@@ -14,7 +14,8 @@ public class FrameMain {
 
         GameSelectorPanel selectorPanel = new GameSelectorPanel();
         GameSelectorListeners listener = new GameSelectorListeners(selectorPanel, theFrame);
-
+        listener.addGameSelectorListeners();
         theFrame.setContentPane(selectorPanel);
+        theFrame.setVisible(true);
     }
 }
