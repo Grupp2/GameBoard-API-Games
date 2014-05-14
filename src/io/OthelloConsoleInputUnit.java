@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import backend.OthelloGameFacade;
 import game.api.GameState;
 import game.impl.*;
 import game.io.InputUnit;
-import backend.OthelloGameState;
 
 /**
  * Created by HuggTop on 2014-04-16.
@@ -24,8 +24,8 @@ public class OthelloConsoleInputUnit extends InputUnit {
 			String input = inputSourceReader.readLine().replaceAll("\\s", "")
 					.toUpperCase();
 			if (input.equals("UNDO")) {
-				if (((OthelloGameState) state).canUndo())
-					((OthelloGameState) state).undo();
+				if (((OthelloGameFacade) state).canUndo())
+					((OthelloGameFacade) state).undo();
 				else
 					System.out.println("Cannot undo move.");
 

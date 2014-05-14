@@ -5,7 +5,7 @@ import gui.listeners.UtilityListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import backend.OthelloGameState;
+import backend.OthelloGameFacade;
 
 public class OthelloUtillityPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -15,7 +15,7 @@ public class OthelloUtillityPanel extends JPanel {
 	private JButton btnNew;
 	private JButton btnExit;
 
-	public OthelloUtillityPanel(OthelloGameState gameState, OthelloGuiInputUnit inputUnit) {
+	public OthelloUtillityPanel(OthelloGameFacade gameState, OthelloGuiInputUnit inputUnit) {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();

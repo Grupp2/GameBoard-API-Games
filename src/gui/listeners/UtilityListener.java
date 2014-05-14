@@ -3,20 +3,20 @@ package gui.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import backend.OthelloGameFacade;
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.panels.OthelloUtillityPanel;
-import backend.OthelloGameState;
 
 public class UtilityListener {
 	private gui.panels.OthelloUtillityPanel utilityPanel;
-	private OthelloGameState gameState;
+	private OthelloGameFacade gameState;
 	private OthelloGuiInputUnit inputUnit;
 
 	public UtilityListener(OthelloUtillityPanel utilityPanel, GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.utilityPanel = utilityPanel;
 		this.inputUnit = inputUnit;
-		this.gameState = (OthelloGameState) gameState;
+		this.gameState = (OthelloGameFacade) gameState;
 	}
 
 	public void createButtonListeners() {

@@ -1,9 +1,7 @@
 package io;
 
-import backend.OthelloGameState;
-import io.OthelloConsoleOutputUnit;
+import backend.OthelloGameFacade;
 import junit.framework.TestCase;
-import static org.mockito.Mockito.*;
 
 
 /**
@@ -11,11 +9,11 @@ import static org.mockito.Mockito.*;
  */
 public class OthelloConsoleOutputUnitTest extends TestCase {
 	private OthelloConsoleOutputUnit consoleOutputUnit;
-	private OthelloGameState gameState;
+	private OthelloGameFacade gameState;
 
 	public void setUp() throws Exception {
 		super.setUp();
-		gameState = new OthelloGameState();
+		gameState = new OthelloGameFacade();
 		gameState.reset();
 		consoleOutputUnit = new OthelloConsoleOutputUnit();
 	}
@@ -33,7 +31,7 @@ public class OthelloConsoleOutputUnitTest extends TestCase {
 	
 //    public void setUp() throws Exception {
 //        super.setUp();
-//		gameState = new OthelloGameState();
+//		gameState = new OthelloGameFacade();
 //        consoleOutputUnit = new OthelloConsoleOutputUnit();
 //    }
 

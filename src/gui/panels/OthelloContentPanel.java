@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import backend.OthelloGameFacade;
 import game.api.GameState;
 import gui.OthelloGuiInputUnit;
 import gui.listeners.GameBoardListener;
@@ -13,9 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import translator.CoordinateTranslator;
-import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
-import backend.OthelloGameState;
 
 public class OthelloContentPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -66,7 +65,7 @@ public class OthelloContentPanel extends JPanel {
 	}
 	
 	private void createUtillityPanel() {
-		this.utillityPanel = new OthelloUtillityPanel((OthelloGameState)gameState, inputUnit);
+		this.utillityPanel = new OthelloUtillityPanel((OthelloGameFacade)gameState, inputUnit);
 	}
 	
 	private void createStatusPanel() {

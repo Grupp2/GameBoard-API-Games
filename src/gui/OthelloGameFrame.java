@@ -11,7 +11,7 @@ import gui.panels.OthelloContentPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import backend.OthelloGameState;
+import backend.OthelloGameFacade;
 
 public class OthelloGameFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -117,11 +117,11 @@ public class OthelloGameFrame extends JFrame {
 	}
 	
 	private void toggleUndoButton() {
-		if (!(gameState instanceof OthelloGameState)) {
+		if (!(gameState instanceof OthelloGameFacade)) {
 			contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
 			return;
 		} else {
-			if (((OthelloGameState) gameState).canUndo())
+			if (((OthelloGameFacade) gameState).canUndo())
 				contentPane.getUtilityPanel().getBtnUndo().setEnabled(true);
 			else
 				contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);

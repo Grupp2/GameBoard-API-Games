@@ -8,17 +8,17 @@ import game.impl.Player;
 
 import java.util.List;
 
-public class OthelloGameState implements GameState{
+public class OthelloGameFacade implements GameState{
 
     private State state;
     private GameActionsHandler gameActionsHandler;
 
-    public OthelloGameState(State state, GameActionsHandler gameActionsHandler){
+    public OthelloGameFacade(State state, GameActionsHandler gameActionsHandler){
         this.state = state;
         this.gameActionsHandler = gameActionsHandler;
     }
 
-    public OthelloGameState(){
+    public OthelloGameFacade(){
         this.state = new State();
         this.gameActionsHandler = new GameActionsHandler(this.state);
     }

@@ -3,8 +3,7 @@ package backend;
 import java.util.List;
 
 import backend.undoableactions.UndoableAction;
-import game.impl.Board;
-import game.impl.Player;
+import game.impl.*;
 
 public class State {
 

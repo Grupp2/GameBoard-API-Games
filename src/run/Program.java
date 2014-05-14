@@ -1,6 +1,6 @@
 package run;
 
-import backend.OthelloGameState;
+import backend.OthelloGameFacade;
 import io.OthelloConsoleIOFactory;
 import game.init.Runner;
 import gui.OthelloGameFrame;
@@ -14,11 +14,11 @@ public class Program {
 		if (args.length > 0) {
 			for (int i = 0; i < args.length; i++)
 				if (args[i].equals("-console") || args[i].equals("-c"))
-					new Runner(new OthelloGameState(), new OthelloConsoleIOFactory()).run();
+					new Runner(new OthelloGameFacade(), new OthelloConsoleIOFactory()).run();
 		} else {
 			OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
 			OthelloGuiOutputUnit outputUnit = new OthelloGuiOutputUnit(new OthelloGameFrame(inputUnit));
-			new Runner(new OthelloGameState(), new OthelloGuiIOFactory(inputUnit, outputUnit)).run();
+			new Runner(new OthelloGameFacade(), new OthelloGuiIOFactory(inputUnit, outputUnit)).run();
 		}
 	}
 }

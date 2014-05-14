@@ -1,11 +1,8 @@
 package backend;
 
-import backend.actionhelpers.GameOverCheckHelper;
-import backend.actionhelpers.MoveValidationHelper;
-import backend.actionhelpers.WinnerCalculationHelper;
-import backend.undoableactions.MoveAction;
-import backend.undoableactions.UndoableAction;
-import backend.actionhelpers.ResetHelper;
+import backend.actionhelpers.*;
+import backend.undoableactions.*;
+
 import game.impl.Move;
 import game.impl.Player;
 
@@ -71,4 +68,7 @@ public class GameActionsHandler {
         resetHelper.doResetAction();
     }
 
+    public void saveState(String saveName){}
+
+    public void loadState(String saveName){}
 }

@@ -2,21 +2,21 @@ package gui;
 
 import static org.junit.Assert.*;
 
+import backend.OthelloGameFacade;
 import org.junit.Before;
 import org.junit.Test;
 
 import translator.TextFileTranslator;
 import translator.TranslatorAdapter;
-import backend.OthelloGameState;
 
 public class CalculateBoardSizeTest {
 	private GameBoardSizeCalculator gameSizeCalc;
-	private OthelloGameState gameState;
+	private OthelloGameFacade gameState;
 	private TranslatorAdapter ta;
 
 	@Before
 	public void setUp() throws Exception {
-		gameState = new OthelloGameState();
+		gameState = new OthelloGameFacade();
 		ta = new TranslatorAdapter(new TextFileTranslator());
 	}
 
