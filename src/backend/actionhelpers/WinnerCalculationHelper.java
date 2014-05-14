@@ -25,6 +25,6 @@ public class WinnerCalculationHelper {
         else if(playerOneScore < playerTwoScore)
             return playerHelper.getPlayerTwo();
 
-        return null;
+        return new Player("Draw", null);
     }
 }
