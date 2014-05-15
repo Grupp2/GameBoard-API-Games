@@ -45,12 +45,13 @@ public class OthelloGuiUpdater implements GameUpdatable {
 		}
 
         if(!listenerAdded){
-
+            addFrameListener();
+            listenerAdded = true;
         }
 	}
 
     private void addFrameListener() {
-        //this.contentPane.addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
+        this.contentPane.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
     }
 	
 	private void setupPlayerInfo() {
