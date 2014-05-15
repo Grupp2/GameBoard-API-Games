@@ -1,44 +1,38 @@
 package battleships.gui.panels;
 
-import game.api.GameState;
-import gui.GameBoardSizeCalculator;
-import java.awt.Color;
-import java.awt.GridLayout;
-import javax.swing.JButton;
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
+import battleships.BattleShipsInputUnit;
+import battleships.gui.listeners.BattleshipsDeployListeners;
+import battleships.gui.panels.logic.BattleshipsDeployLogic;
+import game.api.GameState;
 
-public class BattleshipDeployPanel extends JPanel {
-	private static final long serialVersionUID = 1L;
-	private int xSize;
-	private int ySize;
-	private final int BUTTON_SIZE = 45;
-	private Color backgroundGreen = new Color(34, 177, 76, 255);
+public class BattleshipDeployPanel {
+	private GameState gameState;
+	private JPanel deployPanel;
+	private BattleshipsDeployListeners deployListener;
+	private BattleShipsInputUnit inputUnit;
+	private BattleshipsDeployLogic deployLogic;
 
-	public BattleshipDeployPanel(GameState gameState, TranslatorAdapter ta) {
-		setBounds(1, 1, 600, 600);
-		setLayout(new GridLayout(xSize, ySize));
-		calculateBoardSize(gameState, ta);
-		addButtons(gameState);
-
+	public BattleshipDeployPanel(GameState gameState, BattleShipsInputUnit inputUnit) {
+		this.gameState = gameState;
+		this.inputUnit = inputUnit;
 	}
 
-	private void calculateBoardSize(GameState gameState, TranslatorAdapter ta) {
-		GameBoardSizeCalculator calc = new GameBoardSizeCalculator();
-		int[] result = calc.calculateBoardSize(gameState, ta);
-		this.xSize = result[0];
-		this.ySize = result[1];
+	public void createDeployPanel(JPanel deployPanel) {
+		this.deployPanel = deployPanel;
+		deployPanel.setLayout(new BorderLayout());
+		
+		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
+		
+		deployListener = new BattleshipsDeployListeners();
+		deployLogic = new BattleshipsDeployLogic(gameState);
+		
 	}
-
-	private void addButtons(GameState gameState) {
-		for (int i = 0; i < gameState.getBoard().getLocations().size(); i++) {
-			JButton btn = new JButton();
-			btn.setName(gameState.getBoard().getLocations().get(i).getId());
-			btn.setSize(BUTTON_SIZE, BUTTON_SIZE);
-			btn.setBackground(backgroundGreen);
-			add(btn);
-		}
-
+	public JPanel getDeployPanel(){
+		return deployPanel;
 	}
 
 }
