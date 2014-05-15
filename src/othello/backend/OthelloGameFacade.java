@@ -53,8 +53,6 @@ public class OthelloGameFacade implements GameState{
         return null;
     }
 
-
-
     @Override
     public Boolean hasEnded() {
         return gameActionsHandler.hasEndedCheck();
