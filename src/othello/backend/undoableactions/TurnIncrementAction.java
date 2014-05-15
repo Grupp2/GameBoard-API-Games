@@ -9,7 +9,7 @@ public class TurnIncrementAction implements UndoableAction{
     private State state;
     private Player oldCurrentPlayer;
     private Player oldLastPlayer;
-    private String oldMessage;
+//    private String oldMessage;
 
     public TurnIncrementAction(State state){
         this.state = state;
@@ -18,7 +18,7 @@ public class TurnIncrementAction implements UndoableAction{
     public void execute(){
         oldCurrentPlayer = state.getCurrentPlayer();
         oldLastPlayer = state.getLastPlayer();
-        oldMessage = state.getMessage();
+//        oldMessage = state.getMessage();
         if (!isLastPlayerSet()) {
             List<Player> players = state.getPlayers();
             if (players.indexOf(state.getCurrentPlayer()) == 0)
