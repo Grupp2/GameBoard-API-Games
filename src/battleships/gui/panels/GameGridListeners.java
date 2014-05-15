@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import battleships.BattleShipsInputUnit;
 import translator.TranslatorAdapter;
 
 public class GameGridListeners {
@@ -33,6 +35,6 @@ public class GameGridListeners {
     }
     
     private void createMove() {
-	//TODO make method in battleshipsinputunit to propose a move
+	inputUnit.notifyListeners(translator.translateFromUiToGameState(selectedButton.getName()));
     }
 }
