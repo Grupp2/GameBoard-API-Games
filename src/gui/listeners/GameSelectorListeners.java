@@ -31,20 +31,19 @@ public class GameSelectorListeners {
 	private void startOthelloGame() {
 
         GameState state = new OthelloGameFacade();
+        state.reset();
 
         OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
         OthelloContentPanel contentPanel = new OthelloContentPanel(state, inputUnit);
 
         GameUpdatable guiUpdater = new OthelloGuiUpdater(contentPanel);
 
+		OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
 
-        JPanel contentPane = new JPanel();
 
-		OutputUnit outputUnit = new GameOutputUnit(guiUpdater, contentPanel, contentPane);
-
-        frame.setContentPane(contentPane);
-
+        frame.setContentPane(contentPanel);
 		new Runner(state, new GameIoFactory(inputUnit, outputUnit)).run();
+        frame.pack();
 	}
 	
 	private void startBattleShipsGame() {

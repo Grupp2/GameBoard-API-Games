@@ -2,8 +2,8 @@ package gui.panels;
 
 import game.api.GameState;
 import gui.GameBoardSizeCalculator;
-import java.awt.Color;
-import java.awt.GridLayout;
+
+import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import translator.TranslatorAdapter;
@@ -16,7 +16,8 @@ public class GameBoardPanel extends JPanel {
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
 	public GameBoardPanel(GameState state, TranslatorAdapter ta) {
-		setBounds(1, 1, 600, 600);
+		setPreferredSize(new Dimension(600, 600));
+
 		calculateBoardSize(state, ta);
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);

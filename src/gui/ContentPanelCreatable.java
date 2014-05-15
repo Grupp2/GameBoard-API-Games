@@ -4,5 +4,5 @@ import javax.swing.JPanel;
 
 public interface ContentPanelCreatable {
 
-	public void createGuiPanel(JPanel panel);
+	public void createGuiPanel();
 }

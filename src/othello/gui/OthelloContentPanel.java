@@ -3,7 +3,6 @@ package othello.gui;
 import java.awt.*;
 
 import othello.backend.OthelloGameFacade;
-import othello.gui.OthelloGuiInputUnit;
 import game.api.GameState;
 import gui.ContentPanelCreatable;
 import gui.listeners.GameBoardListener;
@@ -18,15 +17,18 @@ import othello.gui.panels.OthelloUtillityPanel;
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 
-public class OthelloContentPanel implements ContentPanelCreatable {
+public class OthelloContentPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
+
 	private GameState gameState;
-	private JPanel contentPane;
+
 	private JPanel gameBoardPanel;
 	private OthelloStatusPanel statusPanel;
-	private OthelloUtillityPanel utillityPanel;
+	private OthelloUtillityPanel utilityPanel;
+
 	private OthelloGuiInputUnit inputUnit;
 	private GameBoardListener gameBoardListener;
+
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
 	private final int statusLabelFontSize = 15;
 	private final int playerInfoLabelFontSize = 20;
@@ -34,34 +36,53 @@ public class OthelloContentPanel implements ContentPanelCreatable {
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
 		this.inputUnit = inputUnit;
+        createGuiPanel();
 	}
-	
-	@Override
-	public void createGuiPanel(JPanel contentPane) {
 
-        this.contentPane = contentPane;
-        contentPane.setLayout(new BorderLayout());
-
+	private void createGuiPanel() {
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
-		createGameBoardPanel(ta);
-		createUtillityPanel();
-		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
+
+        createGameBoardPanel(ta);
+		createUtilityPanel();
+        createStatusPanel();
+
+        gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
 		gameBoardListener.addButtonListeners();
 
-		createStatusPanel();
 		populateTheLayout();
-
-
-        contentPane.setPreferredSize(new Dimension(600, 600));
-        contentPane.setMinimumSize(new Dimension(600, 600));
 	}
 
+    private void createGameBoardPanel(TranslatorAdapter ta) {
+        this.gameBoardPanel = new GameBoardPanel(gameState, ta);
+    }
+
+    private void createUtilityPanel() {
+        this.utilityPanel = new OthelloUtillityPanel((OthelloGameFacade)gameState, inputUnit);
+    }
+
+    private void createStatusPanel() {
+        this.statusPanel = new OthelloStatusPanel();
+        setStatusLabelProperties();
+    }
+
+    private void populateTheLayout() {
+        setLayout(new BorderLayout());
+
+        add(statusPanel, BorderLayout.PAGE_START);
+        add(gameBoardPanel, BorderLayout.CENTER);
+        add(utilityPanel, BorderLayout.PAGE_END);
+
+        setPreferredSize(new Dimension(600, 600));
+    }
+
+
+
 	public JPanel getContentPane() {
-		return contentPane;
+		return this;
 	}
 	
 	public OthelloUtillityPanel getUtilityPanel() {
-		return utillityPanel;
+		return utilityPanel;
 	}
 	
 	public JPanel getGameBoardPanel() {
@@ -72,18 +93,7 @@ public class OthelloContentPanel implements ContentPanelCreatable {
 		return statusPanel;
 	}
 
-	private void createGameBoardPanel(TranslatorAdapter ta) {
-		this.gameBoardPanel = new GameBoardPanel(gameState, ta);
-	}
-	
-	private void createUtillityPanel() {
-		this.utillityPanel = new OthelloUtillityPanel((OthelloGameFacade)gameState, inputUnit);
-	}
-	
-	private void createStatusPanel() {
-		this.statusPanel = new OthelloStatusPanel();
-		setStatusLabelProperties();
-	}
+
 	
 	private void setStatusLabelProperties() {
 		JLabel tmpLable = statusPanel.getPlayerInfoLabel();
@@ -99,9 +109,5 @@ public class OthelloContentPanel implements ContentPanelCreatable {
 		tmpLable.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
 	
-	private void populateTheLayout() {
-		contentPane.add(statusPanel, BorderLayout.PAGE_START);
-		contentPane.add(gameBoardPanel, BorderLayout.CENTER);
-		contentPane.add(utillityPanel, BorderLayout.PAGE_END);
-	}
+
 }
