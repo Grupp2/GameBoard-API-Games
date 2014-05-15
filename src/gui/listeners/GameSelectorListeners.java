@@ -1,17 +1,17 @@
 package gui.listeners;
 
+import game.api.GameState;
 import game.init.Runner;
-import gui.GameFrame;
-import gui.GameSelectorPanel;
+import game.io.InputUnit;
+import game.io.OutputUnit;
+import gui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import othello.backend.OthelloGameFacade;
-import othello.gui.OthelloGameFrame;
-import othello.gui.OthelloGuiIOFactory;
-import othello.gui.OthelloGuiInputUnit;
-import othello.gui.OthelloGuiOutputUnit;
+import othello.gui.*;
+import othello.gui.panels.OthelloContentPanel;
 
 public class GameSelectorListeners {
 	private GameSelectorPanel gameSelectorPanel;
@@ -28,9 +28,18 @@ public class GameSelectorListeners {
 	}
 	
 	private void startOthelloGame() {
-		OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
-		OthelloGuiOutputUnit outputUnit = new OthelloGuiOutputUnit(new OthelloGameFrame(inputUnit));
-		new Runner(new OthelloGameFacade(), new OthelloGuiIOFactory(inputUnit, outputUnit)).run();
+
+        GameState state = new OthelloGameFacade();
+
+        OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
+        OthelloContentPanel contentPanel = new OthelloContentPanel(state, inputUnit);
+
+        GameUpdatable guiUpdater = new OthelloGuiUpdater(contentPanel);
+		OutputUnit outputUnit = new GameOutputUnit(guiUpdater, contentPanel, frame);
+
+
+
+		new Runner(state, new GameIoFactory(inputUnit, outputUnit)).run();
 	}
 	
 	private void startBattleShipsGame() {

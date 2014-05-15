@@ -16,11 +16,11 @@ public class GameIoFactory implements IoFactory {
 
     @Override
     public InputUnit getInputUnit() {
-        return null;
+        return inputUnit;
     }
 
     @Override
     public OutputUnit getOutputUnit() {
-        return null;
+        return outputUnit;
     }
 }

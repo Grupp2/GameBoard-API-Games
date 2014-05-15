@@ -1,8 +1,6 @@
 package othello.gui.panels;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 
 import othello.backend.OthelloGameFacade;
 import othello.gui.OthelloGuiInputUnit;
@@ -18,7 +16,7 @@ import javax.swing.SwingConstants;
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 
-public class OthelloContentPanel extends JPanel implements ContentPanelCreatable {
+public class OthelloContentPanel implements ContentPanelCreatable {
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
 	private JPanel contentPane;
@@ -43,11 +41,14 @@ public class OthelloContentPanel extends JPanel implements ContentPanelCreatable
 		createUtillityPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
 		gameBoardListener.addButtonListeners();
-		contentPane = new JPanel(new BorderLayout());
+        contentPane = new JPanel(new BorderLayout());
 		createStatusPanel();
 		populateTheLayout();
-		this.validate();
-		this.repaint();
+
+        contentPane.setBounds(1, 1, 600, 700);
+        contentPane.setPreferredSize(new Dimension(600, 600));
+        contentPane.setMinimumSize(new Dimension(600, 600));
+
 		return contentPane;
 	}
 
@@ -60,8 +61,7 @@ public class OthelloContentPanel extends JPanel implements ContentPanelCreatable
 		contentPane = new JPanel(new BorderLayout());
 		createStatusPanel();
 		populateTheLayout();
-		this.validate();
-		this.repaint();
+
 		return contentPane;
 	}
 	

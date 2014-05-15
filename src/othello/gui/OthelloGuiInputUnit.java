@@ -4,11 +4,11 @@ import game.api.GameState;
 import game.impl.*;
 import game.io.InputUnit;
 
+import javax.swing.*;
 import java.util.List;
 
 public class OthelloGuiInputUnit extends InputUnit {
     private GameState state;
-    private OthelloGameFrame gameFrame;
     private String input;
 
     private Move getNextMove(GameState state) {
@@ -22,7 +22,7 @@ public class OthelloGuiInputUnit extends InputUnit {
                 getGamePieceID(state.getPlayerInTurn(), state)),
                 getLocationById(state.getBoard(), input));
         } catch (Exception ex) {
-            gameFrame.setStatusLabelText(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         return result;
     }

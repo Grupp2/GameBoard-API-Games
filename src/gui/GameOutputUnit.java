@@ -10,18 +10,22 @@ public class GameOutputUnit implements OutputUnit{
 
     private ContentPanelCreatable guiContentPanel;
 
+    private GameFrame frame;
+
     private boolean isContentPanelCreated = false;
 
-    public GameOutputUnit(GameUpdatable guiUpdater, ContentPanelCreatable guiContentPanel){
+    public GameOutputUnit(GameUpdatable guiUpdater, ContentPanelCreatable guiContentPanel, GameFrame frame){
         this.guiUpdater = guiUpdater;
         this.guiContentPanel = guiContentPanel;
+        this.frame = frame;
     }
 
     @Override
     public void publish(GameState gameState) {
         if(!isContentPanelCreated){
-            guiContentPanel.createGuiPanel();
+            frame.setContentPane(guiContentPanel.createGuiPanel());
             isContentPanelCreated = true;
+            frame.pack();
         }
 
         guiUpdater.update(gameState);

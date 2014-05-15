@@ -10,7 +10,7 @@ public class ImageResize {
 		int type = 0;
 		type = image.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : image.getType();
 		int sideSize = getSmallestSide(dimension);
-		BufferedImage resizedImage = new BufferedImage(sideSize, sideSize, type);
+		BufferedImage resizedImage = new BufferedImage(sideSize > 0 ? sideSize:1, sideSize > 0 ? sideSize:1, type);
 		Graphics2D graph = resizedImage.createGraphics();
 		graph.drawImage(image, 0, 0, sideSize, sideSize, null);
 		graph.dispose();
