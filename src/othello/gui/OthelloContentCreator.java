@@ -2,19 +2,23 @@ package othello.gui;
 
 import javax.swing.JPanel;
 
+import othello.gui.panels.OthelloContentPanel;
 import game.api.GameState;
 import gui.ContentPanelCreatable;
 
 public class OthelloContentCreator implements ContentPanelCreatable {
 	private GameState gameState;
+	private OthelloGuiInputUnit inputUnit;
 	
-	public OthelloContentCreator(GameState gameState) {
+	public OthelloContentCreator(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
+		this.inputUnit = inputUnit;
 	}
 
 	@Override
 	public JPanel createGuiPanel() {
-		return null;
+		JPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
+		return contentPane;
 	}
 
 }
