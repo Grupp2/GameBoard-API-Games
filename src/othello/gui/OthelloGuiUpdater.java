@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import othello.backend.OthelloGameFacade;
 import othello.gui.graphics.GraphicsHolder;
-import othello.gui.panels.OthelloContentPanel;
 import game.api.GameState;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
@@ -51,7 +50,11 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	}
 
     private void addFrameListener() {
-        this.contentPane.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
+        this.contentPane.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter() {
+            public void ancestorResized(HierarchyEvent e) {
+                placeGamePieces();
+            }
+        });
     }
 	
 	private void setupPlayerInfo() {

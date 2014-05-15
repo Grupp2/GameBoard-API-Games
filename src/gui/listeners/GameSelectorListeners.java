@@ -2,7 +2,6 @@ package gui.listeners;
 
 import game.api.GameState;
 import game.init.Runner;
-import game.io.InputUnit;
 import game.io.OutputUnit;
 import gui.*;
 
@@ -11,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import othello.backend.OthelloGameFacade;
 import othello.gui.*;
-import othello.gui.panels.OthelloContentPanel;
+import othello.gui.OthelloContentPanel;
 
 import javax.swing.*;
 

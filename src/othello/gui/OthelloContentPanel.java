@@ -1,4 +1,4 @@
-package othello.gui.panels;
+package othello.gui;
 
 import java.awt.*;
 
@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import othello.gui.panels.OthelloStatusPanel;
+import othello.gui.panels.OthelloUtillityPanel;
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 
