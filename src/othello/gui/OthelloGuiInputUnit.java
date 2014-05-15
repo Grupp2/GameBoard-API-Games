@@ -12,46 +12,46 @@ public class OthelloGuiInputUnit extends InputUnit {
     private String input;
 
     private Move getNextMove(GameState state) {
-	if (input.toLowerCase().equals("republish"))
-	    return null;
+        if (input.toLowerCase().equals("republish"))
+            return null;
 
-	Move result = null;
-	try {
+        Move result = null;
+        try {
 
-	    result = new Move(state.getPlayerInTurn(), new GamePiece(
-		    getGamePieceID(state.getPlayerInTurn(), state)),
-		    getLocationById(state.getBoard(), input));
-	} catch (Exception ex) {
-	    gameFrame.setStatusLabelText(ex.getMessage());
-	}
-	return result;
+            result = new Move(state.getPlayerInTurn(), new GamePiece(
+                getGamePieceID(state.getPlayerInTurn(), state)),
+                getLocationById(state.getBoard(), input));
+        } catch (Exception ex) {
+            gameFrame.setStatusLabelText(ex.getMessage());
+        }
+        return result;
     }
 
     private String getGamePieceID(Player player, GameState gameState) {
-	if (player == gameState.getPlayers().get(0))
-	    return "O";
-	else
-	    return "X";
+        if (player == gameState.getPlayers().get(0))
+            return "O";
+        else
+            return "X";
     }
 
     private BoardLocation getLocationById(Board board, String id) {
-	List<BoardLocation> locations = board.getLocations();
+        List<BoardLocation> locations = board.getLocations();
 
-	for (int i = 0; i < locations.size(); i++)
-	    if (locations.get(i).getId().equals(id))
-		return locations.get(i);
+        for (int i = 0; i < locations.size(); i++)
+            if (locations.get(i).getId().equals(id))
+            return locations.get(i);
 
-	return null;
+        return null;
     }
 
     @Override
     public void setup(GameState state) {
-	this.state = state;
-	this.state.reset();
+        this.state = state;
+        this.state.reset();
     }
 
     public void notifyListeners(String inputTileName) {
-	input = inputTileName;
-	notifyListenersOfMove(getNextMove(state));
+        input = inputTileName;
+        notifyListenersOfMove(getNextMove(state));
     }
 }
