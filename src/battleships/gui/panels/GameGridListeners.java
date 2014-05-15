@@ -12,9 +12,11 @@ public class GameGridListeners {
     private JButton selectedButton;
     private JPanel contentPanel;
     private TranslatorAdapter translator;
-    public GameGridListeners(JPanel contentPanel, TranslatorAdapter translator) {
+    private BattleShipsInputUnit inputUnit;
+    public GameGridListeners(JPanel contentPanel, BattleShipsInputUnit inputUnit, TranslatorAdapter translator) {
 	this.contentPanel = contentPanel;
 	this.translator = translator;
+	this.inputUnit = inputUnit;
     }
     public void addButtonListeners() {
 	for (Component button : contentPanel.getComponents()) {
@@ -27,7 +29,7 @@ public class GameGridListeners {
 			selectedButton = (JButton) event.getSource();
 		    }
 		});
-	}
+	}	
     }
     
     private void createMove() {
