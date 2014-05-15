@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import othello.backend.OthelloGameFacade;
+import othello.backend.Settings;
 import othello.gui.graphics.GraphicsHolder;
 import game.api.GameState;
 import game.impl.BoardLocation;
@@ -17,9 +18,7 @@ import gui.GameUpdatable;
 public class OthelloGuiUpdater implements GameUpdatable {
 	private OthelloContentPanel contentPane;
 	private GameState gameState;
-	private String player1gamePieceId;
-	private String player2gamePieceId;
-	private String player1Name;
+
 	private final int largeStatusFont = 20;
 	private final int normalStatusFont = 15;
 	private GraphicsHolder graphicsHolder = new GraphicsHolder();
@@ -37,7 +36,6 @@ public class OthelloGuiUpdater implements GameUpdatable {
         if (gameState.hasEnded())
 			gameEndedRoutine();
 		else {
-			setupPlayerInfo();
 			placeGamePieces();
 			updateTurnLabel();
 			updateStatusTextLabel();
@@ -51,12 +49,7 @@ public class OthelloGuiUpdater implements GameUpdatable {
             }
         });
     }
-	
-	private void setupPlayerInfo() {
-		this.player1gamePieceId = gameState.getPlayers().get(0).getPieces().get(0).getId();
-		this.player2gamePieceId = gameState.getPlayers().get(1).getPieces().get(0).getId();
-		this.player1Name = gameState.getPlayers().get(0).getName();
-	}
+
 
 	private void updateStatusTextLabel() {
 		updateStatusTextLabelFontSize(normalStatusFont);
@@ -64,7 +57,7 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	}
 	
 	private void updateTurnLabel() {
-		if (gameState.getPlayerInTurn().getName().equals(player1Name)) {
+		if (gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME)) {
 			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 1 turn");
 			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(graphicsHolder.getPlayer1Piece()));
 		} else {
@@ -116,11 +109,11 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	}
 
     private boolean isPlayerOnePiece(GamePiece piece){
-        return piece.getId().equals(player1gamePieceId);
+        return piece.getId().equals(Settings.PLAYER_ONE_PIECE_ID);
     }
 
     private boolean isPlayerTwoPiece(GamePiece piece){
-        return piece.getId().equals(player2gamePieceId);
+        return piece.getId().equals(Settings.PLAYER_TWO_PIECE_ID);
     }
 
 	private void toggleUndoButton() {
