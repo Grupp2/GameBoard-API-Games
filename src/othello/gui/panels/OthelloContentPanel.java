@@ -35,33 +35,26 @@ public class OthelloContentPanel implements ContentPanelCreatable {
 	}
 	
 	@Override
-	public JPanel createGuiPanel() {
+	public void createGuiPanel(JPanel contentPane) {
+
+        this.contentPane = contentPane;
+        contentPane.setLayout(new BorderLayout());
+
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 		createGameBoardPanel(ta);
 		createUtillityPanel();
 		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
 		gameBoardListener.addButtonListeners();
-        contentPane = new JPanel(new BorderLayout());
+
 		createStatusPanel();
 		populateTheLayout();
 
-        contentPane.setBounds(1, 1, 600, 700);
+
         contentPane.setPreferredSize(new Dimension(600, 600));
         contentPane.setMinimumSize(new Dimension(600, 600));
-
-		return contentPane;
 	}
 
 	public JPanel getContentPane() {
-		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
-		createGameBoardPanel(ta);
-		createUtillityPanel();
-		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
-		gameBoardListener.addButtonListeners();
-		contentPane = new JPanel(new BorderLayout());
-		createStatusPanel();
-		populateTheLayout();
-
 		return contentPane;
 	}
 	
