@@ -70,7 +70,7 @@ public class State {
         return isDeployMode;
     }
 
-    public void setIsDelpoyMode(boolean isDelpoyMode){
+    public void setIsDeployMode(boolean isDeployMode){
         this.isDeployMode = isDeployMode;
     }
 
