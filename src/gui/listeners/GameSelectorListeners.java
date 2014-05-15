@@ -13,6 +13,8 @@ import othello.backend.OthelloGameFacade;
 import othello.gui.*;
 import othello.gui.panels.OthelloContentPanel;
 
+import javax.swing.*;
+
 public class GameSelectorListeners {
 	private GameSelectorPanel gameSelectorPanel;
     private GameFrame frame;
@@ -35,9 +37,13 @@ public class GameSelectorListeners {
         OthelloContentPanel contentPanel = new OthelloContentPanel(state, inputUnit);
 
         GameUpdatable guiUpdater = new OthelloGuiUpdater(contentPanel);
-		OutputUnit outputUnit = new GameOutputUnit(guiUpdater, contentPanel, frame);
 
 
+        JPanel contentPane = new JPanel();
+
+		OutputUnit outputUnit = new GameOutputUnit(guiUpdater, contentPanel, contentPane);
+
+        frame.setContentPane(contentPane);
 
 		new Runner(state, new GameIoFactory(inputUnit, outputUnit)).run();
 	}

@@ -2,6 +2,8 @@ package othello.gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.HierarchyBoundsAdapter;
+import java.awt.event.HierarchyEvent;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,9 +25,11 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	private final int normalStatusFont = 15;
 	private GraphicsHolder graphicsHolder = new GraphicsHolder();
 	private final Color backgroundGreen = new Color(34, 177, 76, 255);
-	
+	private boolean listenerAdded = false;
+
 	public OthelloGuiUpdater(OthelloContentPanel contentPane) {
 		this.contentPane = contentPane;
+
 	}
 
 	@Override
@@ -39,7 +43,15 @@ public class OthelloGuiUpdater implements GameUpdatable {
 			updateTurnLabel();
 			updateStatusTextLabel();
 		}
+
+        if(!listenerAdded){
+
+        }
 	}
+
+    private void addFrameListener() {
+        //this.contentPane.addHierarchyBoundsListener(new HierarchyBoundsAdapter(){ public void ancestorResized(HierarchyEvent e) { placeGamePieces(); }});
+    }
 	
 	private void setupPlayerInfo() {
 		this.player1gamePieceId = gameState.getPlayers().get(0).getPieces().get(0).getId();
