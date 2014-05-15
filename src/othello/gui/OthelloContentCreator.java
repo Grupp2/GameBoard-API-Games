@@ -16,9 +16,8 @@ public class OthelloContentCreator implements ContentPanelCreatable {
 	}
 
 	@Override
-	public JPanel createGuiPanel() {
-		JPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
+	public OthelloContentPanel createGuiPanel() {
+		OthelloContentPanel contentPane = new OthelloContentPanel(gameState, inputUnit);
 		return contentPane;
 	}
-
 }
