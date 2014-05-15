@@ -7,6 +7,7 @@ import java.awt.Font;
 import othello.backend.OthelloGameFacade;
 import othello.gui.OthelloGuiInputUnit;
 import game.api.GameState;
+import gui.ContentPanelCreatable;
 import gui.listeners.GameBoardListener;
 import gui.panels.GameBoardPanel;
 
@@ -17,7 +18,7 @@ import javax.swing.SwingConstants;
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 
-public class OthelloContentPanel extends JPanel {
+public class OthelloContentPanel extends JPanel implements ContentPanelCreatable {
 	private static final long serialVersionUID = 1L;
 	private GameState gameState;
 	private JPanel contentPane;
@@ -33,6 +34,21 @@ public class OthelloContentPanel extends JPanel {
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
 		this.inputUnit = inputUnit;
+	}
+	
+	@Override
+	public JPanel createGuiPanel() {
+		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
+		createGameBoardPanel(ta);
+		createUtillityPanel();
+		gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
+		gameBoardListener.addButtonListeners();
+		contentPane = new JPanel(new BorderLayout());
+		createStatusPanel();
+		populateTheLayout();
+		this.validate();
+		this.repaint();
+		return contentPane;
 	}
 
 	public JPanel getContentPane() {
