@@ -24,17 +24,17 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	private final int normalStatusFont = 15;
 	private GraphicsHolder graphicsHolder = new GraphicsHolder();
 	private final Color backgroundGreen = new Color(34, 177, 76, 255);
-	private boolean listenerAdded = false;
 
 	public OthelloGuiUpdater(OthelloContentPanel contentPane) {
 		this.contentPane = contentPane;
-
+        addFrameListener();
 	}
 
 	@Override
 	public void update(GameState gameState) {
 		this.gameState = gameState;
-		if (gameState.hasEnded())
+
+        if (gameState.hasEnded())
 			gameEndedRoutine();
 		else {
 			setupPlayerInfo();
@@ -42,15 +42,10 @@ public class OthelloGuiUpdater implements GameUpdatable {
 			updateTurnLabel();
 			updateStatusTextLabel();
 		}
-
-        if(!listenerAdded){
-            addFrameListener();
-            listenerAdded = true;
-        }
 	}
 
     private void addFrameListener() {
-        this.contentPane.getContentPane().addHierarchyBoundsListener(new HierarchyBoundsAdapter() {
+        this.contentPane.addHierarchyBoundsListener(new HierarchyBoundsAdapter() {
             public void ancestorResized(HierarchyEvent e) {
                 placeGamePieces();
             }
@@ -96,19 +91,25 @@ public class OthelloGuiUpdater implements GameUpdatable {
         List<BoardLocation> locations = gameState.getBoard().getLocations();
         JButton currentButton;
         ImageIcon iconForButton;
+
         for (int i = 0; i < locations.size();i++) {
+
             currentButton = (JButton)contentPane.getGameBoardPanel().getComponent(i);
             GamePiece currentPiece = locations.get(i).getPiece();
+
             if (currentPiece != null) {
                 iconForButton = null;
+
                 if (isPlayerOnePiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer1Piece(currentButton.getSize()));
                 else if (isPlayerTwoPiece(currentPiece))
                     iconForButton = new ImageIcon(graphicsHolder.getPlayer2Piece(currentButton.getSize()));
+
                 currentButton.setBackground(backgroundGreen);
                 currentButton.setIcon(iconForButton);
                 currentButton.setFocusPainted(false);
-            } else
+            }
+            else
                 currentButton.setIcon(null);
         }
         toggleUndoButton();

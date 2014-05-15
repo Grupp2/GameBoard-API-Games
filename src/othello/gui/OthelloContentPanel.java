@@ -26,28 +26,23 @@ public class OthelloContentPanel extends JPanel{
 	private OthelloStatusPanel statusPanel;
 	private OthelloUtillityPanel utilityPanel;
 
-	private OthelloGuiInputUnit inputUnit;
-	private GameBoardListener gameBoardListener;
-
 	private Color backgroundGreen = new Color(34, 177, 76, 255);
 	private final int statusLabelFontSize = 15;
 	private final int playerInfoLabelFontSize = 20;
 
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
-		this.inputUnit = inputUnit;
-        createGuiPanel();
+        createGuiPanel(inputUnit);
 	}
 
-	private void createGuiPanel() {
+	private void createGuiPanel(OthelloGuiInputUnit inputUnit) {
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 
         createGameBoardPanel(ta);
-		createUtilityPanel();
+		createUtilityPanel(inputUnit);
         createStatusPanel();
 
-        gameBoardListener = new GameBoardListener(gameBoardPanel, inputUnit, ta);
-		gameBoardListener.addButtonListeners();
+        new GameBoardListener(gameBoardPanel, inputUnit, ta).addButtonListeners();
 
 		populateTheLayout();
 	}
@@ -56,7 +51,7 @@ public class OthelloContentPanel extends JPanel{
         this.gameBoardPanel = new GameBoardPanel(gameState, ta);
     }
 
-    private void createUtilityPanel() {
+    private void createUtilityPanel(OthelloGuiInputUnit inputUnit) {
         this.utilityPanel = new OthelloUtillityPanel((OthelloGameFacade)gameState, inputUnit);
     }
 
