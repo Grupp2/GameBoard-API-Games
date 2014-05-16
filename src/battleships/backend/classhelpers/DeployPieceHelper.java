@@ -31,6 +31,8 @@ public class DeployPieceHelper {
 			message = "Not a leagal piece!";
 		else if (isNotDiagonally())
 			message = "It is not leagal to place pieces diagonally";
+		else if (isOutOfSizeBounds())
+			message = "No piece has this lenght!";
 		else if (isNoSizeOfPieceLeftToDeploy())
 			message = "No pieces of the current size left to deploy!";
 		return message;
@@ -46,8 +48,28 @@ public class DeployPieceHelper {
 		return false;
 	}
 	
+	private boolean isOutOfSizeBounds() {
+		int targetSize = calculatePieceSize();
+		if (targetSize < 2 || targetSize > 5)
+			return true;
+		return false;
+	}
+	
 	private boolean isNoSizeOfPieceLeftToDeploy() {
-		
+		int targetSize = calculatePieceSize();
+		if (targetSize==5) {
+			if (dph.getPiecesOfLengthFive()<1)
+				return true;
+		} else if (targetSize==4) {
+			if (dph.getPiecesOfLengthFour()<1)
+				return true;
+		} else if (targetSize==3) {
+			if (dph.getPiecesOfLengthThree()<1)
+				return true;
+		} else if (targetSize==2) {
+			if (dph.getPiecesOfLengthTwo()<1)
+				return true;
+		}
 		return false;
 	}
 	
