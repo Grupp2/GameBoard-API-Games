@@ -1,5 +1,6 @@
 package battleships.backend;
 
+import battleships.backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
 
@@ -31,7 +32,7 @@ public class GameActionsHandler {
     }
 
     public void reset() {
-        // TODO Auto-generated method stub
-
+        ResetHelper resetHelper = new ResetHelper(state);
+        resetHelper.reset();
     }
 }
