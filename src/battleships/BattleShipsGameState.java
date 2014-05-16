@@ -7,66 +7,75 @@ import game.impl.Board;
 import game.impl.DieRollFactory;
 import game.impl.Move;
 import game.impl.Player;
+import battleships.backend.GameActionsHandler;
+import battleships.backend.State;
 
 public class BattleShipsGameState implements GameState {
+    private State state;
+    private GameActionsHandler handler;
+    
+    
+    public BattleShipsGameState() {
+	state = new State();
+	handler = new GameActionsHandler(state);
+    }
+    
     @Override
     public Board getBoard() {
-	// TODO Auto-generated method stub
-	return null;
+	return state.getBoard();
     }
 
     @Override
     public DieRollFactory getDieRollFactory() {
-	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
     public Player getLastPlayer() {
-	// TODO Auto-generated method stub
-	return null;
+	return state.getLastPlayer();
     }
 
     @Override
     public String getMessage() {
-	// TODO Auto-generated method stub
-	return null;
+	return state.getMessage();
     }
 
     @Override
     public Player getPlayerInTurn() {
-	// TODO Auto-generated method stub
-	return null;
+	return state.getCurrentPlayer();
     }
 
     @Override
     public List<Player> getPlayers() {
-	// TODO Auto-generated method stub
-	return null;
+	return state.getPlayers();
     }
 
     @Override
     public Player getWinner() {
-	// TODO Auto-generated method stub
-	return null;
+	return handler.calculateWinner();
     }
 
     @Override
     public Boolean hasEnded() {
-	// TODO Auto-generated method stub
-	return null;
+	return handler.hasEndedCheck();
     }
 
     @Override
     public Boolean proposeMove(Move move) {
-	// TODO Auto-generated method stub
-	return null;
+	if(!handler.validateMove(move))
+            return false;
+
+        handler.executeMove(move);
+        return true;
     }
 
     @Override
     public void reset() {
-	
-	
+	handler.reset();
+    }
+    
+    public boolean getIsDeployMode() {
+	return state.isDeployMode();
     }
 
 }
