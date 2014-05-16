@@ -1,17 +1,17 @@
 package battleships.backend.classhelpers;
 
-public class DeployPieceHolder {
+public class DeployPieceCounter {
 	private boolean piecesLeftToDeploy;
 	private int piecesOfLengthTwo;
 	private int piecesOfLengthThree;
 	private int piecesOfLengthFour;
 	private int piecesOfLengthFive;
 	
-	public DeployPieceHolder() {
+	public DeployPieceCounter() {
 		this(true, 4, 3, 2, 1);
 	}
 	
-	public DeployPieceHolder(boolean piecesLeftToDeploy, int piecesOfLengthTwo, int piecesOfLengthThree, int piecesOfLengthFour, int piecesOfLengthFive) {
+	public DeployPieceCounter(boolean piecesLeftToDeploy, int piecesOfLengthTwo, int piecesOfLengthThree, int piecesOfLengthFour, int piecesOfLengthFive) {
 		this.piecesLeftToDeploy = piecesLeftToDeploy;
 		this.piecesOfLengthTwo = piecesOfLengthTwo;
 		this.piecesOfLengthThree = piecesOfLengthThree;
@@ -19,7 +19,7 @@ public class DeployPieceHolder {
 		this.piecesOfLengthFive = piecesOfLengthFive;
 	}
 
-	public boolean isPiecesLeftToDeploy() {
+	public boolean hasPiecesLeftToDeploy() {
 		return piecesLeftToDeploy;
 	}
 	
