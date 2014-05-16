@@ -19,8 +19,9 @@ public class OthelloGuiUpdater implements GameUpdatable {
 	private OthelloContentPanel contentPane;
 	private GameState gameState;
 
-	private final int largeStatusFont = 20;
-	private final int normalStatusFont = 15;
+	private final int LARGE_STATUS_FONT = 20;
+	private final int NORMAL_STATUS_FONT = 15;
+
 	private GraphicsHolder graphicsHolder = new GraphicsHolder();
 	private final Color backgroundGreen = new Color(34, 177, 76, 255);
 
@@ -28,6 +29,14 @@ public class OthelloGuiUpdater implements GameUpdatable {
 		this.contentPane = contentPane;
         addFrameListener();
 	}
+
+    private void addFrameListener() {
+        this.contentPane.addHierarchyBoundsListener(new HierarchyBoundsAdapter() {
+            public void ancestorResized(HierarchyEvent e) {
+                placeGamePieces();
+            }
+        });
+    }
 
 	@Override
 	public void update(GameState gameState) {
@@ -42,44 +51,33 @@ public class OthelloGuiUpdater implements GameUpdatable {
 		}
 	}
 
-    private void addFrameListener() {
-        this.contentPane.addHierarchyBoundsListener(new HierarchyBoundsAdapter() {
-            public void ancestorResized(HierarchyEvent e) {
-                placeGamePieces();
-            }
-        });
+
+    private void gameEndedRoutine() {
+        placeGamePieces();
+        updateStatusTextLabelFontSize(LARGE_STATUS_FONT);
+        contentPane.setMessageLabel("The winner is: " + gameState.getWinner().getName());
     }
 
-
 	private void updateStatusTextLabel() {
-		updateStatusTextLabelFontSize(normalStatusFont);
-		contentPane.getStatusPanel().getStatusTextLabel().setText(gameState.getMessage());
+		updateStatusTextLabelFontSize(NORMAL_STATUS_FONT);
+        contentPane.setMessageLabel(gameState.getMessage());
 	}
 	
 	private void updateTurnLabel() {
-		if (gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME)) {
-			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 1 turn");
-			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(graphicsHolder.getPlayer1Piece()));
-		} else {
-			contentPane.getStatusPanel().getPlayerInfoLabel().setText("player 2 turn");
-			contentPane.getStatusPanel().getPlayerInfoLabel().setIcon(new ImageIcon(graphicsHolder.getPlayer2Piece()));
-		}
-	}
-	
-	private void gameEndedRoutine() {
-		placeGamePieces();
-		updateStatusTextLabelFontSize(largeStatusFont);
-		contentPane.getStatusPanel().getStatusTextLabel().setText("The winner is: " + gameState.getWinner().getName());
-	}
-	
+        if (isPlayerOnesTurn())
+            contentPane.setTurnLabel(new ImageIcon(graphicsHolder.getPlayer1Piece()), "Player 1 turn");
+        else
+            contentPane.setTurnLabel(new ImageIcon(graphicsHolder.getPlayer2Piece()), "Player 2 turn");
+    }
+
 	private void updateStatusTextLabelFontSize(int fontSize) {
-		contentPane.getStatusPanel().getStatusTextLabel().setFont(new Font("Tahoma", Font.PLAIN, fontSize));
+		contentPane.setMessageFont(new Font("Tahoma", Font.PLAIN, fontSize));
 	}
-	
-	public void setStatusLabelText(String str) {
-		contentPane.getStatusPanel().getStatusTextLabel().setText(str);
-	}
-	
+
+    private void updateUndoButton() {
+        contentPane.setUndoButtonEnabled(((OthelloGameFacade) gameState).canUndo());
+    }
+
 	private void placeGamePieces() {
         List<BoardLocation> locations = gameState.getBoard().getLocations();
         JButton currentButton;
@@ -105,7 +103,7 @@ public class OthelloGuiUpdater implements GameUpdatable {
             else
                 currentButton.setIcon(null);
         }
-        toggleUndoButton();
+        updateUndoButton();
 	}
 
     private boolean isPlayerOnePiece(GamePiece piece){
@@ -116,15 +114,7 @@ public class OthelloGuiUpdater implements GameUpdatable {
         return piece.getId().equals(Settings.PLAYER_TWO_PIECE_ID);
     }
 
-	private void toggleUndoButton() {
-		if (!(gameState instanceof OthelloGameFacade)) {
-			contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
-			return;
-		} else {
-			if (((OthelloGameFacade) gameState).canUndo())
-				contentPane.getUtilityPanel().getBtnUndo().setEnabled(true);
-			else
-				contentPane.getUtilityPanel().getBtnUndo().setEnabled(false);
-		}
-	}
+    private boolean isPlayerOnesTurn(){
+        return gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME);
+    }
 }

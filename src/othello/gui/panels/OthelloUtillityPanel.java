@@ -43,7 +43,7 @@ public class OthelloUtillityPanel extends JPanel {
 		return this;
 	}
 	
-	public JButton getBtnUndo() {
+	public JButton getUndoButton() {
 		return btnUndo;
 	}
 
