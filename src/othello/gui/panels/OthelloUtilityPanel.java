@@ -7,7 +7,7 @@ import othello.backend.OthelloGameFacade;
 import othello.gui.OthelloGuiInputUnit;
 import othello.gui.listeners.OthelloUtilityListener;
 
-public class OthelloUtillityPanel extends JPanel {
+public class OthelloUtilityPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton btnUndo;
 	private JButton btnLoad;
@@ -15,7 +15,7 @@ public class OthelloUtillityPanel extends JPanel {
 	private JButton btnNew;
 	private JButton btnExit;
 
-	public OthelloUtillityPanel(OthelloGameFacade gameState, OthelloGuiInputUnit inputUnit) {
+	public OthelloUtilityPanel(OthelloGameFacade gameState, OthelloGuiInputUnit inputUnit) {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();
@@ -39,10 +39,6 @@ public class OthelloUtillityPanel extends JPanel {
 		add(btnExit);
 	}
 
-	public JPanel getUtillityPanel() {
-		return this;
-	}
-	
 	public JButton getUndoButton() {
 		return btnUndo;
 	}

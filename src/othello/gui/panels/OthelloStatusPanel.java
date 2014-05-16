@@ -13,17 +13,17 @@ public class OthelloStatusPanel extends JPanel {
 	public OthelloStatusPanel() {
 		setLayout(new GridBagLayout());
 		setBackground(backgroundGreen);
-		this.lblPlayerInfo = new JLabel();
-		this.lblStatusText = new JLabel();
 		addPlayerInfoLabel();
 		addStatusTextLabel();
 	}
 
 	private void addPlayerInfoLabel() {
+        lblPlayerInfo = new JLabel();
+        setLabelProperties(lblPlayerInfo, 20);
+
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.anchor = GridBagConstraints.LINE_START;
-
         constraints.weightx = 0.5;
         constraints.gridwidth = 1;
 		constraints.gridx = 0;
@@ -33,12 +33,12 @@ public class OthelloStatusPanel extends JPanel {
 	}
 	
 	private void addStatusTextLabel() {
+        lblStatusText = new JLabel();
+        setLabelProperties(lblStatusText, 15);
 
         GridBagConstraints constraints = new GridBagConstraints();
 
-
         constraints.anchor = GridBagConstraints.LINE_START;
-
         constraints.weightx = 1;
         constraints.gridwidth = 2;
         constraints.gridx = 1;
@@ -47,13 +47,12 @@ public class OthelloStatusPanel extends JPanel {
 		add(lblStatusText, constraints);
 	}
 
-	public JLabel getPlayerInfoLabel() {
-		return this.lblPlayerInfo;
-	}
-	
-	public JLabel getStatusTextLabel() {
-		return this.lblStatusText;
-	}
+    private void setLabelProperties(JLabel label, int fontSize) {
+        label.setBackground(backgroundGreen);
+        label.setOpaque(true);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setFont(new Font("Tahoma", Font.PLAIN, fontSize));
+    }
 
 
     public void setTurnLabel(ImageIcon icon, String text){

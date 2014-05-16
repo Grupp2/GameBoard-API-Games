@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 
 import othello.backend.OthelloGameFacade;
 import othello.gui.OthelloGuiInputUnit;
-import othello.gui.panels.OthelloUtillityPanel;
+import othello.gui.panels.OthelloUtilityPanel;
 import game.api.GameState;
 
 public class OthelloUtilityListener {
-	private othello.gui.panels.OthelloUtillityPanel utilityPanel;
+	private OthelloUtilityPanel utilityPanel;
 	private OthelloGameFacade gameState;
 	private OthelloGuiInputUnit inputUnit;
 
-	public OthelloUtilityListener(OthelloUtillityPanel utilityPanel, GameState gameState, OthelloGuiInputUnit inputUnit) {
+	public OthelloUtilityListener(OthelloUtilityPanel utilityPanel, GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.utilityPanel = utilityPanel;
 		this.inputUnit = inputUnit;
 		this.gameState = (OthelloGameFacade) gameState;
