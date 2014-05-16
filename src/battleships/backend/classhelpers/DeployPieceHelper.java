@@ -7,11 +7,15 @@ public class DeployPieceHelper {
 	private BoardLocation secondCoordinate;
 	private DeployPieceHolder dph;
 	
-	public DeployPieceHelper() {
-		dph = new DeployPieceHolder();
+	public DeployPieceHelper(DeployPieceHolder dph) {
+		this.dph = dph;
 	}
 	
-	public String bsDeployPiece(BoardLocation newCoordinate) {
+	public DeployPieceHelper() {
+		this(new DeployPieceHolder());
+	}
+	
+	public String deployPiece(BoardLocation newCoordinate) {
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
 			return null;
@@ -45,5 +49,14 @@ public class DeployPieceHelper {
 	private boolean isNoSizeOfPieceLeftToDeploy() {
 		
 		return false;
+	}
+	
+	private int calculatePieceSize() {
+		int result = 0;
+		if (firstCoordinate.getId().substring(0, 1).equals(secondCoordinate.getId().substring(0, 1)))
+			result = Math.abs(Integer.parseInt(firstCoordinate.getId().substring(1)) - Integer.parseInt(secondCoordinate.getId().substring(1)));
+		else
+			result = Math.abs((int)firstCoordinate.getId().charAt(0) - (int)secondCoordinate.getId().charAt(0));
+		return result;
 	}
 }

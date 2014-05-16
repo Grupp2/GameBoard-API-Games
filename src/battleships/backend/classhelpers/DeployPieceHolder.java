@@ -19,7 +19,7 @@ public class DeployPieceHolder {
 		this.piecesOfLengthFive = piecesOfLengthFive;
 	}
 
-	public boolean isPiecesLeftToDeploy() {
+	public boolean hasPiecesLeftToDeploy() {
 		return piecesLeftToDeploy;
 	}
 	
