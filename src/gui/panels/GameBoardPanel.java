@@ -1,7 +1,10 @@
 package gui.panels;
 
 import game.api.GameState;
+import game.impl.BoardLocation;
 import gui.GameBoardSizeCalculator;
+
+import java.util.List;
 
 import java.awt.*;
 import javax.swing.JButton;
@@ -9,11 +12,13 @@ import javax.swing.JPanel;
 import translator.TranslatorAdapter;
 
 public class GameBoardPanel extends JPanel {
+
+    private static final long serialVersionUID = 1L;
+
+    private final Color BACKGROUND_GREEN = new Color(34, 177, 76, 255);
+
 	private int xSize;
 	private int ySize;
-	private static final long serialVersionUID = 1L;
-	private final int BUTTON_SIZE = 75;
-	private Color backgroundGreen = new Color(34, 177, 76, 255);
 
 	public GameBoardPanel(GameState state, TranslatorAdapter ta) {
 		setPreferredSize(new Dimension(600, 600));
@@ -32,11 +37,11 @@ public class GameBoardPanel extends JPanel {
 
 	
 	private void addButtons(GameState state) {
-		for (int i=0; i < state.getBoard().getLocations().size(); i++) {
+        List<BoardLocation> locations = state.getBoard().getLocations();
+		for (int i = 0; i < locations.size(); i++) {
 			JButton btn = new JButton();
-			btn.setName(state.getBoard().getLocations().get(i).getId());
-			btn.setSize(BUTTON_SIZE, BUTTON_SIZE);
-			btn.setBackground(backgroundGreen);
+			btn.setName(locations.get(i).getId());
+			btn.setBackground(BACKGROUND_GREEN);
 			add(btn);
 		}
 	}
