@@ -5,14 +5,14 @@ import game.impl.BoardLocation;
 public class DeployPieceHelper {
 	private BoardLocation firstCoordinate;
 	private BoardLocation secondCoordinate;
-	private DeployPieceHolder dph;
+	private DeployPieceCounter dph;
 	
-	public DeployPieceHelper(DeployPieceHolder dph) {
+	public DeployPieceHelper(DeployPieceCounter dph) {
 		this.dph = dph;
 	}
 	
 	public DeployPieceHelper() {
-		this(new DeployPieceHolder());
+		this(new DeployPieceCounter());
 	}
 	
 	public String deployPiece(BoardLocation newCoordinate) {
