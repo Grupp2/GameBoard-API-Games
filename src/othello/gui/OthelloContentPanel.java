@@ -23,10 +23,6 @@ public class OthelloContentPanel extends JPanel{
 	private OthelloStatusPanel statusPanel;
 	private OthelloUtilityPanel utilityPanel;
 
-	private Color backgroundGreen = new Color(34, 177, 76, 255);
-	private final int statusLabelFontSize = 15;
-	private final int playerInfoLabelFontSize = 20;
-
 	public OthelloContentPanel(GameState gameState, OthelloGuiInputUnit inputUnit) {
 		this.gameState = gameState;
         createGuiPanel(inputUnit);
