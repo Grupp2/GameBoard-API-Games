@@ -1,5 +1,8 @@
 package run;
 
+import gui.GameFrame;
+import gui.GameSelectorPanel;
+import gui.listeners.GameSelectorListeners;
 import othello.backend.OthelloGameFacade;
 import othello.consoleui.OthelloConsoleIOFactory;
 import othello.gui.OthelloGuiInputUnit;
@@ -13,9 +16,14 @@ public class Program {
 				if (args[i].equals("--console") || args[i].equals("-c"))
 					new Runner(new OthelloGameFacade(), new OthelloConsoleIOFactory()).run();
 		} else {
-			OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
-			//OthelloGuiOutputUnit outputUnit = new OthelloGuiOutputUnit(new OthelloGameFrame(inputUnit));
-			//new Runner(new OthelloGameFacade(), new OthelloGuiIOFactory(inputUnit, outputUnit)).run();
+            GameFrame theFrame = new GameFrame();
+            theFrame.setTitle("Gameboard Project");
+
+            GameSelectorPanel selectorPanel = new GameSelectorPanel();
+            GameSelectorListeners listener = new GameSelectorListeners(selectorPanel, theFrame);
+
+            listener.addGameSelectorListeners();
+            theFrame.setContentPane(selectorPanel);
 		}
 	}
 }
