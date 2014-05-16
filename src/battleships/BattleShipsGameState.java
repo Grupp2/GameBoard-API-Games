@@ -7,14 +7,17 @@ import game.impl.Board;
 import game.impl.DieRollFactory;
 import game.impl.Move;
 import game.impl.Player;
+import battleships.backend.GameActionsHandler;
 import battleships.backend.State;
 
 public class BattleShipsGameState implements GameState {
     private State state;
+    private GameActionsHandler handler;
     
     
     public BattleShipsGameState() {
 	state = new State();
+	handler = new GameActionsHandler(state);
     }
     
     @Override
@@ -49,22 +52,26 @@ public class BattleShipsGameState implements GameState {
 
     @Override
     public Player getWinner() {
-	return null;
+	return handler.calculateWinner();
     }
 
     @Override
     public Boolean hasEnded() {
-	return null;
+	return handler.hasEndedCheck();
     }
 
     @Override
     public Boolean proposeMove(Move move) {
-	return null;
+	if(!handler.validateMove(move))
+            return false;
+
+        handler.executeMove(move);
+        return true;
     }
 
     @Override
     public void reset() {
-	
+	handler.reset();
     }
     
     public boolean getIsDeployMode() {
