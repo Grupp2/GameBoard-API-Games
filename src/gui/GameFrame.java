@@ -9,7 +9,7 @@ public class GameFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public GameFrame(){
-        setMinimumSize(new Dimension(600, 600));
+        setMinimumSize(new Dimension(599, 599));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
