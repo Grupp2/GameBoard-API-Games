@@ -21,11 +21,11 @@ public class DeployPieceHelper {
 			return null;
 		}
 		secondCoordinate = newCoordinate;
-		String deployResult = doDeployValidation();
+		String deployResult = validateCoordinates();
 		return deployResult;
 	}
 
-	private String doDeployValidation() {
+	private String validateCoordinates() {
 		String message = "";
 		if (isNotDiagonally())
 			message = "It is not legal to place a piece diagonally!";
@@ -51,16 +51,16 @@ public class DeployPieceHelper {
 	
 	private boolean isNoSizeOfPieceLeftToDeploy() {
 		int targetSize = calculatePieceSize();
-		if (targetSize==5) 
+		if (targetSize==5)
 			if (dph.getPiecesOfLengthFive()<1)
 				return true;
-		if (targetSize==4) 
+		if (targetSize==4)
 			if (dph.getPiecesOfLengthFour()<1)
 				return true;
-		if (targetSize==3) 
+		if (targetSize==3)
 			if (dph.getPiecesOfLengthThree()<1)
 				return true;
-		if (targetSize==2) 
+		if (targetSize==2)
 			if (dph.getPiecesOfLengthTwo()<1)
 				return true;
 		return false;

@@ -1,23 +1,23 @@
 package battleships.backend.actionhelpers;
 
 import battleships.backend.State;
-import battleships.backend.classhelpers.DeployMoveHelper;
+import battleships.backend.classhelpers.DeployBoardHelper;
 import battleships.backend.classhelpers.DeployPieceHelper;
 import game.impl.Move;
 
 public class DeployMoveValidationHelper implements MoveValidatable {
 	private State state;
-    private DeployMoveHelper moveHelper;
+    private DeployBoardHelper moveHelper;
     private DeployPieceHelper pieceHelper;
 	
-	public DeployMoveValidationHelper(State state, DeployMoveHelper moveHelper, DeployPieceHelper pieceHelper){
+	public DeployMoveValidationHelper(State state, DeployBoardHelper moveHelper, DeployPieceHelper pieceHelper){
         this.state = state;
         this.moveHelper = moveHelper;
         this.pieceHelper = pieceHelper;
     }
 	
 	public DeployMoveValidationHelper(State state){
-        this(state, new DeployMoveHelper(state), new DeployPieceHelper());
+        this(state, new DeployBoardHelper(state), new DeployPieceHelper());
     }
 
 	@Override

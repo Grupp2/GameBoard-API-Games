@@ -5,7 +5,6 @@ import gui.GameSelectorPanel;
 import gui.listeners.GameSelectorListeners;
 import othello.backend.OthelloGameFacade;
 import othello.consoleui.OthelloConsoleIOFactory;
-import othello.gui.OthelloGuiInputUnit;
 import game.init.Runner;
 
 public class Program {
