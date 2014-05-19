@@ -5,16 +5,24 @@ import game.impl.BoardLocation;
 public class DeployPieceHelper {
 	private BoardLocation firstCoordinate;
 	private BoardLocation secondCoordinate;
-	private DeployPieceCounter dph;
+	private DeployPieceCounter dpc;
 	
-	public DeployPieceHelper(DeployPieceCounter dph) {
-		this.dph = dph;
+	public DeployPieceHelper(DeployPieceCounter dpc) {
+		this.dpc = dpc;
 	}
 	
 	public DeployPieceHelper() {
 		this(new DeployPieceCounter());
 	}
 	
+	public BoardLocation getFirstCoordinate() {
+		return firstCoordinate;
+	}
+
+	public BoardLocation getSecondCoordinate() {
+		return secondCoordinate;
+	}
+
 	public String deployPiece(BoardLocation newCoordinate) {
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
@@ -51,16 +59,16 @@ public class DeployPieceHelper {
 	private boolean isNoSizeOfPieceLeftToDeploy() {
 		int targetSize = calculatePieceSize();
 		if (targetSize==5)
-			if (dph.getPiecesOfLengthFive()<1)
+			if (dpc.getPiecesOfLengthFive()<1)
 				return true;
 		if (targetSize==4)
-			if (dph.getPiecesOfLengthFour()<1)
+			if (dpc.getPiecesOfLengthFour()<1)
 				return true;
 		if (targetSize==3)
-			if (dph.getPiecesOfLengthThree()<1)
+			if (dpc.getPiecesOfLengthThree()<1)
 				return true;
 		if (targetSize==2)
-			if (dph.getPiecesOfLengthTwo()<1)
+			if (dpc.getPiecesOfLengthTwo()<1)
 				return true;
 		return false;
 	}
@@ -68,9 +76,9 @@ public class DeployPieceHelper {
 	private int calculatePieceSize() {
 		int result = 0;
 		if (firstCoordinate.getId().substring(0, 1).equals(secondCoordinate.getId().substring(0, 1)))
-			result = Math.abs(Integer.parseInt(firstCoordinate.getId().substring(1)) - Integer.parseInt(secondCoordinate.getId().substring(1)));
+			result = Math.abs(Integer.parseInt(firstCoordinate.getId().substring(1)) - Integer.parseInt(secondCoordinate.getId().substring(1))) + 1;
 		else
-			result = Math.abs((int)firstCoordinate.getId().charAt(0) - (int)secondCoordinate.getId().charAt(0));
+			result = Math.abs((int)firstCoordinate.getId().charAt(0) - (int)secondCoordinate.getId().charAt(0)) + 1;
 		return result;
 	}
 }
