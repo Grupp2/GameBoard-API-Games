@@ -21,8 +21,7 @@ public class DeployPieceHelper {
 			return null;
 		}
 		secondCoordinate = newCoordinate;
-		String deployResult = validateCoordinates();
-		return deployResult;
+		return validateCoordinates();
 	}
 
 	private String validateCoordinates() {
