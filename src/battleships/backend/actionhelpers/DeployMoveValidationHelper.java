@@ -2,6 +2,7 @@ package battleships.backend.actionhelpers;
 
 import battleships.backend.State;
 import battleships.backend.classhelpers.DeployBoardHelper;
+import battleships.backend.classhelpers.DeployPieceCounter;
 import battleships.backend.classhelpers.DeployPieceHelper;
 import game.impl.Move;
 
@@ -9,16 +10,26 @@ public class DeployMoveValidationHelper implements MoveValidatable {
 	private State state;
     private DeployBoardHelper moveHelper;
     private DeployPieceHelper pieceHelper;
+    private DeployPieceCounter dpc;
 	
 	public DeployMoveValidationHelper(State state, DeployBoardHelper moveHelper, DeployPieceHelper pieceHelper){
         this.state = state;
         this.moveHelper = moveHelper;
         this.pieceHelper = pieceHelper;
+        this.dpc = new DeployPieceCounter();
     }
 	
 	public DeployMoveValidationHelper(State state){
         this(state, new DeployBoardHelper(state), new DeployPieceHelper());
     }
+	
+	private void validatePiece(Move move) {
+		pieceHelper.deployPiece(move.getDestination());
+	}
+	
+	private void validateBoard() {
+		
+	}
 
 	@Override
 	public boolean makeMoveValidation(Move move) {
