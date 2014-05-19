@@ -9,14 +9,9 @@ import game.impl.BoardLocation;
 import battleships.backend.State;
 
 public class DeployBoardHelper {
-	private State state;
 	private List<BoardLocation> pieceLocationArray;
 	
-	public DeployBoardHelper(State state){
-		this.state = state;
-	}
-	
-	public String checkPieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate) {
+	public String checkPieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate, State state) {
 		String result = "";
 		Map<String, String> stateLocations = new HashMap<String, String>(200);
 		pieceLocationArray = pieceLocations(firstCoordinate, secondCoordinate);

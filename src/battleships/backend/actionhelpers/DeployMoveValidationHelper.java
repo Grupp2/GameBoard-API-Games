@@ -20,15 +20,15 @@ public class DeployMoveValidationHelper implements MoveValidatable {
     }
 	
 	public DeployMoveValidationHelper(State state){
-        this(state, new DeployBoardHelper(state), new DeployPieceHelper());
+        this(state, new DeployBoardHelper(), new DeployPieceHelper());
     }
 	
-	private void validatePiece(Move move) {
-		pieceHelper.deployPiece(move.getDestination());
+	private String validatePiece(Move move) {
+		return pieceHelper.deployPiece(move.getDestination());
 	}
 	
-	private void validateBoard() {
-		
+	private String validateBoard() {
+		 return moveHelper.checkPieceLocations(pieceHelper.getFirstCoordinate(), pieceHelper.getSecondCoordinate(), state);
 	}
 
 	@Override
