@@ -5,7 +5,7 @@ import game.impl.BoardLocation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveToPieceConvertor {
+public class MoveToPieceConverter {
 	
 	public List<BoardLocation> pieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate) {
 		int firstCoordinateLetterAsInteger = (int)firstCoordinate.getId().charAt(0);
