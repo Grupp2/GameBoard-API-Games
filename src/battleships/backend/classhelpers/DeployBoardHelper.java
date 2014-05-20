@@ -27,6 +27,10 @@ public class DeployBoardHelper {
 		return result;
 	}
 	
+	public List<BoardLocation> getPieceLocationArray() {
+		return pieceLocationArray;
+	}
+
 	private List<BoardLocation> pieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate) {
 		int firstCoordinateLetterAsInteger = (int)firstCoordinate.getId().charAt(0);
 		int secondCoordinateLetterAsInteger = (int)secondCoordinate.getId().charAt(0);
