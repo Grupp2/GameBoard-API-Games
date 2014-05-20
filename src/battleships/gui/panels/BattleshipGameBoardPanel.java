@@ -7,6 +7,7 @@ import gui.GameBoardSizeCalculator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -21,6 +22,8 @@ public class BattleshipGameBoardPanel extends JPanel {
 
 	private int xSize;
 	private int ySize;
+
+    private List<JButton> buttons = new ArrayList<>();
 
 	public BattleshipGameBoardPanel(GameState state, TranslatorAdapter ta) {
 		setPreferredSize(new Dimension(600, 600));
@@ -39,11 +42,17 @@ public class BattleshipGameBoardPanel extends JPanel {
 
 	private void addButtons(GameState state) {
 		List<BoardLocation> locations = state.getBoard().getLocations();
+
 		for (int i = 0; i < locations.size(); i++) {
 			JButton btn = new JButton();
 			btn.setName(locations.get(i).getId());
 			btn.setBackground(BACKGROUND_BLUE);
 			add(btn);
+            buttons.add(btn);
 		}
 	}
+
+    public JButton getButton(int i){
+        return buttons.get(i);
+    }
 }
