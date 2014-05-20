@@ -25,4 +25,10 @@ public class Settings {
 
     public static final int PLAYER_TWO_INDEX = 1;
 
+    public static final char PIECE_ALREADYHIT = 'H';
+
+    public static final char PIECE_SHIP = 'S';
+
+    public static final char PIECE_MISS = 'M';
+
 }
