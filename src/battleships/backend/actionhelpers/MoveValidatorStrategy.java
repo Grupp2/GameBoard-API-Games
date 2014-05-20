@@ -19,4 +19,11 @@ public class MoveValidatorStrategy {
             return new NormalMoveValidationHelper(state);
         }
     }
+    
+    public MoveExecutable getMoveExecutor() {
+    	if (state.isDeployMode())
+    		return new DeployMoveHelper();
+    	else
+    		return new NormalMoveHelper();
+    }
 }

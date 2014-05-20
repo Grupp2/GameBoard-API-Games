@@ -1,6 +1,5 @@
 package battleships.backend;
 
-import battleships.backend.actionhelpers.MoveValidatable;
 import battleships.backend.actionhelpers.MoveValidatorStrategy;
 import battleships.backend.actionhelpers.ResetHelper;
 import game.impl.Move;
@@ -9,6 +8,7 @@ import game.impl.Player;
 public class GameActionsHandler {
     private State state;
     private MoveValidatorStrategy moveValidatorStrategy;
+    private Move firstDeployMove;
     
     public GameActionsHandler(State state) {
 	    this.state = state;
@@ -21,11 +21,14 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move) {
-        return moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
+    	boolean result = moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
+    	if (result && firstDeployMove==null)
+    		firstDeployMove = move;
+        return result; 
     }
 
     public void executeMove(Move move) {
-        moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
+        moveValidatorStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
     }
 
     public Boolean hasEndedCheck() {
