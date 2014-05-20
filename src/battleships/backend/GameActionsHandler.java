@@ -1,5 +1,6 @@
 package battleships.backend;
 
+import battleships.backend.actionhelpers.MoveValidateable;
 import battleships.backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
@@ -10,6 +11,7 @@ public class GameActionsHandler {
     public GameActionsHandler(State state) {
 	    this.state = state;
     }
+    public MoveValidateable moveValidator;
 
     public Player calculateWinner() {
         // TODO Auto-generated method stub
