@@ -22,13 +22,17 @@ public class ContentPanel extends JPanel{
     }
 
     private void removeCurrentBoardPanel(){
-        remove(currentBoardPanel);
+        if(currentBoardPanel != null){
+            remove(currentBoardPanel);
+            currentBoardPanel = null;
+        }
     }
 
     private void setCurrentBoardPanel(JPanel panel){
         currentBoardPanel = panel;
         add(panel, BorderLayout.CENTER);
     }
+
 
     public void displayDeployPanel(){
         removeCurrentBoardPanel();

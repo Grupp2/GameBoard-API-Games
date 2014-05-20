@@ -31,7 +31,7 @@ public class GUIUpdater implements GameUpdatable{
             contentPanel.displayDeployPanel();
         }
         else {
-
+            contentPanel.displayNormalPanel();
         }
     }
 }

@@ -57,7 +57,7 @@ public class GameSelectorListeners {
 
         BattleShipsInputUnit inputUnit = new BattleShipsInputUnit();
 
-        BattleshipDeployPanel deployPanel = null;//new BattleshipDeployPanel(gameState, inputUnit);
+        BattleshipDeployPanel deployPanel = new BattleshipDeployPanel(gameState, inputUnit);
 
         ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanel);
 
