@@ -47,4 +47,13 @@ public class StatusPanel extends JPanel {
         add(messagePanel, constraints);
     }
 
+
+    public void setNotificationMessage(String text){
+        messagePanel.setMessage(text);
+    }
+
+    public void setTurnMessage(String text){
+        turnPanel.setMessage(text);
+    }
+
 }
