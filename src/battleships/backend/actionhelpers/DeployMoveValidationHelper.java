@@ -31,9 +31,21 @@ public class DeployMoveValidationHelper implements MoveValidatable {
 		 return moveHelper.checkPieceLocations(pieceHelper.getFirstCoordinate(), pieceHelper.getSecondCoordinate(), state);
 	}
 	
-	private void switchPlayer() {
+	private void checkForPlayerSwitch() {
 		if (!dpc.hasPiecesLeftToDeploy())
 			dpc = new DeployPieceCounter();
+	}
+	
+	private void deployValid() {
+		int pieceSize = moveHelper.getPieceLocationArraySize();
+		if (pieceSize==2)
+			dpc.deployPieceOfLenghtTwo();
+		else if (pieceSize==3)
+			dpc.deployPieceOfLenghtThree();
+		else if (pieceSize==4)
+			dpc.deployPieceOfLenghtFour();
+		else 
+			dpc.deployPieceOfLenghtFive();
 	}
 
 	@Override
@@ -42,6 +54,7 @@ public class DeployMoveValidationHelper implements MoveValidatable {
             state.setMessage("");
             return false;
         }
+		checkForPlayerSwitch();
 		state.setMessage(validatePiece(move));
 		if (!state.getMessage().equals(""))
 			return false;
@@ -50,6 +63,7 @@ public class DeployMoveValidationHelper implements MoveValidatable {
 		if (!state.getMessage().equals(""))
 			return false;
 		
+		deployValid();
         state.setMessage("");
         return true;
 	}
