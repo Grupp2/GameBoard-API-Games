@@ -25,4 +25,8 @@ public class DeployBoardHelper {
 				result = "Pieces are overlapping!";
 		return result;
 	}
+
+	public int getPieceLocationArraySize() {
+		return pieceLocationArray.size();
+	}
 }

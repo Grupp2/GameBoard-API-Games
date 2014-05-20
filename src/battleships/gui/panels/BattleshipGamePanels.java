@@ -1,6 +1,6 @@
 package battleships.gui.panels;
 
-import java.awt.GridLayout;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
@@ -24,6 +24,10 @@ public class BattleshipGamePanels {
 		int[] xy = gc.calculateBoardSize(gameState, ta);
 		player1.setLayout(new GridLayout(xy[1] / 2, xy[0]));
 		player2.setLayout(new GridLayout(xy[1] / 2, xy[0]));
+
+        player1.setPreferredSize(new Dimension(600, 600));
+        player2.setPreferredSize(new Dimension(600, 600));
+
 		BattleshipGameBoardPanel gb = new BattleshipGameBoardPanel(gameState, ta);
 
 		for (int i = 0; i < 100; i++) {
