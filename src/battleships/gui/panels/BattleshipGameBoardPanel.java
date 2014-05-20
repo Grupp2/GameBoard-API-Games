@@ -17,7 +17,7 @@ import translator.TranslatorAdapter;
 public class BattleshipGameBoardPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private final Color BACKGROUND_GREEN = new Color(34, 177, 76, 255);
+	private final Color BACKGROUND_BLUE = new Color(160, 240, 167, 255);
 
 	private int xSize;
 	private int ySize;
@@ -42,7 +42,7 @@ public class BattleshipGameBoardPanel extends JPanel {
 		for (int i = 0; i < locations.size(); i++) {
 			JButton btn = new JButton();
 			btn.setName(locations.get(i).getId());
-			btn.setBackground(BACKGROUND_GREEN);
+			btn.setBackground(BACKGROUND_BLUE);
 			add(btn);
 		}
 	}
