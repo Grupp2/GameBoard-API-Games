@@ -26,16 +26,21 @@ public class OthelloUtilityListener {
 		utilityPanel.getBtnSave().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {saveGame();}});
 		utilityPanel.getUndoButton().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {undoMove();}});
 	}
+
+
 	private void exitGame(){
 		System.exit(0);
 	}
+
 	private void newGame(){
 		gameState.reset();
 		inputUnit.notifyListeners("republish");
 	}
+
 	private void loadGame(){
 		
 	}
+
 	private void saveGame(){
 		
 	}

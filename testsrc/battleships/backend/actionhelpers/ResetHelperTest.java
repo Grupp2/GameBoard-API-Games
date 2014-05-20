@@ -21,8 +21,8 @@ public class ResetHelperTest {
 
         List<Player> players = helper.createPlayers();
         assertEquals(2, players.size());
-        assertEquals(Settings.PLAYER_ONE_NAME, players.get(0).getName());
-        assertEquals(Settings.PLAYER_TWO_NAME, players.get(1).getName());
+        assertEquals(Settings.PLAYER_ONE_NAME, players.get(Settings.PLAYER_ONE_INDEX).getName());
+        assertEquals(Settings.PLAYER_TWO_NAME, players.get(Settings.PLAYER_TWO_INDEX).getName());
     }
 
     @Test
