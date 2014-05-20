@@ -1,17 +1,19 @@
 package battleships.backend;
 
 import battleships.backend.actionhelpers.MoveValidatable;
+import battleships.backend.actionhelpers.MoveValidatorStrategy;
 import battleships.backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
 
 public class GameActionsHandler {
     private State state;
+    private MoveValidatorStrategy moveValidatorStrategy;
     
     public GameActionsHandler(State state) {
 	    this.state = state;
+        this.moveValidatorStrategy = new MoveValidatorStrategy(state);
     }
-    public MoveValidatable moveValidator;
 
     public Player calculateWinner() {
         // TODO Auto-generated method stub
@@ -19,13 +21,11 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move) {
-        // TODO Auto-generated method stub
-        return false;
+        return moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
     }
 
     public void executeMove(Move move) {
-        // TODO Auto-generated method stub
-
+        moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
     }
 
     public Boolean hasEndedCheck() {
