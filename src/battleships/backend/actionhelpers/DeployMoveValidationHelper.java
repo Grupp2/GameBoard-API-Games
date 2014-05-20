@@ -30,6 +30,11 @@ public class DeployMoveValidationHelper implements MoveValidateable {
 	private String validateBoard() {
 		 return moveHelper.checkPieceLocations(pieceHelper.getFirstCoordinate(), pieceHelper.getSecondCoordinate(), state);
 	}
+	
+	private void switchPlayer() {
+		if (!dpc.hasPiecesLeftToDeploy())
+			dpc = new DeployPieceCounter();
+	}
 
 	@Override
 	public boolean makeMoveValidation(Move move) {
