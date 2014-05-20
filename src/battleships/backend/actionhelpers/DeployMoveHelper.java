@@ -1,5 +1,12 @@
 package battleships.backend.actionhelpers;
 
-public class DeployMoveHelper {
+import game.impl.Move;
+
+public class DeployMoveHelper implements MoveExecutable {
+
+	@Override
+	public boolean executeMove(Move move) {
+		return false;
+	}
 
 }
