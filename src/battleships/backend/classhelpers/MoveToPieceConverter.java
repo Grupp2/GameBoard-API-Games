@@ -10,8 +10,8 @@ public class MoveToPieceConverter {
 	public List<BoardLocation> pieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate) {
 		int firstCoordinateLetterAsInteger = (int)firstCoordinate.getId().charAt(0);
 		int secondCoordinateLetterAsInteger = (int)secondCoordinate.getId().charAt(0);
-		int firstCoordinateNumber = Integer.parseInt(firstCoordinate.getId().substring(1));
-		int secondCoordinateNumber = Integer.parseInt(secondCoordinate.getId().substring(1));
+		Integer firstCoordinateNumber = Integer.parseInt(firstCoordinate.getId().substring(1));
+		Integer secondCoordinateNumber = Integer.parseInt(secondCoordinate.getId().substring(1));
 		int size;
 		boolean isIncreasing = false;
 		if (firstCoordinateLetterAsInteger == secondCoordinateLetterAsInteger)
@@ -29,21 +29,23 @@ public class MoveToPieceConverter {
 			if (firstCoordinateLetterAsInteger == secondCoordinateLetterAsInteger) {
 				if (isIncreasing){
 					String letterValue = ""+(char)(firstCoordinateLetterAsInteger);
-					String numberValue = ""+(char)(firstCoordinateNumber+i);
+					firstCoordinateNumber = firstCoordinateNumber+i;
+					String numberValue = firstCoordinateNumber.toString();
 					result.add(new BoardLocation(letterValue+numberValue));
 				} else {
 					String letterValue = ""+(char)(firstCoordinateLetterAsInteger);
-					String numberValue = ""+(char)(secondCoordinateNumber+i);
+					secondCoordinateNumber = secondCoordinateNumber+i;
+					String numberValue = secondCoordinateNumber.toString();
 					result.add(new BoardLocation(letterValue+numberValue));
 				}
 			} else
 				if (isIncreasing){
 					String letterValue = ""+(char)(firstCoordinateLetterAsInteger+i);
-					String numberValue = ""+(char)(firstCoordinateNumber);
+					String numberValue = firstCoordinateNumber.toString();
 					result.add(new BoardLocation(letterValue+numberValue));
 				} else {
 					String letterValue = ""+(char)(secondCoordinateLetterAsInteger+i);
-					String numberValue = ""+(char)(secondCoordinateNumber);
+					String numberValue = secondCoordinateNumber.toString();
 					result.add(new BoardLocation(letterValue+numberValue));
 				}
 		return result;
