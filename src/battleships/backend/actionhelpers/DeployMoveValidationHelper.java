@@ -24,7 +24,7 @@ public class DeployMoveValidationHelper implements MoveValidatable {
     }
 	
 	private String validatePiece(Move move) {
-		return pieceHelper.deployPiece(move.getDestination());
+		return pieceHelper.deployPiece(move.getDestination(), state);
 	}
 	
 	private String validateBoard() {

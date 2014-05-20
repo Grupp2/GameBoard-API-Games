@@ -1,5 +1,6 @@
 package battleships.backend.classhelpers;
 
+import battleships.backend.State;
 import game.impl.BoardLocation;
 
 public class DeployPieceHelper {
@@ -23,13 +24,24 @@ public class DeployPieceHelper {
 		return secondCoordinate;
 	}
 
-	public String deployPiece(BoardLocation newCoordinate) {
+	public String deployPiece(BoardLocation newCoordinate, State state) {
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
-			return null;
+			return validateFirstCoordinate(state);
 		}
 		secondCoordinate = newCoordinate;
 		return validateCoordinates();
+	}
+	
+	private String validateFirstCoordinate(State state) {
+		String result = null;
+		int locationIndex = -1;
+		for (int i = 0; i < state.getBoard().getLocations().size(); i++)
+			if (state.getBoard().getLocations().get(i).getId().equals(firstCoordinate))
+				locationIndex = i;
+		if (state.getBoard().getLocations().get(locationIndex).getPieces().size()!=0)
+			result = "The first coordinate is busy!";
+		return result;
 	}
 
 	private String validateCoordinates() {
