@@ -21,7 +21,7 @@ public class BattleshipsDeployListeners {
 	public void createButtonListeners() {
 		utilityPanel.getBtnExit().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {exitGame();}});
 		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {newGame();}});
-		
+		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {addShip();}});
 	}		
 	private void exitGame(){
 		System.exit(0);
@@ -29,6 +29,9 @@ public class BattleshipsDeployListeners {
 	private void newGame(){
 		gameState.reset();
 		inputUnit.notifyListeners("republish");
+	}
+	private void addShip(){
+		
 	}
 
 }
