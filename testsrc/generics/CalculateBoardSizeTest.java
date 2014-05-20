@@ -1,4 +1,4 @@
-package gui;
+package generics;
 
 import static org.junit.Assert.*;
 import othello.backend.OthelloGameFacade;

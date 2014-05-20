@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import translator.TranslatorAdapter;
 import game.api.GameState;
-import gui.GameBoardSizeCalculator;
+import generics.GameBoardSizeCalculator;
 
 public class BattleshipGamePanels {
 	private JPanel player1;

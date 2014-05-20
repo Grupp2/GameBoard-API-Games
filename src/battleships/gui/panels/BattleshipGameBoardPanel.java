@@ -2,7 +2,7 @@ package battleships.gui.panels;
 
 import game.api.GameState;
 import game.impl.BoardLocation;
-import gui.GameBoardSizeCalculator;
+import generics.GameBoardSizeCalculator;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -13,7 +13,7 @@ import othello.gui.graphics.GraphicsHolder;
 import game.api.GameState;
 import game.impl.BoardLocation;
 import game.impl.GamePiece;
-import gui.GameUpdatable;
+import generics.GameUpdatable;
 
 public class OthelloGuiUpdater implements GameUpdatable {
 	private OthelloContentPanel contentPane;

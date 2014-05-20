@@ -1,4 +1,4 @@
-package gui;
+package generics;
 
 import translator.TranslatorAdapter;
 import game.api.GameState;

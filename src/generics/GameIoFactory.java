@@ -1,4 +1,4 @@
-package gui;
+package generics;
 
 import game.io.InputUnit;
 import game.io.IoFactory;

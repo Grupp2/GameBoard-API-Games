@@ -1,4 +1,4 @@
-package gui.graphics;
+package generics.graphics;
 
 import static org.junit.Assert.*;
 

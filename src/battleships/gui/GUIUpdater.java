@@ -3,7 +3,7 @@ package battleships.gui;
 
 import battleships.backend.BattleShipsGameState;
 import game.api.GameState;
-import gui.GameUpdatable;
+import generics.GameUpdatable;
 
 public class GUIUpdater implements GameUpdatable{
 

@@ -1,4 +1,4 @@
-package gui;
+package generics;
 
 import game.api.GameState;
 import game.io.OutputUnit;

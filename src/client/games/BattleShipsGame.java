@@ -8,8 +8,8 @@ import battleships.gui.panels.BattleshipDeployPanel;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
-import gui.GameIoFactory;
-import gui.GameOutputUnit;
+import generics.GameIoFactory;
+import generics.GameOutputUnit;
 
 import javax.swing.*;
 

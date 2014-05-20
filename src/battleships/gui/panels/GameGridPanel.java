@@ -3,7 +3,7 @@ package battleships.gui.panels;
 import java.awt.GridLayout;
 
 import game.api.GameState;
-import gui.GameBoardSizeCalculator;
+import generics.GameBoardSizeCalculator;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
