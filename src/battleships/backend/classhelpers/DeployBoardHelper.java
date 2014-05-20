@@ -12,7 +12,7 @@ public class DeployBoardHelper {
 	public String checkPieceLocations(BoardLocation firstCoordinate, BoardLocation secondCoordinate, State state) {
 		String result = "";
 		Map<String, String> stateLocations = new HashMap<String, String>(200);
-		MoveToPieceConvertor mpc = new MoveToPieceConvertor();
+		MoveToPieceConverter mpc = new MoveToPieceConverter();
 		pieceLocationArray = mpc.pieceLocations(firstCoordinate, secondCoordinate);
 		for (BoardLocation bl : state.getBoard().getLocations()){
 			String tempString = "";
@@ -24,5 +24,9 @@ public class DeployBoardHelper {
 			if (stateLocations.get(pieceLocationArray.get(i))!= null)
 				result = "Pieces are overlapping!";
 		return result;
+	}
+
+	public int getPieceLocationArraySize() {
+		return pieceLocationArray.size();
 	}
 }

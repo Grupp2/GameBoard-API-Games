@@ -6,6 +6,7 @@ public class DeployPieceCounter {
 	private int piecesOfLenghtThree;
 	private int piecesOfLenghtFour;
 	private int piecesOfLenghtFive;
+	private int totalPiecesToDeploy;
 	
 	public DeployPieceCounter() {
 		this(true, 4, 3, 2, 1);
@@ -17,6 +18,7 @@ public class DeployPieceCounter {
 		this.piecesOfLenghtThree = piecesOfLengthThree;
 		this.piecesOfLenghtFour = piecesOfLengthFour;
 		this.piecesOfLenghtFive = piecesOfLengthFive;
+		this.totalPiecesToDeploy = piecesOfLengthTwo + piecesOfLengthThree + piecesOfLengthFour + piecesOfLengthFive;
 	}
 
 	public boolean hasPiecesLeftToDeploy() {
@@ -26,9 +28,14 @@ public class DeployPieceCounter {
 	public boolean deployPieceOfLenghtTwo() {
 		if (piecesOfLenghtTwo>0) {
 			piecesOfLenghtTwo--;
+			decreaseTotalPieces();
 			return true;
 		}
 		return false;
+	}
+	
+	public void decreaseTotalPieces() {
+		this.totalPiecesToDeploy--;
 	}
 	
 	public boolean deployPieceOfLenghtThree() {

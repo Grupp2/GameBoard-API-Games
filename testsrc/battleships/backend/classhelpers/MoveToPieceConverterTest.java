@@ -6,12 +6,12 @@ import game.impl.BoardLocation;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MoveToPieceConvertorTest {
-	private MoveToPieceConvertor mpc;
+public class MoveToPieceConverterTest {
+	private MoveToPieceConverter mpc;
 
 	@Before
 	public void setUp() throws Exception {
-		this.mpc = new MoveToPieceConvertor();
+		this.mpc = new MoveToPieceConverter();
 	}
 
 	@Test
