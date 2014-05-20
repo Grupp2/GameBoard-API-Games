@@ -40,6 +40,7 @@ public class BattleshipDeployPanel extends JPanel {
 
 	private void createGameBoardPanel(TranslatorAdapter ta) {
 		this.gameBoardPanel = new BattleshipGameBoardPanel(gameState, ta);
+		
 	}
 
 }

@@ -10,6 +10,11 @@ import java.util.List;
 
 public class NormalMoveValidationHelper implements MoveValidatable {
     private State state;
+    
+//    public NormalMoveValidationHelper(State state, ) {
+//    	
+//    }
+    
     public NormalMoveValidationHelper(State state) {
         this.state = state;
     }

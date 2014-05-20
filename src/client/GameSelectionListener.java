@@ -5,8 +5,8 @@ import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.panels.BattleshipDeployPanel;
-import client.ClientWindow;
-import client.GameSelectionPanel;
+import client.games.BattleShipsGame;
+import client.games.OthelloGame;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
@@ -14,10 +14,6 @@ import gui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import othello.backend.OthelloGameFacade;
-import othello.gui.*;
-import othello.gui.OthelloContentPanel;
 
 public class GameSelectionListener {
 	private GameSelectionPanel gameSelectionPanel;
@@ -32,41 +28,20 @@ public class GameSelectionListener {
 		gameSelectionPanel.getBtnGameOne().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startOthelloGame(); }});
 		gameSelectionPanel.getBtnGameTwo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startBattleShipsGame(); }});
 	}
-	
+
 	private void startOthelloGame() {
+        OthelloGame game = new OthelloGame();
 
-        GameState state = new OthelloGameFacade();
-        state.reset();
-
-        OthelloGuiInputUnit inputUnit = new OthelloGuiInputUnit();
-        OthelloContentPanel contentPanel = new OthelloContentPanel(state, inputUnit);
-
-        GameUpdatable guiUpdater = new OthelloGuiUpdater(contentPanel);
-
-		OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
-
-
-        frame.setContentPane(contentPanel);
-		new Runner(state, new GameIoFactory(inputUnit, outputUnit)).run();
+        frame.setContentPane(game.getContentPane());
+        game.start();
         frame.pack();
 	}
 	
 	private void startBattleShipsGame() {
-		GameState gameState = new BattleShipsGameState();
-        gameState.reset();
+        BattleShipsGame game = new BattleShipsGame();
 
-        BattleShipsInputUnit inputUnit = new BattleShipsInputUnit();
-
-        BattleshipDeployPanel deployPanel = new BattleshipDeployPanel(gameState, inputUnit);
-
-        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanel);
-
-        GUIUpdater guiUpdater = new GUIUpdater(contentPanel);
-
-        OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
-
-        frame.setContentPane(contentPanel);
-        new Runner(gameState, new GameIoFactory(inputUnit, outputUnit)).run();
+        frame.setContentPane(game.getContentPane());
+        game.start();
         frame.pack();
 	}
 }
