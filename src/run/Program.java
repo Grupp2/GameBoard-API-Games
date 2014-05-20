@@ -23,6 +23,7 @@ public class Program {
 
             listener.addGameSelectorListeners();
             theFrame.setContentPane(selectorPanel);
+            theFrame.pack();
 		}
 	}
 }
