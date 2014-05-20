@@ -37,7 +37,7 @@ public class DeployPieceHelper {
 		String result = null;
 		int locationIndex = -1;
 		for (int i = 0; i < state.getBoard().getLocations().size(); i++)
-			if (state.getBoard().getLocations().get(i).getId().equals(firstCoordinate))
+			if (state.getBoard().getLocations().get(i).getId().equals(firstCoordinate.getId()))
 				locationIndex = i;
 		if (state.getBoard().getLocations().get(locationIndex).getPieces().size()!=0)
 			result = "The first coordinate is busy!";

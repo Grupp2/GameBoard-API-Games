@@ -4,10 +4,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import game.impl.BoardLocation;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import battleships.backend.State;
 import battleships.backend.actionhelpers.ResetHelper;
 
