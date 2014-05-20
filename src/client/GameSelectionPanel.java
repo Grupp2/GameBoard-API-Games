@@ -1,4 +1,4 @@
-package gui;
+package client;
 
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
@@ -10,14 +10,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class GameSelectorPanel extends JPanel{
+public class GameSelectionPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JButton btnGameOne;
 	private JButton btnGameTwo;
 	private final int gridRows = 2;
 	private final int gridColumns = 1;
 	
-	public GameSelectorPanel() {
+	public GameSelectionPanel() {
 		this.btnGameOne = new JButton();
 		this.btnGameTwo = new JButton("BattleShips Game");
 		createPanel();
@@ -42,7 +42,7 @@ public class GameSelectorPanel extends JPanel{
 		}
 	}
 	
-	public GameSelectorPanel getPanel() {
+	public GameSelectionPanel getPanel() {
 		return this;
 	}
 	

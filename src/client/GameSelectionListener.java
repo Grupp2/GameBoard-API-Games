@@ -1,10 +1,12 @@
-package gui.listeners;
+package client;
 
 import battleships.backend.BattleShipsGameState;
 import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.panels.BattleshipDeployPanel;
+import client.ClientWindow;
+import client.GameSelectionPanel;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
@@ -16,21 +18,19 @@ import java.awt.event.ActionListener;
 import othello.backend.OthelloGameFacade;
 import othello.gui.*;
 import othello.gui.OthelloContentPanel;
-import translator.CoordinateTranslator;
-import translator.TranslatorAdapter;
 
-public class GameSelectorListeners {
-	private GameSelectorPanel gameSelectorPanel;
-    private GameFrame frame;
+public class GameSelectionListener {
+	private GameSelectionPanel gameSelectionPanel;
+    private ClientWindow frame;
 
-	public GameSelectorListeners (GameSelectorPanel gameSelectorPanel, GameFrame frame) {
-		this.gameSelectorPanel = gameSelectorPanel;
+	public GameSelectionListener(GameSelectionPanel gameSelectionPanel, ClientWindow frame) {
+		this.gameSelectionPanel = gameSelectionPanel;
         this.frame = frame;
 	}
 	
 	public void addGameSelectorListeners() {
-		gameSelectorPanel.getBtnGameOne().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startOthelloGame(); }});
-		gameSelectorPanel.getBtnGameTwo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startBattleShipsGame(); }});
+		gameSelectionPanel.getBtnGameOne().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startOthelloGame(); }});
+		gameSelectionPanel.getBtnGameTwo().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) { startBattleShipsGame(); }});
 	}
 	
 	private void startOthelloGame() {
