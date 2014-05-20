@@ -1,4 +1,4 @@
-Othello
+GameBoard API Games
 =======
 
-Othello game using the GameBoard-API. 
+Othello and Battleship game using the GameBoard-API. 
