@@ -29,6 +29,7 @@ public class GameActionsHandler {
 
     public void executeMove(Move move) {
         moveStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
+        firstDeployMove = null;
     }
 
     public Boolean hasEndedCheck() {
