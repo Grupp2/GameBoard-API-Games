@@ -34,7 +34,7 @@ public class GameSelectionPanel extends JPanel{
 		try {
 			BufferedImage btnImg;
 			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			InputStream input = classLoader.getResourceAsStream("gui/graphics/Othello_btn_img.jpg");
+			InputStream input = classLoader.getResourceAsStream("client/Othello_btn_img.jpg");
 			btnImg = ImageIO.read(input);
 			btnGameOne.setIcon(new ImageIcon(btnImg));
 		} catch (IOException e) {
