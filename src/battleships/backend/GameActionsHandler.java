@@ -1,18 +1,18 @@
 package battleships.backend;
 
-import battleships.backend.actionhelpers.MoveValidatorStrategy;
+import battleships.backend.actionhelpers.MoveStrategy;
 import battleships.backend.actionhelpers.ResetHelper;
 import game.impl.Move;
 import game.impl.Player;
 
 public class GameActionsHandler {
     private State state;
-    private MoveValidatorStrategy moveValidatorStrategy;
+    private MoveStrategy moveStrategy;
     private Move firstDeployMove;
     
     public GameActionsHandler(State state) {
 	    this.state = state;
-        this.moveValidatorStrategy = new MoveValidatorStrategy(state);
+        this.moveStrategy = new MoveStrategy(state);
     }
 
     public Player calculateWinner() {
@@ -21,14 +21,14 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move) {
-    	boolean result = moveValidatorStrategy.getMoveValidator().makeMoveValidation(move);
+    	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move);
     	if (result && firstDeployMove==null)
     		firstDeployMove = move;
         return result; 
     }
 
     public void executeMove(Move move) {
-        moveValidatorStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
+        moveStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
     }
 
     public Boolean hasEndedCheck() {

@@ -5,10 +5,10 @@ import battleships.backend.State;
 /**
  * Created by hugg on 2014-05-20.
  */
-public class MoveValidatorStrategy {
+public class MoveStrategy {
     private State state;
 
-    public MoveValidatorStrategy(State state) {
+    public MoveStrategy(State state) {
         this.state = state;
     }
 
