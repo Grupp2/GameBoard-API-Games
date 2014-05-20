@@ -6,13 +6,13 @@ import javax.swing.JPanel;
 
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
+import battleships.BattleShipsGameState;
 import battleships.BattleShipsInputUnit;
 import battleships.gui.listeners.BattleshipsDeployListeners;
 import battleships.gui.panels.logic.BattleshipsDeployLogic;
 import game.api.GameState;
-import gui.panels.GameBoardPanel;
 
-public class BattleshipDeployPanel extends JPanel{
+public class BattleshipDeployPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel gameBoardPanel;
@@ -33,12 +33,12 @@ public class BattleshipDeployPanel extends JPanel{
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 		createGameBoardPanel(ta);
 
-		deployListener = new BattleshipsDeployListeners();
+		deployListener = new BattleshipsDeployListeners(gameState,inputUnit);
 		deployLogic = new BattleshipsDeployLogic(gameState);
 		gamePanels = new BattleshipGamePanels(gameState, ta);
 
 	}
-	
+
 	private void createGameBoardPanel(TranslatorAdapter ta) {
 		this.gameBoardPanel = new BattleshipGameBoardPanel(gameState, ta);
 	}

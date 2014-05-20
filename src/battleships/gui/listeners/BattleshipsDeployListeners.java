@@ -1,5 +1,34 @@
 package battleships.gui.listeners;
 
+import game.api.GameState;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import battleships.BattleShipsInputUnit;
+import battleships.gui.panels.BattleshipsUtilityPanel;
+
 public class BattleshipsDeployListeners {
+	private GameState gameState;
+	private BattleShipsInputUnit inputUnit;
+	private BattleshipsUtilityPanel utilityPanel;
+	
+	public BattleshipsDeployListeners(GameState gameState, BattleShipsInputUnit inputUnit){
+		this.gameState = gameState;
+		this.inputUnit = inputUnit;		
+	}
+
+	public void createButtonListeners() {
+		utilityPanel.getBtnExit().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {exitGame();}});
+		utilityPanel.getBtnNew().addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {newGame();}});
+		
+	}		
+	private void exitGame(){
+		System.exit(0);
+	}
+	private void newGame(){
+		gameState.reset();
+		inputUnit.notifyListeners("republish");
+	}
 
 }
