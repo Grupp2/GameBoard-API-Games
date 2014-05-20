@@ -5,7 +5,7 @@ import java.awt.*;
 import othello.backend.OthelloGameFacade;
 import game.api.GameState;
 import othello.gui.listeners.GameBoardListener;
-import othello.gui.panels.GameBoardPanel;
+import generics.GameBoardPanel;
 
 import javax.swing.*;
 
@@ -41,7 +41,7 @@ public class OthelloContentPanel extends JPanel{
 	}
 
     private void createGameBoardPanel(TranslatorAdapter ta) {
-        this.gameBoardPanel = new GameBoardPanel(gameState, ta);
+        this.gameBoardPanel = new GameBoardPanel(gameState, ta, new Color(34, 177, 76, 255));
     }
 
     private void createUtilityPanel(OthelloGuiInputUnit inputUnit) {

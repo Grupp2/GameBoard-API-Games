@@ -1,9 +1,10 @@
 package battleships.gui.panels;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
+import generics.GameBoardPanel;
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 import battleships.gui.BattleShipsInputUnit;
@@ -27,7 +28,7 @@ public class BattleshipDeployPanel extends JPanel {
 	}
 
 	public void createDeployPanel(BattleShipsInputUnit inputUnit) {
-		deployPanel.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 		createGameBoardPanel(ta);
@@ -39,7 +40,7 @@ public class BattleshipDeployPanel extends JPanel {
 	}
 
 	private void createGameBoardPanel(TranslatorAdapter ta) {
-		this.gameBoardPanel = new BattleshipGameBoardPanel(gameState, ta);
+		this.gameBoardPanel = new GameBoardPanel(gameState, ta, new Color(160, 240, 167, 255));
 		
 	}
 

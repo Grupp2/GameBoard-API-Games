@@ -1,9 +1,10 @@
-package othello.gui.panels;
+package generics;
 
 import game.api.GameState;
 import game.impl.BoardLocation;
 import generics.GameBoardSizeCalculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.awt.*;
@@ -15,14 +16,16 @@ public class GameBoardPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private final Color BACKGROUND_GREEN = new Color(34, 177, 76, 255);
+    private Color backgroundColor;
 
 	private int xSize;
 	private int ySize;
 
-	public GameBoardPanel(GameState state, TranslatorAdapter ta) {
-		setPreferredSize(new Dimension(600, 600));
+    private List<JButton> buttons = new ArrayList<>();
 
+	public GameBoardPanel(GameState state, TranslatorAdapter ta, Color buttonColor) {
+		setPreferredSize(new Dimension(600, 600));
+        this.backgroundColor = buttonColor;
 		calculateBoardSize(state, ta);
 		setLayout(new GridLayout(xSize, ySize));
 		addButtons(state);
@@ -41,8 +44,13 @@ public class GameBoardPanel extends JPanel {
 		for (int i = 0; i < locations.size(); i++) {
 			JButton btn = new JButton();
 			btn.setName(locations.get(i).getId());
-			btn.setBackground(BACKGROUND_GREEN);
+			btn.setBackground(backgroundColor);
 			add(btn);
+            buttons.add(btn);
 		}
 	}
+
+    public JButton getButton(int i){
+        return buttons.get(i);
+    }
 }

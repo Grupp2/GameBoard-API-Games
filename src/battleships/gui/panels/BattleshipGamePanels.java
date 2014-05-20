@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.JPanel;
 
+import generics.GameBoardPanel;
 import translator.TranslatorAdapter;
 import game.api.GameState;
 import generics.GameBoardSizeCalculator;
@@ -28,7 +29,7 @@ public class BattleshipGamePanels {
         player1.setPreferredSize(new Dimension(600, 600));
         player2.setPreferredSize(new Dimension(600, 600));
 
-		BattleshipGameBoardPanel gb = new BattleshipGameBoardPanel(gameState, ta);
+		GameBoardPanel gb = new GameBoardPanel(gameState, ta, new Color(160, 240, 167, 255));
 
 		for (int i = 0; i < 100; i++) {
 			player1.add(gb.getButton(i));
