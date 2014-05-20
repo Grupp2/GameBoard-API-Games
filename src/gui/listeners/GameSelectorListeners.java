@@ -57,8 +57,6 @@ public class GameSelectorListeners {
 
         BattleShipsInputUnit inputUnit = new BattleShipsInputUnit();
 
-        TranslatorAdapter translatorAdapter = new TranslatorAdapter(new CoordinateTranslator());
-
         BattleshipDeployPanel deployPanel = null;//new BattleshipDeployPanel(gameState, inputUnit);
 
         ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanel);
