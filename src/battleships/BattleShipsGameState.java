@@ -16,48 +16,48 @@ public class BattleShipsGameState implements GameState {
     
     
     public BattleShipsGameState() {
-	state = new State();
-	handler = new GameActionsHandler(state);
+	    state = new State();
+	    handler = new GameActionsHandler(state);
     }
     
     @Override
     public Board getBoard() {
-	return state.getBoard();
+	    return state.getBoard();
     }
 
     @Override
     public DieRollFactory getDieRollFactory() {
-	return null;
+	    return null;
     }
 
     @Override
     public Player getLastPlayer() {
-	return state.getLastPlayer();
+	    return state.getLastPlayer();
     }
 
     @Override
     public String getMessage() {
-	return state.getMessage();
+	    return state.getMessage();
     }
 
     @Override
     public Player getPlayerInTurn() {
-	return state.getCurrentPlayer();
+	    return state.getCurrentPlayer();
     }
 
     @Override
     public List<Player> getPlayers() {
-	return state.getPlayers();
+	    return state.getPlayers();
     }
 
     @Override
     public Player getWinner() {
-	return handler.calculateWinner();
+	    return handler.calculateWinner();
     }
 
     @Override
     public Boolean hasEnded() {
-	return handler.hasEndedCheck();
+	    return handler.hasEndedCheck();
     }
 
     @Override
@@ -71,11 +71,11 @@ public class BattleShipsGameState implements GameState {
 
     @Override
     public void reset() {
-	handler.reset();
+	    handler.reset();
     }
     
     public boolean getIsDeployMode() {
-	return state.isDeployMode();
+	    return state.isDeployMode();
     }
 
 }
