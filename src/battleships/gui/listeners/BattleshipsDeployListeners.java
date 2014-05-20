@@ -5,7 +5,7 @@ import game.api.GameState;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import battleships.BattleShipsInputUnit;
+import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.panels.BattleshipsUtilityPanel;
 
 public class BattleshipsDeployListeners {

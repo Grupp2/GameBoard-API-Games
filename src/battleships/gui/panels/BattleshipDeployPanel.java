@@ -6,8 +6,7 @@ import javax.swing.JPanel;
 
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
-import battleships.BattleShipsGameState;
-import battleships.BattleShipsInputUnit;
+import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.listeners.BattleshipsDeployListeners;
 import battleships.gui.panels.logic.BattleshipsDeployLogic;
 import game.api.GameState;

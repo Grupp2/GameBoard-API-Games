@@ -1,4 +1,4 @@
-package battleships;
+package battleships.backend;
 
 import java.util.List;
 

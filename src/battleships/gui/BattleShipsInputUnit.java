@@ -1,4 +1,4 @@
-package battleships;
+package battleships.gui;
 
 import game.api.GameState;
 import game.io.InputUnit;

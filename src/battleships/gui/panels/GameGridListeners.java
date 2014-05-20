@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import battleships.BattleShipsInputUnit;
+import battleships.gui.BattleShipsInputUnit;
 import translator.TranslatorAdapter;
 
 public class GameGridListeners {

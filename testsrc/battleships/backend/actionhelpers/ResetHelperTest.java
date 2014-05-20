@@ -1,6 +1,6 @@
 package battleships.backend.actionhelpers;
 
-import battleships.Settings;
+import battleships.backend.Settings;
 import battleships.backend.State;
 import game.impl.BoardLocation;
 import game.impl.Player;

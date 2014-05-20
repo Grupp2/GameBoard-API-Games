@@ -3,8 +3,8 @@ package battleships.gui.panels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import battleships.BattleShipsGameState;
-import battleships.BattleShipsInputUnit;
+import battleships.backend.BattleShipsGameState;
+import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.listeners.BattleshipsDeployListeners;
 
 public class BattleshipsUtilityPanel extends JPanel {

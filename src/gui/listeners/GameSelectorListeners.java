@@ -1,11 +1,10 @@
 package gui.listeners;
 
-import battleships.BattleShipsGameState;
-import battleships.BattleShipsInputUnit;
+import battleships.backend.BattleShipsGameState;
+import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.panels.BattleshipDeployPanel;
-import battleships.gui.panels.BattleshipGamePanels;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
@@ -18,10 +17,7 @@ import othello.backend.OthelloGameFacade;
 import othello.gui.*;
 import othello.gui.OthelloContentPanel;
 import translator.CoordinateTranslator;
-import translator.Translator;
 import translator.TranslatorAdapter;
-
-import javax.swing.*;
 
 public class GameSelectorListeners {
 	private GameSelectorPanel gameSelectorPanel;
