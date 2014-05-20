@@ -1,4 +1,4 @@
-package gui.panels;
+package othello.gui.panels;
 
 import game.api.GameState;
 import game.impl.BoardLocation;

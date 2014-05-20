@@ -1,4 +1,4 @@
-package gui.listeners;
+package othello.gui.listeners;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;

@@ -4,8 +4,8 @@ import java.awt.*;
 
 import othello.backend.OthelloGameFacade;
 import game.api.GameState;
-import gui.listeners.GameBoardListener;
-import gui.panels.GameBoardPanel;
+import othello.gui.listeners.GameBoardListener;
+import othello.gui.panels.GameBoardPanel;
 
 import javax.swing.*;
 
