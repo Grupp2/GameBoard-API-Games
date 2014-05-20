@@ -4,6 +4,7 @@ import battleships.BattleShipsGameState;
 import battleships.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
+import battleships.gui.panels.BattleshipDeployPanel;
 import battleships.gui.panels.BattleshipGamePanels;
 import game.api.GameState;
 import game.init.Runner;
@@ -62,9 +63,9 @@ public class GameSelectorListeners {
 
         TranslatorAdapter translatorAdapter = new TranslatorAdapter(new CoordinateTranslator());
 
-        BattleshipGamePanels gamePanels = new BattleshipGamePanels(gameState, translatorAdapter);
+        BattleshipDeployPanel deployPanel = null;//new BattleshipDeployPanel(gameState, inputUnit);
 
-        ContentPanel contentPanel = new ContentPanel(inputUnit, gamePanels);
+        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanel);
 
         GUIUpdater guiUpdater = new GUIUpdater(contentPanel);
 

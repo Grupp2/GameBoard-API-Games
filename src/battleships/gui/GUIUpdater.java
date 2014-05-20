@@ -15,10 +15,10 @@ public class GUIUpdater implements GameUpdatable{
 
     @Override
     public void update(GameState gameState) {
-        if(gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
+       /* if(gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
             contentPanel.displayPlayerOneBoard();
         else
-            contentPanel.displayPlayerTwoBoard();
+            contentPanel.displayPlayerTwoBoard();*/
     }
 
 }
