@@ -42,7 +42,7 @@ public class BattleShipsGameState implements GameState {
 
     @Override
     public Player getPlayerInTurn() {
-	    return state.getCurrentPlayer();
+	    return state.getPlayerInTurn();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class BattleShipsGameState implements GameState {
 
     @Override
     public Boolean proposeMove(Move move) {
-	if(!handler.validateMove(move))
+	    if(!handler.validateMove(move))
             return false;
 
         handler.executeMove(move);

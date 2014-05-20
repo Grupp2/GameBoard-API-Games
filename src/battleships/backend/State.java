@@ -57,7 +57,7 @@ public class State {
     }
 
 
-    public Player getCurrentPlayer(){
+    public Player getPlayerInTurn(){
         return currentPlayer;
     }
 
