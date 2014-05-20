@@ -12,6 +12,8 @@ public class ContentPanel extends JPanel{
     private BattleshipDeployPanel deployPanel;
     private StatusPanel statusPanel;
 
+    private JPanel currentBoardPanel;
+
     public ContentPanel(BattleShipsInputUnit inputUnit, BattleshipDeployPanel deployPanel){
         this.deployPanel = deployPanel;
         this.statusPanel = new StatusPanel();
@@ -19,11 +21,24 @@ public class ContentPanel extends JPanel{
         add(statusPanel, BorderLayout.PAGE_START);
     }
 
-
-    public void displayDeployPanel(){
-        add(deployPanel, BorderLayout.CENTER);
+    private void removeCurrentBoardPanel(){
+        remove(currentBoardPanel);
     }
 
+    private void setCurrentBoardPanel(JPanel panel){
+        currentBoardPanel = panel;
+        add(panel, BorderLayout.CENTER);
+    }
+
+    public void displayDeployPanel(){
+        removeCurrentBoardPanel();
+        setCurrentBoardPanel(deployPanel);
+    }
+
+    public void displayNormalPanel(){
+        removeCurrentBoardPanel();
+        setCurrentBoardPanel(null);
+    }
 
     public void setTurnMessage(String message){
         statusPanel.setTurnMessage(message);

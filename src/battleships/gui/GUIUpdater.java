@@ -1,10 +1,9 @@
 package battleships.gui;
 
 
-import battleships.BattleShipsGameState;
+import battleships.backend.BattleShipsGameState;
 import game.api.GameState;
 import gui.GameUpdatable;
-import othello.backend.Settings;
 
 public class GUIUpdater implements GameUpdatable{
 
@@ -18,11 +17,8 @@ public class GUIUpdater implements GameUpdatable{
     public void update(GameState gameState) {
 
         updateMessages(gameState);
+        updateGameBoard(gameState);
 
-       /* if(gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
-            contentPanel.displayPlayerOneBoard();
-        else
-            contentPanel.displayPlayerTwoBoard();*/
     }
 
     private void updateMessages(GameState gameState){
@@ -32,7 +28,7 @@ public class GUIUpdater implements GameUpdatable{
 
     private void updateGameBoard(GameState gameState){
         if(((BattleShipsGameState)gameState).getIsDeployMode()){
-            
+            contentPanel.displayDeployPanel();
         }
         else {
 
