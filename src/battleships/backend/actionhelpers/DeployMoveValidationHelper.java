@@ -6,7 +6,7 @@ import battleships.backend.classhelpers.DeployPieceCounter;
 import battleships.backend.classhelpers.DeployPieceHelper;
 import game.impl.Move;
 
-public class DeployMoveValidationHelper implements MoveValidateable {
+public class DeployMoveValidationHelper implements MoveValidatable {
 	private State state;
     private DeployBoardHelper moveHelper;
     private DeployPieceHelper pieceHelper;
