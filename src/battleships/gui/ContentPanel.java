@@ -9,12 +9,12 @@ import java.awt.*;
 
 public class ContentPanel extends JPanel{
 
-    private BattleshipDeployPanel deployPanel;
+    private JPanel deployPanel;
     private StatusPanel statusPanel;
 
     private JPanel currentBoardPanel;
 
-    public ContentPanel(BattleShipsInputUnit inputUnit, BattleshipDeployPanel deployPanel){
+    public ContentPanel(BattleShipsInputUnit inputUnit, JPanel deployPanel){
         this.deployPanel = deployPanel;
         this.statusPanel = new StatusPanel();
         setLayout(new BorderLayout());

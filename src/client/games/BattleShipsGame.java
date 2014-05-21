@@ -8,6 +8,7 @@ import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.panels.BattleshipDeployPanel;
+import battleships.gui.panels.BattleshipGamePanels;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
@@ -36,10 +37,11 @@ public class BattleShipsGame implements GameStartup{
 
         BattleShipsInputUnit inputUnit = new BattleShipsInputUnit();
         TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
-        GameBoardPanel gamePanels = new GameBoardPanel(gameState, ta, BACKGROUND_COLOR);
-        BattleshipDeployPanel deployPanel = new BattleshipDeployPanel(gameState, inputUnit);
+        BattleshipGamePanels gamePanels = new BattleshipGamePanels(gameState, ta);
+        JPanel deployPanelP1 = gamePanels.getPlayer2();
+        JPanel deployPanelP2 = gamePanels.getPlayer1();
 
-        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanel);
+        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanelP1);
 
         GUIUpdater guiUpdater = new GUIUpdater(contentPanel);
 
@@ -49,16 +51,6 @@ public class BattleShipsGame implements GameStartup{
         this.ioFactory = new GameIoFactory(inputUnit, outputUnit);
         this.contentPanel = contentPanel;
     }
-    
-    private JPanel getCurrentPlayerBoard(GameBoardPanel gamePanels, BattleshipDeployPanel deployPanel) {
-		if (gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
-			deployPanel = gamePanels.getPlayer2();
-		else
-			deployPanel = gamePanels.getPlayer1();
-		deployListener.createButtonListeners();
-		return deployPanel;
-	}
-
 
     @Override
     public JPanel getContentPane() {
