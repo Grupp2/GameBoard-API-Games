@@ -56,7 +56,7 @@ public class DeployMoveValidationHelper implements MoveValidatable {
         }
 		checkForPlayerSwitch();
 		state.setMessage(validatePiece(move));
-		if (!state.getMessage().equals(""))
+		if (state.getMessage()==null || !state.getMessage().equals(""))
 			return false;
 		
 		state.setMessage(validateBoard());
