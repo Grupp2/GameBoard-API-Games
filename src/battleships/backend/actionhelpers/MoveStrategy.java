@@ -20,12 +20,12 @@ public class MoveStrategy {
     public MoveValidatable getMoveValidator() {
         if (state.isDeployMode()) {
             if (deployMoveValidationHelper == null)
-                return new DeployMoveValidationHelper(state);
+                return (deployMoveValidationHelper = new DeployMoveValidationHelper(state));
             else
                 return deployMoveValidationHelper;
         } else {
             if (normalMoveValidationHelper == null)
-                return new NormalMoveValidationHelper(state);
+                return (normalMoveValidationHelper = new NormalMoveValidationHelper(state));
             else
                 return normalMoveValidationHelper;
         }
@@ -34,12 +34,12 @@ public class MoveStrategy {
     public MoveExecutable getMoveExecutor() {
     	if (state.isDeployMode()) {
             if (deployMoveExecutor == null)
-                return new DeployMoveExecutor(state);
+                return (deployMoveExecutor = new DeployMoveExecutor(state));
             else
                 return deployMoveExecutor;
         } else {
             if (normalMoveExecutor == null)
-                return new NormalMoveExecutor(state);
+                return (normalMoveExecutor = new NormalMoveExecutor(state));
             else
                 return normalMoveExecutor;
         }
