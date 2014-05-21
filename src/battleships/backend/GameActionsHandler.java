@@ -13,9 +13,17 @@ public class GameActionsHandler {
     private TurnCounter turnCounter;
     
     public GameActionsHandler(State state) {
-	    this.state = state;
-	    this.turnCounter = new TurnCounter(state);
-        this.moveStrategy = new MoveStrategy(state);
+	    this(state, new TurnCounter(state), new MoveStrategy(state));
+    }
+    
+    public GameActionsHandler(State state, TurnCounter turnCounter) {
+    	this(state, turnCounter, new MoveStrategy(state));
+    }
+    
+    public GameActionsHandler(State state, TurnCounter turnCounter, MoveStrategy moveStrategy) {
+    	this.state = state;
+	    this.turnCounter = turnCounter;
+        this.moveStrategy = moveStrategy;
     }
 
     public Player calculateWinner() {
