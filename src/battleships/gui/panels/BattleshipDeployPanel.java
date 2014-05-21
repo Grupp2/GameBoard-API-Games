@@ -29,7 +29,7 @@ public class BattleshipDeployPanel extends JPanel {
 	}
 
 	public void createDeployPanel(BattleShipsInputUnit inputUnit) {
-		deployPanel.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 
 		TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
 		createGameBoardPanel(ta);
