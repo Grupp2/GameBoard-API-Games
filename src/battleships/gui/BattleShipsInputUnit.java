@@ -30,6 +30,8 @@ public class BattleShipsInputUnit extends InputUnit{
     }
     
     public void notifyListeners(String loc) {
+        if (loc.toLowerCase().equals("republish"))
+            return;
         notifyListenersOfMove(new Move(state.getPlayerInTurn(), new GamePiece(Settings.PIECE_ACTION),
                 getLocationById(state.getBoard(), loc)));
     }
