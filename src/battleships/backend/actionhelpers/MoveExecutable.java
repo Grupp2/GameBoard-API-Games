@@ -4,5 +4,5 @@ import game.impl.Move;
 
 public interface MoveExecutable {
 
-	public boolean executeMove(Move move, Move firstMove);
+	public void executeMove(Move move, Move firstMove);
 }

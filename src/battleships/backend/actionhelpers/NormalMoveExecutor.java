@@ -18,7 +18,7 @@ public class NormalMoveExecutor implements MoveExecutable {
         this.state = state;
     }
     @Override
-    public boolean executeMove(Move move, Move firstMove) {
+    public void executeMove(Move move, Move firstMove) {
         //firstmove is only for deploymode
         //we only care about move here.
         List<BoardLocation> boardLocations = state.getBoard().getLocations();
@@ -27,12 +27,11 @@ public class NormalMoveExecutor implements MoveExecutable {
         switch (state.getMessage()) {
             case Settings.PIECE_SHIPHIT_MESSAGE:
                 locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_ALREADYHIT)));
-                return true;
+                return;
             case Settings.PIECE_MISS_MESSAGE:
                 locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_MISS)));
-                return true;
+                return;
         }
 
-        return true;
     }
 }
