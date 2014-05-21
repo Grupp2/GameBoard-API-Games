@@ -2,6 +2,7 @@ package battleships.backend;
 
 import battleships.backend.actionhelpers.MoveStrategy;
 import battleships.backend.actionhelpers.ResetHelper;
+import battleships.backend.actionhelpers.TurnCounter;
 import game.impl.Move;
 import game.impl.Player;
 
@@ -9,9 +10,11 @@ public class GameActionsHandler {
     private State state;
     private MoveStrategy moveStrategy;
     private Move firstDeployMove;
+    private TurnCounter turnCounter;
     
     public GameActionsHandler(State state) {
 	    this.state = state;
+	    this.turnCounter = new TurnCounter(state);
         this.moveStrategy = new MoveStrategy(state);
     }
 
@@ -29,6 +32,7 @@ public class GameActionsHandler {
 
     public void executeMove(Move move) {
         moveStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
+        turnCounter.decrementMoveCounter();
         firstDeployMove = null;
     }
 
