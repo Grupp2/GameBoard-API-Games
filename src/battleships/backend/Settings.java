@@ -27,11 +27,11 @@ public class Settings {
 
     public static final int PLAYER_TWO_INDEX = 1;
 
-    public static final char PIECE_ALREADYHIT = 'H';
+    public static final String PIECE_ALREADYHIT = "H";
 
-    public static final char PIECE_SHIP = 'S';
+    public static final String PIECE_SHIP = "S";
 
-    public static final char PIECE_MISS = 'M';
+    public static final String PIECE_MISS = "M";
 
     public static final String PIECE_ALREADYHIT_MESSAGE = "You've already shot at that location!";
 
@@ -44,5 +44,7 @@ public class Settings {
     public static final Color PIECE_MISS_COLOR = new Color(58,241,58,255);
 
     public static final Color PIECE_SHIPHIT_COLOR = new Color(241,58,258,255);
+
+    public static final Color PIECE_SHIP_COLOR = new Color(52, 167, 242,255);
 
 }

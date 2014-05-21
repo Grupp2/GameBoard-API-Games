@@ -26,10 +26,10 @@ public class NormalMoveExecutor implements MoveExecutable {
 
         switch (state.getMessage()) {
             case Settings.PIECE_SHIPHIT_MESSAGE:
-                locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_ALREADYHIT)));
+                locationToAlter.setPiece(new GamePiece(Settings.PIECE_ALREADYHIT));
                 return;
             case Settings.PIECE_MISS_MESSAGE:
-                locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_MISS)));
+                locationToAlter.setPiece(new GamePiece(Settings.PIECE_MISS));
                 return;
         }
 

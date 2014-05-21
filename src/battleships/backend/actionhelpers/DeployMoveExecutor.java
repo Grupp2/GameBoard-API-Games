@@ -39,7 +39,7 @@ public class DeployMoveExecutor implements MoveExecutable {
 		BoardLocation locationToAlter;
 		for (int i = 0; i < pieceLocationsArray.size(); i++){
 			locationToAlter = getLocationById(state.getBoard(), pieceLocationsArray.get(i).getId());
-			locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_SHIP)));
+			locationToAlter.setPiece(new GamePiece(Settings.PIECE_SHIP));
 		}
 	}
 }
