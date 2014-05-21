@@ -48,7 +48,7 @@ public class BattleShipsGame implements GameStartup{
         bsgpl.addButtonListeners();
         ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanelP1);
 
-        GUIUpdater guiUpdater = new GUIUpdater(contentPanel);
+        GUIUpdater guiUpdater = new GUIUpdater(contentPanel, deployPanelP1, deployPanelP2);
 
         OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
 
