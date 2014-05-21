@@ -37,4 +37,6 @@ public class Settings {
 
     public static final String PIECE_MISS_MESSAGE = "You missed!";
 
+    public static final String PIECE_ACTION = "NOTIFYACTION";
+
 }
