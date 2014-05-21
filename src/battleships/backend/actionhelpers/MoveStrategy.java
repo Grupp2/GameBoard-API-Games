@@ -22,8 +22,8 @@ public class MoveStrategy {
     
     public MoveExecutable getMoveExecutor() {
     	if (state.isDeployMode())
-    		return new DeployMoveHelper();
+    		return new DeployMoveExecutor(state);
     	else
-    		return new NormalMoveHelper();
+    		return new NormalMoveExecutor(state);
     }
 }
