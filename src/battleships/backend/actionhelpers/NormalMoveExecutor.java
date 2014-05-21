@@ -29,10 +29,10 @@ public class NormalMoveExecutor implements MoveExecutable {
                 locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_ALREADYHIT)));
                 return true;
             case Settings.PIECE_MISS_MESSAGE:
-                locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_ALREADYHIT)));
+                locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_MISS)));
                 return true;
         }
 
-        return false;
+        return true;
     }
 }
