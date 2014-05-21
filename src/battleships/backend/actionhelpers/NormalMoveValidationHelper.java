@@ -23,17 +23,20 @@ public class NormalMoveValidationHelper implements MoveValidatable {
         List<BoardLocation> boardLocations = state.getBoard().getLocations();
         List<GamePiece> destinationPieces = boardLocations.get(boardLocations.indexOf(move.getDestination())).getPieces();
         if (destinationPieces.size() == 2) {
-            state.setMessage("Location already shot at.");
+            state.setMessage(Settings.PIECE_ALREADYHIT_MESSAGE);
             return false;
         }
         if (destinationPieces.size() == 1) {
             GamePiece piece =destinationPieces.get(0);
 
             if (piece.getId().equals(Settings.PIECE_ALREADYHIT)) {
-                state.setMessage("You've already shot at that location!");
+                state.setMessage(Settings.PIECE_ALREADYHIT_MESSAGE);
                 return false;
             } else if (piece.getId().equals(Settings.PIECE_SHIP)) {
-                state.setMessage("You've hit a ship!");
+                state.setMessage(Settings.PIECE_SHIPHIT_MESSAGE);
+                return true;
+            } else {
+                state.setMessage(Settings.PIECE_MISS_MESSAGE);
                 return true;
             }
         }

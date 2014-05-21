@@ -31,4 +31,10 @@ public class Settings {
 
     public static final char PIECE_MISS = 'M';
 
+    public static final String PIECE_ALREADYHIT_MESSAGE = "You've already shot at that location!";
+
+    public static final String PIECE_SHIPHIT_MESSAGE = "You hit a ship!";
+
+    public static final String PIECE_MISS_MESSAGE = "You missed!";
+
 }
