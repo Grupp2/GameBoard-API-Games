@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import battleships.backend.BattleShipsGameState;
 import battleships.backend.Settings;
+import battleships.backend.actionhelpers.TurnCounter;
 import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
@@ -26,6 +27,7 @@ public class BattleShipsGame implements GameStartup{
     private GameState gameState;
     private GameIoFactory ioFactory;
     private JPanel contentPanel;
+    private TurnCounter turnCounter;
 
     public BattleShipsGame(){
         setupObjects();
@@ -33,6 +35,7 @@ public class BattleShipsGame implements GameStartup{
 
     private void setupObjects(){
         GameState gameState = new BattleShipsGameState();
+//		this.turnCounter = new TurnCounter(state);
         gameState.reset();
 
         BattleShipsInputUnit inputUnit = new BattleShipsInputUnit();
