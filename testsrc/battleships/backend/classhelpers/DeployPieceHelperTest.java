@@ -30,41 +30,41 @@ public class DeployPieceHelperTest {
 	@Test
 	public void deployPieceLenghtTwoTest() {
 		when(dpc.getPiecesOfLengthTwo()).thenReturn(4);
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state));
-		assertEquals("", dph.deployPiece(new BoardLocation("A2"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state, dpc));
+		assertEquals("", dph.deployPiece(new BoardLocation("A2"), state, dpc));
 	}
 	
 	@Test
 	public void deployPieceNoPieceLeftTest() {
 		when(dpc.getPiecesOfLengthTwo()).thenReturn(0);
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state));
-		assertEquals("No pieces of the current size left to deploy!", dph.deployPiece(new BoardLocation("A2"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state, dpc));
+		assertEquals("No pieces of the current size left to deploy!", dph.deployPiece(new BoardLocation("A2"), state, dpc));
 	}
 	
 	@Test
 	public void deployPieceLenghtFiveTest() {
 		when(dpc.getPiecesOfLengthFive()).thenReturn(1);
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state));
-		assertEquals("", dph.deployPiece(new BoardLocation("D1"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state, dpc));
+		assertEquals("", dph.deployPiece(new BoardLocation("D1"), state, dpc));
 	}
 	
 	@Test
 	public void deployPieceLenghtSixTest() {
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state));
-		assertEquals("No piece has the given length!", dph.deployPiece(new BoardLocation("C1"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state, dpc));
+		assertEquals("No piece has the given length!", dph.deployPiece(new BoardLocation("C1"), state, dpc));
 	}
 	
 	@Test
 	public void deployPieceLenghtOneTest() {
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state));
-		assertEquals("No piece has the given length!", dph.deployPiece(new BoardLocation("H1"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("H1"), state, dpc));
+		assertEquals("No piece has the given length!", dph.deployPiece(new BoardLocation("H1"), state, dpc));
 	}
 
 	@Test
 	public void diagonalPieceTest() {
 		when(dpc.getPiecesOfLengthTwo()).thenReturn(4);
-		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state));
-		assertEquals("It is not legal to place a piece diagonally!", dph.deployPiece(new BoardLocation("B2"), state));
+		assertEquals("firstMoveOk", dph.deployPiece(new BoardLocation("A1"), state, dpc));
+		assertEquals("It is not legal to place a piece diagonally!", dph.deployPiece(new BoardLocation("B2"), state, dpc));
 	}
 
 }

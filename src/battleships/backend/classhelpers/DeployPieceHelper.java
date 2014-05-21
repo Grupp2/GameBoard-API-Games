@@ -28,7 +28,8 @@ public class DeployPieceHelper {
 		this.firstCoordinate = firstCoordinate;
 	}
 
-	public String deployPiece(BoardLocation newCoordinate, State state) {
+	public String deployPiece(BoardLocation newCoordinate, State state, DeployPieceCounter dpc) {
+		this.dpc = dpc;
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
 			String result = validateFirstCoordinate(state);
