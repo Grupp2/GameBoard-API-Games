@@ -38,6 +38,7 @@ public class GUIUpdater implements GameUpdatable{
     }
 
     private void updateGameBoard(GameState gameState){
+        updateButtonGraphics();
         if(((BattleShipsGameState)gameState).getIsDeployMode()){
             contentPanel.displayDeployPanel();
         }
@@ -66,6 +67,8 @@ public class GUIUpdater implements GameUpdatable{
     private void updatePanel(JPanel panelToUpdate) {
         for (Component comp : panelToUpdate.getComponents()) {
             if (comp instanceof JButton) {
+                comp.setBackground(new Color(56, 242, 53));
+                comp.validate();
 
             }
         }
