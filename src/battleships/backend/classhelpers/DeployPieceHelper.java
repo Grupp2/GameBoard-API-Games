@@ -27,7 +27,8 @@ public class DeployPieceHelper {
 	public String deployPiece(BoardLocation newCoordinate, State state) {
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
-			return validateFirstCoordinate(state);
+			String result = validateFirstCoordinate(state);
+			return (result==null?"firstMoveOk":"firstMoveFailed");
 		}
 		secondCoordinate = newCoordinate;
 		return validateCoordinates();
@@ -39,8 +40,10 @@ public class DeployPieceHelper {
 		for (int i = 0; i < state.getBoard().getLocations().size(); i++)
 			if (state.getBoard().getLocations().get(i).getId().equals(firstCoordinate.getId()))
 				locationIndex = i;
-		if (state.getBoard().getLocations().get(locationIndex).getPieces().size()!=0)
+		if (state.getBoard().getLocations().get(locationIndex).getPieces().size()!=0){
+			firstCoordinate = null;
 			result = "The first coordinate is busy!";
+		}
 		return result;
 	}
 
