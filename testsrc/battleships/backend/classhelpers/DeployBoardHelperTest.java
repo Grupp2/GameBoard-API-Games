@@ -1,11 +1,17 @@
 package battleships.backend.classhelpers;
 
 import static org.junit.Assert.*;
+
+import java.util.List;
+
+import game.impl.Board;
 import game.impl.BoardLocation;
+import game.impl.GamePiece;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import battleships.backend.Settings;
 import battleships.backend.State;
 import battleships.backend.actionhelpers.ResetHelper;
 
@@ -27,8 +33,9 @@ public class DeployBoardHelperTest {
 	@Test
 	public void checkOccupiedLocationsTest() {
 		resetState();
-		dbh.checkPieceLocations(new BoardLocation("A1"), new BoardLocation("A2"), state);
-		assertEquals("", dbh.checkPieceLocations(new BoardLocation("A1"), new BoardLocation("A2"), state));
+		BoardLocation locationToAlter = getLocationById(state.getBoard(), "A2");
+		locationToAlter.setPiece(new GamePiece(Settings.PIECE_SHIP));
+		assertEquals("Pieces are overlapping!", dbh.checkPieceLocations(new BoardLocation("A1"), new BoardLocation("A2"), state));
 	}
 
 	private void resetState() {
@@ -36,5 +43,14 @@ public class DeployBoardHelperTest {
 		ResetHelper rh = new ResetHelper(state);
 		rh.reset();
 	}
+	
+	private BoardLocation getLocationById(Board board, String id) {
+        List<BoardLocation> locations = board.getLocations();
+        for (int i = 0; i < locations.size(); i++)
+            if (locations.get(i).getId().equals(id))
+                return locations.get(i);
+
+        return null;
+    }
 
 }
