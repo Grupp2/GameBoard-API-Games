@@ -7,6 +7,11 @@ import battleships.backend.State;
  */
 public class MoveStrategy {
     private State state;
+    private DeployMoveValidationHelper deployMoveValidationHelper;
+    private NormalMoveValidationHelper normalMoveValidationHelper;
+
+    private DeployMoveExecutor deployMoveExecutor;
+    private NormalMoveExecutor normalMoveExecutor;
 
     public MoveStrategy(State state) {
         this.state = state;
@@ -14,16 +19,29 @@ public class MoveStrategy {
 
     public MoveValidatable getMoveValidator() {
         if (state.isDeployMode()) {
-            return new DeployMoveValidationHelper(state);
+            if (deployMoveValidationHelper == null)
+                return new DeployMoveValidationHelper(state);
+            else
+                return deployMoveValidationHelper;
         } else {
-            return new NormalMoveValidationHelper(state);
+            if (normalMoveValidationHelper == null)
+                return new NormalMoveValidationHelper(state);
+            else
+                return normalMoveValidationHelper;
         }
     }
     
     public MoveExecutable getMoveExecutor() {
-    	if (state.isDeployMode())
-    		return new DeployMoveExecutor(state);
-    	else
-    		return new NormalMoveExecutor(state);
+    	if (state.isDeployMode()) {
+            if (deployMoveExecutor == null)
+                return new DeployMoveExecutor(state);
+            else
+                return deployMoveExecutor;
+        } else {
+            if (normalMoveExecutor == null)
+                return new NormalMoveExecutor(state);
+            else
+                return normalMoveExecutor;
+        }
     }
 }
