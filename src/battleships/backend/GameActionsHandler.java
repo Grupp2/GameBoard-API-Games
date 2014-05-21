@@ -22,9 +22,9 @@ public class GameActionsHandler {
 
     public boolean validateMove(Move move) {
     	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move);
-    	if (result && firstDeployMove==null)
+    	if (!result && firstDeployMove==null)
     		firstDeployMove = move;
-        return result; 
+        return result;
     }
 
     public void executeMove(Move move) {
