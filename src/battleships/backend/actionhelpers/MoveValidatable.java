@@ -4,5 +4,5 @@ import game.impl.Move;
 
 public interface MoveValidatable {
 
-	public boolean makeMoveValidation(Move move);
+	public boolean makeMoveValidation(Move move, Move firstDeployMove);
 }

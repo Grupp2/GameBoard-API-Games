@@ -19,7 +19,7 @@ public class NormalMoveValidationHelper implements MoveValidatable {
         this.state = state;
     }
 	@Override
-	public boolean makeMoveValidation(Move move) {
+	public boolean makeMoveValidation(Move move, Move firstDeployMove) {
         List<BoardLocation> boardLocations = state.getBoard().getLocations();
         List<GamePiece> destinationPieces = boardLocations.get(boardLocations.indexOf(move.getDestination())).getPieces();
         if (destinationPieces.size() == 2) {

@@ -49,7 +49,9 @@ public class DeployMoveValidationHelper implements MoveValidatable {
 	}
 
 	@Override
-	public boolean makeMoveValidation(Move move) {
+	public boolean makeMoveValidation(Move move, Move firstDeployMove) {
+		if (firstDeployMove==null)
+			pieceHelper.setFirstCoordinate(null);
 		if(isRequestForRepublish(move)){
             state.setMessage("");
             return false;

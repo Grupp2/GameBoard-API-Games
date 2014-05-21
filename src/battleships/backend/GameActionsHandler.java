@@ -21,7 +21,7 @@ public class GameActionsHandler {
     }
 
     public boolean validateMove(Move move) {
-    	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move);
+    	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move, firstDeployMove);
     	if (!result && firstDeployMove==null)
     		firstDeployMove = move;
         return result;
