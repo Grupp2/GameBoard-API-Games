@@ -37,18 +37,8 @@ public class BattleshipDeployPanel extends JPanel {
 		deployListener = new BattleshipsDeployListeners(gameState,inputUnit);
 		deployLogic = new BattleshipsDeployLogic(gameState);
 		gamePanels = new BattleshipGamePanels(gameState, ta);
-		add(getCurrentPlayerBoard(gameState));
 	}
 	
-	private JPanel getCurrentPlayerBoard(GameState gameState) {
-		if (gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
-			deployPanel = gamePanels.getPlayer2();
-		else
-			deployPanel = gamePanels.getPlayer1();
-		deployListener.createButtonListeners();
-		return deployPanel;
-	}
-
 	private void createGameBoardPanel(TranslatorAdapter ta) {
 		this.gameBoardPanel = new GameBoardPanel(gameState, ta, new Color(34, 177, 76, 255));
 		
