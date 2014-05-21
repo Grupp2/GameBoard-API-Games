@@ -1,7 +1,6 @@
 package battleships.gui;
 
 
-import battleships.gui.panels.BattleshipDeployPanel;
 import battleships.gui.panels.StatusPanel.StatusPanel;
 
 import javax.swing.*;

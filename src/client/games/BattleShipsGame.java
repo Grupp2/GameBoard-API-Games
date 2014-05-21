@@ -8,7 +8,6 @@ import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.listeners.BattleShipsGamePanelListeners;
-import battleships.gui.panels.BattleshipDeployPanel;
 import battleships.gui.panels.BattleshipGamePanels;
 import game.api.GameState;
 import game.init.Runner;
