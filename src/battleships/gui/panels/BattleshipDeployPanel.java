@@ -2,11 +2,10 @@ package battleships.gui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.JPanel;
-
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
+import battleships.backend.Settings;
 import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.listeners.BattleshipsDeployListeners;
 import battleships.gui.panels.logic.BattleshipsDeployLogic;
@@ -38,7 +37,16 @@ public class BattleshipDeployPanel extends JPanel {
 		deployListener = new BattleshipsDeployListeners(gameState,inputUnit);
 		deployLogic = new BattleshipsDeployLogic(gameState);
 		gamePanels = new BattleshipGamePanels(gameState, ta);
-
+		add(getCurrentPlayerBoard(gameState));
+	}
+	
+	private JPanel getCurrentPlayerBoard(GameState gameState) {
+		if (gameState.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME))
+			deployPanel = gamePanels.getPlayer2();
+		else
+			deployPanel = gamePanels.getPlayer1();
+		deployListener.createButtonListeners();
+		return deployPanel;
 	}
 
 	private void createGameBoardPanel(TranslatorAdapter ta) {
