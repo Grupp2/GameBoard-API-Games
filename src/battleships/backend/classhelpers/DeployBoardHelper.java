@@ -16,12 +16,12 @@ public class DeployBoardHelper {
 		pieceLocationArray = mpc.pieceLocations(firstCoordinate, secondCoordinate);
 		for (BoardLocation bl : state.getBoard().getLocations()){
 			String tempString = "";
-			if (bl.getPiece() !=null)
+			if (!bl.getPieces().isEmpty())
 				tempString = bl.getPiece().getId();
 			stateLocations.put(bl.getId(), tempString);
 		}
 		for (int i = 0; i < pieceLocationArray.size(); i++)
-			if (stateLocations.get(pieceLocationArray.get(i))!= null)
+			if (stateLocations.get(pieceLocationArray.get(i).getId())!= "")
 				result = "Pieces are overlapping!";
 		return result;
 	}
