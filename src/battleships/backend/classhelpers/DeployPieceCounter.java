@@ -36,6 +36,8 @@ public class DeployPieceCounter {
 	
 	public void decreaseTotalPieces() {
 		this.totalPiecesToDeploy--;
+		if (totalPiecesToDeploy==0)
+			piecesLeftToDeploy = false;
 	}
 	
 	public boolean deployPieceOfLenghtThree() {

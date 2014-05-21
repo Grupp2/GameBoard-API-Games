@@ -31,7 +31,7 @@ public class BattleshipsDeployListeners {
 		inputUnit.notifyListeners("republish");
 	}
 	private void addShip(){
-		
+		inputUnit.notifyListeners("");
 	}
 
 }

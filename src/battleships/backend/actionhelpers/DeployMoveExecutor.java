@@ -26,8 +26,10 @@ public class DeployMoveExecutor implements MoveExecutable {
 	public void executeMove(Move move, Move firstMove) {
 		createPieceLocationArray(move, firstMove);
 		List<BoardLocation> boardLocations = state.getBoard().getLocations();
-		BoardLocation locationToAlter = boardLocations.get(boardLocations.indexOf(move.getDestination()));
-		for (int i = 0; i < pieceLocationsArray.size(); i++)
+		BoardLocation locationToAlter;
+		for (int i = 0; i < pieceLocationsArray.size(); i++){
+			locationToAlter = boardLocations.get(boardLocations.indexOf(pieceLocationsArray.get(i)));
 			locationToAlter.setPiece(new GamePiece(Character.toString(Settings.PIECE_SHIP)));
+		}
 	}
 }
