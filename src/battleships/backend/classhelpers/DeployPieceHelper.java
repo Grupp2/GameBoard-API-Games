@@ -23,6 +23,10 @@ public class DeployPieceHelper {
 	public BoardLocation getSecondCoordinate() {
 		return secondCoordinate;
 	}
+	
+	public void setFirstCoordinate(BoardLocation firstCoordinate) {
+		this.firstCoordinate = firstCoordinate;
+	}
 
 	public String deployPiece(BoardLocation newCoordinate, State state) {
 		if (firstCoordinate==null) {
