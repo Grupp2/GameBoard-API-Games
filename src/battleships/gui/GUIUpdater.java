@@ -28,6 +28,7 @@ public class GUIUpdater implements GameUpdatable{
         this.playerOnePanel = playerOnePanel;
         this.playerTwoPanel = playerTwoPanel;
         this.normalGamePanel = normalGamePanel;
+        contentPanel.setNormalPanel(normalGamePanel);
     }
 
     @Override
@@ -49,13 +50,13 @@ public class GUIUpdater implements GameUpdatable{
                 contentPanel.setDeployPanel(playerOnePanel);
             }
         }
-        updateButtonGraphics();
         if(((BattleShipsGameState)gameState).getIsDeployMode()){
             contentPanel.displayDeployPanel();
         }
         else {
             contentPanel.displayNormalPanel();
         }
+        updateButtonGraphics();
     }
 
     private void updateButtonGraphics() {

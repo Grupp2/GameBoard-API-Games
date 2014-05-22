@@ -10,7 +10,7 @@ public class ContentPanel extends JPanel{
 
     private JPanel deployPanel;
     private StatusPanel statusPanel;
-
+    private JPanel normalPanel;
     private JPanel currentBoardPanel;
 
     public ContentPanel(BattleShipsInputUnit inputUnit, JPanel deployPanel){
@@ -40,7 +40,11 @@ public class ContentPanel extends JPanel{
 
     public void displayNormalPanel(){
         removeCurrentBoardPanel();
-        setCurrentBoardPanel(null);
+        setCurrentBoardPanel(normalPanel);
+    }
+
+    public void setNormalPanel(JPanel panel) {
+        this.normalPanel = panel;
     }
 
     public void setDeployPanel(JPanel deployPanel) {
