@@ -32,15 +32,15 @@ public class BattleShipsGame implements GameStartup{
         TranslatorAdapter ta = new TranslatorAdapter(new CoordinateTranslator());
         BattleshipGamePanels gamePanels = new BattleshipGamePanels(gameState, ta);
         
-        JPanel deployPanelP1 = gamePanels.getPlayer1();
-        JPanel deployPanelP2 = gamePanels.getPlayer2();
-        BattleShipsGamePanelListeners panelListener = new BattleShipsGamePanelListeners(deployPanelP1, inputUnit, ta);
+        JPanel p1Panel = gamePanels.getPlayer1();
+        JPanel p2Panel = gamePanels.getPlayer2();
+        BattleShipsGamePanelListeners panelListener = new BattleShipsGamePanelListeners(p1Panel, inputUnit, ta);
         panelListener.addButtonListeners();
-        panelListener = new BattleShipsGamePanelListeners(deployPanelP2, inputUnit, ta);
+        panelListener = new BattleShipsGamePanelListeners(p2Panel, inputUnit, ta);
         panelListener.addButtonListeners();
-        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanelP2);
+        ContentPanel contentPanel = new ContentPanel(inputUnit, p2Panel);
 
-        GUIUpdater guiUpdater = new GUIUpdater(contentPanel, deployPanelP1, deployPanelP2);
+        GUIUpdater guiUpdater = new GUIUpdater(contentPanel, p1Panel, p2Panel);
 
         OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
 
