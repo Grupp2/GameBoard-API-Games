@@ -5,13 +5,16 @@ import battleships.gui.BattleShipsInputUnit;
 import battleships.gui.ContentPanel;
 import battleships.gui.GUIUpdater;
 import battleships.gui.listeners.BattleShipsGamePanelListeners;
+import battleships.gui.panels.BattleShipsPanel;
 import battleships.gui.panels.BattleshipGamePanels;
 import game.api.GameState;
 import game.init.Runner;
 import game.io.OutputUnit;
 import generics.GameIoFactory;
 import generics.GameOutputUnit;
+
 import javax.swing.*;
+
 import translator.CoordinateTranslator;
 import translator.TranslatorAdapter;
 
@@ -39,8 +42,8 @@ public class BattleShipsGame implements GameStartup{
         panelListener = new BattleShipsGamePanelListeners(p2Panel, inputUnit, ta);
         panelListener.addButtonListeners();
         ContentPanel contentPanel = new ContentPanel(inputUnit, p2Panel);
-
-        GUIUpdater guiUpdater = new GUIUpdater(contentPanel, p1Panel, p2Panel);
+        JPanel normalGamePanel = new BattleShipsPanel(p1Panel, p2Panel);
+        GUIUpdater guiUpdater = new GUIUpdater(contentPanel, p1Panel, p2Panel, normalGamePanel);
 
         OutputUnit outputUnit = new GameOutputUnit(guiUpdater);
 
