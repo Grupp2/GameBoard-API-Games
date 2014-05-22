@@ -55,9 +55,9 @@ public class GUIUpdater implements GameUpdatable{
         JPanel panelToUpdate;
         if (state.getIsDeployMode()) {
             if (state.getPlayerInTurn().getName().equals("P1")) {
-                panelToUpdate = playerOnePanel;
-            } else {
                 panelToUpdate = playerTwoPanel;
+            } else {
+                panelToUpdate = playerOnePanel;
             }
             updatePanel(panelToUpdate);
         } else {
