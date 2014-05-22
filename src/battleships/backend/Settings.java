@@ -41,10 +41,12 @@ public class Settings {
 
     public static final String PIECE_ACTION = "NOTIFYACTION";
 
-    public static final Color PIECE_MISS_COLOR = new Color(58,241,58,255);
+    public static final Color PIECE_MISS_COLOR = Color.green;
 
-    public static final Color PIECE_SHIPHIT_COLOR = new Color(241,58,258,255);
+    public static final Color PIECE_SHIPHIT_COLOR = Color.red;
 
-    public static final Color PIECE_SHIP_COLOR = new Color(52, 167, 242,255);
+    public static final Color PIECE_SHIP_COLOR = Color.orange;
+
+    public static final Color TILE_COLOR = Color.blue;
 
 }
