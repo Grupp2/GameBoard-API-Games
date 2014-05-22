@@ -43,6 +43,7 @@ public class DeployPieceCounter {
 	public boolean deployPieceOfLenghtThree() {
 		if (piecesOfLenghtThree>0) {
 			piecesOfLenghtThree--;
+			decreaseTotalPieces();
 			return true;
 		}
 		return false;
@@ -51,6 +52,7 @@ public class DeployPieceCounter {
 	public boolean deployPieceOfLenghtFour() {
 		if (piecesOfLenghtFour>0) {
 			piecesOfLenghtFour--;
+			decreaseTotalPieces();
 			return true;
 		}
 		return false;
@@ -59,6 +61,7 @@ public class DeployPieceCounter {
 	public boolean deployPieceOfLenghtFive() {
 		if (piecesOfLenghtFive>0) {
 			piecesOfLenghtFive--;
+			decreaseTotalPieces();
 			return true;
 		}
 		return false;
