@@ -33,7 +33,7 @@ public class DeployPieceHelper {
 		if (firstCoordinate==null) {
 			firstCoordinate = newCoordinate;
 			String result = validateFirstCoordinate(state);
-			return (result==null?"firstMoveOk"+firstCoordinate.getId():"firstMoveFailed");
+			return (result==null?"firstMoveOk":"firstMoveFailed");
 		}
 		secondCoordinate = newCoordinate;
 		return validateCoordinates();

@@ -38,7 +38,7 @@ public class BattleShipsGame implements GameStartup{
         panelListener.addButtonListeners();
         panelListener = new BattleShipsGamePanelListeners(deployPanelP2, inputUnit, ta);
         panelListener.addButtonListeners();
-        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanelP1);
+        ContentPanel contentPanel = new ContentPanel(inputUnit, deployPanelP2);
 
         GUIUpdater guiUpdater = new GUIUpdater(contentPanel, deployPanelP1, deployPanelP2);
 
