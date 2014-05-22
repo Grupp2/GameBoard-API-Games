@@ -60,7 +60,6 @@ public class DeployMoveValidationHelper implements MoveValidatable {
 		state.setMessage(validatePiece(move));
 		if (state.getMessage().equals("firstMoveFailed") || !state.getMessage().equals(""))
 			return false;
-		
 		state.setMessage(validateBoard());
 		if (!state.getMessage().equals(""))
 			return false;

@@ -35,6 +35,9 @@ public class GameActionsHandler {
     	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move, firstDeployMove);
     	if (!result && firstDeployMove==null)
     		firstDeployMove = move;
+    	else if (!result)
+    		firstDeployMove = null;
+    		
         return result;
     }
 
