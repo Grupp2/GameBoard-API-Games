@@ -10,6 +10,7 @@ import game.impl.GamePiece;
 import generics.GameUpdatable;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,13 @@ public class GUIUpdater implements GameUpdatable{
     private JPanel playerOnePanel;
     private JPanel playerTwoPanel;
     private BattleShipsGameState state;
+    private JPanel normalGamePanel;
 
-    public GUIUpdater(ContentPanel panel, JPanel playerOnePanel, JPanel playerTwoPanel){
+    public GUIUpdater(ContentPanel panel, JPanel playerOnePanel, JPanel playerTwoPanel, JPanel normalGamePanel){
         this.contentPanel = panel;
         this.playerOnePanel = playerOnePanel;
         this.playerTwoPanel = playerTwoPanel;
+        this.normalGamePanel = normalGamePanel;
     }
 
     @Override
