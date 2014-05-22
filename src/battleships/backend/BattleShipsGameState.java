@@ -78,4 +78,7 @@ public class BattleShipsGameState implements GameState {
 	    return state.isDeployMode();
     }
 
+    public int getDeployMovesRemaining() {
+        return handler.getDeployMovesRemaining();
+    }
 }

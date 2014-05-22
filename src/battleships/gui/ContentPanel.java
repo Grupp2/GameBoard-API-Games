@@ -43,6 +43,10 @@ public class ContentPanel extends JPanel{
         setCurrentBoardPanel(null);
     }
 
+    public void setDeployPanel(JPanel deployPanel) {
+        this.deployPanel = deployPanel;
+    }
+
     public void setTurnMessage(String message){
         statusPanel.setTurnMessage(message);
     }

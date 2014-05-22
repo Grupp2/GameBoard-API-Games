@@ -3,7 +3,7 @@ package battleships.backend.actionhelpers;
 import battleships.backend.State;
 
 public class TurnCounter {
-    private int deployMovesRemaining = 20;
+    private int deployMovesRemaining = 10;
     private State state;
     
     public TurnCounter(State state) {

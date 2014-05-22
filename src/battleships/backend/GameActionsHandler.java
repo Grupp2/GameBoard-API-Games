@@ -53,4 +53,8 @@ public class GameActionsHandler {
         ResetHelper resetHelper = new ResetHelper(state);
         resetHelper.reset();
     }
+
+    public int getDeployMovesRemaining() {
+        return turnCounter.getRemainingDeployMoves();
+    }
 }

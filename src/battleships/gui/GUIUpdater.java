@@ -41,6 +41,11 @@ public class GUIUpdater implements GameUpdatable{
     }
 
     private void updateGameBoard(GameState gameState){
+        if (state.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME)) {
+            if (state.getDeployMovesRemaining() == 0) {
+                contentPanel.setDeployPanel(playerOnePanel);
+            }
+        }
         updateButtonGraphics();
         if(((BattleShipsGameState)gameState).getIsDeployMode()){
             contentPanel.displayDeployPanel();
