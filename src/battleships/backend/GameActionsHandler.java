@@ -41,6 +41,13 @@ public class GameActionsHandler {
     public void executeMove(Move move) {
         moveStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
         turnCounter.decrementMoveCounter();
+        if (turnCounter.getRemainingDeployMoves()==10){
+        	Player tmp = null;
+        	for (int i = 0; i < state.getPlayers().size(); i++)
+        		if (state.getPlayers().get(i).getName().equals(Settings.PLAYER_TWO_NAME))
+        			tmp = state.getPlayers().get(i);
+        	state.setCurrentPlayer(tmp);
+        }
         firstDeployMove = null;
     }
 
