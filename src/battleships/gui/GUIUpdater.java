@@ -42,7 +42,7 @@ public class GUIUpdater implements GameUpdatable{
 
     private void updateGameBoard(GameState gameState){
         if (state.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME)) {
-            if (state.getDeployMovesRemaining() == 0) {
+            if (state.getDeployMovesRemaining() == 10) {
                 contentPanel.setDeployPanel(playerOnePanel);
             }
         }
