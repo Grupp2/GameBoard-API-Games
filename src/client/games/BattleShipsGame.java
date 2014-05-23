@@ -41,8 +41,10 @@ public class BattleShipsGame implements GameStartup{
         BattleShipsGamePanelListeners panelListener = new BattleShipsGamePanelListeners(p1Panel, inputUnit, ta);
         panelListener.addButtonListeners();
         panelListener = new BattleShipsGamePanelListeners(p2Panel, inputUnit, ta);
-        //panelListener = new BattleShipsGamePanelListeners(gamePanels2.getPlayer1(), inputUnit, ta);
-        //panelListener = new BattleShipsGamePanelListeners(gamePanels2.getPlayer2(), inputUnit, ta);
+        panelListener.addButtonListeners();
+        panelListener = new BattleShipsGamePanelListeners(gamePanels2.getPlayer1(), inputUnit, ta);
+        panelListener.addButtonListeners();
+        panelListener = new BattleShipsGamePanelListeners(gamePanels2.getPlayer2(), inputUnit, ta);
         panelListener.addButtonListeners();
         ContentPanel contentPanel = new ContentPanel(inputUnit, p2Panel);
         JPanel normalGamePanel = new BattleShipsPanel(gamePanels2.getPlayer1(), gamePanels2.getPlayer2());
