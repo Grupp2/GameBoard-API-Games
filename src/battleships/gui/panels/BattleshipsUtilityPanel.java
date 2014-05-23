@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 
 import battleships.backend.BattleShipsGameState;
 import battleships.gui.BattleShipsInputUnit;
-import battleships.gui.listeners.BattleshipsDeployListeners;
 
 public class BattleshipsUtilityPanel extends JPanel {
 
@@ -18,8 +17,7 @@ public class BattleshipsUtilityPanel extends JPanel {
 		setBounds(0, 0, 600, 75);
 		createButtons();
 		addButtonsToPanel();
-		BattleshipsDeployListeners battleShipsDeployListeners = new BattleshipsDeployListeners(gameState, inputUnit);
-		battleShipsDeployListeners.createButtonListeners();
+		
 	}
 	
 	private void createButtons() {
