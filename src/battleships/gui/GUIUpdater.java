@@ -13,6 +13,7 @@ import generics.GameUpdatable;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,8 +60,20 @@ public class GUIUpdater implements GameUpdatable{
             contentPanel.setPreferredSize(new Dimension(1205, 600));
         }
         updateButtonGraphics();
+        if (state.hasEnded()) {
+            disablePanelComponents(contentPanel); //doesn't work
+            contentPanel.setNotificationMessage(state.getWinner().getName() + " has won!");
+        }
     }
-
+    private void disablePanelComponents(JPanel panel) {
+        for (Component comp : panel.getComponents())
+            if (comp instanceof JButton) {
+                JButton butt = (JButton) comp;
+                for (ActionListener al : butt.getActionListeners()) {
+                    butt.removeActionListener(al);
+                }
+            }
+    }
     private void updateButtonGraphics() {
         List<JButton> panelButtons = new ArrayList<JButton>();
         JPanel panelToUpdate;
