@@ -2,7 +2,6 @@ package battleships.gui.panels;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import battleships.backend.Settings;
 
 public class BattleShipsPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

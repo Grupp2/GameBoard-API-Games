@@ -8,7 +8,6 @@ import battleships.backend.Settings;
 import generics.GameBoardPanel;
 import translator.TranslatorAdapter;
 import game.api.GameState;
-import generics.GameBoardSizeCalculator;
 
 public class BattleshipGamePanels {
 	private JPanel player1;

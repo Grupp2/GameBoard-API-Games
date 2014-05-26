@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StatusPanel extends JPanel {
-
-    private MessagePanel messagePanel;
+	private static final long serialVersionUID = 1L;
+	private MessagePanel messagePanel;
     private TurnPanel turnPanel;
 
     public StatusPanel(TurnPanel turnPanel, MessagePanel messagePanel, LayoutManager layout){

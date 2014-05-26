@@ -6,8 +6,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class TurnPanel extends JPanel{
-
-    private JLabel turnLabel;
+	private static final long serialVersionUID = 1L;
+	private JLabel turnLabel;
 
     public TurnPanel(JLabel label, LayoutManager layout, Border border){
         turnLabel = label;
