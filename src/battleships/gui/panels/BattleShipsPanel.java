@@ -18,7 +18,6 @@ public class BattleShipsPanel extends JPanel {
         playerTwoPanel = p2Panel;
 
 		separatorPanel.setBounds(0, 0, 50, 600);
-		separatorPanel.setBackground(Settings.TILE_COLOR);
 
         setLayout(new BorderLayout());
 
