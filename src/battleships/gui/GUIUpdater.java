@@ -76,10 +76,9 @@ public class GUIUpdater implements GameUpdatable{
             }
     }
     private void updateButtonGraphics() {
-        List<JButton> panelButtons = new ArrayList<JButton>();
         JPanel panelToUpdate;
         if (state.getIsDeployMode()) {
-            if (state.getPlayerInTurn().getName().equals("P1")) {
+            if (state.getPlayerInTurn().getName().equals(Settings.PLAYER_ONE_NAME)) {
                 panelToUpdate = playerTwoPanel;
             } else {
                 panelToUpdate = playerOnePanel;

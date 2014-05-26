@@ -27,7 +27,7 @@ public class Settings {
 
     public static final char SHIP_DESTROYER_ID = '2';
 
-    public static final String DEPLOY_PIECE_ID = "DEPOLY";
+    public static final String DEPLOY_PIECE_ID = "DEPLOY";
 
     public static final char SHIP_ID = 'S';
 
