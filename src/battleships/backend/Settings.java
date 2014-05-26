@@ -36,7 +36,9 @@ public class Settings {
 
     public static final String PIECE_SHIP = "S";
 
-    public static final String PIECE_MISS = "M";
+    public static final String PIECE_MISS_ID = "MISS";
+
+    public static final String PIECE_HIT_ID = "HIT";
 
     public static final String PIECE_ALREADYHIT_MESSAGE = "You've already shot at that location!";
 

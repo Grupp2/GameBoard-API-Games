@@ -47,7 +47,7 @@ public class BattleShipsGame implements GameStartup{
 
         ContentPanel contentPanel = new ContentPanel(inputUnit, p2Panel);
 
-        JPanel normalGamePanel = new BattleShipsPanel(gamePanels2.getPlayer1(), gamePanels2.getPlayer2());
+        BattleShipsPanel normalGamePanel = new BattleShipsPanel(gamePanels2.getPlayer1(), gamePanels2.getPlayer2());
         GUIUpdater guiUpdater = new GUIUpdater(contentPanel, p1Panel, p2Panel, normalGamePanel);
 
         OutputUnit outputUnit = new GameOutputUnit(guiUpdater);

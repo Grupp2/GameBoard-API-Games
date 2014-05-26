@@ -2,47 +2,56 @@ package battleships.backend.actionhelpers;
 
 import battleships.backend.Settings;
 import battleships.backend.State;
-import game.impl.BoardLocation;
+import battleships.backend.classhelpers.BoardHelper;
 import game.impl.GamePiece;
 import game.impl.Move;
 
-import java.util.List;
-
 public class NormalMoveValidationHelper implements MoveValidator {
     private State state;
-    
-//    public NormalMoveValidationHelper(State state, ) {
-//    	
-//    }
-    
-    public NormalMoveValidationHelper(State state) {
+    private BoardHelper boardHelper;
+
+    public NormalMoveValidationHelper(State state, BoardHelper boardHelper) {
         this.state = state;
+        this.boardHelper = boardHelper;
+    }
+
+    public NormalMoveValidationHelper(State state) {
+        this(state, new BoardHelper(state));
     }
 
     @Override
 	public boolean makeMoveValidation(Move move) {
-        List<BoardLocation> boardLocations = state.getBoard().getLocations();
-        List<GamePiece> destinationPieces = boardLocations.get(boardLocations.indexOf(move.getDestination())).getPieces();
-        if (destinationPieces.size() == 2) {
-            state.setMessage(Settings.PIECE_ALREADYHIT_MESSAGE);
+        if(!isShotOnCorrectBoardHalf(move)){
+            state.setMessage("You cannot shoot on your own board half");
             return false;
         }
-        if (destinationPieces.size() == 1) {
-            GamePiece piece =destinationPieces.get(0);
-
-            if (piece.getId().equals(Settings.PIECE_ALREADYHIT)) {
-                state.setMessage(Settings.PIECE_ALREADYHIT_MESSAGE);
-                return false;
-            } else if (piece.getId().equals(Settings.PIECE_SHIP)) {
-                state.setMessage(Settings.PIECE_SHIPHIT_MESSAGE);
-                return true;
-            } else {
-                state.setMessage(Settings.PIECE_MISS_MESSAGE);
-                return true;
-            }
+        else if(alreadyShotAtLocation(move)){
+            state.setMessage("That location has already been shot at");
+            return false;
         }
 
-        return false;
+        return true;
 	}
+
+    private boolean isShotOnCorrectBoardHalf(Move move){
+        if(isPlayerOneTurn())
+            return boardHelper.getPlayerOneBoardHalf().contains(move.getDestination());
+
+        return boardHelper.getPlayerTwoBoardHalf().contains(move.getDestination());
+    }
+
+    private boolean alreadyShotAtLocation(Move move){
+        GamePiece pieceAtDestination = move.getDestination().getPiece();
+
+        return (pieceAtDestination != null && !isShipPiece(pieceAtDestination));
+    }
+
+    private boolean isShipPiece(GamePiece piece){
+        return piece.getId().charAt(Settings.PIECE_TYPE_INDEX) == Settings.SHIP_ID;
+    }
+
+    private boolean isPlayerOneTurn(){
+        return state.getPlayerInTurn() == state.getPlayers().get(Settings.PLAYER_ONE_INDEX);
+    }
 
 }

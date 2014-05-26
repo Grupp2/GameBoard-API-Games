@@ -3,6 +3,7 @@ package battleships.gui;
 
 import battleships.backend.BattleShipsGameState;
 import battleships.backend.Settings;
+import battleships.gui.panels.BattleShipsPanel;
 import game.api.GameState;
 import game.impl.Board;
 import game.impl.BoardLocation;
@@ -21,9 +22,9 @@ public class GUIUpdater implements GameUpdatable{
     private JPanel playerOnePanel;
     private JPanel playerTwoPanel;
     private BattleShipsGameState state;
-    private JPanel normalGamePanel;
+    private BattleShipsPanel normalGamePanel;
 
-    public GUIUpdater(ContentPanel panel, JPanel playerOnePanel, JPanel playerTwoPanel, JPanel normalGamePanel){
+    public GUIUpdater(ContentPanel panel, JPanel playerOnePanel, JPanel playerTwoPanel, BattleShipsPanel normalGamePanel){
         this.contentPanel = panel;
         this.playerOnePanel = playerOnePanel;
         this.playerTwoPanel = playerTwoPanel;
@@ -71,8 +72,8 @@ public class GUIUpdater implements GameUpdatable{
             }
             updatePanel(panelToUpdate);
         } else {
-            updatePanel(playerOnePanel);
-            updatePanel(playerTwoPanel);
+            updatePanel(normalGamePanel.getPlayerOnePanel());
+            updatePanel(normalGamePanel.getPlayerTwoPanel());
         }
 
     }
@@ -82,14 +83,17 @@ public class GUIUpdater implements GameUpdatable{
         for (Component comp : panelToUpdate.getComponents()) {
             if (comp instanceof JButton) {
                 BoardLocation locationToUpdate = getLocationById(board, comp.getName());
-                //((JButton) comp).setText(comp.getName());
+
                 if (locationToUpdate.getPiece() != null) {
                     GamePiece piece = locationToUpdate.getPiece();
                         if (piece.getId().charAt(Settings.PIECE_TYPE_INDEX) == Settings.SHIP_ID)
                             comp.setBackground(Settings.PIECE_SHIP_COLOR);
 
-                        if (piece.getId().equals(Settings.PIECE_ALREADYHIT))
+                        else if (piece.getId().equals(Settings.PIECE_HIT_ID))
                             comp.setBackground(Settings.PIECE_SHIPHIT_COLOR);
+
+                        else if(piece.getId().equals(Settings.PIECE_MISS_ID))
+                            comp.setBackground(Settings.PIECE_MISS_COLOR);
                 }
 
             }
