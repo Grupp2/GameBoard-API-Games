@@ -15,11 +15,11 @@ public class BoardHelper {
     }
 
     public List<BoardLocation> getPlayerOneBoardHalf(){
-        return state.getBoard().getLocations().subList(0, 99);
+        return state.getBoard().getLocations().subList(0, 100);
     }
 
     public List<BoardLocation> getPlayerTwoBoardHalf(){
-        return state.getBoard().getLocations().subList(100, 199);
+        return state.getBoard().getLocations().subList(100, 200);
     }
 
     public BoardLocation findDeployPieceLocation(){
