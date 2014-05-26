@@ -1,14 +1,12 @@
 package battleships.gui;
 
-
 import battleships.gui.panels.StatusPanel.StatusPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class ContentPanel extends JPanel{
-
-    private JPanel deployPanel;
+	private static final long serialVersionUID = 1L;
+	private JPanel deployPanel;
     private StatusPanel statusPanel;
     private JPanel normalPanel;
     private JPanel currentBoardPanel;
@@ -33,7 +31,6 @@ public class ContentPanel extends JPanel{
         revalidate();
         repaint();
     }
-
 
     public void displayDeployPanel(){
         removeCurrentBoardPanel();
@@ -60,5 +57,4 @@ public class ContentPanel extends JPanel{
     public void setNotificationMessage(String message){
         statusPanel.setNotificationMessage(message);
     }
-
 }
