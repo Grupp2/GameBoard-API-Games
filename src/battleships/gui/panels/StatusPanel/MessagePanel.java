@@ -5,8 +5,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class MessagePanel extends JPanel{
-
-    private JLabel messageLabel;
+	private static final long serialVersionUID = 1L;
+	private JLabel messageLabel;
 
     public MessagePanel(JLabel label, LayoutManager layout, Border border){
         messageLabel = label;
