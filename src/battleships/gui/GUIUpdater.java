@@ -61,7 +61,8 @@ public class GUIUpdater implements GameUpdatable{
         }
         updateButtonGraphics();
         if (state.hasEnded()) {
-            disablePanelComponents(contentPanel); //doesn't work
+            disablePanelComponents(normalGamePanel.getPlayerOnePanel());
+            disablePanelComponents(normalGamePanel.getPlayerTwoPanel());
             contentPanel.setNotificationMessage(state.getWinner().getName() + " has won!");
         }
     }
