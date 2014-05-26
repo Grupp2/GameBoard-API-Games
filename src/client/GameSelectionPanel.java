@@ -19,7 +19,7 @@ public class GameSelectionPanel extends JPanel{
 	
 	public GameSelectionPanel() {
 		this.btnGameOne = new JButton();
-		this.btnGameTwo = new JButton("BattleShips Game");
+		this.btnGameTwo = new JButton();
 		createPanel();
 	}
 	
@@ -37,6 +37,9 @@ public class GameSelectionPanel extends JPanel{
 			InputStream input = classLoader.getResourceAsStream("client/Othello_btn_img.jpg");
 			btnImg = ImageIO.read(input);
 			btnGameOne.setIcon(new ImageIcon(btnImg));
+			input = classLoader.getResourceAsStream("client/BattleShips_btn_img.jpg");
+			btnImg = ImageIO.read(input);
+			btnGameTwo.setIcon(new ImageIcon(btnImg));
 		} catch (IOException e) {
 			
 		}
