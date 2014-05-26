@@ -30,6 +30,8 @@ public class ContentPanel extends JPanel{
     private void setCurrentBoardPanel(JPanel panel){
         currentBoardPanel = panel;
         add(panel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
     }
 
 

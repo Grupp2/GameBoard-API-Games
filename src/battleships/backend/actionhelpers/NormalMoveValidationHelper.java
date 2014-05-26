@@ -8,7 +8,7 @@ import game.impl.Move;
 
 import java.util.List;
 
-public class NormalMoveValidationHelper implements MoveValidatable {
+public class NormalMoveValidationHelper implements MoveValidator {
     private State state;
     
 //    public NormalMoveValidationHelper(State state, ) {
@@ -18,8 +18,9 @@ public class NormalMoveValidationHelper implements MoveValidatable {
     public NormalMoveValidationHelper(State state) {
         this.state = state;
     }
-	@Override
-	public boolean makeMoveValidation(Move move, Move firstDeployMove) {
+
+    @Override
+	public boolean makeMoveValidation(Move move) {
         List<BoardLocation> boardLocations = state.getBoard().getLocations();
         List<GamePiece> destinationPieces = boardLocations.get(boardLocations.indexOf(move.getDestination())).getPieces();
         if (destinationPieces.size() == 2) {

@@ -55,6 +55,7 @@ public class GUIUpdater implements GameUpdatable{
         }
         else {
             contentPanel.displayNormalPanel();
+            contentPanel.setPreferredSize(new Dimension(1205, 600));
         }
         updateButtonGraphics();
     }
@@ -81,15 +82,14 @@ public class GUIUpdater implements GameUpdatable{
         for (Component comp : panelToUpdate.getComponents()) {
             if (comp instanceof JButton) {
                 BoardLocation locationToUpdate = getLocationById(board, comp.getName());
-                if (locationToUpdate.getPieces() != null) {
-                    List<GamePiece> pieces = locationToUpdate.getPieces();
-                    for (GamePiece piece : pieces) {
-                        if (piece.getId().equals(Settings.PIECE_SHIP))
+                //((JButton) comp).setText(comp.getName());
+                if (locationToUpdate.getPiece() != null) {
+                    GamePiece piece = locationToUpdate.getPiece();
+                        if (piece.getId().charAt(Settings.PIECE_TYPE_INDEX) == Settings.SHIP_ID)
                             comp.setBackground(Settings.PIECE_SHIP_COLOR);
+
                         if (piece.getId().equals(Settings.PIECE_ALREADYHIT))
                             comp.setBackground(Settings.PIECE_SHIPHIT_COLOR);
-                    }
-
                 }
 
             }

@@ -22,10 +22,9 @@ public class BattleshipGamePanels {
 	private void separationOfPlayers(GameState gameState, TranslatorAdapter ta) {
 		player1 = new JPanel();
 		player2 = new JPanel();
-		GameBoardSizeCalculator gc = new GameBoardSizeCalculator();
-		int[] xy = gc.calculateBoardSize(gameState, ta);
-		player1.setLayout(new GridLayout(xy[1] / 2, xy[0]));
-		player2.setLayout(new GridLayout(xy[1] / 2, xy[0]));
+
+		player1.setLayout(new GridLayout(10, 10));
+		player2.setLayout(new GridLayout(10, 10));
 
         player1.setPreferredSize(new Dimension(600, 600));
         player2.setPreferredSize(new Dimension(600, 600));

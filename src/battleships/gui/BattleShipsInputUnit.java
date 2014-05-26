@@ -29,11 +29,16 @@ public class BattleShipsInputUnit extends InputUnit{
         return null;
     }
     
-    public void notifyListeners(String loc) {
-        if (loc.toLowerCase().equals("republish"))
+    public void notifyListeners(String locationId) {
+        if (locationId.toLowerCase().equals("republish"))
             return;
-        notifyListenersOfMove(new Move(state.getPlayerInTurn(), new GamePiece(Settings.PIECE_ACTION),
-                getLocationById(state.getBoard(), loc)));
+
+        GamePiece piece = new GamePiece(Settings.PIECE_ACTION);
+        BoardLocation targetLocation = getLocationById(state.getBoard(), locationId);
+
+        Move theMove = new Move(state.getPlayerInTurn(), piece, targetLocation);
+
+        notifyListenersOfMove(theMove);
     }
 
 }

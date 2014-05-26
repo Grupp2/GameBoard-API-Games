@@ -1,16 +1,12 @@
 package battleships.backend.actionhelpers;
 
-import static org.junit.Assert.*;
-import game.impl.GamePiece;
-import game.impl.Move;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import battleships.backend.State;
 
 public class DeployMoveValidationHelperTest {
-	private DeployMoveValidationHelper dmvh;
+	private DeployMoveValidationHelper_OLD dmvh;
 	private State state;
 	
 	@Before
@@ -18,7 +14,7 @@ public class DeployMoveValidationHelperTest {
 		this.state = new State();
 		ResetHelper rs = new ResetHelper(state);
 		rs.reset();
-		this.dmvh = new DeployMoveValidationHelper(state);
+		this.dmvh = new DeployMoveValidationHelper_OLD(state);
 	}
 
 	@Test

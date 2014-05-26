@@ -1,6 +1,7 @@
 package battleships.backend.classhelpers;
 
 public class DeployPieceCounter {
+
 	private boolean piecesLeftToDeploy;
 	private int piecesOfLenghtTwo;
 	private int piecesOfLenghtThree;
@@ -21,6 +22,7 @@ public class DeployPieceCounter {
 		this.totalPiecesToDeploy = piecesOfLengthTwo + piecesOfLengthThree + piecesOfLengthFour + piecesOfLengthFive;
 	}
 
+
 	public boolean hasPiecesLeftToDeploy() {
 		return piecesLeftToDeploy;
 	}
@@ -32,12 +34,6 @@ public class DeployPieceCounter {
 			return true;
 		}
 		return false;
-	}
-	
-	public void decreaseTotalPieces() {
-		this.totalPiecesToDeploy--;
-		if (totalPiecesToDeploy==0)
-			piecesLeftToDeploy = false;
 	}
 	
 	public boolean deployPieceOfLenghtThree() {
@@ -66,6 +62,12 @@ public class DeployPieceCounter {
 		}
 		return false;
 	}
+
+    public void decreaseTotalPieces() {
+        this.totalPiecesToDeploy--;
+        if (totalPiecesToDeploy==0)
+            piecesLeftToDeploy = false;
+    }
 
 	public int getPiecesOfLengthTwo() {
 		return piecesOfLenghtTwo;

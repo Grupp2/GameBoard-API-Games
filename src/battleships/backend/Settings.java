@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class Settings {
 
+    public static final int PLAYER_ONE_INDEX = 0;
+
+    public static final int PLAYER_TWO_INDEX = 1;
+
+
     public static final String PLAYER_ONE_NAME = "P1";
 
     public static final String PLAYER_TWO_NAME = "P2";
@@ -22,10 +27,10 @@ public class Settings {
 
     public static final char SHIP_DESTROYER_ID = '2';
 
+    public static final String DEPLOY_PIECE_ID = "DEPOLY";
 
-    public static final int PLAYER_ONE_INDEX = 0;
+    public static final char SHIP_ID = 'S';
 
-    public static final int PLAYER_TWO_INDEX = 1;
 
     public static final String PIECE_ALREADYHIT = "H";
 
@@ -49,4 +54,13 @@ public class Settings {
 
     public static final Color TILE_COLOR = Color.blue;
 
+    public static final int[] PIECE_COUNT = {0, 0, 4, 3, 2, 1};
+
+    public static final int PIECE_TYPE_INDEX = 0;
+
+    public static final int PIECE_OWNER_INDEX = 1;
+
+    public static final int PIECE_LENGTH_INDEX = 2;
+
 }
+

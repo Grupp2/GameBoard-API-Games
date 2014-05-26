@@ -8,17 +8,15 @@ import game.impl.Move;
 
 import java.util.List;
 
-/**
- * Created by hugg on 2014-05-21.
- */
-public class NormalMoveExecutor implements MoveExecutable {
+
+public class NormalMoveExecutor implements MoveExecutor {
     private State state;
 
     public NormalMoveExecutor(State state) {
         this.state = state;
     }
     @Override
-    public void executeMove(Move move, Move firstMove) {
+    public void executeMove(Move move) {
         //firstmove is only for deploymode
         //we only care about move here.
         List<BoardLocation> boardLocations = state.getBoard().getLocations();

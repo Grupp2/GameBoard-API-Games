@@ -11,9 +11,11 @@ public class BattleShipsPanel extends JPanel {
 		JPanel separatorPanel = new JPanel();
 		separatorPanel.setBounds(0, 0, 50, 600);
 		separatorPanel.setBackground(Settings.TILE_COLOR);
-		this.setLayout(new BorderLayout());
-		this.add(p1Panel, BorderLayout.LINE_START);
-		this.add(separatorPanel, BorderLayout.CENTER);
-		this.add(p2Panel, BorderLayout.LINE_END);
+
+        setLayout(new BorderLayout());
+
+        add(p1Panel, BorderLayout.LINE_START);
+		add(separatorPanel, BorderLayout.CENTER);
+		add(p2Panel, BorderLayout.LINE_END);
 	}
 }

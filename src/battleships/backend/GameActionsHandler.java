@@ -9,53 +9,40 @@ import game.impl.Player;
 public class GameActionsHandler {
     private State state;
     private MoveStrategy moveStrategy;
-    private Move firstDeployMove;
     private TurnCounter turnCounter;
-    
-    public GameActionsHandler(State state) {
-	    this(state, new TurnCounter(state), new MoveStrategy(state));
-    }
-    
-    public GameActionsHandler(State state, TurnCounter turnCounter) {
-    	this(state, turnCounter, new MoveStrategy(state));
-    }
-    
+
     public GameActionsHandler(State state, TurnCounter turnCounter, MoveStrategy moveStrategy) {
-    	this.state = state;
-	    this.turnCounter = turnCounter;
+        this.state = state;
+        this.turnCounter = turnCounter;
         this.moveStrategy = moveStrategy;
     }
 
+    public GameActionsHandler(State state) {
+        this.state = state;
+        this.turnCounter = new TurnCounter(state);
+        this.moveStrategy = new MoveStrategy(state, turnCounter);
+    }
+
+
     public Player calculateWinner() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     public boolean validateMove(Move move) {
-    	boolean result = moveStrategy.getMoveValidator().makeMoveValidation(move, firstDeployMove);
-    	if (!result && firstDeployMove==null)
-    		firstDeployMove = move;
-    	else if (!result)
-    		firstDeployMove = null;
-    		
-        return result;
+    	return moveStrategy.getMoveValidator().makeMoveValidation(move);
     }
 
     public void executeMove(Move move) {
-        moveStrategy.getMoveExecutor().executeMove(move, firstDeployMove);
+
         if (turnCounter.getRemainingDeployMoves()==10){
-        	Player tmp = null;
-        	for (int i = 0; i < state.getPlayers().size(); i++)
-        		if (state.getPlayers().get(i).getName().equals(Settings.PLAYER_TWO_NAME))
-        			tmp = state.getPlayers().get(i);
-        	state.setCurrentPlayer(tmp);
+        	Player newPlayer = state.getPlayers().get(Settings.PLAYER_TWO_INDEX);
+        	state.setCurrentPlayer(newPlayer);
         }
-        turnCounter.decrementMoveCounter();
-        firstDeployMove = null;
+
+        moveStrategy.getMoveExecutor().executeMove(move);
     }
 
     public Boolean hasEndedCheck() {
-        // TODO Auto-generated method stub
         return null;
     }
 
