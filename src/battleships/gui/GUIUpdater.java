@@ -86,14 +86,19 @@ public class GUIUpdater implements GameUpdatable{
 
                 if (locationToUpdate.getPiece() != null) {
                     GamePiece piece = locationToUpdate.getPiece();
+
                         if (piece.getId().charAt(Settings.PIECE_TYPE_INDEX) == Settings.SHIP_ID)
-                            comp.setBackground(Settings.PIECE_SHIP_COLOR);
+                            if (state.getIsDeployMode())
+                                comp.setBackground(Settings.PIECE_SHIP_COLOR);
+                            else
+                                comp.setBackground(Settings.TILE_COLOR);
 
                         else if (piece.getId().equals(Settings.PIECE_HIT_ID))
                             comp.setBackground(Settings.PIECE_SHIPHIT_COLOR);
 
                         else if(piece.getId().equals(Settings.PIECE_MISS_ID))
                             comp.setBackground(Settings.PIECE_MISS_COLOR);
+
                 }
 
             }
