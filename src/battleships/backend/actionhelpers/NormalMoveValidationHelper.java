@@ -35,9 +35,9 @@ public class NormalMoveValidationHelper implements MoveValidator {
 
     private boolean isShotOnCorrectBoardHalf(Move move){
         if(isPlayerOneTurn())
-            return boardHelper.getPlayerOneBoardHalf().contains(move.getDestination());
+            return boardHelper.getPlayerTwoBoardHalf().contains(move.getDestination());
 
-        return boardHelper.getPlayerTwoBoardHalf().contains(move.getDestination());
+        return boardHelper.getPlayerOneBoardHalf().contains(move.getDestination());
     }
 
     private boolean alreadyShotAtLocation(Move move){
