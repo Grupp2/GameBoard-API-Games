@@ -23,7 +23,7 @@ public class TestImageResize {
 	public void setUp() throws Exception {
 		try {
 			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			InputStream input = classLoader.getResourceAsStream("gui/graphics/svart.jpg");
+			InputStream input = classLoader.getResourceAsStream("othello/gui/graphics/svart.jpg");
 			testImage = ImageIO.read(input);
 		} catch (IOException e) {
 			
@@ -32,9 +32,6 @@ public class TestImageResize {
 
 	@Test
 	public void HorisontalTest() {
-//		dimensionToTest = mock(Dimension.class);
-//		when(dimensionToTest.height).thenReturn(40);
-//		when(dimensionToTest.width).thenReturn(20);
 		dimensionToTest = new Dimension(20, 40);
 		testImage = ir.resizeImage(testImage, dimensionToTest);
 		assertEquals(20, testImage.getWidth());
